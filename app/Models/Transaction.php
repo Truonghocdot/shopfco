@@ -23,6 +23,20 @@ class Transaction extends Model
     const STATUS_SUCCESS = 1;
     const STATUS_FAILED = 2;
 
+    public static function labelStatus($status): string
+    {
+        switch ($status) {
+            case self::STATUS_PENDING:
+                return 'Chờ xử lý';
+            case self::STATUS_SUCCESS:
+                return 'Thành công';
+            case self::STATUS_FAILED:
+                return 'Thất bại';
+            default:
+                return 'Không xác định';
+        }
+    }
+
     protected $fillable = [
         'user_id',
         'amount',

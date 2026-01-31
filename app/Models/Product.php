@@ -17,6 +17,18 @@ class Product extends Model
     const STATUS_UNSOLD = 0;
     const STATUS_SOLD = 1;
 
+    public static function labelStatus($status): string
+    {
+        switch ($status) {
+            case self::STATUS_UNSOLD:
+                return 'Chưa bán';
+            case self::STATUS_SOLD:
+                return 'Đã bán';
+            default:
+                return 'Không xác định';
+        }
+    }
+
     protected $fillable = [
         'category_id',
         'title',

@@ -20,14 +20,14 @@ class SepayWebhookController extends Controller
             Log::info('Sepay Webhook Received', $request->all());
 
             // Validate required fields
-            if (!$request->has(['amount', 'content', 'transaction_id'])) {
+            if (!$request->has(['transferAmount', 'content', 'referenceCode'])) {
                 Log::error('Sepay Webhook: Missing required fields');
                 return response()->json(['error' => 'Missing required fields'], 400);
             }
 
-            $amount = $request->input('amount');
+            $amount = $request->input('transferAmount');
             $content = $request->input('content');
-            $transactionId = $request->input('transaction_id');
+            $transactionId = $request->input('referenceCode');
 
             // Extract user ID from content
             // Expected format: "vanhfco 123" or "VANHFCO 123"

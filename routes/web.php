@@ -48,4 +48,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/thanh-toan/{slug}', [PurchaseController::class, 'checkout'])->name('checkout');
     Route::post('/thanh-toan/validate-coupon', [PurchaseController::class, 'validateCoupon'])->name('purchase.validate-coupon');
     Route::post('/thanh-toan/process', [PurchaseController::class, 'process'])->name('purchase.process');
+    Route::get('/thanh-toan/thanh-cong/{id}', [PurchaseController::class, 'success'])->name('purchase.success');
 });

@@ -32,11 +32,11 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             @forelse($categories as $category)
             <a href="{{ route('categories.show', $category->slug) }}" class="glass-morphism rounded-xl p-6 flex flex-col items-center text-center hover:border-primary transition group cursor-pointer">
-                <div class="w-24 h-24 mb-4 relative">
-                    <img alt="{{ $category->title }}" class="rounded-lg object-cover w-full h-full border-2 border-slate-600 group-hover:border-primary" src="{{ $category->image ?? 'https://via.placeholder.com/96' }}">
+                <div class="w-full h-48 mb-4 relative">
+                    <img alt="{{ $category->title }}" class="rounded-lg object-cover w-full h-full border-2 border-slate-600 group-hover:border-primary" src="{{ url('storage/'.$category->image) ?? 'https://via.placeholder.com/96' }}" loading="lazy">
                 </div>
                 <h3 class="font-bold text-lg mb-2">{{ $category->title }}</h3>
-                <p class="text-slate-400 text-sm">{{ $category->description }}</p>
+                <p class="text-slate-400 text-sm">{!! $category->description !!}</p>
             </a>
             @empty
             <div class="col-span-4 text-center text-slate-400">Chưa có danh mục nào</div>
@@ -60,7 +60,7 @@
         @forelse($flashSaleProducts as $product)
         <div class="glass-morphism rounded-xl overflow-hidden group border border-slate-700 hover:border-primary transition">
             <div class="relative overflow-hidden aspect-video">
-                <img alt="{{ $product->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ $product->images[0] ?? 'https://via.placeholder.com/400x225' }}">
+                <img alt="{{ $product->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ url('storage/'.$product->images[0]) ?? 'https://via.placeholder.com/400x225' }}" loading="lazy">
                 @if($product->getDiscountPercent())
                 <div class="absolute top-2 right-2 bg-accent-red text-white text-xs font-bold px-2 py-1 rounded">
                     -{{ number_format($product->getDiscountPercent()) }}%
@@ -105,7 +105,7 @@
         <a href="{{ route('news.show', $news->slug) }}" class="group block">
             <div class="glass-morphism rounded-xl overflow-hidden border border-slate-700 hover:border-primary transition h-full flex flex-col">
                 <div class="aspect-video w-full overflow-hidden relative">
-                    <img src="{{ $news->thumbnail ?? 'https://via.placeholder.com/400x225' }}" alt="{{ $news->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <img src="{{ url('storage/'.$news->thumbnail) ?? 'https://via.placeholder.com/400x225' }}" alt="{{ $news->title }}" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                     <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-4 pt-12">
                         <span class="text-xs font-bold text-slate-300 flex items-center gap-1">
                             <span class="material-icons text-xs">calendar_today</span>
@@ -129,4 +129,40 @@
         @endforelse
     </section>
 </div>
+@php
+$websiteSchema = [
+"@context" => "https://schema.org",
+"@type" => "WebSite",
+"name" => "Shop Acc FC Online - VanhFCO",
+"url" => route('home'),
+"potentialAction" => [
+"@type" => "SearchAction",
+"target" => route('home') . "?q={search_term_string}",
+"query-input" => "required name=search_term_string"
+]
+];
+
+$orgSchema = [
+"@context" => "https://schema.org",
+"@type" => "Organization",
+"name" => "VanhFCO",
+"url" => route('home'),
+"logo" => asset('images/logo.png'),
+"contactPoint" => [
+"@type" => "ContactPoint",
+"telephone" => "+84342995001",
+"contactType" => "customer service"
+],
+"sameAs" => [
+"https://www.facebook.com/le.vietanh.939173"
+]
+];
+@endphp
+
+<script type="application/ld+json">
+    @json($websiteSchema)
+</script>
+<script type="application/ld+json">
+    @json($orgSchema)
+</script>
 @endsection

@@ -24,7 +24,7 @@
         <span class="mx-2">/</span>
         <a class="hover:text-primary-red" href="#">ACC đội hình FC Online</a>
         <span class="mx-2">/</span>
-        <span class="text-slate-900 dark:text-white font-semibold">ID #{{ $slug }}</span>
+        <span class="text-slate-900 dark:text-white font-semibold">ID #{{ $product->id }}</span>
     </nav>
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -32,7 +32,7 @@
         <div class="lg:col-span-7 space-y-6">
             <div class="bg-white dark:bg-card-dark rounded-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800">
                 <div class="relative aspect-video group">
-                    <img alt="FC Online Squad Screenshot" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCutan5yVsaVVswVmfLl2yUvqehK7UB4OtdpWHw3tFj90cjYitEg3dUyekGQOyc46vKI5lRJGhBdAkhF1QONmUebbSkgli_69ZZ6ia7_lVnkHG9Yy8m4h8YHczXlkEoqGTfWjla5reTa_aAo-1Da-JHtzc1pF1IfN6A09V46_AXFtZtuERDJTkiuubO01MSJGSrcWqMJixf1-BM3lKZs6KgbcVuwHUZ4GidlaDz29L86XVVnEAJsvu7scEtD-lXRfMtsruJNI9m3a2K">
+                    <img alt="{{ $product->title }}" class="w-full h-full object-cover" src="{{ url('storage/'.$product->images[0] ?? '') }}" loading="lazy">
                     <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all pointer-events-none"></div>
                 </div>
             </div>
@@ -68,9 +68,9 @@
                 <div class="mt-6 flex items-center justify-between text-slate-500 dark:text-slate-400 text-sm">
                     <div class="flex items-center gap-4">
                         <span class="flex items-center gap-1"><span class="material-icons text-sm">visibility</span> 1,245 lượt xem</span>
-                        <span class="flex items-center gap-1"><span class="material-icons text-sm">schedule</span> Đăng 2 giờ trước</span>
+                        <span class="flex items-center gap-1"><span class="material-icons text-sm">schedule</span> Đăng {{ $product->created_at->diffForHumans() }}</span>
                     </div>
-                    <span class="font-bold text-slate-900 dark:text-white">Mã ID: #{{ $slug }}</span>
+                    <span class="font-bold text-slate-900 dark:text-white">Mã ID: #{{ $product->id }}</span>
                 </div>
             </div>
         </div>
@@ -118,4 +118,30 @@
         </div>
     </div>
 </div>
+</div>
+
+<script type="application/ld+json">
+    {
+        "@@context": "https://schema.org/",
+        "@@type": "Product",
+        "name": "{{ $product->title }}",
+        "image": [
+            "{{ url('storage/'.$product->images[0] ?? '') }}"
+        ],
+        "description": "{{ $product->description ?? $product->title }}",
+        "sku": "{{ $product->id }}",
+        "brand": {
+            "@@type": "Brand",
+            "name": "FC Online"
+        },
+        "offers": {
+            "@@type": "Offer",
+            "url": "{{ route('products.show', $product->slug) }}",
+            "priceCurrency": "VND",
+            "price": "{{ $product->getFinalPrice() }}",
+            "availability": "{{ $product->isUnsold() ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock' }}",
+            "itemCondition": "https://schema.org/UsedCondition"
+        }
+    }
+</script>
 @endsection

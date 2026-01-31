@@ -77,7 +77,7 @@
                 @foreach($products as $product)
                 <div class="glass-morphism rounded-xl overflow-hidden group border border-slate-700 hover:border-primary transition">
                     <div class="relative overflow-hidden aspect-video">
-                        <img alt="{{ $product->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ $product->images[0] ?? 'https://via.placeholder.com/400x225' }}">
+                        <img alt="{{ $product->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ url('storage/'.$product->images[0]) ?? 'https://via.placeholder.com/400x225' }}" loading="lazy">
                         @if($product->getDiscountPercent())
                         <div class="absolute top-2 right-2 bg-accent-red text-white text-xs font-bold px-2 py-1 rounded">
                             -{{ number_format($product->getDiscountPercent()) }}%

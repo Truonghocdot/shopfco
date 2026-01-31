@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Transactions\Tables;
 
+use App\Models\Transaction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -13,11 +14,11 @@ class TransactionsTable
             ->columns([
                 TextColumn::make("user.name")
                     ->label("Người mua"),
-                TextColumn::make("total_amount")
+                TextColumn::make("amount")
                     ->label("Tổng tiền"),
                 TextColumn::make("status")
-                    ->formatStateUsing(fn($state) => $state->label())
-                    ->label("Trạng thái"),
+                    ->label("Trạng thái")
+                    ->formatStateUsing(fn($state) => Transaction::labelStatus($state)),
                 TextColumn::make("created_at")
                     ->label("Ngày tạo"),
             ])

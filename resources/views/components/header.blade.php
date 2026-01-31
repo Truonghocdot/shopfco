@@ -25,14 +25,12 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <!-- Balance Display -->
+
+            @auth
             <div class="hidden sm:flex flex-col items-end">
                 <span class="text-xs text-white/70 uppercase">Số dư</span>
                 <span class="text-primary font-bold">{{ number_format(auth()->user()->wallet()->value('balance'), 0, ',', '.') }} <span class="underline">đ</span></span>
             </div>
-
-            <!-- User Menu -->
-            @auth
             <a href="{{ route('user.profile') }}" class="flex items-center gap-2 bg-white/10 hover:bg-white/20 px-3 py-2 rounded-lg cursor-pointer transition">
                 <span class="material-icons text-primary">account_circle</span>
                 <span class="font-medium text-white">{{ auth()->user()->username }} id: {{ auth()->user()->id }}</span>

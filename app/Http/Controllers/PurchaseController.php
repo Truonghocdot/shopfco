@@ -152,12 +152,17 @@ class PurchaseController extends Controller
 
             DB::commit();
 
-            return redirect()->route('user.profile')
-                ->with('success', 'Mua hàng thành công! Mã đơn hàng: ' . $order->order_number);
+            return redirect()->route('purchase.success', $order->id);
         } catch (\Exception $e) {
             DB::rollBack();
 
             return back()->with('error', $e->getMessage());
         }
+    }
+
+    public function success($id)
+    {
+        $order = Order::with('product.category')->where('user_id', Auth::id())->findOrFail($id);
+        return view('purchase.success', compact('order'));
     }
 }

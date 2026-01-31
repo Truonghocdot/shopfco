@@ -8,7 +8,20 @@ use Illuminate\Support\Facades\Auth;
 
 class PurchasedProducts extends Component
 {
-    use WithPagination;
+    public $selectedOrder = null;
+    public $showModal = false;
+
+    public function viewDetails($orderId)
+    {
+        $this->selectedOrder = \App\Models\Order::with('product')->find($orderId);
+        $this->showModal = true;
+    }
+
+    public function closeModal()
+    {
+        $this->showModal = false;
+        $this->selectedOrder = null;
+    }
 
     public function render()
     {

@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Categories\Schemas;
 
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
@@ -37,7 +38,7 @@ class CategoryForm
                     ->afterStateUpdated(function ($state, callable $set) {
                         $set('slug', str($state)->slug());
                     }),
-                RichEditor::make('description')
+                Textarea::make('description')
                     ->label('Mô tả')
                     ->required()
                     ->validationMessages([

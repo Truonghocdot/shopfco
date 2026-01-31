@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Setting;
 use App\Observers\SettingObserver;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        URL::forceScheme('https');
         Setting::observe(SettingObserver::class);
         \App\Models\User::observe(\App\Observers\UserObserver::class);
     }

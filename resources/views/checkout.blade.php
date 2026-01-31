@@ -19,8 +19,8 @@
 
                     <div class="flex gap-4">
                         <div class="w-24 h-24 flex-shrink-0 bg-gray-100 rounded-lg overflow-hidden">
-                            @if($product->image)
-                            <img src="{{ $product->image }}" alt="{{ $product->title }}" class="w-full h-full object-cover">
+                            @if($product->images[0])
+                            <img src="{{ url('storage/'.$product->images[0]) }}" alt="{{ $product->title }}" class="w-full h-full object-cover">
                             @else
                             <div class="w-full h-full flex items-center justify-center text-gray-400">
                                 <span class="material-icons">image</span>

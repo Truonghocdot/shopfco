@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Products\Tables;
 
+use App\Models\Product;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -33,6 +34,9 @@ class ProductsTable
                     ->label('Giá sau giảm giá')
                     ->searchable()
                     ->limit(50),
+                TextColumn::make('status')
+                    ->label('Trạng thái')
+                    ->formatStateUsing(fn($state) => Product::labelStatus($state)),
             ])
             ->recordActions([
                 EditAction::make(),

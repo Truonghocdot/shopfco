@@ -51,7 +51,7 @@
         <article class="glass-morphism rounded-xl overflow-hidden mb-8">
             @if($news->thumbnail)
             <div class="aspect-video w-full overflow-hidden">
-                <img alt="{{ $news->title }}" class="w-full h-full object-cover" src="{{ $news->thumbnail }}">
+                <img alt="{{ $news->title }}" class="w-full h-full object-cover" src="{{ url('storage/'.$news->thumbnail) }}" loading="lazy">
             </div>
             @endif
 
@@ -89,7 +89,7 @@
                 @foreach($relatedNews as $item)
                 <article class="glass-morphism rounded-xl overflow-hidden group border border-slate-700 hover:border-primary transition">
                     <div class="relative overflow-hidden aspect-video">
-                        <img alt="{{ $item->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ $item->thumbnail ?? 'https://via.placeholder.com/400x225' }}">
+                        <img alt="{{ $item->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ url('storage/'.$item->thumbnail) ?? 'https://via.placeholder.com/400x225' }}" loading="lazy">
                     </div>
                     <div class="p-4">
                         <h3 class="font-bold text-sm mb-2 line-clamp-2 group-hover:text-primary transition">{{ $item->title }}</h3>
@@ -108,4 +108,22 @@
         @endif
     </div>
 </div>
+</div>
+<script type="application/ld+json">
+    {
+        "@@context": "https://schema.org",
+        "@@type": "NewsArticle",
+        "headline": "{{ $news->title }}",
+        "image": [
+            "{{ url('storage/'.$news->thumbnail) }}"
+        ],
+        "datePublished": "{{ $news->created_at->toIso8601String() }}",
+        "dateModified": "{{ $news->updated_at->toIso8601String() }}",
+        "author": [{
+            "@@type": "Organization",
+            "name": "VanhFCO",
+            "url": "{{ route('home') }}"
+        }]
+    }
+</script>
 @endsection

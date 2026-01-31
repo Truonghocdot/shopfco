@@ -25,7 +25,7 @@
         @foreach($news as $item)
         <article class="glass-morphism rounded-xl overflow-hidden group border border-slate-700 hover:border-primary transition">
             <div class="relative overflow-hidden aspect-video">
-                <img alt="{{ $item->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ $item->thumbnail ?? 'https://via.placeholder.com/400x225' }}">
+                <img alt="{{ $item->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ url('storage/'.$item->thumbnail) ?? 'https://via.placeholder.com/400x225' }}" loading="lazy">
                 <div class="absolute bottom-2 left-2 bg-black/80 backdrop-blur px-3 py-1 rounded text-xs text-slate-300 flex items-center gap-2">
                     <span class="material-icons text-sm">schedule</span>
                     {{ $item->created_at->diffForHumans() }}
