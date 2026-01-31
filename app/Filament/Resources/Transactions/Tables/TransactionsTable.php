@@ -2,9 +2,7 @@
 
 namespace App\Filament\Resources\Transactions\Tables;
 
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
-use Filament\Actions\EditAction;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class TransactionsTable
@@ -13,18 +11,16 @@ class TransactionsTable
     {
         return $table
             ->columns([
-                //
+                TextColumn::make("user.name")
+                    ->label("Người mua"),
+                TextColumn::make("total_amount")
+                    ->label("Tổng tiền"),
+                TextColumn::make("status")
+                    ->formatStateUsing(fn($state) => $state->label())
+                    ->label("Trạng thái"),
+                TextColumn::make("created_at")
+                    ->label("Ngày tạo"),
             ])
-            ->filters([
-                //
-            ])
-            ->recordActions([
-                EditAction::make(),
-            ])
-            ->toolbarActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                ]),
-            ]);
+            ->defaultSort('created_at', 'desc');
     }
 }

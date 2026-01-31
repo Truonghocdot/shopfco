@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Users\Schemas;
 
+use App\Constants\UserRole;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
@@ -22,20 +24,21 @@ class UserForm
                 TextInput::make('phone')
                     ->label('Số điện thoại')
                     ->tel(),
-                Textarea::make('password')
+                TextInput::make('password')
                     ->label('Mật khẩu')
+                    ->password()    
                     ->required()
                     ->columnSpanFull(),
-                TextInput::make('role')
+                Select::make('role')
                     ->label('Vai trò')
                     ->required()
-                    ->numeric()
-                    ->default(0),
-                TextInput::make('status')
+                    ->options(UserRole::getRoleOptions())
+                    ->default(UserRole::CLIENT->value),
+                Select::make('status')
                     ->label('Trạng thái')
                     ->required()
-                    ->numeric()
-                    ->default(1),
+                    ->options(UserRole::getRoleOptions())
+                    ->default(UserRole::CLIENT->value),
             ]);
     }
 }

@@ -30,7 +30,7 @@ class UsersTable
                     ->sortable(),
                 TextColumn::make('status')
                     ->label('Trạng thái')
-                    ->formatStateUsing(fn($state) => $state ? 'Khóa' : 'Hoạt động')
+                    ->formatStateUsing(fn($state) => $state == 1 ? 'Hoạt động' : 'Khóa')
                     ->badge()
                     ->color(fn($state) => $state ? 'danger' : 'success')
                     ->sortable(),

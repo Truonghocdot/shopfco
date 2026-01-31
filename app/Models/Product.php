@@ -26,8 +26,11 @@ class Product extends Model
         'sale_price',
         'meta_title',
         'meta_description',
+        'images',
         'type',
         'status',
+        'phone',
+        'password',
     ];
 
     protected function casts(): array
@@ -37,7 +40,10 @@ class Product extends Model
             'sale_price' => 'decimal:2',
             'type' => 'integer',
             'status' => 'integer',
+            'images' => 'array',
             'created_at' => 'datetime',
+            'phone' => 'string',
+            'password' => 'string',
         ];
     }
 

@@ -35,29 +35,15 @@ class TransactionResource extends Resource
         return 'Giao dịch';
     }
 
-    public static function form(Schema $schema): Schema
-    {
-        return TransactionForm::configure($schema);
-    }
-
     public static function table(Table $table): Table
     {
         return TransactionsTable::configure($table);
-    }
-
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
     }
 
     public static function getPages(): array
     {
         return [
             'index' => ListTransactions::route('/'),
-            'create' => CreateTransaction::route('/create'),
-            'edit' => EditTransaction::route('/{record}/edit'),
         ];
     }
 }

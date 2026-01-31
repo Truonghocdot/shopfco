@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources\Categories\Tables;
 
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class CategoriesTable
@@ -13,18 +13,20 @@ class CategoriesTable
     {
         return $table
             ->columns([
-                //
-            ])
-            ->filters([
-                //
+                TextColumn::make('title')
+                    ->label('Tiêu đề')
+                    ->searchable(),
+                TextColumn::make('slug')
+                    ->label('Đường dẫn')
+                    ->searchable(),
+                ImageColumn::make('image')
+                    ->label('Hình ảnh')
+                    ->disk('public')
+                    ->searchable(),
             ])
             ->recordActions([
                 EditAction::make(),
             ])
-            ->toolbarActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                ]),
-            ]);
+            ->defaultSort('created_at', 'desc');
     }
 }
