@@ -59,6 +59,26 @@ class Setting extends Page implements HasForms
                                     ->placeholder('NHAP TEN KHONG DAU')
                                     ->required()
                                     ->extraInputAttributes(['style' => 'text-transform: uppercase']),
+
+                                TextInput::make(SettingName::PHONE_NUMBER->value)
+                                    ->label('Số điện thoại')
+                                    ->placeholder('Nhập số điện thoại')
+                                    ->required(),
+
+                                TextInput::make(SettingName::ZALO_LINK->value)
+                                    ->label('Link Zalo')
+                                    ->placeholder('Nhập link Zalo')
+                                    ->required(),
+
+                                TextInput::make(SettingName::FACEBOOK_LINK->value)
+                                    ->label('Link Facebook')
+                                    ->placeholder('Nhập link Facebook')
+                                    ->required(),
+
+                                TextInput::make(SettingName::BANKING->value)
+                                    ->label('Ngân hàng')
+                                    ->placeholder('Nhập tên ngân hàng')
+                                    ->required(),
                             ])
                             ->columns(2)
                     ])

@@ -60,6 +60,11 @@ class User extends Authenticatable implements FilamentUser
         return $this->hasMany(CouponUsage::class);
     }
 
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
+    }
+
     // Helper methods
     public function isAdmin(): bool
     {

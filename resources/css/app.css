@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -6,6 +6,92 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    /* Font Families */
+    --font-family-sans: "Inter", system-ui, -apple-system, sans-serif;
+    --font-family-display: "Outfit", "Inter", sans-serif;
+
+    /* Light Mode Color Palette */
+    --color-primary: #00ff66;
+    --color-primary-dark: #00a152;
+    --color-primary-red: #ff4b4b;
+    --color-accent-red: #e53935;
+    --color-accent-blue: #2196f3;
+    --color-accent-orange: #ff9800;
+
+    /* Light Backgrounds */
+    --color-bg-primary: #e8f5e9;
+    --color-bg-secondary: #f1f8f4;
+    --color-bg-card: #ffffff;
+    --color-bg-card-hover: #f5f5f5;
+
+    /* Text Colors */
+    --color-text-primary: #1a1a1a;
+    --color-text-secondary: #666666;
+    --color-text-tertiary: #999999;
+    --color-text-light: #b0b0b0;
+
+    /* Border Colors */
+    --color-border: #e0e0e0;
+    --color-border-light: #f0f0f0;
+    --color-border-dark: #cccccc;
+}
+
+/* Global Styles */
+body {
+    background: linear-gradient(135deg, #e8f5e9 0%, #f1f8f4 100%);
+    background-attachment: fixed;
+    color: var(--color-text-primary);
+    font-family: var(--font-family-sans);
+}
+
+/* Light Mode Glass Morphism */
+.glass-morphism {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow:
+        0 4px 6px rgba(0, 0, 0, 0.05),
+        0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.glass-morphism:hover {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow:
+        0 8px 12px rgba(0, 0, 0, 0.08),
+        0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Styles */
+.card-light {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Shadows */
+.shadow-soft {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.shadow-medium {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom Scrollbar - Light Mode */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f0f0f0;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c0c0c0;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a0a0a0;
 }
