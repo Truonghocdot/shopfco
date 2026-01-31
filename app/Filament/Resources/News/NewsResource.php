@@ -20,6 +20,21 @@ class NewsResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
+    public static function getNavigationLabel(): string
+    {
+        return 'Quản lý tin tức';
+    }
+
+    public static function getModelLabel(): string
+    {
+        return 'Tin tức';
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return 'Tin tức';
+    }
+
     public static function form(Schema $schema): Schema
     {
         return NewsForm::configure($schema);

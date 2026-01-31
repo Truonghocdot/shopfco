@@ -2,18 +2,14 @@
 
 namespace App\Filament\Pages;
 
-use App\Common\Constants\Language;
 use App\Services\AuthService;
 use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 use Filament\Auth\Http\Responses\Contracts\LoginResponse;
 use Filament\Auth\Pages\Login as BaseLogin;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Schemas\Schema;
-use Illuminate\Support\Facades\App;
 use Illuminate\Validation\ValidationException;
-use Throwable;
 
 class Login extends BaseLogin
 {
@@ -71,7 +67,6 @@ class Login extends BaseLogin
                 ->send();
         }
         $data = $this->form->getState();
-
 
         $credentials = [
             'email'          => $data['email'],

@@ -20,6 +20,21 @@ class SettingResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
+    public static function getNavigationLabel(): string
+    {
+        return 'Quản lý cài đặt';
+    }
+
+    public static function getModelLabel(): string
+    {
+        return 'Cài đặt';
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return 'Cài đặt';
+    }
+
     public static function form(Schema $schema): Schema
     {
         return SettingForm::configure($schema);

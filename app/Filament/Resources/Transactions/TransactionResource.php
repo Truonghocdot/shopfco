@@ -20,6 +20,21 @@ class TransactionResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
+    public static function getNavigationLabel(): string
+    {
+        return 'Quản lý giao dịch';
+    }
+
+    public static function getModelLabel(): string
+    {
+        return 'Giao dịch';
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return 'Giao dịch';
+    }
+
     public static function form(Schema $schema): Schema
     {
         return TransactionForm::configure($schema);

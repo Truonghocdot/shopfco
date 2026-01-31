@@ -20,6 +20,21 @@ class CategoryResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
+    public static function getNavigationLabel(): string
+    {
+        return 'Quản lý danh mục acc';
+    }
+
+    public static function getModelLabel(): string
+    {
+        return 'Danh mục acc';
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return 'Danh mục acc';
+    }
+
     public static function form(Schema $schema): Schema
     {
         return CategoryForm::configure($schema);

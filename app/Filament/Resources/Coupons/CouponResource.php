@@ -20,6 +20,21 @@ class CouponResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
+    public static function getNavigationLabel(): string
+    {
+        return 'Quản lý mã giảm giá';
+    }
+
+    public static function getModelLabel(): string
+    {
+        return 'Mã giảm giá';
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return 'Mã giảm giá';
+    }
+
     public static function form(Schema $schema): Schema
     {
         return CouponForm::configure($schema);
