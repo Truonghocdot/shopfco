@@ -36,15 +36,15 @@
 
             <div class="rounded-md shadow-sm -space-y-px">
                 <div class="mb-4">
-                    <label for="email" class="sr-only">Email address</label>
+                    <label for="username" class="sr-only">Tên đăng nhập</label>
                     <div class="relative">
                         <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
-                            <span class="material-icons text-lg">email</span>
+                            <span class="material-icons text-lg">person</span>
                         </span>
-                        <input id="email" name="email" type="email" autocomplete="email" required
+                        <input id="username" name="username" type="text" autocomplete="username" required
                             class="appearance-none rounded-xl relative block w-full pl-10 px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
-                            placeholder="Địa chỉ Email"
-                            value="{{ old('email') }}">
+                            placeholder="Tên đăng nhập"
+                            value="{{ old('username') }}">
                     </div>
                 </div>
                 <div>

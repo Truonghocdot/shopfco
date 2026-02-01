@@ -21,46 +21,16 @@
 
             <div class="rounded-md shadow-sm space-y-4">
                 <div>
-                    <label for="name" class="sr-only">Họ và tên</label>
+                    <label for="username" class="sr-only">Tên đăng nhập</label>
                     <div class="relative">
                         <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
                             <span class="material-icons text-lg">person</span>
                         </span>
-                        <input id="name" name="name" type="text" autocomplete="name" required
+                        <input id="username" name="username" type="text" autocomplete="username" required
                             class="appearance-none rounded-xl relative block w-full pl-10 px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
-                            placeholder="Họ và tên" value="{{ old('name') }}">
+                            placeholder="Tên đăng nhập" value="{{ old('username') }}">
                     </div>
-                    @error('name')
-                    <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <div>
-                    <label for="email" class="sr-only">Email address</label>
-                    <div class="relative">
-                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
-                            <span class="material-icons text-lg">email</span>
-                        </span>
-                        <input id="email" name="email" type="email" autocomplete="email" required
-                            class="appearance-none rounded-xl relative block w-full pl-10 px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
-                            placeholder="Địa chỉ Email" value="{{ old('email') }}">
-                    </div>
-                    @error('email')
-                    <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <div>
-                    <label for="phone" class="sr-only">Số điện thoại</label>
-                    <div class="relative">
-                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
-                            <span class="material-icons text-lg">phone</span>
-                        </span>
-                        <input id="phone" name="phone" type="text" autocomplete="tel"
-                            class="appearance-none rounded-xl relative block w-full pl-10 px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
-                            placeholder="Số điện thoại (tùy chọn)" value="{{ old('phone') }}">
-                    </div>
-                    @error('phone')
+                    @error('username')
                     <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                     @enderror
                 </div>

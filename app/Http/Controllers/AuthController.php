@@ -26,62 +26,52 @@ class AuthController extends Controller
     {
         $credentials = $request->validate(
             [
-                'email' => ['required', 'email'],
-                'password' => ['required','confirmed'],
+                'username' => ['required', 'string'],
+                'password' => ['required'],
             ],
             [
-                'email.required' => 'Email không được để trống.',
-                'email.email' => 'Email không hợp lệ.', 
+                'username.required' => 'Vui lòng nhập tên đăng nhập.',
                 'password.required' => 'Mật khẩu không được để trống.',
-                'password.confirmed' => 'Mật khẩu xác nhận không khớp.',
             ]
         );
 
-        if (Auth::attempt($credentials, $request->remember)) {
+        if (Auth::attempt(['name' => $request->username, 'password' => $request->password], $request->remember)) {
             $request->session()->regenerate();
 
             // Checks status
             if (Auth::user()->status !== 1) {
                 Auth::logout();
-                return back()->withErrors(['email' => 'Tài khoản của bạn đã bị khóa.']);
+                return back()->withErrors(['username' => 'Tài khoản của bạn đã bị khóa.']);
             }
 
             return redirect()->intended(route('home'));
         }
 
         return back()->withErrors([
-            'email' => 'Thông tin đăng nhập không chính xác.',
-        ])->onlyInput('email');
+            'username' => 'Thông tin đăng nhập không chính xác.',
+        ])->onlyInput('username');
     }
 
     // Handle Register
     public function register(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'username' => 'required|string|max:100|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
-            'phone' => 'nullable|string|max:15',
         ], [
-            'name.required' => 'Vui lòng nhập họ tên.',
-            'email.required' => 'Vui lòng nhập email.',
-            'email.email' => 'Email không đúng định dạng.',
-            'email.unique' => 'Email này đã được sử dụng.',
+            'username.required' => 'Vui lòng nhập tên đăng nhập.',
+            'username.unique' => 'Tên đăng nhập này đã được sử dụng.',
             'password.required' => 'Vui lòng nhập mật khẩu.',
             'password.min' => 'Mật khẩu phải có ít nhất 8 ký tự.',
             'password.confirmed' => 'Mật khẩu xác nhận không khớp.',
         ]);
 
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
+            'name' => $request->username,
             'password' => Hash::make($request->password),
-            'phone' => $request->phone,
             'status' => 1,
             'role' => \App\Constants\UserRole::CLIENT->value,
         ]);
-
-
 
         Auth::login($user);
 
