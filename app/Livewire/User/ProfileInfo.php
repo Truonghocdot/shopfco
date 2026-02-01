@@ -27,17 +27,24 @@ class ProfileInfo extends Component
     public function updateProfile()
     {
         $this->validate([
-            'name' => 'required|string|max:100',
             'email' => 'required|email|max:150|unique:users,email,' . Auth::id(),
             'phone' => 'nullable|string|max:20',
             'current_password' => 'nullable|required_with:new_password|current_password',
             'new_password' => 'nullable|min:8|confirmed',
+        ], [
+            'email.required' => 'Vui lòng nhập email.',
+            'email.email' => 'Email không đúng định dạng.',
+            'email.unique' => 'Email đã được sử dụng.',
+            'current_password.required_with' => 'Vui lòng nhập mật khẩu hiện tại để đổi mật khẩu.',
+            'current_password.current_password' => 'Mật khẩu hiện tại không đúng.',
+            'new_password.min' => 'Mật khẩu mới phải có ít nhất 8 ký tự.',
+            'new_password.confirmed' => 'Xác nhận mật khẩu mới không khớp.',
         ]);
 
         $user = Auth::user();
 
         $dataToUpdate = [
-            'name' => $this->name,
+            'email' => $this->email,
             'phone' => $this->phone,
         ];
 

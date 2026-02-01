@@ -56,7 +56,7 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'username' => 'required|string|max:100|unique:users,email',
+            'username' => 'required|string|max:100|unique:users,name',
             'password' => 'required|string|min:8|confirmed',
         ], [
             'username.required' => 'Vui lòng nhập tên đăng nhập.',

@@ -18,7 +18,7 @@
                 <label class="text-slate-600 text-sm font-bold">Họ và tên</label>
                 <div class="relative">
                     <span class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[20px]">badge</span>
-                    <input wire:model="name" type="text" class="w-full pl-10 pr-4 py-2.5 rounded-lg border border-slate-200 focus:border-primary-blue focus:ring-1 focus:ring-primary-blue outline-none transition-all font-medium text-slate-800 placeholder:text-slate-400">
+                    <input wire:model="name" type="text" readonly class="w-full pl-10 pr-4 py-2.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-500 font-medium cursor-not-allowed">
                 </div>
                 @error('name') <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span> @enderror
             </div>
@@ -34,7 +34,7 @@
                 <label class="text-slate-600 text-sm font-bold">Email</label>
                 <div class="relative">
                     <span class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[20px]">mail</span>
-                    <input wire:model="email" type="email" readonly class="w-full pl-10 pr-4 py-2.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-500 font-medium cursor-not-allowed">
+                    <input wire:model="email" type="email" class="w-full pl-10 pr-4 py-2.5 rounded-lg border border-slate-200 focus:border-primary-blue focus:ring-1 focus:ring-primary-blue outline-none transition-all font-medium text-slate-800 placeholder:text-slate-400">
                 </div>
                 @error('email') <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span> @enderror
             </div>
