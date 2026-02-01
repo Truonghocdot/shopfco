@@ -35,6 +35,37 @@
 </style>
 @endpush
 
+@push('schema')
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ url()->current() }}"
+    },
+    "headline": "{{ $news->title }}",
+    "description": "{{ $news->description }}",
+    "image": "{{ url('storage/'.$news->thumbnail) }}",
+    "author": {
+        "@type": "Organization",
+        "name": "VanhFCO",
+        "url": "{{ route('home') }}"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "VanhFCO",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "{{ asset('images/logo.png') }}"
+        }
+    },
+    "datePublished": "{{ $news->created_at->toIso8601String() }}",
+    "dateModified": "{{ $news->updated_at->toIso8601String() }}"
+}
+</script>
+@endpush
+
 @section('content')
 <div class="container mx-auto px-4 py-8">
     <div class="max-w-4xl mx-auto">

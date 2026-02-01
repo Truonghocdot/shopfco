@@ -10,7 +10,9 @@
         "filament/filament": "*",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
-        "opcodesio/log-viewer": "*"
+        "opcodesio/log-viewer": "*",
+        "spatie/laravel-feed": "*",
+        "spatie/laravel-sitemap": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

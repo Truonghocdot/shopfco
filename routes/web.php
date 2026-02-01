@@ -50,3 +50,5 @@ Route::middleware('auth')->group(function () {
     Route::post('/thanh-toan/process', [PurchaseController::class, 'process'])->name('purchase.process');
     Route::get('/thanh-toan/thanh-cong/{id}', [PurchaseController::class, 'success'])->name('purchase.success');
 });
+
+Route::feeds();

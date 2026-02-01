@@ -19,7 +19,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        URL::forceScheme('https');
         Setting::observe(SettingObserver::class);
         \App\Models\User::observe(\App\Observers\UserObserver::class);
     }

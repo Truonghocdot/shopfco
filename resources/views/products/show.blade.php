@@ -14,6 +14,35 @@
 </style>
 @endpush
 
+@push('schema')
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "{{ $product->title }}",
+    "image": [
+        @foreach($product->images as $image)
+        "{{ url('storage/'.$image) }}"{{ !$loop->last ? ',' : '' }}
+        @endforeach
+    ],
+    "description": "{{ strip_tags($product->content) ?? $product->title }}",
+    "sku": "{{ $product->id }}",
+    "brand": {
+        "@type": "Brand",
+        "name": "FC Online"
+    },
+    "offers": {
+        "@type": "Offer",
+        "url": "{{ route('products.show', $product->slug) }}",
+        "priceCurrency": "VND",
+        "price": "{{ $product->getFinalPrice() }}",
+        "availability": "{{ $product->isUnsold() ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock' }}",
+        "itemCondition": "https://schema.org/UsedCondition"
+    }
+}
+</script>
+@endpush
+
 @section('content')
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     <!-- Breadcrumb -->

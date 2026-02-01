@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Feed\Feedable;
+use Spatie\Feed\FeedItem;
 
-class News extends Model
+class News extends Model implements Feedable
 {
     // Published status
     const STATUS_DRAFT = 0;
@@ -32,6 +34,24 @@ class News extends Model
             'updated_at' => 'datetime',
         ];
     }
+
+    public function toFeedItem(): FeedItem
+    {
+        return FeedItem::create()
+            ->id($this->id)
+            ->title($this->title)
+            ->summary($this->description)
+            ->updated($this->updated_at)
+            ->link(route('news.show', $this))
+            ->authorName('VanhFCO') // Change this to your name
+            ->authorEmail('truonghocdot05@gmail.com'); // Change this to your email
+    }
+
+    public static function getFeedItems()
+    {
+        return self::published()->latest()->limit(20)->get();
+    }
+
 
     // Helper methods
     public function getRouteKeyName(): string
