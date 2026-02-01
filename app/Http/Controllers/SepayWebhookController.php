@@ -45,12 +45,11 @@ class SepayWebhookController extends Controller
                 return response()->json(['message' => 'Transaction already processed'], 200);
             }
 
-            // Get user wallet
-            $wallet = Wallet::where('user_id', $userId)->first();
-            if (!$wallet) {
-                Log::error('Sepay Webhook: Wallet not found', ['user_id' => $userId]);
-                return response()->json(['error' => 'Wallet not found'], 404);
-            }
+            // Get user wallet or create if not exists
+            $wallet = Wallet::firstOrCreate(
+                ['user_id' => $userId],
+                ['balance' => 0]
+            );
 
             // Process transaction
             DB::transaction(function () use ($wallet, $amount, $transactionId, $request) {
