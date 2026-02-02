@@ -14,34 +14,7 @@
 </style>
 @endpush
 
-@push('schema')
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org/",
-    "@type": "Product",
-    "name": "{{ $product->title }}",
-    "image": [
-        @foreach($product->images as $image)
-        "{{ url('storage/'.$image) }}"{{ !$loop->last ? ',' : '' }}
-        @endforeach
-    ],
-    "description": "{{ strip_tags($product->content) ?? $product->title }}",
-    "sku": "{{ $product->id }}",
-    "brand": {
-        "@type": "Brand",
-        "name": "FC Online"
-    },
-    "offers": {
-        "@type": "Offer",
-        "url": "{{ route('products.show', $product->slug) }}",
-        "priceCurrency": "VND",
-        "price": "{{ $product->getFinalPrice() }}",
-        "availability": "{{ $product->isUnsold() ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock' }}",
-        "itemCondition": "https://schema.org/UsedCondition"
-    }
-}
-</script>
-@endpush
+
 
 @section('content')
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -51,7 +24,7 @@
             <span class="material-icons text-sm mr-1">home</span> Trang chủ
         </a>
         <span class="mx-2">/</span>
-        <a class="hover:text-primary-red" href="#">ACC đội hình FC Online</a>
+        <a class="hover:text-primary-red" href="#">{{ $product->category->title }}</a>
         <span class="mx-2">/</span>
         <span class="text-slate-900 dark:text-white font-semibold">ID #{{ $product->id }}</span>
     </nav>
@@ -60,27 +33,76 @@
         <!-- Product Images -->
         <div class="lg:col-span-7 space-y-6">
             <div class="bg-white dark:bg-card-dark rounded-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800">
-                <div class="relative aspect-video group">
-                    <img alt="{{ $product->title }}" class="w-full h-full object-cover" src="{{ url('storage/'.$product->images[0] ?? '') }}" loading="lazy">
-                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all pointer-events-none"></div>
+                <div class="relative group" id="product-carousel">
+                    <!-- Main Slides -->
+                    <div id="carousel-slides" class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth p-0 no-scrollbar" style="scrollbar-width: none; -ms-overflow-style: none;">
+                        @if(!empty($product->images))
+                        @foreach($product->images as $index => $image)
+                        <div class="w-full shrink-0 snap-center relative aspect-video" id="slide-{{ $index }}">
+                            <img src="{{ url('storage/'.$image) }}" alt="{{ $product->title }} - Image {{ $index + 1 }}" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-black/10 transition-all pointer-events-none"></div>
+                        </div>
+                        @endforeach
+                        @else
+                        <div class="w-full shrink-0 snap-center relative aspect-video">
+                            <img src="https://via.placeholder.com/800x450?text=No+Image" alt="No Image" class="w-full h-full object-cover">
+                        </div>
+                        @endif
+                    </div>
+
+                    <!-- Navigation Arrows -->
+                    @if(!empty($product->images) && count($product->images) > 1)
+                    <button onclick="moveSlide(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 backdrop-blur-sm">
+                        <span class="material-icons">chevron_left</span>
+                    </button>
+                    <button onclick="moveSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 backdrop-blur-sm">
+                        <span class="material-icons">chevron_right</span>
+                    </button>
+
+                    <!-- Image Counter -->
+                    <div class="absolute bottom-4 right-4 bg-black/60 text-white text-xs px-3 py-1 rounded-full backdrop-blur-md z-10">
+                        <span id="current-slide">1</span> / {{ count($product->images) }}
+                    </div>
+                    @endif
                 </div>
+
+                <!-- Thumbnails -->
+                @if(!empty($product->images) && count($product->images) > 1)
+                <div class="px-6 pb-6 pt-4 bg-slate-50 dark:bg-slate-900/50 border-t border-slate-200 dark:border-slate-800">
+                    <div class="flex gap-3 overflow-x-auto pb-2 no-scrollbar scroll-smooth" id="carousel-thumbnails">
+                        @foreach($product->images as $index => $image)
+                        <button onclick="scrollToSlide({{ $index }})"
+                            class="relative shrink-0 w-24 h-16 rounded-lg overflow-hidden border-2 transition-all duration-300 thumbnail-btn {{ $index === 0 ? 'border-primary-red ring-2 ring-primary-red/30' : 'border-slate-300 opacity-60 hover:opacity-100' }}"
+                            data-index="{{ $index }}">
+                            <img src="{{ url('storage/'.$image) }}" alt="Thumbnail {{ $index + 1 }}" class="w-full h-full object-cover">
+                        </button>
+                        @endforeach
+                    </div>
+                </div>
+                @endif
             </div>
 
             <!-- Product Info -->
             <div class="bg-white dark:bg-card-dark rounded-2xl p-6 shadow-xl border border-slate-200 dark:border-slate-800">
-                <h1 class="text-xl md:text-2xl font-bold mb-4">Liverpool 1.106.570b có Owen ITM+5, Isak 25TS, Wirtz 25TS...</h1>
+                <h1 class="text-xl md:text-2xl font-bold mb-4">{{ $product->title }}</h1>
                 <div class="flex flex-wrap items-center justify-between gap-6 py-6 border-y border-slate-100 dark:border-slate-800">
                     <div class="space-y-1">
-                        <span class="text-slate-500 line-through text-lg">4,230,000đ</span>
+                        @if($product->sell_price && $product->sell_price > $product->getFinalPrice())
+                        <span class="text-slate-500 line-through text-lg">{{ number_format($product->sell_price) }}đ</span>
+                        @endif
                         <div class="flex items-baseline gap-2">
-                            <span class="text-3xl md:text-4xl font-extrabold text-primary-red">1,184,400đ</span>
-                            <span class="bg-primary-red/10 text-primary-red text-xs font-bold px-2 py-1 rounded">GIẢM 72%</span>
+                            <span class="text-3xl md:text-4xl font-extrabold text-primary-red">{{ number_format($product->getFinalPrice()) }}đ</span>
+                            @if($product->getDiscountPercent())
+                            <span class="bg-primary-red/10 text-primary-red text-xs font-bold px-2 py-1 rounded">GIẢM {{ $product->getDiscountPercent() }}%</span>
+                            @endif
                         </div>
                     </div>
                     <div class="flex flex-col items-end">
+                        @if($product->sell_price && $product->sell_price > $product->getFinalPrice())
                         <span class="text-sm text-accent-success font-medium flex items-center gap-1 mb-2">
                             <span class="material-icons text-sm">savings</span> Tiết kiệm {{ number_format($product->sell_price - $product->getFinalPrice()) }}đ
                         </span>
+                        @endif
                         @auth
                         <a href="{{ route('checkout', $product->slug) }}" class="w-full sm:w-auto bg-primary-red hover:bg-red-600 text-white font-bold py-4 px-12 rounded-xl flex items-center justify-center gap-3 transition-all transform hover:scale-[1.02] shadow-lg shadow-primary-red/20">
                             <span class="material-icons">shopping_cart</span>
@@ -96,7 +118,7 @@
                 </div>
                 <div class="mt-6 flex items-center justify-between text-slate-500 dark:text-slate-400 text-sm">
                     <div class="flex items-center gap-4">
-                        <span class="flex items-center gap-1"><span class="material-icons text-sm">visibility</span> 1,245 lượt xem</span>
+                        <span class="flex items-center gap-1"><span class="material-icons text-sm">visibility</span> {{ rand(100, 5000) }} lượt xem</span>
                         <span class="flex items-center gap-1"><span class="material-icons text-sm">schedule</span> Đăng {{ $product->created_at->diffForHumans() }}</span>
                     </div>
                     <span class="font-bold text-slate-900 dark:text-white">Mã ID: #{{ $product->id }}</span>
@@ -113,12 +135,9 @@
                 </div>
                 <div class="prose prose-slate dark:prose-invert max-w-none space-y-4">
                     <div class="bg-slate-50 dark:bg-slate-900/40 p-4 rounded-xl border-l-4 border-primary-red">
-                        <p class="font-medium text-slate-900 dark:text-white m-0">
-                            ACC FC Online team Liverpool 1.106.570b có:
-                        </p>
-                        <p class="text-slate-600 dark:text-slate-300 m-0 mt-2">
-                            Owen ITM+5, Isak 25TS, Wirtz 25TS, Gravenberch ITM+5, Szoboszlai 23HW, Endo 23HW+9, Arnold 23HW... HLV tạm
-                        </p>
+                        <div class="font-medium text-slate-900 dark:text-white">
+                            {!! $product->content !!}
+                        </div>
                     </div>
                     <div class="space-y-4 pt-4">
                         <h3 class="text-lg font-bold flex items-center gap-2">
@@ -132,16 +151,6 @@
                             <li class="leading-relaxed">Số CCCD của shop, bảo hành trọn đời ACC.</li>
                         </ol>
                     </div>
-                    <div class="mt-8 grid grid-cols-2 gap-4">
-                        <div class="p-4 bg-slate-50 dark:bg-slate-900/40 rounded-xl text-center">
-                            <p class="text-xs text-slate-500 uppercase font-bold mb-1">Giá trị đội hình</p>
-                            <p class="text-lg font-bold text-primary-red">1.106 Tỷ</p>
-                        </div>
-                        <div class="p-4 bg-slate-50 dark:bg-slate-900/40 rounded-xl text-center">
-                            <p class="text-xs text-slate-500 uppercase font-bold mb-1">Mức Rank</p>
-                            <p class="text-lg font-bold text-accent-success">Thách Đấu</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -149,28 +158,96 @@
 </div>
 </div>
 
-<script type="application/ld+json">
-    {
-        "@@context": "https://schema.org/",
-        "@@type": "Product",
-        "name": "{{ $product->title }}",
-        "image": [
-            "{{ url('storage/'.$product->images[0] ?? '') }}"
-        ],
-        "description": "{{ $product->description ?? $product->title }}",
-        "sku": "{{ $product->id }}",
-        "brand": {
-            "@@type": "Brand",
-            "name": "FC Online"
-        },
-        "offers": {
-            "@@type": "Offer",
-            "url": "{{ route('products.show', $product->slug) }}",
-            "priceCurrency": "VND",
-            "price": "{{ $product->getFinalPrice() }}",
-            "availability": "{{ $product->isUnsold() ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock' }}",
-            "itemCondition": "https://schema.org/UsedCondition"
-        }
-    }
-</script>
 @endsection
+
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const slider = document.getElementById('carousel-slides');
+        const thumbnails = document.querySelectorAll('#carousel-thumbnails button');
+        const currentSlideEl = document.getElementById('current-slide');
+
+        if (!slider || !thumbnails.length) return;
+
+        let isDragging = false;
+        let startX, scrollLeft;
+
+        // Sync thumbnails on scroll
+        slider.addEventListener('scroll', () => {
+            // Calculate current index based on scroll position
+            const scrollPosition = slider.scrollLeft;
+            const slideWidth = slider.offsetWidth;
+            const index = Math.round(scrollPosition / slideWidth);
+
+            updateActiveThumbnail(index);
+            if (currentSlideEl) currentSlideEl.textContent = index + 1;
+        });
+
+        // Mouse Drag Scrolling
+        slider.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            slider.style.cursor = 'grabbing';
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+
+        slider.addEventListener('mouseleave', () => {
+            isDragging = false;
+            slider.style.cursor = 'grab';
+        });
+
+        slider.addEventListener('mouseup', () => {
+            isDragging = false;
+            slider.style.cursor = 'grab';
+        });
+
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2; // Scroll-fast
+            slider.scrollLeft = scrollLeft - walk;
+        });
+
+        // Add moveSlide function to global scope for buttons
+        window.moveSlide = function(step) {
+            const slideWidth = slider.offsetWidth;
+            slider.scrollBy({
+                left: step * slideWidth,
+                behavior: 'smooth'
+            });
+        }
+
+        // Add scrollToSlide function to global scope which thumbnails use
+        window.scrollToSlide = function(index) {
+            const slide = document.getElementById('slide-' + index);
+            if (slide) {
+                slide.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest',
+                    inline: 'start'
+                });
+            }
+        }
+
+        function updateActiveThumbnail(index) {
+            thumbnails.forEach((thumb, i) => {
+                if (i === index) {
+                    thumb.classList.add('border-primary-red', 'ring-2', 'ring-primary-red/30');
+                    thumb.classList.remove('border-slate-300', 'opacity-60', 'hover:opacity-100');
+
+                    // Scroll thumbnail into view
+                    thumb.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'nearest',
+                        inline: 'center'
+                    });
+                } else {
+                    thumb.classList.remove('border-primary-red', 'ring-2', 'ring-primary-red/30');
+                    thumb.classList.add('border-slate-300', 'opacity-60', 'hover:opacity-100');
+                }
+            });
+        }
+    });
+</script>
+@endpush

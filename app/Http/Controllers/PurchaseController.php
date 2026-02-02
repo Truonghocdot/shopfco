@@ -13,57 +13,7 @@ use Illuminate\Support\Facades\DB;
 
 class PurchaseController extends Controller
 {
-    /**
-     * Show checkout page for a product
-     */
-    public function checkout($slug)
-    {
-        $product = Product::where('slug', $slug)
-            ->where('status', Product::STATUS_UNSOLD)
-            ->with('category')
-            ->firstOrFail();
 
-        $wallet = Auth::user()->wallet;
-
-        return view('checkout', compact('product', 'wallet'));
-    }
-
-    /**
-     * Validate coupon code
-     */
-    public function validateCoupon(Request $request)
-    {
-        $request->validate([
-            'code' => 'required|string',
-            'amount' => 'required|numeric|min:0',
-        ]);
-
-        $coupon = Coupon::where('code', $request->code)->first();
-
-        if (!$coupon) {
-            return response()->json([
-                'valid' => false,
-                'message' => 'Mã giảm giá không tồn tại'
-            ]);
-        }
-
-        $validation = $coupon->canBeUsedBy(Auth::user(), $request->amount);
-
-        if (!$validation['valid']) {
-            return response()->json($validation);
-        }
-
-        $discount = $coupon->calculateDiscount($request->amount);
-        $finalAmount = $request->amount - $discount;
-
-        return response()->json([
-            'valid' => true,
-            'message' => 'Mã giảm giá hợp lệ',
-            'discount' => $discount,
-            'final_amount' => $finalAmount,
-            'coupon_id' => $coupon->id,
-        ]);
-    }
 
     /**
      * Process purchase

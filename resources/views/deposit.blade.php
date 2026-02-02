@@ -80,13 +80,13 @@
                             <div class="absolute -inset-0.5 bg-gradient-to-r from-primary-green to-blue-500 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-1000"></div>
                             <div class="relative bg-slate-900 rounded-xl p-6 flex flex-col md:flex-row items-center justify-between gap-4 border border-slate-700">
                                 <div class="flex items-center gap-4">
-                                    <span class="material-icons text-primary-green text-3xl">terminal</span>
+                                    <span class="material-icons text-yellow-500 text-3xl">terminal</span>
                                     <div>
                                         <p class="text-xs text-slate-400 font-bold uppercase">Copy nội dung này</p>
                                         <p class="text-2xl font-black text-white italic tracking-wider">vanhfco {{ Auth::id() }}</p>
                                     </div>
                                 </div>
-                                <button class="bg-primary-green/20 hover:bg-primary-green text-primary-green hover:text-white px-6 py-3 rounded-lg font-bold transition flex items-center gap-2" onclick="navigator.clipboard.writeText('vanhfco {{ Auth::id() }}')">
+                                <button class="bg-primary-green/20 hover:bg-primary-green text-yellow-500 px-6 py-3 rounded-lg font-bold transition flex items-center gap-2" onclick="navigator.clipboard.writeText('vanhfco {{ Auth::id() }}')">
                                     <span class="material-icons text-sm">content_copy</span> COPY NGAY
                                 </button>
                             </div>

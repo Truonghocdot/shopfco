@@ -5,7 +5,6 @@ namespace App\Filament\Resources\Users\Schemas;
 use App\Constants\UserRole;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
 
 class UserForm
@@ -37,8 +36,11 @@ class UserForm
                 Select::make('status')
                     ->label('Trạng thái')
                     ->required()
-                    ->options(UserRole::getRoleOptions())
-                    ->default(UserRole::CLIENT->value),
+                    ->options([
+                        1 => 'Hoạt động',
+                        0 => 'Khóa',
+                    ])
+                    ->default(1),
             ]);
     }
 }

@@ -44,4 +44,9 @@ class Wallet extends Model
     {
         return $this->balance >= $amount;
     }
+
+    public function deposit(float $amount): void
+    {
+        $this->addBalance($amount);
+    }
 }

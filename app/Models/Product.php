@@ -43,6 +43,9 @@ class Product extends Model
         'status',
         'phone',
         'password',
+        'email',
+        'password2',
+        'username'
     ];
 
     protected function casts(): array
@@ -56,6 +59,9 @@ class Product extends Model
             'created_at' => 'datetime',
             'phone' => 'string',
             'password' => 'string',
+            'email' => 'string',
+            'password2' => 'string',
+            'username' => 'string',
         ];
     }
 

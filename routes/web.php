@@ -45,10 +45,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/nguoi-dung', [UserController::class, 'profile'])->name('user.profile');
     Route::post('/nguoi-dung/update', [UserController::class, 'update'])->name('user.update');
 
-    Route::get('/thanh-toan/{slug}', [PurchaseController::class, 'checkout'])->name('checkout');
-    Route::post('/thanh-toan/validate-coupon', [PurchaseController::class, 'validateCoupon'])->name('purchase.validate-coupon');
-    Route::post('/thanh-toan/process', [PurchaseController::class, 'process'])->name('purchase.process');
+    Route::get('/thanh-toan/{slug}', \App\Livewire\CheckoutPage::class)->name('checkout');
     Route::get('/thanh-toan/thanh-cong/{id}', [PurchaseController::class, 'success'])->name('purchase.success');
+
+    // Lucky Wheel (Livewire)
+    Route::get('/vong-quay-may-man', \App\Livewire\LuckyWheelPage::class)->name('lucky-wheel.index');
 });
 
 Route::feeds();

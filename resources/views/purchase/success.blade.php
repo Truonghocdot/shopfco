@@ -53,18 +53,20 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <span class="text-xs text-slate-500 block mb-1">Tài khoản</span>
-                            <code class="block bg-slate-100 p-2 rounded text-sm font-mono font-bold select-all">{{ $order->product->account_info['username'] ?? 'N/A' }}</code>
+                            <code class="block bg-slate-100 p-2 rounded text-sm font-mono font-bold select-all">N/A</code>
                         </div>
                         <div>
                             <span class="text-xs text-slate-500 block mb-1">Mật khẩu</span>
-                            <code class="block bg-slate-100 p-2 rounded text-sm font-mono font-bold select-all">{{ $order->product->account_info['password'] ?? 'N/A' }}</code>
+                            <code class="block bg-slate-100 p-2 rounded text-sm font-mono font-bold select-all">N/A</code>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-500 block mb-1">Mật khẩu 2</span>
+                            <code class="block bg-slate-100 p-2 rounded text-sm font-mono font-bold select-all">{{ $order->product->password2 ?? 'N/A' }}</code>
                         </div>
                     </div>
-                    @if(isset($order->product->account_info['note']))
                     <div class="mt-3 text-sm text-slate-600">
-                        <span class="font-bold">Ghi chú:</span> {{ $order->product->account_info['note'] }}
+                        <span class="font-bold">Ghi chú:</span> Sử dụng Mật khẩu 2 để  lấy thông tin tài khoản trong trang quản lý đơn hàng <a href="{{ route('user.profile') }}" class="text-primary hover:underline">Xem chi tiết</a>
                     </div>
-                    @endif
                 </div>
 
                 <!-- Payment Summary -->

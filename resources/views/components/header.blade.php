@@ -18,6 +18,9 @@
                 <a class="nav-link font-medium flex items-center gap-1 text-white hover:text-primary transition-colors" href="{{ route('deposit') }}">
                     <span class="material-icons text-sm">account_balance_wallet</span> NẠP TIỀN
                 </a>
+                <a class="nav-link font-medium flex items-center gap-1 text-white hover:text-primary transition-colors" href="{{ route('lucky-wheel.index') }}">
+                    <span class="material-icons text-sm">casino</span> VÒNG QUAY
+                </a>
                 <a class="nav-link font-medium flex items-center gap-1 text-white hover:text-primary transition-colors" href="{{ route('news.index') }}">
                     <span class="material-icons text-sm">newspaper</span> TIN TỨC
                 </a>
@@ -27,7 +30,7 @@
         <div class="flex items-center gap-4">
 
             @auth
-            <div class="hidden sm:flex flex-col items-end">
+            <div class="flex flex-col items-end">
                 <span class="text-xs text-white/70 uppercase">Số dư</span>
                 <span class="text-primary font-bold">{{ number_format(auth()->user()->wallet()->value('balance'), 0, ',', '.') }} <span class="underline">đ</span></span>
             </div>
@@ -60,6 +63,9 @@
             </a>
             <a class="flex items-center gap-2 text-gray-700 hover:text-primary font-medium py-2 border-b border-gray-100" href="{{ route('deposit') }}">
                 <span class="material-icons text-sm">account_balance_wallet</span> Nạp tiền
+            </a>
+            <a class="flex items-center gap-2 text-gray-700 hover:text-primary font-medium py-2 border-b border-gray-100" href="{{ route('lucky-wheel.index') }}">
+                <span class="material-icons text-sm">casino</span> Vòng quay
             </a>
             <a class="flex items-center gap-2 text-gray-700 hover:text-primary font-medium py-2 border-b border-gray-100" href="{{ route('news.index') }}">
                 <span class="material-icons text-sm">newspaper</span> Tin tức

@@ -2,8 +2,9 @@
 
 namespace App\Filament\Resources\Categories\Schemas;
 
+use App\Filament\Traits\HandlesWebpUploads;
+use App\Models\Category;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
@@ -24,7 +25,13 @@ class CategoryForm
                     ])
                     ->live()
                     ->afterStateUpdated(function ($state, callable $set) {
-                        $set('slug', str($state)->slug());
+                        $slug = str($state)->slug();
+                        $flag = 0;
+                        while (Category::where('slug', $slug)->exists()) {
+                            $slug = str($slug)->append('-' . $flag);
+                            $flag++;
+                        }
+                        $set('slug', $slug);
                     }),
                 TextInput::make('slug')
                     ->label('Đường dẫn')
@@ -36,23 +43,33 @@ class CategoryForm
                     ])
                     ->live()
                     ->afterStateUpdated(function ($state, callable $set) {
-                        $set('slug', str($state)->slug());
+                        $slug = str($state)->slug();
+                        $flag = 0;
+                        while (Category::where('slug', $slug)->exists()) {
+                            $slug = str($slug)->append('-' . $flag);
+                            $flag++;
+                        }
+                        $set('slug', $slug);
                     }),
                 Textarea::make('description')
                     ->label('Mô tả')
                     ->required()
+                    ->rows(5)
                     ->validationMessages([
                         'required' => 'Mô tả không được để trống',
                         'max_length' => 'Mô tả không được vượt quá 255 ký tự',
                     ]),
-                FileUpload::make('image')
-                    ->required()
-                    ->label('Hình ảnh')
-                    ->disk('public')
-                    ->directory('categories')
-                    ->validationMessages([
-                        'required' => 'Hình ảnh không được để trống',
-                    ]),
+                HandlesWebpUploads::processImageUpload(
+                    FileUpload::make('image')
+                        ->required()
+                        ->label('Hình ảnh')
+                        ->disk('public')
+                        ->directory('categories')
+                        ->image()
+                        ->validationMessages([
+                            'required' => 'Hình ảnh không được để trống',
+                        ])
+                ),
                 TextInput::make('meta_title')
                     ->label('Tiêu đề SEO')
                     ->required()

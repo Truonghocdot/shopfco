@@ -34,7 +34,7 @@
             <div class="p-5">
                 <h3 class="font-bold text-lg mb-3 line-clamp-2 h-14 group-hover:text-primary transition">{{ $item->title }}</h3>
                 @if($item->description)
-                <p class="text-slate-400 text-sm line-clamp-3 mb-4">{{ $item->description }}</p>
+                <p class="text-slate-400 text-sm line-clamp-3 mb-4">{!! $item->description !!}</p>
                 @endif
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-2 text-xs text-slate-500">

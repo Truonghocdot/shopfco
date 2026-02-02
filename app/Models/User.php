@@ -22,6 +22,7 @@ class User extends Authenticatable implements FilamentUser
         'password',
         'role',
         'status',
+        'lucky_wheel_spins',
     ];
 
     protected $hidden = [
@@ -63,6 +64,11 @@ class User extends Authenticatable implements FilamentUser
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
+    }
+
+    public function luckyWheelHistories(): HasMany
+    {
+        return $this->hasMany(LuckyWheelHistory::class);
     }
 
     // Helper methods

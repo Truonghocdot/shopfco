@@ -46,19 +46,42 @@
                 Đổi mật khẩu
             </h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="space-y-2">
+                <!-- Current Password -->
+                <div class="space-y-2" x-data="{ show: false }">
                     <label class="text-slate-600 text-sm font-bold">Mật khẩu hiện tại</label>
-                    <input wire:model="current_password" type="password" class="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:border-primary-blue focus:ring-1 focus:ring-primary-blue outline-none transition-all text-slate-800">
+                    <div class="relative w-full">
+                        <input wire:model="current_password" :type="show ? 'text' : 'password'"
+                            class="w-full pl-4 pr-10 py-2.5 rounded-lg border border-slate-200 focus:border-primary-blue focus:ring-1 focus:ring-primary-blue outline-none transition-all text-slate-800">
+                        <button type="button" @click="show = !show" class="absolute inset-y-0 right-0 px-3 flex items-center text-slate-400 hover:text-slate-600 transition-colors z-10">
+                            <span class="material-icons text-[20px]" x-text="show ? 'visibility_off' : 'visibility'"></span>
+                        </button>
+                    </div>
                     @error('current_password') <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span> @enderror
                 </div>
-                <div class="space-y-2">
+
+                <!-- New Password -->
+                <div class="space-y-2" x-data="{ show: false }">
                     <label class="text-slate-600 text-sm font-bold">Mật khẩu mới</label>
-                    <input wire:model="new_password" type="password" class="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:border-primary-blue focus:ring-1 focus:ring-primary-blue outline-none transition-all text-slate-800">
+                    <div class="relative w-full">
+                        <input wire:model="new_password" :type="show ? 'text' : 'password'"
+                            class="w-full pl-4 pr-10 py-2.5 rounded-lg border border-slate-200 focus:border-primary-blue focus:ring-1 focus:ring-primary-blue outline-none transition-all text-slate-800">
+                        <button type="button" @click="show = !show" class="absolute inset-y-0 right-0 px-3 flex items-center text-slate-400 hover:text-slate-600 transition-colors z-10">
+                            <span class="material-icons text-[20px]" x-text="show ? 'visibility_off' : 'visibility'"></span>
+                        </button>
+                    </div>
                     @error('new_password') <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span> @enderror
                 </div>
-                <div class="space-y-2">
+
+                <!-- Confirm New Password -->
+                <div class="space-y-2" x-data="{ show: false }">
                     <label class="text-slate-600 text-sm font-bold">Xác nhận mật khẩu mới</label>
-                    <input wire:model="new_password_confirmation" type="password" class="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:border-primary-blue focus:ring-1 focus:ring-primary-blue outline-none transition-all text-slate-800">
+                    <div class="relative w-full">
+                        <input wire:model="new_password_confirmation" :type="show ? 'text' : 'password'"
+                            class="w-full pl-4 pr-10 py-2.5 rounded-lg border border-slate-200 focus:border-primary-blue focus:ring-1 focus:ring-primary-blue outline-none transition-all text-slate-800">
+                        <button type="button" @click="show = !show" class="absolute inset-y-0 right-0 px-3 flex items-center text-slate-400 hover:text-slate-600 transition-colors z-10">
+                            <span class="material-icons text-[20px]" x-text="show ? 'visibility_off' : 'visibility'"></span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

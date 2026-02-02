@@ -3,30 +3,72 @@
 @section('title', 'Trang chủ - VanhFCO.com - mua bán tài khoản FCO4 - Uy tín chất lượng')
 @section('description', 'Mua bán tài khoản FC Online uy tín, giá rẻ, giao dịch tự động 24/7.')
 
+@push('styles')
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+@endpush
+
 @section('content')
 <div class="container mx-auto px-4 py-8">
     <!-- Hero Banner -->
     <section class="mb-12 relative overflow-hidden rounded-2xl group">
-        <div class="aspect-[21/9] w-full bg-primary flex flex-col items-center justify-center p-8 text-slate-900 overflow-hidden relative">
-            <div class="absolute inset-0 opacity-10 pointer-events-none">
-                <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <pattern height="40" id="grid" patternUnits="userSpaceOnUse" width="40">
-                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="black" stroke-width="1"></path>
-                        </pattern>
-                    </defs>
-                    <rect fill="url(#grid)" height="100%" width="100%"></rect>
-                </svg>
+        <div class="swiper-container home-banner-swiper h-[50vh] max-h-[400px]">
+            <div class="swiper-wrapper">
+                @forelse($banners as $banner)
+                <div class="swiper-slide">
+                    <img src="{{ url('storage/' . $banner->image) }}" alt="Banner" class="w-full h-full object-cover">
+                </div>
+                @empty
+                <div class="swiper-slide">
+                    <img src="{{ asset('banner.jpg') }}" alt="Banner" class="w-full h-full object-cover">
+                </div>
+                @endforelse
             </div>
-            <h1 class="text-4xl md:text-7xl font-black italic tracking-tighter mb-2 z-10 text-center text-slate-900">VANHFCO.COM</h1>
-            <p class="text-lg md:text-2xl font-bold uppercase tracking-widest mb-6 z-10 text-center text-slate-900">CUNG CẤP ACC FC ONLINE HÀNG ĐẦU VIỆT NAM</p>
-            <div class="flex flex-wrap justify-center gap-4 md:gap-8 z-10">
-                <div class="flex items-center gap-2 font-bold text-slate-900"><span class="material-icons">call</span> 0342995001</div>
-                <a href="https://www.facebook.com/le.vietanh.939173" target="_blank" class="flex items-center gap-2 font-bold text-slate-900"><span class="material-icons">facebook</span> LE VIET ANH</a>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- Add Navigation -->
+            <div class="swiper-button-next text-white"></div>
+            <div class="swiper-button-prev text-white"></div>
+        </div>
+
+        <div class="absolute inset-0 flex items-center justify-center bg-black/10 z-10 pointer-events-none">
+            <div class="bg-white/90 backdrop-blur-md px-8 py-4 rounded-full shadow-2xl transform group-hover:scale-105 transition duration-300 pointer-events-auto">
+                <div class="flex flex-wrap justify-center gap-6 z-10">
+                    <div class="flex items-center gap-2 text-xl font-black text-gray-800 tracking-wide">
+                        <span class="material-icons text-red-600 text-3xl">call</span>
+                        0342995001
+                    </div>
+                    <div class="w-px h-8 bg-slate-300 hidden md:block"></div>
+                    <a href="https://www.facebook.com/le.vietanh.939173" target="_blank" class="flex items-center gap-2 text-xl font-black text-gray-800 tracking-wide hover:text-primary transition">
+                        <span class="material-icons text-blue-600 text-3xl">facebook</span>
+                        LE VIET ANH
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+        <div class="lg:col-span-7">
+            <div class="    glass-morphism rounded-xl overflow-hidden p-2">
+                <div class="aspect-video w-full rounded-lg overflow-hidden">
+                    <iframe
+                        class="w-full h-full"
+                        src="https://www.youtube.com/embed/4gdHSvzF4fk?si=qhn8JkqYEld25VsX"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="lg:col-span-5">
+            <x-leaderboard :topSpenders="$topSpenders" />
+        </div>
+    </section>
     <!-- Categories -->
     <section class="mb-12">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -115,7 +157,7 @@
                 </div>
                 <div class="p-4 flex-1 flex flex-col">
                     <h3 class="font-bold text-lg mb-2 line-clamp-2 group-hover:text-primary transition">{{ $news->title }}</h3>
-                    <p class="text-slate-400 text-sm line-clamp-3 mb-4 flex-1">{{ $news->description }}</p>
+                    <p class="text-slate-400 text-sm line-clamp-3 mb-4 flex-1">{!! $news->description !!}</p>
                     <span class="text-primary text-sm font-bold flex items-center gap-1 mt-auto">
                         Đọc thêm <span class="material-icons text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
                     </span>
@@ -128,7 +170,11 @@
         </div>
         @endforelse
     </section>
+
 </div>
+@endsection
+
+@push('schema')
 @php
 $websiteSchema = [
 "@context" => "https://schema.org",
@@ -165,4 +211,27 @@ $orgSchema = [
 <script type="application/ld+json">
     @json($orgSchema)
 </script>
-@endsection
+@endpush
+
+@push('scripts')
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var swiper = new Swiper('.home-banner-swiper', {
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    });
+</script>
+@endpush

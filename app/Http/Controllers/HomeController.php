@@ -2,14 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
 use App\Models\Category;
-use App\Models\Product;
 use App\Models\News;
+use App\Models\Product;
+use Illuminate\Support\Facades\Cache;
+use App\Services\LeaderboardService;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(LeaderboardService $leaderboardService)
     {
+        $banners = Cache::remember('home_banners', 3600, function () {
+            return Banner::orderBy('sort', 'asc')->get();
+        });
+
         // Get 4 featured categories
         $categories = Category::latest()->take(4)->get();
 
@@ -32,6 +39,9 @@ class HomeController extends Controller
             ->take(8)
             ->get();
 
-        return view('home', compact('categories', 'flashSaleProducts', 'latestNews'));
+        // Get top 10 spenders for leaderboard
+        $topSpenders = $leaderboardService->getTopSpenders(10);
+
+        return view('home', compact('categories', 'flashSaleProducts', 'latestNews', 'topSpenders', 'banners'));
     }
 }

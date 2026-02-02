@@ -3,7 +3,6 @@
 @section('title', $news->meta_title ?? $news->title . ' - VanhFCO')
 @section('description', $news->meta_description ?? $news->description)
 
-@push('styles')
 <style>
     body {
         background-image: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuBsKRObr_MVqVSUYzPo-guc9soauRLmFJkvOfA5NJc8IWI0XazSVu7WJsY8o8kfBvO5heKgomdMEML4GoG44D4PjL-ZHyhOcCC499d22XF4In7K5cptXa6JgtEe2sF_Q9_IucnRuEOZATiTFkdsM7_fLgxidde6clT9GB8G3q164eje8YDNZNa6CVTpwYVG2uvcb4rNP0h3rY-tQ61PZKriHLKVUhBGF7bFLp_d4vyjJqGJQRo8LjH47LlBS1Ug2U3dD5ogNnWufQ90);
@@ -33,49 +32,17 @@
         margin-bottom: 1rem;
     }
 </style>
-@endpush
-
-@push('schema')
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "NewsArticle",
-    "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "{{ url()->current() }}"
-    },
-    "headline": "{{ $news->title }}",
-    "description": "{{ $news->description }}",
-    "image": "{{ url('storage/'.$news->thumbnail) }}",
-    "author": {
-        "@type": "Organization",
-        "name": "VanhFCO",
-        "url": "{{ route('home') }}"
-    },
-    "publisher": {
-        "@type": "Organization",
-        "name": "VanhFCO",
-        "logo": {
-            "@type": "ImageObject",
-            "url": "{{ asset('images/logo.png') }}"
-        }
-    },
-    "datePublished": "{{ $news->created_at->toIso8601String() }}",
-    "dateModified": "{{ $news->updated_at->toIso8601String() }}"
-}
-</script>
-@endpush
 
 @section('content')
 <div class="container mx-auto px-4 py-8">
-    <div class="max-w-4xl mx-auto">
+    <div class="w-full mx-auto">
         <!-- Breadcrumb -->
         <div class="mb-6 text-sm text-slate-400">
             <a href="{{ route('home') }}" class="hover:text-primary">Trang chủ</a>
             <span class="mx-2">/</span>
             <a href="{{ route('news.index') }}" class="hover:text-primary">Tin tức</a>
             <span class="mx-2">/</span>
-            <span class="text-white">{{ $news->title }}</span>
+            <span class="">{{ $news->title }}</span>
         </div>
 
         <!-- Article Header -->
@@ -102,11 +69,11 @@
 
                 @if($news->description)
                 <div class="text-lg text-slate-300 mb-6 italic">
-                    {{ $news->description }}
+                    {!! $news->description !!}
                 </div>
                 @endif
 
-                <div class="news-content text-slate-200">
+                <div class="news-content text-slate-800">
                     {!! $news->content !!}
                 </div>
             </div>
@@ -139,22 +106,5 @@
         @endif
     </div>
 </div>
-</div>
-<script type="application/ld+json">
-    {
-        "@@context": "https://schema.org",
-        "@@type": "NewsArticle",
-        "headline": "{{ $news->title }}",
-        "image": [
-            "{{ url('storage/'.$news->thumbnail) }}"
-        ],
-        "datePublished": "{{ $news->created_at->toIso8601String() }}",
-        "dateModified": "{{ $news->updated_at->toIso8601String() }}",
-        "author": [{
-            "@@type": "Organization",
-            "name": "VanhFCO",
-            "url": "{{ route('home') }}"
-        }]
-    }
-</script>
+
 @endsection

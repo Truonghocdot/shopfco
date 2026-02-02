@@ -87,13 +87,13 @@
                 </div>
 
                 <!-- Update Info Form (Livewire) -->
-                @livewire('user.profile-info')
+                <livewire:user.profile-info wire:key="profile-info-content" />
             </div>
 
             <!-- Purchased Accounts Tab -->
             <div x-show="activeTab === 'orders'" class="space-y-6" style="display: none;">
                 <!-- Purchased Accounts List (Livewire) -->
-                @livewire('user.purchased-products')
+                <livewire:user.purchased-products wire:key="purchased-products-content" />
             </div>
         </div>
     </div>

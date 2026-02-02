@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Products\Schemas;
 
+use App\Filament\Traits\HandlesWebpUploads;
+use App\Models\Product;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
@@ -20,21 +22,19 @@ class ProductForm
                     ->required()
                     ->validationMessages([
                         'required' => 'Trường này không được để trống',
-                    ])
-                    ->live()
-                    ->afterStateUpdated(function ($state, callable $set) {
-                        $set('slug', str($state)->slug());
-                    }),
-                FileUpload::make('images')
-                    ->label('Hình ảnh')
-                    ->multiple()
-                    ->image()
-                    ->disk('public')
-                    ->required()
-                    ->panelLayout('grid')
-                    ->validationMessages([
-                        'required' => 'Trường này không được để trống',
                     ]),
+                HandlesWebpUploads::processImageUpload(
+                    FileUpload::make('images')
+                        ->label('Hình ảnh')
+                        ->multiple()
+                        ->image()
+                        ->disk('public')
+                        ->required()
+                        ->panelLayout('grid')
+                        ->validationMessages([
+                            'required' => 'Trường này không được để trống',
+                        ])
+                ),
                 TextInput::make('title')
                     ->label('Tiêu đề')
                     ->required()
@@ -45,7 +45,13 @@ class ProductForm
                     ])
                     ->live()
                     ->afterStateUpdated(function ($state, callable $set) {
-                        $set('slug', str($state)->slug());
+                        $slug = str($state)->slug();
+                        $flag = 0;
+                        while (Product::where('slug', $slug)->exists()) {
+                            $slug = str($slug)->append('-' . $flag);
+                            $flag++;
+                        }
+                        $set('slug', $slug);
                     }),
                 TextInput::make('slug')
                     ->label('Đường dẫn')
@@ -53,9 +59,14 @@ class ProductForm
                     ->validationMessages([
                         'required' => 'Trường này không được để trống',
                     ]),
+                TextInput::make('username')
+                    ->label('Tên đăng nhập')
+                    ->required()
+                    ->validationMessages([
+                        'required' => 'Trường này không được để trống',
+                    ]),
                 TextInput::make('phone')
                     ->label('Số điện thoại')
-                    ->required()
                     ->validationMessages([
                         'required' => 'Trường này không được để trống',
                     ]),
@@ -65,9 +76,21 @@ class ProductForm
                     ->validationMessages([
                         'required' => 'Trường này không được để trống',
                     ]),
+                TextInput::make('email')
+                    ->label('Email')
+                    ->validationMessages([
+                        'required' => 'Trường này không được để trống',
+                    ]),
+                TextInput::make('password2')
+                    ->label('Mật khẩu 2')
+                    ->required()
+                    ->validationMessages([
+                        'required' => 'Trường này không được để trống',
+                    ]),
                 RichEditor::make('content')
                     ->label('Nội dung')
                     ->required()
+                    ->extraInputAttributes(['style' => 'min-height: 20vh;'])
                     ->validationMessages([
                         'required' => 'Trường này không được để trống',
                     ]),

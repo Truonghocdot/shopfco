@@ -2,7 +2,8 @@
 
 namespace App\Filament\Resources\News\Schemas;
 
-use Filament\Forms\Components\DatePicker;
+use App\Filament\Traits\HandlesWebpUploads;
+use App\Models\News;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
@@ -25,7 +26,13 @@ class NewsForm
                     ])
                     ->live()
                     ->afterStateUpdated(function ($state, callable $set) {
-                        $set('slug', str($state)->slug());
+                        $slug = str($state)->slug();
+                        $flag = 0;
+                        while (News::where('slug', $slug)->exists()) {
+                            $slug = str($slug)->append('-' . $flag);
+                            $flag++;
+                        }
+                        $set('slug', $slug);
                     }),
                 TextInput::make("slug")
                     ->label("Slug")
@@ -35,10 +42,17 @@ class NewsForm
                     ])
                     ->live()
                     ->afterStateUpdated(function ($state, callable $set) {
-                        $set('slug', str($state)->slug());
+                        $slug = str($state)->slug();
+                        $flag = 0;
+                        while (News::where('slug', $slug)->exists()) {
+                            $slug = str($slug)->append('-' . $flag);
+                            $flag++;
+                        }
+                        $set('slug', $slug);
                     }),
                 RichEditor::make("description")
                     ->label("Mô tả")
+                    ->extraInputAttributes(['style' => 'min-height: 20vh;'])
                     ->required()
                     ->validationMessages([
                         "required" => "Mô tả không được để trống",
@@ -46,19 +60,23 @@ class NewsForm
 
                 RichEditor::make("content")
                     ->label("Nội dung")
+                    ->extraInputAttributes(['style' => 'min-height: 20vh;'])
                     ->required()
                     ->validationMessages([
                         "required" => "Nội dung không được để trống",
                     ]),
 
-                FileUpload::make("thumbnail")
-                    ->required()
-                    ->label("Hình ảnh")
-                    ->disk("public")
-                    ->directory("news")
-                    ->validationMessages([
-                        "required" => "Hình ảnh không được để trống",
-                    ]),
+                HandlesWebpUploads::processImageUpload(
+                    FileUpload::make("thumbnail")
+                        ->required()
+                        ->label("Hình ảnh")
+                        ->disk("public")
+                        ->directory("news")
+                        ->image()
+                        ->validationMessages([
+                            "required" => "Hình ảnh không được để trống",
+                        ])
+                ),
                 TextInput::make("meta_title")
                     ->label("Tiêu đề SEO")
                     ->required()
