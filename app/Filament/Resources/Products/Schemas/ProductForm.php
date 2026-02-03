@@ -46,9 +46,10 @@ class ProductForm
                     ->live()
                     ->afterStateUpdated(function ($state, callable $set) {
                         $slug = str($state)->slug();
+                        $slugOriginal = $slug;
                         $flag = 0;
                         while (Product::where('slug', $slug)->exists()) {
-                            $slug = str($slug)->append('-' . $flag);
+                            $slug = str($slugOriginal)->append('-' . $flag);
                             $flag++;
                         }
                         $set('slug', $slug);

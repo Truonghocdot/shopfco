@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Coupons\Tables;
 
+use App\Models\Coupon;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -22,6 +23,7 @@ class CouponsTable
                     ->sortable(),
                 TextColumn::make('discount_type')
                     ->label('Loại giảm giá')
+                    ->formatStateUsing(fn($state): string => $state == Coupon::DISCOUNT_PERCENTAGE ? 'Phần trăm' : 'Cố định')
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('discount_value')
@@ -58,6 +60,7 @@ class CouponsTable
                     ->sortable(),
                 TextColumn::make('status')
                     ->label('Trạng thái')
+                    ->formatStateUsing(fn($state): string => $state == Coupon::STATUS_ACTIVE ? 'Hoạt động' : 'Không hoạt động')
                     ->searchable()
                     ->sortable(),
             ])
