@@ -172,7 +172,7 @@ class CheckoutPage extends Component
                 CouponUsage::insert([
                     'coupon_id' => $coupon->id,
                     'user_id' => $user->id,
-                    'order_id' => $order->id,
+                    'transaction_id' => null,
                     'discount_amount' => $discountAmount,
                     'used_at' => now(),
                 ]);
