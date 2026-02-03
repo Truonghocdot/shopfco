@@ -55,14 +55,18 @@
 
     <!-- Floating Action Buttons -->
     <div class="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
-        <a href="#" class="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition glow-green">
+        <a href="https://www.facebook.com/le.vietanh.939173" class="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition glow-green">
             <span class="material-icons">message</span>
         </a>
-        <a href="#" class="w-12 h-12 bg-primary text-black rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition glow-green">
+        <a href="tel:0327182537" class="w-12 h-12 bg-primary text-black rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition glow-green">
             <span class="material-icons">phone</span>
+        </a>
+        <a href="https://zalo.me/g/wilgna867" class="w-12 h-12 bg-primary text-black rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition glow-green">
+            <img src="{{ asset('images/zalo.png') }}" alt="Zalo" class="w-12 h-12 rounded-full">
         </a>
     </div>
 
+    @livewire('auth.set-transaction-pin')
     @livewireScripts
     @stack('scripts')
 </body>

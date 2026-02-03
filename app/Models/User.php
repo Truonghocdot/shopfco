@@ -23,6 +23,7 @@ class User extends Authenticatable implements FilamentUser
         'role',
         'status',
         'lucky_wheel_spins',
+        'password2'
     ];
 
     protected $hidden = [

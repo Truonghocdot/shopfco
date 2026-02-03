@@ -48,6 +48,36 @@
         </div>
     </section>
 
+    <!-- Lucky Wheel Section -->
+    <section class="mb-12">
+        <a href="{{ route('lucky-wheel.index') }}">
+            <div class="rounded-2xl p-6 md:p-10 flex flex-col md:flex-row items-center justify-between gap-8 transition overflow-hidden relative">
+
+                <div class="flex-1 text-center md:text-left relative z-10">
+                    <h2 class="text-3xl md:text-4xl font-black mb-4 flex items-center justify-center text-green-600 md:justify-start gap-3">
+                        <span class="material-icons text-yellow-500 text-4xl">casino</span>
+                        VÒNG QUAY MAY MẮN
+                    </h2>
+                    <p class="text-slate-400 text-lg mb-8 max-w-md mx-auto md:mx-0">
+                        Cơ hội nhận ngay hàng trăm nghìn đồng vào tài khoản. Mọi đơn hàng từ <strong>300k</strong> đều được tặng lượt quay miễn phí!
+                    </p>
+                    <div class="inline-flex items-center gap-3 bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-full shadow-lg shadow-primary/20 transition transform group-hover:scale-105">
+                        THỬ VẬN MAY NGAY <span class="material-icons">arrow_forward</span>
+                    </div>
+                </div>
+
+                <div class="relative w-full max-w-[280px] aspect-square flex items-center justify-center relative z-10">
+                    <canvas id="homeWheelCanvas" width="300" height="300" class="w-full h-full drop-shadow-2xl"></canvas>
+                    <!-- Static Pointer -->
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2 z-20">
+                        <div style="width: 0; height: 0; border-left: 12px solid transparent; border-right: 12px solid transparent; border-bottom: 24px solid #ef4444; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); transform: rotate(180deg);"></div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </section>
+
+
     <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
         <div class="lg:col-span-7">
             <div class="    glass-morphism rounded-xl overflow-hidden p-2">
@@ -89,7 +119,7 @@
     <!-- Flash Sale Section -->
     <div class="flex items-center justify-between mb-8">
         <h2 class="text-2xl font-black uppercase flex items-center gap-2">
-            <span class="material-icons text-orange-500">local_fire_department</span>
+            <span class="material-icons text-green-600">local_fire_department</span>
             FLASH SALE SIÊU HOT
         </h2>
         <a href="{{ route('products.index', ['sort' => 'discount']) }}" class="text-primary hover:text-primary/80 font-bold text-sm flex items-center gap-1">
@@ -134,7 +164,7 @@
     <!-- Latest News -->
     <div class="flex items-center justify-between mb-8">
         <h2 class="text-2xl font-black uppercase flex items-center gap-2">
-            <span class="material-icons text-blue-500">article</span>
+            <span class="material-icons text-green-600">article</span>
             TIN TỨC MỚI NHẤT
         </h2>
         <a href="{{ route('news.index') }}" class="text-primary hover:text-primary/80 font-bold text-sm flex items-center gap-1">
@@ -232,6 +262,107 @@ $orgSchema = [
                 prevEl: '.swiper-button-prev',
             },
         });
+
+        // Lucky Wheel Home Preview
+        (function() {
+            const canvas = document.getElementById('homeWheelCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const size = 300;
+            const cx = size / 2;
+            const cy = size / 2;
+            const radius = 120;
+            const segments = [{
+                    label: '200k',
+                    color: '#ef4444'
+                },
+                {
+                    label: '10k',
+                    color: '#22d3ee'
+                },
+                {
+                    label: '20k',
+                    color: '#10b981'
+                },
+                {
+                    label: 'Lost',
+                    color: '#fb7185'
+                },
+                {
+                    label: '50k',
+                    color: '#fbbf24'
+                },
+                {
+                    label: '10k',
+                    color: '#22d3ee'
+                },
+                {
+                    label: '100k',
+                    color: '#22d3ee'
+                },
+                {
+                    label: 'Lost',
+                    color: '#fb7185'
+                }
+            ];
+
+            let angle = 0;
+
+            function draw() {
+                ctx.clearRect(0, 0, size, size);
+
+                ctx.save();
+                ctx.translate(cx, cy);
+                ctx.rotate(angle);
+
+                const segRad = (Math.PI * 2) / segments.length;
+                const offset = -Math.PI / 2;
+
+                segments.forEach((seg, i) => {
+                    const a0 = offset + i * segRad;
+                    const a1 = a0 + segRad;
+
+                    ctx.beginPath();
+                    ctx.moveTo(0, 0);
+                    ctx.arc(0, 0, radius, a0, a1);
+                    ctx.closePath();
+                    ctx.fillStyle = seg.color;
+                    ctx.fill();
+                    ctx.strokeStyle = '#fff';
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+
+                    ctx.save();
+                    ctx.rotate(a0 + segRad / 2);
+                    ctx.fillStyle = '#fff';
+                    ctx.font = 'bold 12px Arial';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(seg.label, radius * 0.65, 0);
+                    ctx.restore();
+                });
+
+                // Hub
+                ctx.beginPath();
+                ctx.arc(0, 0, 25, 0, Math.PI * 2);
+                ctx.fillStyle = '#fff';
+                ctx.fill();
+                ctx.strokeStyle = '#e5e7eb';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.arc(0, 0, 15, 0, Math.PI * 2);
+                ctx.fillStyle = '#f3f4f6';
+                ctx.fill();
+
+                ctx.restore();
+
+                angle += 0.005; // Constant slow rotation
+                requestAnimationFrame(draw);
+            }
+            draw();
+        })();
     });
 </script>
 @endpush

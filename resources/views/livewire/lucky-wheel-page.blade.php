@@ -1,16 +1,16 @@
-<div class="min-h-screen bg-black">
+<div class="min-h-screen">
     <div class="container mx-auto px-4 py-6 max-w-lg">
 
         <!-- Spins Counter -->
         @if($this->spinsLeft > 0)
         <div class="text-center mb-4">
-            <p class="text-green-400 text-sm">Số lượt quay còn lại</p>
+            <p class="text-green-700 text-sm">Số lượt quay còn lại</p>
             <p class="text-white text-3xl font-bold">{{ $this->spinsLeft }}</p>
         </div>
         @endif
 
         <!-- Wheel Card -->
-        <div class="bg-white rounded-2xl shadow-xl p-6">
+        <div class="rounded-2xl shadow-xl p-6">
             @if (session()->has('error'))
             <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg mb-4 text-sm">
                 {{ session('error') }}
@@ -28,8 +28,8 @@
                     wire:click="spin"
                     wire:loading.attr="disabled"
                     {{ $this->spinsLeft <= 0 ? 'disabled' : '' }}
-                    class="px-16 py-3 bg-white border-2 border-gray-300 rounded-full shadow-md hover:shadow-lg hover:border-gray-400 transition-all active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed">
-                    <span wire:loading.remove class="text-gray-400 font-semibold text-base uppercase tracking-wider">QUAY NGAY!</span>
+                    class="px-16 py-3 border-2 border-gray-300 rounded-full shadow-md hover:shadow-lg hover:border-gray-400 transition-all active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed">
+                    <span wire:loading.remove class="text-green-700 px-4 font-semibold text-base uppercase tracking-wider">QUAY NGAY!</span>
                     <span wire:loading class="text-gray-400 font-semibold text-sm">Đang quay...</span>
                 </button>
             </div>
@@ -51,7 +51,7 @@
                 @endif
                 <button
                     wire:click="resetResult"
-                    class="w-full bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all active:scale-95">
+                    class="w-full text-green-700 px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all active:scale-95">
                     Đóng
                 </button>
             </div>

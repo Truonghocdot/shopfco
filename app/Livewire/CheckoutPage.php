@@ -169,10 +169,12 @@ class CheckoutPage extends Component
             // Record coupon usage
             if ($coupon) {
                 $coupon->incrementUsage();
-                CouponUsage::create([
+                CouponUsage::insert([
                     'coupon_id' => $coupon->id,
                     'user_id' => $user->id,
                     'order_id' => $order->id,
+                    'discount_amount' => $discountAmount,
+                    'used_at' => now(),
                 ]);
             }
 

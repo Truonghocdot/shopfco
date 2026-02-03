@@ -28,10 +28,6 @@ class PurchasedProducts extends Component
         $this->inputPassword2 = '';
         $this->isVerified = false;
 
-        // Nếu sản phẩm không có password2 thì auto-verify
-        if (!$this->selectedOrder?->product?->password2) {
-            $this->isVerified = true;
-        }
     }
 
     public function closeModal()
@@ -44,10 +40,16 @@ class PurchasedProducts extends Component
 
     public function verifyPassword()
     {
+        $user = Auth::user();
+
+        if (!$user->password2) {
+            $this->addError('inputPassword2', 'Bạn chưa thiết lập mật khẩu cấp 2. Quay lại trang chủ để cài đặt.');
+            return;
+        }
+
         if (
             $this->selectedOrder &&
-            $this->selectedOrder->product &&
-            $this->inputPassword2 === $this->selectedOrder->product->password2
+            $this->inputPassword2 === $user->password2
         ) {
             $this->isVerified = true;
             $this->inputPassword2 = '';

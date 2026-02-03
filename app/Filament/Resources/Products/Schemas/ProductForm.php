@@ -52,6 +52,8 @@ class ProductForm
                             $flag++;
                         }
                         $set('slug', $slug);
+                        $set('meta_title', $state);
+                        $set('meta_description', $state);
                     }),
                 TextInput::make('slug')
                     ->label('Đường dẫn')
@@ -66,10 +68,7 @@ class ProductForm
                         'required' => 'Trường này không được để trống',
                     ]),
                 TextInput::make('phone')
-                    ->label('Số điện thoại')
-                    ->validationMessages([
-                        'required' => 'Trường này không được để trống',
-                    ]),
+                    ->label('Số điện thoại'),
                 TextInput::make('password')
                     ->label('Mật khẩu')
                     ->required()
