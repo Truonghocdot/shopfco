@@ -14,6 +14,18 @@
             <h1 class="text-3xl font-black text-slate-900 mb-2">Thanh toán thành công!</h1>
             <p class="text-slate-500 mb-8">Cảm ơn bạn đã mua hàng. Dưới đây là thông tin đơn hàng của bạn.</p>
 
+            @if(session('lucky_spin_awarded'))
+            <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-8 flex items-center gap-4 text-left animate-bounce">
+                <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center shrink-0">
+                    <span class="material-icons text-amber-600">casino</span>
+                </div>
+                <div>
+                    <h4 class="font-bold text-amber-900">Quà tặng đặc biệt!</h4>
+                    <p class="text-amber-700 text-sm">Chúc mừng! Với đơn hàng trên 300.000đ, bạn đã được tặng <strong>1 lượt quay may mắn</strong>. <a href="{{ route('lucky-wheel.index') }}" class="font-bold underline hover:no-underline">Thử vận may ngay!</a></p>
+                </div>
+            </div>
+            @endif
+
             <!-- Bill Details -->
             <div class="bg-slate-50 rounded-xl p-6 border border-slate-200 text-left mb-8">
                 <div class="flex justify-between items-center pb-4 border-b border-slate-200 mb-4">
@@ -65,7 +77,7 @@
                         </div>
                     </div>
                     <div class="mt-3 text-sm text-slate-600">
-                        <span class="font-bold">Ghi chú:</span> Sử dụng Mật khẩu 2 để  lấy thông tin tài khoản trong trang quản lý đơn hàng <a href="{{ route('user.profile') }}" class="text-primary hover:underline">Xem chi tiết</a>
+                        <span class="font-bold">Ghi chú:</span> Sử dụng Mật khẩu 2 để lấy thông tin tài khoản trong trang quản lý đơn hàng <a href="{{ route('user.profile') }}" class="text-primary hover:underline">Xem chi tiết</a>
                     </div>
                 </div>
 
