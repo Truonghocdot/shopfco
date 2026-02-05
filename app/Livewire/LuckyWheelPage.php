@@ -21,12 +21,12 @@ class LuckyWheelPage extends Component
 
     // Prize probabilities
     protected $prizes = [
-        10000 => 30,   // 30%
-        20000 => 20,   // 20%
+        10000 => 35,   // 35%
+        20000 => 30,   // 30%
         50000 => 10,   // 10%
         100000 => 5,   // 5%
-        200000 => 0,   // 1%    
-        0 => 35,       // 34% (No prize)
+        200000 => 0,   // 0%    
+        0 => 20,       // 20% (No prize)
     ];
 
     public function spin()

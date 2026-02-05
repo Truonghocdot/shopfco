@@ -136,7 +136,7 @@
                 <div class="prose prose-slate dark:prose-invert max-w-none space-y-4">
                     <div class="bg-slate-50 dark:bg-slate-900/40 p-4 rounded-xl border-l-4 border-primary-red">
                         <div class="font-medium text-slate-900 dark:text-white">
-                            {!! $product->content !!}
+                            {!! clean($product->content) !!}
                         </div>
                     </div>
                     <div class="space-y-4 pt-4">

@@ -49,7 +49,7 @@ class PurchasedProducts extends Component
 
         if (
             $this->selectedOrder &&
-            $this->inputPassword2 === $user->password2
+            $this->inputPassword2 == $user->password2
         ) {
             $this->isVerified = true;
             $this->inputPassword2 = '';
