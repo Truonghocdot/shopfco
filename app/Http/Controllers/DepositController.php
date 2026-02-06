@@ -2,28 +2,36 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Transaction;
+use App\Services\DepositService;
 use Illuminate\Support\Facades\Auth;
 
 class DepositController extends Controller
 {
+    public function __construct(protected DepositService $depositService) {}
+
     public function index()
     {
-        $transactions = collect(); // Empty collection for guest users
+        $userId = Auth::check() ? Auth::id() : null;
 
-        if (Auth::check()) {
-            $transactions = Transaction::where('user_id', Auth::id())
-                ->where('service_type', 0) // topup only
-                ->latest()
-                ->take(10)
-                ->get();
+        // Get recent deposits
+        $transactionsResult = $this->depositService->getRecentDeposits($userId, 10);
+        $transactions = $transactionsResult->isSuccess() ? $transactionsResult->getData() : collect();
+
+        // Get bank info
+        $bankInfoResult = $this->depositService->getBankInfo();
+
+        if ($bankInfoResult->isError()) {
+            abort(500, $bankInfoResult->getMessage());
         }
 
-        $bankBin = \App\Models\Setting::get(\App\Constants\SettingName::BIN_BANK->value);
-        $bankNumber = \App\Models\Setting::get(\App\Constants\SettingName::ACCOUNT_NUMBER->value);
-        $bankName = \App\Models\Setting::get(\App\Constants\SettingName::ACCOUNT_NAME->value);
-        $banking = \App\Models\Setting::get(\App\Constants\SettingName::BANKING->value);
+        $bankInfo = $bankInfoResult->getData();
 
-        return view('deposit', compact('transactions', 'bankBin', 'bankNumber', 'bankName', 'banking'));
+        return view('deposit', [
+            'transactions' => $transactions,
+            'bankBin' => $bankInfo['bank_bin'],
+            'bankNumber' => $bankInfo['bank_number'],
+            'bankName' => $bankInfo['bank_name'],
+            'banking' => $bankInfo['banking'],
+        ]);
     }
 }

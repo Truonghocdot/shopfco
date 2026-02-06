@@ -1,6 +1,9 @@
 {{-- Popup Modal Component --}}
+@inject('viewDataService', 'App\Services\ViewDataService')
+
 @php
-$popupContent = \App\Models\Setting::where('setting_name', \App\Constants\SettingName::POPUP_CONTENT->value)->value('setting_value');
+$popupContentResult = $viewDataService->getPopupContent();
+$popupContent = $popupContentResult->isSuccess() ? $popupContentResult->getData() : null;
 @endphp
 
 @if($popupContent)

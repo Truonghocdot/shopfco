@@ -2,10 +2,8 @@
 
 namespace App\Livewire;
 
-use App\Models\LuckyWheelHistory;
+use App\Services\LuckyWheelService;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -19,75 +17,31 @@ class LuckyWheelPage extends Component
     public $showResult = false;
     public $spinning = false;
 
-    // Prize probabilities
-    protected $prizes = [
-        10000 => 35,   // 35%
-        20000 => 30,   // 30%
-        50000 => 10,   // 10%
-        100000 => 5,   // 5%
-        200000 => 0,   // 0%    
-        0 => 20,       // 20% (No prize)
-    ];
+    protected $luckyWheelService;
+
+    public function boot(LuckyWheelService $luckyWheelService)
+    {
+        $this->luckyWheelService = $luckyWheelService;
+    }
 
     public function spin()
     {
-        $user = Auth::user();
+        $result = $this->luckyWheelService->spin(Auth::id());
 
-        // Check if user has spins available
-        if ($user->lucky_wheel_spins <= 0) {
-            session()->flash('error', 'Bạn đã hết lượt quay. Mua hàng từ 300,000đ để nhận thêm lượt quay!');
+        if ($result->isError()) {
+            session()->flash('error', $result->getMessage());
             return;
         }
 
-        // Create weighted array for random selection
-        $weightedPrizes = [];
-        foreach ($this->prizes as $amount => $weight) {
-            $weightedPrizes = array_merge(
-                $weightedPrizes,
-                array_fill(0, $weight, $amount)
-            );
-        }
+        $data = $result->getData();
+        $this->prizeAmount = $data['prize_amount'];
+        $this->prizeLabel = $data['prize_label'];
+        $this->spinning = true;
 
-        // Select random prize
-        $this->prizeAmount = $weightedPrizes[array_rand($weightedPrizes)];
-        $this->prizeLabel = $this->prizeAmount > 0
-            ? 'Phần thưởng ' . number_format($this->prizeAmount) . 'đ'
-            : 'Chúc bạn may mắn lần sau';
-
-        try {
-            DB::beginTransaction();
-
-            // Decrement spin count
-            $user->decrement('lucky_wheel_spins');
-
-            // Add prize to wallet if won
-            if ($this->prizeAmount > 0) {
-                $user->wallet->deposit($this->prizeAmount);
-            }
-
-            // Record history
-            LuckyWheelHistory::create([
-                'user_id' => $user->id,
-                'prize_amount' => $this->prizeAmount,
-                'prize_label' => $this->prizeLabel,
-            ]);
-
-            DB::commit();
-
-
-            // Do not show result immediately, wait for animation
-            // $this->showResult = true; 
-            $this->spinning = true;
-
-            // Dispatch browser event for animation
-            $this->dispatch('spin-wheel', [
-                'prizeAmount' => $this->prizeAmount
-            ]);
-        } catch (\Exception $e) {
-            DB::rollBack();
-            Log::error('Lucky wheel spin error: ' . $e->getMessage());
-            session()->flash('error', 'Đã có lỗi xảy ra, vui lòng thử lại.');
-        }
+        // Dispatch browser event for animation
+        $this->dispatch('spin-wheel', [
+            'prizeAmount' => $this->prizeAmount
+        ]);
     }
 
     public function resetResult()

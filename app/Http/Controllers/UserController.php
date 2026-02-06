@@ -2,22 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\UserService;
+use App\Services\OrderService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function __construct(
+        protected UserService $userService,
+        protected OrderService $orderService
+    ) {}
+
     public function profile()
     {
-        $orders = Auth::user()->orders()->with('product')->latest()->get();
+        $ordersResult = $this->orderService->getAllUserOrders(Auth::id());
+        $orders = $ordersResult->isSuccess() ? $ordersResult->getData() : collect();
+
         return view('user.profile', compact('orders'));
     }
 
     public function update(Request $request)
     {
-        $user = Auth::user();
-
         $request->validate([
             'name' => 'required|string|max:255',
             'phone' => 'nullable|string|max:15',
@@ -25,15 +31,21 @@ class UserController extends Controller
             'new_password' => 'nullable|min:8|confirmed',
         ]);
 
-        $user->name = $request->name;
-        $user->phone = $request->phone;
+        $data = [
+            'name' => $request->name,
+            'phone' => $request->phone,
+        ];
 
         if ($request->filled('new_password')) {
-            $user->password = Hash::make($request->new_password);
+            $data['new_password'] = $request->new_password;
         }
 
-        $user->save();
+        $result = $this->userService->updateProfile(Auth::id(), $data);
 
-        return back()->with('success', 'Cập nhật thông tin thành công!');
+        if ($result->isError()) {
+            return back()->withErrors(['error' => $result->getMessage()]);
+        }
+
+        return back()->with('success', $result->getMessage());
     }
 }

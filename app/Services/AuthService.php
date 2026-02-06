@@ -10,10 +10,11 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthService
 {
+    public function __construct(protected User $user) {}
     public function handleLoginUser(array $credentials): ServiceResult
     {
         try {
-            $user = User::where('email', $credentials['email'])->first();
+            $user = $this->user::where('email', $credentials['email'])->first();
             if (!$user) {
                 throw new \Exception('Tài khoản không tồn tại');
             }
@@ -25,6 +26,25 @@ class AuthService
             }
             Auth::login($user);
             return ServiceResult::success('Đăng nhập thành công');
+        } catch (\Exception $e) {
+            return ServiceResult::error($e->getMessage());
+        }
+    }
+
+    public function handleRegisterUser(array $data): ServiceResult
+    {
+        try {
+            $user = $this->user::create([
+                'name' => $data['username'],
+                'email' => $data['username'],
+                'password' => Hash::make($data['password']),
+                'status' => 1,
+                'role' => UserRole::CLIENT->value,
+            ]);
+
+            Auth::login($user);
+
+            return ServiceResult::success($user, 'Đăng ký tài khoản thành công!');
         } catch (\Exception $e) {
             return ServiceResult::error($e->getMessage());
         }

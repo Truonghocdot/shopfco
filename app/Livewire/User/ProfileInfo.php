@@ -2,9 +2,9 @@
 
 namespace App\Livewire\User;
 
+use App\Services\UserService;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 
 class ProfileInfo extends Component
 {
@@ -15,6 +15,13 @@ class ProfileInfo extends Component
     public $new_password = '';
     public $new_password_confirmation = '';
 
+    protected $userService;
+
+    public function boot(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
     public function mount()
     {
         $user = Auth::user();
@@ -22,8 +29,6 @@ class ProfileInfo extends Component
             $this->name = $user->name;
             $this->email = $user->email;
             $this->phone = $user->phone;
-        } else {
-            Log::error('ProfileInfo component: User not authenticated');
         }
     }
 
@@ -54,23 +59,26 @@ class ProfileInfo extends Component
 
         $this->validate($rules, $messages);
 
-        $user = Auth::user();
-
-        $dataToUpdate = [
+        $data = [
             'email' => $this->email,
             'phone' => $this->phone,
         ];
 
         // Only update password if provided
         if ($this->new_password) {
-            $dataToUpdate['password'] = \Illuminate\Support\Facades\Hash::make($this->new_password);
+            $data['new_password'] = $this->new_password;
         }
 
-        $user->update($dataToUpdate);
+        $result = $this->userService->updateProfile(Auth::id(), $data);
+
+        if ($result->isError()) {
+            session()->flash('error', $result->getMessage());
+            return;
+        }
 
         $this->reset(['current_password', 'new_password', 'new_password_confirmation']);
 
-        session()->flash('success', 'Cập nhật thông tin thành công!');
+        session()->flash('success', $result->getMessage());
     }
 
     public function render()

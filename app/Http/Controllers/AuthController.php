@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+    public function __construct(protected \App\Services\AuthService $authService) {}
+
     // Login Views
     public function showLogin()
     {
@@ -56,27 +58,27 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'username' => 'required|string|max:100|unique:users,name',
+            'username' => 'required|string|max:100|unique:users,name|alpha_num',
             'password' => 'required|string|min:8|confirmed',
         ], [
             'username.required' => 'Vui lòng nhập tên đăng nhập.',
             'username.unique' => 'Tên đăng nhập này đã được sử dụng.',
+            'username.alpha_num' => 'Tên đăng nhập chỉ được chứa chữ cái và số.',
             'password.required' => 'Vui lòng nhập mật khẩu.',
             'password.min' => 'Mật khẩu phải có ít nhất 8 ký tự.',
             'password.confirmed' => 'Mật khẩu xác nhận không khớp.',
         ]);
 
-        $user = User::create([
-            'name' => $request->username,
-            'email' => $request->username,
-            'password' => Hash::make($request->password),
-            'status' => 1,
-            'role' => \App\Constants\UserRole::CLIENT->value,
+        $result = $this->authService->handleRegisterUser([
+            'username' => $request->username,
+            'password' => $request->password,
         ]);
 
-        Auth::login($user);
+        if ($result->isError()) {
+            return back()->withErrors(['username' => $result->getMessage()]);
+        }
 
-        return redirect()->route('home')->with('success', 'Đăng ký tài khoản thành công!');
+        return redirect()->route('home')->with('success', $result->getMessage());
     }
 
     // Handle Logout

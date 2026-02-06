@@ -2,34 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\News;
+use App\Services\NewsService;
 
 class NewsController extends Controller
 {
+    public function __construct(protected NewsService $newsService) {}
+
     public function index()
     {
-        $news = News::where('published', 1)
-            ->latest()
-            ->paginate(9);
+        $newsResult = $this->newsService->getPublishedNews(9);
+
+        if ($newsResult->isError()) {
+            abort(500, $newsResult->getMessage());
+        }
+
+        $news = $newsResult->getData();
 
         return view('news.index', compact('news'));
     }
 
     public function show($slug)
     {
-        $news = News::where('slug', $slug)
-            ->where('published', 1)
-            ->firstOrFail();
+        $newsResult = $this->newsService->getNewsBySlug($slug);
 
-        // Increment view count
-        $news->increment('view_count');
+        if ($newsResult->isError()) {
+            abort(404, $newsResult->getMessage());
+        }
 
-        // Get related news
-        $relatedNews = News::where('published', 1)
-            ->where('id', '!=', $news->id)
-            ->latest()
-            ->take(3)
-            ->get();
+        $news = $newsResult->getData();
+
+        $relatedNewsResult = $this->newsService->getRelatedNews($news->id, 3);
+        $relatedNews = $relatedNewsResult->isSuccess() ? $relatedNewsResult->getData() : collect();
 
         return view('news.show', compact('news', 'relatedNews'));
     }

@@ -2,15 +2,22 @@
 
 namespace App\Livewire\Auth;
 
+use App\Services\UserService;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-use App\Models\User;
 
 class SetTransactionPin extends Component
 {
     public $pin = '';
     public $pin_confirmation = '';
     public $showModal = false;
+
+    protected $userService;
+
+    public function boot(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
 
     public function mount()
     {
@@ -32,28 +39,29 @@ class SetTransactionPin extends Component
 
     public function savePin()
     {
-        $this->validate([
-            'pin' => [
-                'required',
-                'numeric',
-                'digits:6',
-                'confirmed', // checks matching pin_confirmation
+        $this->validate(
+            [
+                'pin' => [
+                    'required',
+                    'numeric',
+                    'digits:6',
+                    'confirmed', // checks matching pin_confirmation
+                ],
             ],
-        ],
             [
                 'pin.required' => 'Mã PIN không được để trống',
                 'pin.numeric' => 'Mã PIN phải là số',
                 'pin.digits' => 'Mã PIN phải có 6 số',
                 'pin.confirmed' => 'Mã PIN không khớp',
-            ]);
+            ]
+        );
 
-        $user = Auth::user();
+        $result = $this->userService->setTransactionPin(Auth::id(), $this->pin);
 
-        // update
-        /** @var User $user */
-        $user->forceFill([
-            'password2' => $this->pin
-        ])->save();
+        if ($result->isError()) {
+            session()->flash('error', $result->getMessage());
+            return;
+        }
 
         $this->showModal = false;
 

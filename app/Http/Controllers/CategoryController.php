@@ -2,20 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Product;
+use App\Services\CategoryService;
 
 class CategoryController extends Controller
 {
+    public function __construct(protected CategoryService $categoryService) {}
+
     public function show($slug)
     {
-        $category = Category::where('slug', $slug)->firstOrFail();
+        $categoryResult = $this->categoryService->getCategoryBySlug($slug);
 
-        $products = Product::where('category_id', $category->id)
-            ->where('status', Product::STATUS_UNSOLD)
-            ->with('category')
-            ->latest()
-            ->paginate(12);
+        if ($categoryResult->isError()) {
+            abort(404, $categoryResult->getMessage());
+        }
+
+        $category = $categoryResult->getData();
+
+        $productsResult = $this->categoryService->getProductsByCategory($category->id);
+
+        if ($productsResult->isError()) {
+            abort(500, $productsResult->getMessage());
+        }
+
+        $products = $productsResult->getData();
 
         return view('categories.show', compact('category', 'products'));
     }

@@ -2,13 +2,10 @@
 
 namespace App\Livewire;
 
-use App\Models\Coupon;
-use App\Models\Order;
-use App\Models\Product;
-use App\Models\Wallet;
-use App\Models\CouponUsage;
+use App\Services\OrderService;
+use App\Services\CouponService;
+use App\Services\ProductService;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -24,12 +21,34 @@ class CheckoutPage extends Component
     public $couponMessage = '';
     public $couponValid = false;
 
+    protected $orderService;
+    protected $couponService;
+    protected $productService;
+
+    public function boot(
+        OrderService $orderService,
+        CouponService $couponService,
+        ProductService $productService
+    ) {
+        $this->orderService = $orderService;
+        $this->couponService = $couponService;
+        $this->productService = $productService;
+    }
+
     public function mount($slug)
     {
-        $this->product = Product::where('slug', $slug)
-            ->where('status', Product::STATUS_UNSOLD)
-            ->with('category')
-            ->firstOrFail();
+        $productResult = $this->productService->getProductBySlug($slug, true);
+
+        if ($productResult->isError()) {
+            abort(404, $productResult->getMessage());
+        }
+
+        $this->product = $productResult->getData();
+
+        // Check if product is still available
+        if ($this->product->status !== \App\Models\Product::STATUS_UNSOLD) {
+            abort(404, 'Sản phẩm đã được bán');
+        }
     }
 
     public function getTitle()
@@ -62,27 +81,23 @@ class CheckoutPage extends Component
             return;
         }
 
-        $coupon = Coupon::where('code', trim($this->couponCode))->first();
+        $validationResult = $this->couponService->validateCoupon(
+            trim($this->couponCode),
+            Auth::id(),
+            $this->originalPrice
+        );
 
-        if (!$coupon) {
-            $this->couponMessage = 'Mã giảm giá không tồn tại';
-            $this->resetCoupon();
-            return;
-        }
-
-        $validation = $coupon->canBeUsedBy(Auth::user(), $this->originalPrice);
-
-        if (!$validation['valid']) {
-            $this->couponMessage = $validation['message'];
+        if ($validationResult->isError()) {
+            $this->couponMessage = $validationResult->getMessage();
             $this->resetCoupon();
             return;
         }
 
         // Apply coupon successfully
-        $this->appliedCoupon = $coupon;
-        $this->discount = $coupon->calculateDiscount($this->originalPrice);
+        $this->appliedCoupon = $validationResult->getData();
+        $this->discount = $this->appliedCoupon->calculateDiscount($this->originalPrice);
         $this->couponValid = true;
-        $this->couponMessage = 'Mã giảm giá hợp lệ';
+        $this->couponMessage = $validationResult->getMessage();
     }
 
     public function removeCoupon()
@@ -101,100 +116,27 @@ class CheckoutPage extends Component
 
     public function purchase()
     {
-        try {
-            DB::beginTransaction();
+        $couponCode = $this->appliedCoupon ? $this->appliedCoupon->code : null;
 
-            // Get product with lock
-            $product = Product::where('id', $this->product->id)
-                ->where('status', Product::STATUS_UNSOLD)
-                ->lockForUpdate()
-                ->firstOrFail();
+        $result = $this->orderService->purchaseProduct(
+            Auth::id(),
+            $this->product->id,
+            $couponCode
+        );
 
-            $user = Auth::user();
-            $wallet = Wallet::where('user_id', $user->id)->lockForUpdate()->first();
-
-            if (!$wallet) {
-                throw new \Exception('Ví không tồn tại');
-            }
-
-            // Calculate final amount
-            $productPrice = $product->getFinalPrice();
-            $discountAmount = 0;
-            $coupon = null;
-
-            // Re-validate coupon if applied
-            if ($this->appliedCoupon) {
-                $coupon = Coupon::where('code', $this->appliedCoupon->code)->first();
-
-                if (!$coupon) {
-                    throw new \Exception('Mã giảm giá không tồn tại');
-                }
-
-                $validation = $coupon->canBeUsedBy($user, $productPrice);
-                if (!$validation['valid']) {
-                    throw new \Exception($validation['message']);
-                }
-
-                $discountAmount = $coupon->calculateDiscount($productPrice);
-            }
-
-            $finalAmount = $productPrice - $discountAmount;
-
-            // Check wallet balance
-            if ($wallet->balance < $finalAmount) {
-                throw new \Exception('Số dư không đủ. Vui lòng nạp thêm tiền.');
-            }
-
-            // Create order
-            $order = Order::create([
-                'user_id' => $user->id,
-                'product_id' => $product->id,
-                'coupon_id' => $coupon?->id,
-                'order_number' => Order::generateOrderNumber(),
-                'product_price' => $productPrice,
-                'discount_amount' => $discountAmount,
-                'final_amount' => $finalAmount,
-                'status' => Order::STATUS_COMPLETED,
-                'wallet_balance_before' => $wallet->balance,
-                'wallet_balance_after' => $wallet->balance - $finalAmount,
-                'completed_at' => now(),
-            ]);
-
-            // Update product status
-            $product->update(['status' => Product::STATUS_SOLD]);
-
-            // Deduct wallet balance
-            $wallet->decrement('balance', $finalAmount);
-
-            // Record coupon usage
-            if ($coupon) {
-                $coupon->incrementUsage();
-                CouponUsage::insert([
-                    'coupon_id' => $coupon->id,
-                    'user_id' => $user->id,
-                    'transaction_id' => null,
-                    'discount_amount' => $discountAmount,
-                    'used_at' => now(),
-                ]);
-            }
-
-            // Award lucky wheel spin if purchase >= 300,000đ
-            if ($finalAmount >= 300000) {
-                /**
-                 * @var App\Models\User $user
-                 */
-                $user->increment('lucky_wheel_spins');
-                session()->flash('lucky_spin_awarded', true);
-            }
-
-            DB::commit();
-
-            return redirect()->route('purchase.success', $order->id);
-        } catch (\Exception $e) {
-            DB::rollBack();
-
-            session()->flash('error', $e->getMessage());
+        if ($result->isError()) {
+            session()->flash('error', $result->getMessage());
+            return;
         }
+
+        $order = $result->getData();
+
+        // Check if lucky spin was awarded
+        if ($order->final_amount >= 300000) {
+            session()->flash('lucky_spin_awarded', true);
+        }
+
+        return redirect()->route('purchase.success', $order->id);
     }
 
     public function render()

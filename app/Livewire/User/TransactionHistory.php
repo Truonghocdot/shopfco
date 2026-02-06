@@ -2,9 +2,9 @@
 
 namespace App\Livewire\User;
 
+use App\Services\TransactionService;
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 
 class TransactionHistory extends Component
@@ -14,19 +14,24 @@ class TransactionHistory extends Component
     public $filterType = '';
     public $filterStatus = '';
 
+    protected $transactionService;
+
+    public function boot(TransactionService $transactionService)
+    {
+        $this->transactionService = $transactionService;
+    }
+
     public function render()
     {
-        $query = Transaction::where('user_id', Auth::id());
+        $filters = [
+            'service_type' => $this->filterType,
+            'status' => $this->filterStatus,
+        ];
 
-        if ($this->filterType !== '') {
-            $query->where('service_type', $this->filterType);
-        }
-
-        if ($this->filterStatus !== '') {
-            $query->where('status', $this->filterStatus);
-        }
-
-        $transactions = $query->latest()->paginate(10);
+        $transactionsResult = $this->transactionService->getUserTransactions(Auth::id(), $filters, 10);
+        $transactions = $transactionsResult->isSuccess()
+            ? $transactionsResult->getData()
+            : collect();
 
         return view('livewire.user.transaction-history', [
             'transactions' => $transactions

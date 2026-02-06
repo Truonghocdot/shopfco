@@ -2,21 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Coupon;
-use App\Models\Order;
-use App\Models\Product;
-use App\Models\Wallet;
-use App\Models\CouponUsage;
-use Illuminate\Http\Request;
+use App\Services\OrderService;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class PurchaseController extends Controller
 {
+    public function __construct(protected OrderService $orderService) {}
 
     public function success($id)
     {
-        $order = Order::with('product.category')->where('user_id', Auth::id())->findOrFail($id);
+        $orderResult = $this->orderService->getOrderById($id, Auth::id());
+
+        if ($orderResult->isError()) {
+            abort(404, $orderResult->getMessage());
+        }
+
+        $order = $orderResult->getData();
+
         return view('purchase.success', compact('order'));
     }
 }

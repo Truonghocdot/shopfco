@@ -2,6 +2,8 @@
 
 namespace App\Livewire\User;
 
+use App\Services\OrderService;
+use App\Services\UserService;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Auth;
@@ -19,15 +21,32 @@ class PurchasedProducts extends Component
 
     protected $paginationTheme = 'tailwind';
 
+    protected $orderService;
+    protected $userService;
+
+    public function boot(
+        OrderService $orderService,
+        UserService $userService
+    ) {
+        $this->orderService = $orderService;
+        $this->userService = $userService;
+    }
+
     public function viewDetails($orderId)
     {
-        $this->selectedOrder = \App\Models\Order::with('product')->find($orderId);
+        $orderResult = $this->orderService->getOrderById($orderId, Auth::id());
+
+        if ($orderResult->isError()) {
+            session()->flash('error', $orderResult->getMessage());
+            return;
+        }
+
+        $this->selectedOrder = $orderResult->getData();
         $this->showModal = true;
 
         // Reset state mỗi lần mở modal
         $this->inputPassword2 = '';
         $this->isVerified = false;
-
     }
 
     public function closeModal()
@@ -40,31 +59,23 @@ class PurchasedProducts extends Component
 
     public function verifyPassword()
     {
-        $user = Auth::user();
+        $result = $this->userService->verifyTransactionPin(Auth::id(), $this->inputPassword2);
 
-        if (!$user->password2) {
-            $this->addError('inputPassword2', 'Bạn chưa thiết lập mật khẩu cấp 2. Quay lại trang chủ để cài đặt.');
+        if ($result->isError()) {
+            $this->addError('inputPassword2', $result->getMessage());
             return;
         }
 
-        if (
-            $this->selectedOrder &&
-            $this->inputPassword2 == $user->password2
-        ) {
-            $this->isVerified = true;
-            $this->inputPassword2 = '';
-        } else {
-            // Báo lỗi ngay dưới ô input
-            $this->addError('inputPassword2', 'Mật khẩu cấp 2 không đúng');
-        }
+        $this->isVerified = true;
+        $this->inputPassword2 = '';
     }
 
     public function render()
     {
-        $purchasedProducts = \App\Models\Order::where('user_id', Auth::id())
-            ->with('product')
-            ->latest()
-            ->paginate(6);
+        $purchasedProductsResult = $this->orderService->getUserOrders(Auth::id(), 6);
+        $purchasedProducts = $purchasedProductsResult->isSuccess()
+            ? $purchasedProductsResult->getData()
+            : collect();
 
         return view('livewire.user.purchased-products', [
             'purchasedProducts' => $purchasedProducts
