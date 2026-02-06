@@ -17,7 +17,7 @@
     <!-- Breadcrumb -->
     <x-breadcrumb :items="[
         ['name' => 'Trang chủ', 'url' => route('home')],
-        ['name' => 'Tài khoản', 'url' => route('profile')]
+        ['name' => 'Tài khoản', 'url' => route('user.profile')]
     ]" />
 
     @if(session('success'))
