@@ -17,6 +17,49 @@
     </div>
     @endif
 
+    <!-- Affiliate Link Section -->
+    <div class="px-6 pb-6 pt-6 relative z-10">
+        <div class="relative bg-gradient-to-br from-primary/10 to-green-500/10 border-2 border-primary/30 rounded-xl p-6 overflow-hidden shadow-[0_0_20px_rgba(0,255,0,0.2)]">
+            <div class="absolute inset-0 opacity-5 pointer-events-none">
+                <div class="absolute inset-0" style="background-image: repeating-linear-gradient(90deg, rgba(0, 255, 0, 0.1) 0px, transparent 1px, transparent 20px), repeating-linear-gradient(0deg, rgba(0, 255, 0, 0.1) 0px, transparent 1px, transparent 20px);"></div>
+            </div>
+
+            <div class="relative z-10">
+                <h3 class="text-primary font-black mb-3 flex items-center gap-2 drop-shadow-[0_0_10px_rgba(0,255,0,0.8)] uppercase tracking-wide text-sm">
+                    <span class="material-icons text-base">share</span>
+                    Link giới thiệu của bạn
+                </h3>
+                <p class="text-slate-400 text-xs mb-4">Chia sẻ link này để nhận 5% hoa hồng từ mỗi đơn hàng của người bạn giới thiệu</p>
+
+                <div class="flex gap-2">
+                    <div class="flex-1 min-w-0 bg-black/40 border-2 border-slate-700 rounded-lg px-4 py-3 font-mono text-xs text-white break-all">
+                        {{ $this->affiliateUrl }}
+                    </div>
+                    <button
+                        type="button"
+                        onclick="navigator.clipboard.writeText('{{ $this->affiliateUrl }}'); alert('Đã copy link giới thiệu!');"
+                        class="shrink-0 bg-gradient-to-r from-primary/20 to-primary/10 hover:from-primary hover:to-green-400 border-2 border-primary/50 text-primary hover:text-black px-4 py-3 rounded-lg transition-all shadow-[0_0_10px_rgba(0,255,0,0.3)] hover:shadow-[0_0_20px_rgba(0,255,0,0.5)] active:scale-95 flex items-center gap-2 font-bold uppercase text-xs whitespace-nowrap">
+                        <span class="material-icons text-sm">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+
+                <div class="mt-4 grid grid-cols-2 gap-4">
+                    <div class="bg-black/40 border border-primary/20 rounded-lg p-3">
+                        <p class="text-slate-500 text-xs uppercase mb-1">Người đã giới thiệu</p>
+                        <p class="text-white font-black text-xl">{{ auth()->user()->referrals()->count() }}</p>
+                    </div>
+                    <div class="bg-black/40 border border-primary/20 rounded-lg p-3">
+                        <p class="text-slate-500 text-xs uppercase mb-1">Tổng hoa hồng</p>
+                        <p class="text-primary font-black text-xl drop-shadow-[0_0_10px_rgba(0,255,0,0.8)]">
+                            {{ number_format(auth()->user()->commissionsEarned()->where('status', 'paid')->sum('commission_amount')) }}đ
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <form wire:submit.prevent="updateProfile" class="p-6 space-y-6 relative z-10">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="space-y-2">

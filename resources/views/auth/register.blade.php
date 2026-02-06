@@ -61,6 +61,23 @@
                             placeholder="Nhập lại mật khẩu">
                     </div>
                 </div>
+
+                <div>
+                    <label for="referrer_id" class="sr-only">Mã người giới thiệu (tùy chọn)</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+                            <span class="material-icons text-lg">group_add</span>
+                        </span>
+                        <input id="referrer_id" name="referrer_id" type="text"
+                            class="appearance-none rounded-xl relative block w-full pl-10 px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+                            placeholder="ID người giới thiệu (tùy chọn)"
+                            value="{{ request('ref') ?? old('referrer_id') }}">
+                    </div>
+                    @error('referrer_id')
+                    <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                    @enderror
+                    <p class="mt-1 text-xs text-gray-500">Nếu bạn được giới thiệu, nhập ID người giới thiệu để nhận ưu đãi</p>
+                </div>
             </div>
 
             <div>

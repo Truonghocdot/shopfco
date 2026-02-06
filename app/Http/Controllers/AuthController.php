@@ -60,6 +60,7 @@ class AuthController extends Controller
         $request->validate([
             'username' => 'required|string|max:100|unique:users,name|alpha_num',
             'password' => 'required|string|min:8|confirmed',
+            'referrer_id' => 'nullable|exists:users,id',
         ], [
             'username.required' => 'Vui lòng nhập tên đăng nhập.',
             'username.unique' => 'Tên đăng nhập này đã được sử dụng.',
@@ -67,11 +68,13 @@ class AuthController extends Controller
             'password.required' => 'Vui lòng nhập mật khẩu.',
             'password.min' => 'Mật khẩu phải có ít nhất 8 ký tự.',
             'password.confirmed' => 'Mật khẩu xác nhận không khớp.',
+            'referrer_id.exists' => 'Người giới thiệu không tồn tại.',
         ]);
 
         $result = $this->authService->handleRegisterUser([
             'username' => $request->username,
             'password' => $request->password,
+            'referrer_id' => $request->referrer_id,
         ]);
 
         if ($result->isError()) {

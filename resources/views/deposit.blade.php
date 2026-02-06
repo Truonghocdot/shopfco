@@ -51,21 +51,24 @@
 
                 <!-- Content -->
                 <div class="p-8 relative z-10">
-                    <div class="flex flex-col md:flex-row gap-8 items-center">
-                        <div class="flex-1 w-full space-y-6">
-                            <!-- Bank Name -->
-                            <div>
-                                <p class="text-slate-500 text-xs uppercase font-bold mb-2 tracking-widest">Ngân hàng</p>
-                                <div class="bg-black/40 border-2 border-slate-700 rounded-lg px-4 py-3">
-                                    <p class="text-2xl font-black text-primary italic drop-shadow-[0_0_8px_rgba(0,255,0,0.8)]">{{ $banking }}</p>
+                    <div class="grid grid-cols-1 gap-8">
+                        <!-- Bank Details -->
+                        <div class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <!-- Bank Name -->
+                                <div>
+                                    <p class="text-slate-500 text-xs uppercase font-bold mb-2 tracking-widest">Ngân hàng</p>
+                                    <div class="bg-black/40 border-2 border-slate-700 rounded-lg px-4 py-3 h-full flex items-center">
+                                        <p class="text-xl font-black text-primary italic drop-shadow-[0_0_8px_rgba(0,255,0,0.8)]">{{ $banking }}</p>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <!-- Account Holder -->
-                            <div>
-                                <p class="text-slate-500 text-xs uppercase font-bold mb-2 tracking-widest">Chủ tài khoản</p>
-                                <div class="bg-black/40 border-2 border-slate-700 rounded-lg px-4 py-3">
-                                    <p class="text-xl font-bold text-white">{{ $bankName }}</p>
+                                <!-- Account Holder -->
+                                <div>
+                                    <p class="text-slate-500 text-xs uppercase font-bold mb-2 tracking-widest">Chủ tài khoản</p>
+                                    <div class="bg-black/40 border-2 border-slate-700 rounded-lg px-4 py-3 h-full flex items-center">
+                                        <p class="text-lg font-bold text-white uppercase">{{ $bankName }}</p>
+                                    </div>
                                 </div>
                             </div>
 
@@ -76,24 +79,29 @@
                                     <div class="bg-black/60 border-2 border-primary/50 px-4 py-3 rounded-lg flex-1 shadow-[0_0_15px_rgba(0,255,0,0.2)]">
                                         <span class="text-2xl font-mono font-black text-primary drop-shadow-[0_0_8px_rgba(0,255,0,0.8)]">{{ $bankNumber }}</span>
                                     </div>
-                                    <button class="bg-gradient-to-r from-primary/20 to-primary/10 hover:from-primary/30 hover:to-primary/20 border-2 border-primary/50 text-primary h-full px-4 py-3 rounded-lg transition-all shadow-[0_0_10px_rgba(0,255,0,0.3)] hover:shadow-[0_0_20px_rgba(0,255,0,0.5)] active:scale-95 flex items-center justify-center" onclick="navigator.clipboard.writeText('{{ $bankNumber }}')">
+                                    <button class="bg-gradient-to-r from-primary/20 to-primary/10 hover:from-primary/30 hover:to-primary/20 border-2 border-primary/50 text-primary h-full px-4 py-3 rounded-lg transition-all shadow-[0_0_10px_rgba(0,255,0,0.3)] hover:shadow-[0_0_20px_rgba(0,255,0,0.5)] active:scale-95 flex items-center justify-center shrink-0" onclick="navigator.clipboard.writeText('{{ $bankNumber }}')">
                                         <span class="material-icons drop-shadow-[0_0_8px_rgba(0,255,0,0.8)]">content_copy</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- QR Code -->
-                        <div class="shrink-0">
-                            <div class="relative bg-black/60 p-4 rounded-2xl border-4 border-primary/30 shadow-[0_0_30px_rgba(0,255,0,0.3)]">
-                                <div class="absolute inset-0 bg-primary/5 rounded-2xl animate-pulse"></div>
-                                <img alt="QR Code Bank Transfer" class="w-44 h-44 relative z-10 rounded-lg" src="https://img.vietqr.io/image/{{ $bankBin }}-{{ $bankNumber }}-compact2.png?amount=0&addInfo=vanhfco%20{{ Auth::id() }}&accountName={{ urlencode($bankName) }}">
-                                <div class="mt-3 text-center relative z-10">
-                                    <p class="text-xs text-primary font-bold uppercase tracking-wider drop-shadow-[0_0_8px_rgba(0,255,0,0.8)]">Quét mã để nạp nhanh</p>
+                        <!-- QR Code Section - Full width on desktop for better visibility -->
+                        <div class="flex justify-center pt-4 border-t border-primary/20">
+                            <div class="relative group">
+                                <div class="absolute -inset-1 bg-gradient-to-r from-primary/50 to-green-500/50 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
+                                <div class="relative bg-black/60 p-5 rounded-2xl border-4 border-primary/30 shadow-[0_0_40px_rgba(0,255,0,0.25)] flex flex-col items-center">
+                                    <div class="absolute inset-0 bg-primary/5 rounded-2xl animate-pulse"></div>
+                                    <img alt="QR Code Bank Transfer" class="w-56 h-56 relative z-10 rounded-xl shadow-[0_0_20px_rgba(0,0,0,0.5)] border border-primary/20" src="https://api.vietqr.io/image/{{ $bankBin }}-{{ $bankNumber }}-compact2.png?amount=0&addInfo=vanhfco%20{{ Auth::id() }}&accountName={{ urlencode($bankName) }}">
+                                    <div class="mt-4 text-center relative z-10">
+                                        <p class="text-sm text-primary font-black uppercase tracking-widest drop-shadow-[0_0_8px_rgba(0,255,0,0.8)]">Quét mã để nạp nhanh</p>
+                                        <p class="text-[10px] text-slate-500 mt-1 uppercase">Hệ thống tự động duyệt sau 1-3 phút</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
 
                     <!-- Warning Notice -->
                     <div class="mt-8 p-4 rounded-xl bg-primary/10 border-2 border-primary/30 shadow-[0_0_15px_rgba(0,255,0,0.2)]">

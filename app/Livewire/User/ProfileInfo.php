@@ -81,6 +81,11 @@ class ProfileInfo extends Component
         session()->flash('success', $result->getMessage());
     }
 
+    public function getAffiliateUrlProperty(): string
+    {
+        return route('register') . '?ref=' . Auth::id();
+    }
+
     public function render()
     {
         return view('livewire.user.profile-info');

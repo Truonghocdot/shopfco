@@ -105,6 +105,12 @@ class OrderService
                 }
             }
 
+            // Process affiliate commission if user has referrer
+            $purchaser = \App\Models\User::find($userId);
+            if ($purchaser && $purchaser->referrer_id) {
+                \App\Jobs\ProcessAffiliateCommission::dispatch($order->id);
+            }
+
             DB::commit();
 
             return ServiceResult::success($order, 'Mua hàng thành công');

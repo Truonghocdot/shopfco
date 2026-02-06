@@ -40,6 +40,7 @@ class AuthService
                 'password' => Hash::make($data['password']),
                 'status' => 1,
                 'role' => UserRole::CLIENT->value,
+                'referrer_id' => $data['referrer_id'] ?? null,
             ]);
 
             Auth::login($user);

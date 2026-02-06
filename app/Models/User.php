@@ -23,7 +23,8 @@ class User extends Authenticatable implements FilamentUser
         'role',
         'status',
         'lucky_wheel_spins',
-        'password2'
+        'password2',
+        'referrer_id'
     ];
 
     protected $hidden = [
@@ -71,6 +72,23 @@ class User extends Authenticatable implements FilamentUser
     {
         return $this->hasMany(LuckyWheelHistory::class);
     }
+
+    // Affiliate relationships
+    public function referrer(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class, 'referrer_id');
+    }
+
+    public function referrals(): HasMany
+    {
+        return $this->hasMany(User::class, 'referrer_id');
+    }
+
+    public function commissionsEarned(): HasMany
+    {
+        return $this->hasMany(AffiliateCommission::class, 'referrer_id');
+    }
+
 
     // Helper methods
     public function isAdmin(): bool
