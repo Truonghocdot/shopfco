@@ -13,11 +13,12 @@
 <link rel="canonical" href="{{ url('/policy') }}">
 @endpush
 
+
 @push('schema')
 <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "Organization",
+        "@@context": "https://schema.org",
+        "@@type": "Organization",
         "name": "VanhFCO - AccFCO",
         "alternateName": ["VanhFCO", "AccFCO"],
         "url": "{{ url('/') }}",
@@ -31,37 +32,37 @@
 
 <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
+        "@@context": "https://schema.org",
+        "@@type": "FAQPage",
         "mainEntity": [{
-                "@type": "Question",
+                "@@type": "Question",
                 "name": "Chính sách hoa hồng giới thiệu tại VanhFCO như thế nào?",
                 "acceptedAnswer": {
-                    "@type": "Answer",
+                    "@@type": "Answer",
                     "text": "Khi giới thiệu bạn bè mua Acc chứa FC, Acc Mở thẻ hoặc Acc đội hình tại VanhFCO, bạn sẽ nhận được 5% hoa hồng từ mỗi đơn hàng thành công."
                 }
             },
             {
-                "@type": "Question",
+                "@@type": "Question",
                 "name": "VanhFCO có bán những loại acc gì?",
                 "acceptedAnswer": {
-                    "@type": "Answer",
+                    "@@type": "Answer",
                     "text": "VanhFCO chuyên cung cấp Acc chứa FC, Acc Mở thẻ, Acc chứa BP trắng, Acc đội hình và nhiều loại tài khoản FC Online khác."
                 }
             },
             {
-                "@type": "Question",
+                "@@type": "Question",
                 "name": "Chính sách đổi trả AccFCO ra sao?",
                 "acceptedAnswer": {
-                    "@type": "Answer",
+                    "@@type": "Answer",
                     "text": "AccFCO cam kết đổi trả trong 24h nếu tài khoản không đúng mô tả. Áp dụng cho tất cả Acc chứa FC, Acc Mở thẻ và Acc đội hình."
                 }
             },
             {
-                "@type": "Question",
+                "@@type": "Question",
                 "name": "Làm thế nào để mua Acc chứa FC tại VanhFCO?",
                 "acceptedAnswer": {
-                    "@type": "Answer",
+                    "@@type": "Answer",
                     "text": "Đăng ký tài khoản tại VanhFCO, nạp tiền vào ví, chọn Acc chứa FC hoặc Acc Mở thẻ phù hợp, sau đó thanh toán. Tài khoản sẽ được giao ngay lập tức."
                 }
             }
@@ -71,16 +72,16 @@
 
 <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
+        "@@context": "https://schema.org",
+        "@@type": "BreadcrumbList",
         "itemListElement": [{
-                "@type": "ListItem",
+                "@@type": "ListItem",
                 "position": 1,
                 "name": "Trang chủ",
                 "item": "{{ url('/') }}"
             },
             {
-                "@type": "ListItem",
+                "@@type": "ListItem",
                 "position": 2,
                 "name": "Chính sách",
                 "item": "{{ url('/policy') }}"

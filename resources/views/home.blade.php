@@ -287,26 +287,26 @@
 @push('schema')
 @php
 $websiteSchema = [
-"@context" => "https://schema.org",
-"@type" => "WebSite",
+"@@context" => "https://schema.org",
+"@@type" => "WebSite",
 "name" => "Shop Acc FC Online 24/7 - Giao dịch trung gian - VanhFCO",
 "url" => route('home'),
 "potentialAction" => [
-"@type" => "SearchAction",
+"@@type" => "SearchAction",
 "target" => route('home') . "?q={search_term_string}",
 "query-input" => "required name=search_term_string"
 ]
 ];
 
 $orgSchema = [
-"@context" => "https://schema.org",
-"@type" => "Organization",
+"@@context" => "https://schema.org",
+"@@type" => "Organization",
 "name" => "VanhFCO",
 "url" => route('home'),
 "logo" => asset('images/logo.png'),
 "contactPoint" => [
-"@type" => "ContactPoint",
-"telephone" => "+84342995001",
+"@@type" => "ContactPoint",
+"telephone" => "0986526036",
 "contactType" => "customer service"
 ],
 "sameAs" => [

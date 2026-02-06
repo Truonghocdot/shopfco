@@ -43,15 +43,15 @@
     <!-- Global Organization Schema -->
     <script type="application/ld+json">
         {
-            "@context": "https://schema.org",
-            "@type": "Organization",
+            "@@context": "https://schema.org",
+            "@@type": "Organization",
             "name": "VanhFCO - AccFCO",
             "alternateName": ["VanhFCO", "AccFCO"],
             "url": "{{ url('/') }}",
             "logo": "{{ asset('images/logo.png') }}",
             "description": "Shop bán Acc chứa FC, Acc Mở thẻ, Acc đội hình FC Online uy tín nhất Việt Nam",
             "contactPoint": {
-                "@type": "ContactPoint",
+                "@@type": "ContactPoint",
                 "telephone": "+84986526036",
                 "contactType": "Customer Service",
                 "availableLanguage": "Vietnamese"
@@ -102,7 +102,6 @@
     @include('components.popup-modal')
 
     @livewireScripts
-    @stack('scripts')
 </body>
 
 </html>
