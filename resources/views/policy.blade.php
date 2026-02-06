@@ -146,7 +146,7 @@
                         <h3 class="subsection-title">1.2 Cách thức hoạt động</h3>
                         <ol class="list-decimal list-inside space-y-2 text-slate-300 leading-relaxed">
                             <li>Đăng ký tài khoản tại <strong class="text-primary">AccFCO</strong></li>
-                            <li>Truy cập <a href="{{ route('profile') }}" class="text-primary hover:underline">trang cá nhân</a> để lấy link giới thiệu riêng</li>
+                            <li>Truy cập <a href="{{ route('user.profile') }}" class="text-primary hover:underline">trang cá nhân</a> để lấy link giới thiệu riêng</li>
                             <li>Chia sẻ link với bạn bè, người thân</li>
                             <li>Khi họ đăng ký và mua <strong class="text-primary">Acc chứa FC</strong>, <strong class="text-primary">Acc Mở thẻ</strong> hoặc <strong class="text-primary">Acc đội hình</strong>, bạn nhận 5% hoa hồng</li>
                             <li>Hoa hồng tự động cộng vào ví, có thể sử dụng ngay để mua <strong class="text-primary">Acc chứa BP trắng</strong> hoặc các sản phẩm khác</li>
