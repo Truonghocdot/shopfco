@@ -106,3 +106,44 @@ h4,
 ::-webkit-scrollbar-thumb:hover {
     background: #a0a0a0;
 }
+
+/* Techno/Futuristic Animations */
+@keyframes scan-vertical {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes pulse-glow {
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(0, 255, 0, 0.6);
+    }
+}
+
+.animate-scan-vertical {
+    animation: scan-vertical 3s linear infinite;
+}
+
+.animate-shimmer {
+    animation: shimmer 3s linear infinite;
+}
+
+.animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+}

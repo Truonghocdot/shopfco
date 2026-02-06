@@ -13,9 +13,19 @@ class ProductController extends Controller
         $query = Product::where('status', Product::STATUS_UNSOLD)
             ->with('category');
 
-        // Filter by category
+        // Filter by category (support parent-child hierarchy)
         if ($request->filled('category')) {
-            $query->where('category_id', $request->category);
+            $category = Category::find($request->category);
+
+            if ($category) {
+                // If it's a parent category, include all child categories
+                if ($category->isParent() && $category->hasChildren()) {
+                    $categoryIds = $category->children()->pluck('id')->push($category->id);
+                    $query->whereIn('category_id', $categoryIds);
+                } else {
+                    $query->where('category_id', $request->category);
+                }
+            }
         }
 
         // Filter by price range
@@ -49,14 +59,21 @@ class ProductController extends Controller
                 $query->orderByRaw('COALESCE(sale_price, sell_price) DESC');
                 break;
             case 'discount':
-                $query->whereNotNull('sale_price')->latest();
+                $query->whereNotNull('sale_price')
+                    ->where('sell_price', '>', 0)
+                    ->orderByRaw('((sell_price - sale_price) / sell_price) DESC');
                 break;
             default:
                 $query->latest();
         }
 
         $products = $query->paginate(12);
-        $categories = Category::all();
+
+        // Get categories with parent-child relationships
+        $categories = Category::whereNull('parent_id')
+            ->with('children')
+            ->orderBy('title')
+            ->get();
 
         return view('products.index', compact('products', 'categories'));
     }

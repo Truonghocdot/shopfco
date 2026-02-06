@@ -11,4 +11,5 @@ enum SettingName: string
     case ZALO_LINK = 'zalo_link';
     case FACEBOOK_LINK = 'facebook_link';
     case BANKING = 'banking';
+    case POPUP_CONTENT = 'popup_content';
 }

@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 // Trang chủ
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+// chính sách
+Route::get('/chinh-sach', function () {
+    return view('policy');
+})->name('policy');
+
 // Authentication Routes
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');

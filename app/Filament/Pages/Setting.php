@@ -5,6 +5,7 @@ namespace App\Filament\Pages;
 use App\Constants\SettingName;
 use App\Models\Setting as ModelsSetting;
 use BackedEnum;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
@@ -79,6 +80,10 @@ class Setting extends Page implements HasForms
                                     ->label('Ngân hàng')
                                     ->placeholder('Nhập tên ngân hàng')
                                     ->required(),
+                                RichEditor::make(SettingName::POPUP_CONTENT->value)
+                                    ->label('Nội dung popup')
+                                    ->placeholder('Nhập nội dung popup')
+                                    ->columnSpanFull(),
                             ])
                             ->columns(2)
                     ])

@@ -23,6 +23,9 @@ class CategoriesTable
                     ->label('Hình ảnh')
                     ->disk('public')
                     ->searchable(),
+                TextColumn::make('parent.title')
+                    ->label('Danh mục cha')
+                    ->searchable(),
             ])
             ->recordActions([
                 EditAction::make(),

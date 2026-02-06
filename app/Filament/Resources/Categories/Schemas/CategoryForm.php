@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Categories\Schemas;
 use App\Filament\Traits\HandlesWebpUploads;
 use App\Models\Category;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
@@ -24,6 +25,7 @@ class CategoryForm
                         'max_length' => 'Tiêu đề không được vượt quá 255 ký tự',
                     ])
                     ->live()
+                    ->debounce(1500)
                     ->afterStateUpdated(function ($state, callable $set) {
                         $slug = str($state)->slug();
                         $slugOriginal = $slug;
@@ -33,6 +35,8 @@ class CategoryForm
                             $flag++;
                         }
                         $set('slug', $slug);
+                        $set('meta_title', $state);
+                        $set('meta_description', $state);
                     }),
                 TextInput::make('slug')
                     ->label('Đường dẫn')
@@ -53,6 +57,10 @@ class CategoryForm
                         }
                         $set('slug', $slug);
                     }),
+                Select::make('parent_id')
+                    ->label('Danh mục cha')
+                    ->options(Category::all()->pluck('title', 'id'))
+                    ->nullable(),
                 Textarea::make('description')
                     ->label('Mô tả')
                     ->required()
@@ -75,11 +83,19 @@ class CategoryForm
                 TextInput::make('meta_title')
                     ->label('Tiêu đề SEO')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->validationMessages([
+                        'required' => 'Tiêu đề SEO không được để trống',
+                        'max_length' => 'Tiêu đề SEO không được vượt quá 255 ký tự',
+                    ]),
                 TextInput::make('meta_description')
                     ->label('Mô tả SEO')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->validationMessages([
+                        'required' => 'Mô tả SEO không được để trống',
+                        'max_length' => 'Mô tả SEO không được vượt quá 255 ký tự',
+                    ]),
             ]);
     }
 }

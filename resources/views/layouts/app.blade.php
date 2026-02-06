@@ -44,6 +44,9 @@
     <!-- Header -->
     @include('components.header')
 
+    <!-- Order Marquee Banner -->
+    @include('components.order-marquee')
+
     <!-- Main Content -->
     <main>
         {{ $slot ?? '' }}
@@ -67,6 +70,10 @@
     </div>
 
     @livewire('auth.set-transaction-pin')
+
+    <!-- Popup Modal -->
+    @include('components.popup-modal')
+
     @livewireScripts
     @stack('scripts')
 </body>

@@ -44,6 +44,7 @@ class ProductForm
                         'max_length' => 'Trường này không được vượt quá :max ký tự',
                     ])
                     ->live()
+                    ->debounce(2500)
                     ->afterStateUpdated(function ($state, callable $set) {
                         $slug = str($state)->slug();
                         $slugOriginal = $slug;

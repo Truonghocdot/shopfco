@@ -17,21 +17,23 @@ class HomeController extends Controller
             return Banner::orderBy('sort', 'asc')->get();
         });
 
-        // Get 4 featured categories
-        $categories = Category::latest()->take(4)->get();
+        // Get 4 featured parent categories
+        $categories = Category::whereNull('parent_id')
+            ->with('children')
+            ->latest()
+            ->take(4)
+            ->get();
 
         // Get 8 flash sale products (highest discount)
         $flashSaleProducts = Product::where('status', Product::STATUS_UNSOLD)
             ->whereNotNull('sale_price')
             ->whereNotNull('sell_price')
             ->with('category')
-            ->latest()
-            ->take(8)
             ->get()
             ->sortByDesc(function ($product) {
                 return $product->getDiscountPercent();
             })
-            ->take(8);
+            ->take(16);
 
         // Get 4 latest news
         $latestNews = News::where('published', 1)
