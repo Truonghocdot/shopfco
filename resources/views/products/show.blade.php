@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Chi tiết tài khoản - VanhFCO')
-@section('description', 'Xem chi tiết tài khoản FC Online với đầy đủ thông tin và hình ảnh.')
+@section('title', $product->title . ' - VanhFCO')
+@section('description', $product->description)
 
 @push('styles')
 <style>

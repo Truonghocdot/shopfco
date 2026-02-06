@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Tài khoản người dùng - FC Online Shop')
-@section('description', 'Quản lý thông tin tài khoản và lịch sử giao dịch của bạn.')
+@section('title', 'Tài khoản - VanhFCO | Quản lý & Hoa hồng giới thiệu')
+@section('description', 'Quản lý tài khoản VanhFCO, xem lịch sử mua Acc chứa FC, Acc Mở thẻ, theo dõi hoa hồng giới thiệu và số dư ví.')
 
 @push('styles')
 <style>
@@ -14,6 +14,12 @@
 
 @section('content')
 <div class="max-w-7xl mx-auto px-4 py-8" x-data="{ activeTab: 'info' }">
+    <!-- Breadcrumb -->
+    <x-breadcrumb :items="[
+        ['name' => 'Trang chủ', 'url' => route('home')],
+        ['name' => 'Tài khoản', 'url' => route('profile')]
+    ]" />
+
     @if(session('success'))
     <div class="mb-4 p-4 bg-primary/20 border-2 border-primary/50 text-primary rounded-lg flex items-center gap-2 shadow-[0_0_15px_rgba(0,255,0,0.3)]">
         <span class="material-icons">check_circle</span>

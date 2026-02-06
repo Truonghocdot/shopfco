@@ -6,25 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', 'VanhFCO.com - Shop Acc FC Online Uy Tín Số 1')</title>
+    <title>@yield('title', 'AccFCO - VanhFCO | Mua Acc chứa FC, Acc Mở thẻ, Acc đội hình Uy Tín')</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="@yield('description', 'Shop bán tài khoản FC Online uy tín, giá rẻ nhất Việt Nam. Giao dịch tự động 24/7.')">
-    <meta name="keywords" content="@yield('keywords', 'acc fc online, mua acc fo4, shop acc fco, tài khoản fc online')">
+    <meta name="description" content="@yield('description', 'VanhFCO - AccFCO chuyên bán Acc chứa FC, Acc Mở thẻ, Acc đội hình, Acc chứa BP trắng FC Online uy tín. Giá rẻ, giao dịch tự động 24/7, hoa hồng 5% cho người giới thiệu.')">
+    <meta name="keywords" content="@yield('keywords', 'AccFCO, VanhFCO, Acc chứa FC, Acc Mở thẻ, Acc đội hình, Acc chứa BP trắng, mua acc FC Online, shop acc FCO')">
     <link rel="canonical" href="{{ url()->current() }}">
     <meta name="robots" content="index, follow">
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
     <!-- Open Graph & Twitter Card -->
-    <meta property="og:title" content="@yield('title', 'VanhFCO.com - Shop Acc FC Online Uy Tín Số 1')">
-    <meta property="og:description" content="@yield('description', 'Shop bán    tài khoản FC Online uy tín, giá rẻ nhất Việt Nam. Giao dịch tự động 24/7.')">
+    <meta property="og:title" content="@yield('title', 'AccFCO - VanhFCO | Mua Acc chứa FC, Acc Mở thẻ, Acc đội hình Uy Tín')">
+    <meta property="og:description" content="@yield('description', 'VanhFCO - AccFCO chuyên bán Acc chứa FC, Acc Mở thẻ, Acc đội hình, Acc chứa BP trắng FC Online uy tín. Giá rẻ, giao dịch tự động 24/7, hoa hồng 5% cho người giới thiệu.')">
     <meta property="og:type" content="@yield('og:type', 'website')">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:image" content="@yield('og:image', asset('images/og-image.png'))">
-    <meta property="og:site_name" content="VanhFCO.com">
+    <meta property="og:site_name" content="VanhFCO - AccFCO">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="@yield('title', 'VanhFCO.com - Shop Acc FC Online Uy Tín Số 1')">
-    <meta name="twitter:description" content="@yield('description', 'Shop bán tài khoản FC Online uy tín, giá rẻ nhất Việt Nam. Giao dịch tự động 24/7.')">
+    <meta name="twitter:title" content="@yield('title', 'AccFCO - VanhFCO | Mua Acc chứa FC, Acc Mở thẻ, Acc đội hình Uy Tín')">
+    <meta name="twitter:description" content="@yield('description', 'VanhFCO - AccFCO chuyên bán Acc chứa FC, Acc Mở thẻ, Acc đội hình, Acc chứa BP trắng FC Online uy tín. Giá rẻ, giao dịch tự động 24/7, hoa hồng 5% cho người giới thiệu.')">
     <meta name="twitter:image" content="@yield('og:image', asset('images/og-image.png'))">
 
     <!-- Fonts -->
@@ -36,6 +36,33 @@
 
     @livewireStyles
     @stack('styles')
+
+    <!-- Additional Meta Tags -->
+    @stack('meta')
+
+    <!-- Global Organization Schema -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "VanhFCO - AccFCO",
+            "alternateName": ["VanhFCO", "AccFCO"],
+            "url": "{{ url('/') }}",
+            "logo": "{{ asset('images/logo.png') }}",
+            "description": "Shop bán Acc chứa FC, Acc Mở thẻ, Acc đội hình FC Online uy tín nhất Việt Nam",
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+84986526036",
+                "contactType": "Customer Service",
+                "availableLanguage": "Vietnamese"
+            },
+            "sameAs": [
+                "https://www.facebook.com/le.vietanh.939173",
+                "https://zalo.me/g/wilgna867"
+            ]
+        }
+    </script>
+
     @stack('schema')
 </head>
 

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Nạp Tiền - Shop Acc FC Online')
-@section('description', 'Nạp tiền vào tài khoản VanhFCO.com nhanh chóng, an toàn qua chuyển khoản ngân hàng.')
+@section('title', 'Nạp Tiền - VanhFCO | AccFCO - Nhanh Chóng & An Toàn')
+@section('description', 'Nạp tiền vào tài khoản VanhFCO để mua Acc chứa FC, Acc Mở thẻ, Acc đội hình. Chuyển khoản ngân hàng tự động, nhanh chóng, an toàn.')
 
 @push('styles')
 <style>
@@ -13,7 +13,12 @@
 @endpush
 
 @section('content')
-<div class="max-w-7xl mx-auto px-4 py-8">
+<div class="container mx-auto px-4 py-8">
+    <!-- Breadcrumb -->
+    <x-breadcrumb :items="[
+        ['name' => 'Trang chủ', 'url' => route('home')],
+        ['name' => 'Nạp tiền', 'url' => route('deposit')]
+    ]" />
     <!-- Page Header -->
     <div class="mb-10 text-center relative">
         <div class="absolute inset-0 opacity-10 pointer-events-none">

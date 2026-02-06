@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Tin tức - VanhFCO')
-@section('description', 'Cập nhật tin tức mới nhất về FC Online và các sự kiện hot.')
+@section('title', 'Tin Tức FC Online - VanhFCO | AccFCO - Sự Kiện & Cập Nhật')
+@section('description', 'Cập nhật tin tức mới nhất về FC Online, sự kiện hot, hướng dẫn mua Acc chứa FC, Acc Mở thẻ tại VanhFCO.')
 
 @push('styles')
 <style>
@@ -14,6 +14,12 @@
 
 @section('content')
 <div class="container mx-auto px-4 py-8">
+    <!-- Breadcrumb -->
+    <x-breadcrumb :items="[
+        ['name' => 'Trang chủ', 'url' => route('home')],
+        ['name' => 'Tin tức', 'url' => route('news.index')]
+    ]" />
+
     <h1 class="text-4xl font-black uppercase mb-8 text-primary flex items-center gap-3 drop-shadow-[0_0_20px_rgba(0,255,0,0.8)] tracking-wider">
         <span class="material-icons text-4xl">newspaper</span>
         Tin tức & Sự kiện

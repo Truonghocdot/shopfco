@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Danh sách sản phẩm - VanhFCO')
-@section('description', 'Tìm kiếm và mua tài khoản FC Online uy tín với giá tốt nhất.')
+@section('title', 'Mua Acc FC Online - AccFCO | VanhFCO - Acc chứa FC, Acc Mở thẻ')
+@section('description', 'Mua Acc chứa FC, Acc Mở thẻ, Acc đội hình, Acc chứa BP trắng tại VanhFCO. Giá rẻ, uy tín, giao dịch tự động 24/7.')
 
 @push('styles')
 <style>
@@ -14,7 +14,15 @@
 
 @section('content')
 <div class="container mx-auto px-4 py-8">
-    <h1 class="text-4xl font-black text-primary uppercase mb-8 drop-shadow-[0_0_20px_rgba(0,255,0,0.8)] tracking-wider">Tất cả sản phẩm</h1>
+    <!-- Breadcrumb -->
+    <x-breadcrumb :items="[
+        ['name' => 'Trang chủ', 'url' => route('home')],
+        ['name' => 'Sản phẩm', 'url' => route('products.index')]
+    ]" />
+
+    <h1 class="text-4xl font-black text-primary uppercase mb-8 drop-shadow-[0_0_20px_rgba(0,255,0,0.8)] tracking-wider">
+        Mua Acc FC Online - AccFCO
+    </h1>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
         <!-- Filter Sidebar - Techno Style -->
