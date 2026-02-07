@@ -61,7 +61,7 @@
                         <div class="space-y-6">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <!-- Bank Name -->
-                                <div>
+                                <div class="md:mb-0 mb-4">
                                     <p class="text-slate-500 text-xs uppercase font-bold mb-2 tracking-widest">Ngân hàng</p>
                                     <div class="bg-black/40 border-2 border-slate-700 rounded-lg px-4 py-3 h-full flex items-center">
                                         <p class="text-xl font-black text-primary italic drop-shadow-[0_0_8px_rgba(0,255,0,0.8)]">{{ $banking }}</p>
@@ -69,7 +69,7 @@
                                 </div>
 
                                 <!-- Account Holder -->
-                                <div>
+                                <div class="md:mb-0 mb-4">
                                     <p class="text-slate-500 text-xs uppercase font-bold mb-2 tracking-widest">Chủ tài khoản</p>
                                     <div class="bg-black/40 border-2 border-slate-700 rounded-lg px-4 py-3 h-full flex items-center">
                                         <p class="text-lg font-bold text-white uppercase">{{ $bankName }}</p>
@@ -78,7 +78,7 @@
                             </div>
 
                             <!-- Account Number -->
-                            <div>
+                            <div class="md:mb-0 mb-2">
                                 <p class="text-slate-500 text-xs uppercase font-bold mb-2 tracking-widest">Số tài khoản</p>
                                 <div class="flex items-center gap-2">
                                     <div class="bg-black/60 border-2 border-primary/50 px-4 py-3 rounded-lg flex-1 shadow-[0_0_15px_rgba(0,255,0,0.2)]">
