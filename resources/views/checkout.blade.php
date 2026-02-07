@@ -123,7 +123,7 @@
     </div>
 </div>
 
-@push('scripts')
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const applyBtn = document.getElementById('apply_coupon');
@@ -200,5 +200,4 @@
         });
     });
 </script>
-@endpush
 @endsection

@@ -167,7 +167,6 @@
     </div>
 </header>
 
-@push('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -201,7 +200,6 @@
         }
     });
 </script>
-@endpush
 
 <style>
     /* FIXED: Shimmer animation now stays within bounds */

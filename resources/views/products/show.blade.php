@@ -174,7 +174,6 @@
 
 @endsection
 
-@push('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const slider = document.getElementById('carousel-slides');
@@ -260,4 +259,3 @@
         }
     });
 </script>
-@endpush

@@ -323,7 +323,6 @@ $orgSchema = [
 </script>
 @endpush
 
-@push('scripts')
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -445,4 +444,3 @@ $orgSchema = [
         })();
     });
 </script>
-@endpush
