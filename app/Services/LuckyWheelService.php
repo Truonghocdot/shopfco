@@ -11,10 +11,10 @@ use Illuminate\Support\Facades\Log;
 class LuckyWheelService
 {
     protected array $prizes = [
-        10000 => 35,   // 35%
+        10000 => 41,   // 41%
         20000 => 30,   // 30%
-        50000 => 10,   // 10%
-        100000 => 5,   // 5%
+        50000 => 7,   // 7%
+        100000 => 2,   // 2%
         200000 => 0,   // 0%    
         0 => 20,       // 20% (No prize)
     ];
