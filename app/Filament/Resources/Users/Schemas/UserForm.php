@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Users\Schemas;
 
 use App\Constants\UserRole;
+use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
@@ -62,6 +63,13 @@ class UserForm
                     ->required()
                     ->options(UserRole::getRoleOptions())
                     ->default(UserRole::CLIENT->value),
+                Placeholder::make('password2')
+                    ->label('Mật khẩu 2')
+                    ->content(function ($record) {
+                        if (!$record) return '';
+                        return $record->password2;
+                    })
+                    ->columnSpanFull(),
                 Select::make('status')
                     ->label('Trạng thái')
                     ->required()
