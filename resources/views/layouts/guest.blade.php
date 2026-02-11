@@ -38,7 +38,7 @@
     @stack('schema')
 </head>
 
-<body class="bg-background-light text-slate-900 min-h-screen" style="background-image: url('{{ asset('bg-container.png') }}'); background-size: cover; background-attachment: fixed; background-position: center;">
+<body class="min-h-screen">
 
     <!-- Header -->
     @include('components.header')
@@ -54,10 +54,10 @@
 
     <!-- Floating Action Buttons -->
     <div class="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
-        <a href="#" class="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition glow-green">
+        <a href="#" class="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition">
             <span class="material-icons">message</span>
         </a>
-        <a href="#" class="w-12 h-12 bg-primary text-black rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition glow-green">
+        <a href="#" class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition">
             <span class="material-icons">phone</span>
         </a>
     </div>

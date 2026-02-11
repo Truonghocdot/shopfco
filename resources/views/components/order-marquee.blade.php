@@ -6,38 +6,28 @@ $recentOrdersResult = $viewDataService->getRecentOrdersForMarquee(20);
 $recentOrders = $recentOrdersResult->isSuccess() ? $recentOrdersResult->getData() : collect();
 @endphp
 
-<div class="bg-gradient-to-r from-black via-[#001a0f] to-black border-y-2 border-primary/30 py-3 overflow-hidden relative">
-    <!-- Grid Pattern Background -->
-    <div class="absolute inset-0 opacity-5 pointer-events-none">
-        <div class="absolute inset-0" style="background-image: repeating-linear-gradient(90deg, rgba(0, 255, 0, 0.1) 0px, transparent 1px, transparent 20px), repeating-linear-gradient(0deg, rgba(0, 255, 0, 0.1) 0px, transparent 1px, transparent 20px);"></div>
-    </div>
-
-    <!-- Scan Line Animation -->
-    <div class="absolute inset-0 opacity-20 pointer-events-none overflow-hidden">
-        <div class="h-full w-[200%] bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-shimmer"></div>
-    </div>
-
-    <div class="container mx-auto px-4 flex items-center gap-4 relative z-10">
+<div class="border-y border-gray-200 py-3 overflow-hidden bg-white">
+    <div class="container mx-auto px-4 flex items-center gap-4">
         <!-- Icon & Label -->
         <div class="flex items-center gap-2 shrink-0">
-            <div class="bg-primary/20 border border-primary/50 rounded-lg p-2 shadow-[0_0_10px_rgba(0,255,0,0.3)]">
-                <span class="material-icons text-primary text-xl drop-shadow-[0_0_8px_rgba(0,255,0,0.8)]">shopping_cart</span>
+            <div class="bg-primary/10 border border-primary/20 rounded-lg p-2">
+                <span class="material-icons text-primary text-xl">shopping_cart</span>
             </div>
-            <span class="text-primary font-black text-sm uppercase tracking-wider drop-shadow-[0_0_8px_rgba(0,255,0,0.8)]">Mua gần đây:</span>
+            <span class="text-primary font-black text-sm uppercase tracking-wider">Mua gần đây:</span>
         </div>
 
         <!-- Marquee Content -->
         <div class="flex-1 overflow-hidden">
-            <div class="marquee-content flex gap-8 items-center">
+            <div class="marquee-content flex gap-6 items-center">
                 @if($recentOrders->count() > 0)
                 @foreach($recentOrders as $order)
-                <div class="flex items-center gap-3 shrink-0 bg-black/40 border border-slate-700 rounded-lg px-4 py-2 shadow-[0_0_10px_rgba(0,255,0,0.1)] hover:border-primary/50 transition-colors">
+                <div class="flex items-center gap-3 shrink-0 bg-white border border-gray-200 rounded-lg px-4 py-2 shadow-sm">
                     <span class="material-icons text-primary text-sm">person</span>
-                    <span class="text-white font-semibold text-sm">
+                    <span class="text-gray-800 font-semibold text-sm">
                         {{ substr($order->user->name ?? 'User', 0, 3) }}***
                     </span>
-                    <span class="text-slate-500">→</span>
-                    <span class="text-slate-300 text-sm">
+                    <span class="text-gray-400">→</span>
+                    <span class="text-gray-600 text-sm">
                         {{ Str::limit($order->product->title ?? 'Sản phẩm', 30) }}
                     </span>
                     <span class="text-primary text-xs font-bold">
@@ -48,13 +38,13 @@ $recentOrders = $recentOrdersResult->isSuccess() ? $recentOrdersResult->getData(
 
                 <!-- Duplicate for seamless loop -->
                 @foreach($recentOrders as $order)
-                <div class="flex items-center gap-3 shrink-0 bg-black/40 border border-slate-700 rounded-lg px-4 py-2 shadow-[0_0_10px_rgba(0,255,0,0.1)] hover:border-primary/50 transition-colors">
+                <div class="flex items-center gap-3 shrink-0 bg-white border border-gray-200 rounded-lg px-4 py-2 shadow-sm">
                     <span class="material-icons text-primary text-sm">person</span>
-                    <span class="text-white font-semibold text-sm">
+                    <span class="text-gray-800 font-semibold text-sm">
                         {{ substr($order->user->name ?? 'User', 0, 3) }}***
                     </span>
-                    <span class="text-slate-500">→</span>
-                    <span class="text-slate-300 text-sm">
+                    <span class="text-gray-400">→</span>
+                    <span class="text-gray-600 text-sm">
                         {{ Str::limit($order->product->title ?? 'Sản phẩm', 30) }}
                     </span>
                     <span class="text-primary text-xs font-bold">
@@ -63,7 +53,7 @@ $recentOrders = $recentOrdersResult->isSuccess() ? $recentOrdersResult->getData(
                 </div>
                 @endforeach
                 @else
-                <div class="text-slate-500 text-sm">Chưa có đơn hàng nào...</div>
+                <div class="text-gray-400 text-sm">Chưa có đơn hàng nào...</div>
                 @endif
             </div>
         </div>

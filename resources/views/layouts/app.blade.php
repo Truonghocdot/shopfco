@@ -66,42 +66,74 @@
     @stack('schema')
 </head>
 
-<body class="bg-background-light text-slate-900 min-h-screen" style="background-image: url('{{ asset('bg-container.png') }}'); background-size: cover; background-attachment: fixed; background-position: center;">
-
-    <!-- Header -->
-    @include('components.header')
-
-    <!-- Order Marquee Banner -->
-    @include('components.order-marquee')
-
-    <!-- Main Content -->
-    <main>
-        {{ $slot ?? '' }}
-        @yield('content')
-    </main>
-
-    <!-- Footer -->
-    @include('components.footer')
-
-    <!-- Floating Action Buttons -->
-    <div class="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
-        <a href="https://www.facebook.com/le.vietanh.939173" class="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition glow-green">
-            <span class="material-icons">message</span>
-        </a>
-        <a href="tel:0327182537" class="w-12 h-12 bg-primary text-black rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition glow-green">
-            <span class="material-icons">phone</span>
-        </a>
-        <a href="https://zalo.me/g/wilgna867" class="w-12 h-12 bg-primary text-black rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition glow-green">
-            <img src="{{ asset('images/zalo.png') }}" alt="Zalo" class="w-12 h-12 rounded-full">
-        </a>
+<body class="min-h-screen relative">
+    <!-- Tet Holiday Background -->
+    <div id="tet-bg" class="fixed inset-0 z-0 pointer-events-none transition-all duration-1000 ease-in-out"
+        style="background-size: cover; background-position: center; background-attachment: fixed;">
     </div>
 
-    @livewire('auth.set-transaction-pin')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = [
+                "{{ asset('bg-tet-1.png') }}",
+                "{{ asset('bg-tet-2.png') }}",
+                "{{ asset('bg-tet-3.png') }}"
+            ];
 
-    <!-- Popup Modal -->
-    @include('components.popup-modal')
+            images.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
 
-    @livewireScripts
+            const bgElement = document.getElementById('tet-bg');
+            let currentIndex = 0;
+            bgElement.style.backgroundImage = `url('${images[0]}')`;
+
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % images.length;
+                bgElement.style.backgroundImage = `url('${images[currentIndex]}')`;
+            }, 5000);
+        });
+    </script>
+
+    <!-- Content Wrapper -->
+    <div class="relative z-10">
+
+        <!-- Header -->
+        @include('components.header')
+
+        <!-- Order Marquee Banner -->
+        @include('components.order-marquee')
+
+        <!-- Main Content -->
+        <main>
+            {{ $slot ?? '' }}
+            @yield('content')
+        </main>
+
+        <!-- Footer -->
+        @include('components.footer')
+
+        <!-- Floating Action Buttons -->
+        <div class="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
+            <a href="https://www.facebook.com/le.vietanh.939173" class="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center hover:scale-110 transition shadow-lg">
+                <span class="material-icons">message</span>
+            </a>
+            <a href="tel:0327182537" class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center hover:scale-110 transition shadow-lg">
+                <span class="material-icons">phone</span>
+            </a>
+            <a href="https://zalo.me/g/wilgna867" class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center hover:scale-110 transition shadow-lg">
+                <img src="{{ asset('images/zalo.png') }}" alt="Zalo" class="w-12 h-12 rounded-full">
+            </a>
+        </div>
+
+        @livewire('auth.set-transaction-pin')
+
+        <!-- Popup Modal -->
+        @include('components.popup-modal')
+
+        @livewireScripts
+    </div> <!-- End Content Wrapper -->
 </body>
 
 </html>

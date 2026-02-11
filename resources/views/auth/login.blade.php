@@ -20,7 +20,7 @@
             @csrf
 
             @if ($errors->any())
-            <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-md">
+            <div class="border-l-4 border-red-500 p-4 rounded-md">
                 <div class="flex">
                     <div class="flex-shrink-0">
                         <span class="material-icons text-red-500 text-sm">error</span>
