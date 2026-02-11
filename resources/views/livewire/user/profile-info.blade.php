@@ -120,6 +120,80 @@
             </div>
         </div>
 
+        <!-- Change Password2 Section -->
+        <div class="border-t border-gray-100 pt-6">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-gray-800 font-black flex items-center gap-2">
+                    <span class="material-icons text-primary">enhanced_encryption</span>
+                    Đổi mật khẩu cấp 2
+                </h3>
+                <button type="button" wire:click="togglePassword2Form"
+                    class="text-primary hover:text-primary-dark text-sm font-bold uppercase tracking-wide flex items-center gap-1 transition-colors">
+                    <span class="material-icons text-sm">{{ $showPassword2Form ? 'expand_less' : 'expand_more' }}</span>
+                    {{ $showPassword2Form ? 'Ẩn' : 'Mở' }}
+                </button>
+            </div>
+
+            @if($showPassword2Form)
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                @if(!empty(auth()->user()->password2) && auth()->user()->hasSecurityQuestion())
+                <div class="space-y-2 md:col-span-2">
+                    <label class="text-gray-600 text-sm font-bold uppercase tracking-wide">
+                        Câu hỏi bảo mật: <span class="text-primary">{{ $this->securityQuestionText }}</span>
+                    </label>
+                    <div class="relative">
+                        <span class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-[20px]">quiz</span>
+                        <input wire:model="security_answer" type="text"
+                            class="w-full pl-10 pr-4 py-2.5 rounded-lg bg-white border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-medium text-gray-800 placeholder:text-gray-400"
+                            placeholder="Nhập câu trả lời bảo mật...">
+                    </div>
+                    @error('security_answer') <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span> @enderror
+                </div>
+                @endif
+
+                <div class="space-y-2" x-data="{ show: false }">
+                    <label class="text-gray-600 text-sm font-bold uppercase tracking-wide">Mật khẩu cấp 2 mới (6 số)</label>
+                    <div class="relative w-full">
+                        <input wire:model="new_password2" :type="show ? 'text' : 'password'"
+                            class="w-full pl-4 pr-10 py-2.5 rounded-lg bg-white border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-gray-800"
+                            placeholder="******" maxlength="6" inputmode="numeric">
+                        <button type="button" @click="show = !show" class="absolute inset-y-0 right-0 px-3 flex items-center text-gray-400 hover:text-primary transition-colors z-10">
+                            <span class="material-icons text-[20px]" x-text="show ? 'visibility_off' : 'visibility'"></span>
+                        </button>
+                    </div>
+                    @error('new_password2') <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span> @enderror
+                </div>
+
+                <div class="space-y-2" x-data="{ show: false }">
+                    <label class="text-gray-600 text-sm font-bold uppercase tracking-wide">Xác nhận mật khẩu cấp 2 mới</label>
+                    <div class="relative w-full">
+                        <input wire:model="new_password2_confirmation" :type="show ? 'text' : 'password'"
+                            class="w-full pl-4 pr-10 py-2.5 rounded-lg bg-white border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-gray-800"
+                            placeholder="******" maxlength="6" inputmode="numeric">
+                        <button type="button" @click="show = !show" class="absolute inset-y-0 right-0 px-3 flex items-center text-gray-400 hover:text-primary transition-colors z-10">
+                            <span class="material-icons text-[20px]" x-text="show ? 'visibility_off' : 'visibility'"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="md:col-span-2 flex justify-end">
+                    <button type="button" wire:click="changePassword2"
+                        class="btn-tet font-black py-2.5 px-6 rounded-lg flex items-center gap-2 uppercase tracking-wide text-sm">
+                        <span class="material-icons text-[20px]">lock_reset</span>
+                        <span wire:loading.remove wire:target="changePassword2">Đổi mật khẩu cấp 2</span>
+                        <span wire:loading wire:target="changePassword2" class="flex items-center gap-2">
+                            <svg class="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            Đang xử lý...
+                        </span>
+                    </button>
+                </div>
+            </div>
+            @endif
+        </div>
+
         <div class="flex justify-end">
             <button type="submit" class="btn-tet font-black py-2.5 px-6 rounded-lg flex items-center gap-2 uppercase tracking-wide">
                 <span class="material-icons text-[20px]">save</span>
