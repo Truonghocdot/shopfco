@@ -3,10 +3,12 @@
         <div class="flex items-center gap-8">
             <!-- Logo -->
             <a href="{{ route('home') }}" class="flex items-center gap-2 group">
-                <div class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/30 group-hover:bg-white/30 transition-all">
+                <!-- <div class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/30 group-hover:bg-white/30 transition-all">
                     <span class="font-black text-xl italic text-white tracking-wide">VanhFCO</span>
                 </div>
-                <span class="hidden md:block font-bold text-lg text-yellow-300">.COM</span>
+                <span class="hidden md:block font-bold text-lg text-yellow-300">.COM</span> -->
+
+                <img src="{{ asset('logo.webp') }}" alt="Logo" class="h-16" width="128" height="128" />
             </a>
 
             <!-- Desktop Navigation -->
@@ -24,8 +26,8 @@
                     <span class="text-sm tracking-wide">NẠP TIỀN</span>
                 </a>
                 <a class="nav-link font-semibold flex items-center gap-2 text-white/90 hover:text-white hover:bg-white/15 transition-all px-4 py-2 rounded-lg" href="{{ route('lucky-wheel.index') }}">
-                    <span class="material-icons text-base">casino</span>
-                    <span class="text-sm tracking-wide">VÒNG QUAY</span>
+                    <span class="material-icons text-base">park</span>
+                    <span class="text-sm tracking-wide">CÂY HÁI LỘC</span>
                 </a>
                 <a class="nav-link font-semibold flex items-center gap-2 text-white/90 hover:text-white hover:bg-white/15 transition-all px-4 py-2 rounded-lg" href="{{ route('news.index') }}">
                     <span class="material-icons text-base">newspaper</span>
@@ -109,8 +111,8 @@
                 <span class="material-icons ml-auto text-white/40">chevron_right</span>
             </a>
             <a class="flex items-center gap-3 text-white/90 hover:text-white hover:bg-white/10 font-semibold py-3 px-4 rounded-lg transition-all" href="{{ route('lucky-wheel.index') }}">
-                <span class="material-icons text-xl">casino</span>
-                <span class="tracking-wide">Vòng quay</span>
+                <span class="material-icons text-xl">park</span>
+                <span class="tracking-wide">Cây Hái Lộc</span>
                 <span class="material-icons ml-auto text-white/40">chevron_right</span>
             </a>
             <a class="flex items-center gap-3 text-white/90 hover:text-white hover:bg-white/10 font-semibold py-3 px-4 rounded-lg transition-all" href="{{ route('news.index') }}">

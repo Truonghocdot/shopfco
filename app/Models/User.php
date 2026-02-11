@@ -24,7 +24,9 @@ class User extends Authenticatable implements FilamentUser
         'status',
         'lucky_wheel_spins',
         'password2',
-        'referrer_id'
+        'referrer_id',
+        'security_question_id',
+        'security_answer',
     ];
 
     protected $hidden = [
@@ -99,5 +101,10 @@ class User extends Authenticatable implements FilamentUser
     public function isActive(): bool
     {
         return $this->status === 1;
+    }
+
+    public function hasSecurityQuestion(): bool
+    {
+        return !empty($this->security_question_id) && !empty($this->security_answer);
     }
 }

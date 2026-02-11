@@ -44,7 +44,7 @@
         <a href="{{ route('lucky-wheel.index') }}" class="block">
             <div class="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-4 md:p-10 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8 border border-orange-200 shadow-md hover:shadow-lg transition-all group/tree relative overflow-hidden">
                 <!-- Decorative fireworks -->
-                <img src="{{ asset('images/phao1.webp') }}" alt="" class="absolutea -top-8 -left-8 w-36 opacity-80 -rotate-12 pointer-events-none">
+                <img src="{{ asset('images/phao1.webp') }}" alt="" class="absolute -top-8 -left-8 w-36 opacity-80 -rotate-12 pointer-events-none">
                 <img src="{{ asset('images/phao4.webp') }}" alt="" class="absolute -bottom-6 -right-6 w-32 opacity-70 rotate-12 pointer-events-none">
 
                 <div class="flex-1 text-center md:text-left relative z-10">

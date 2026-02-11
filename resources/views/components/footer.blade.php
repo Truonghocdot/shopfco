@@ -4,10 +4,7 @@
             <!-- About -->
             <div>
                 <div class="flex items-center gap-2 mb-6">
-                    <div class="bg-white/20 px-3 py-1 rounded-lg">
-                        <span class="font-black text-xl italic text-white">VanhFCO</span>
-                    </div>
-                    <span class="font-black text-lg text-yellow-300">.COM</span>
+                    <img src="{{ asset('logo.webp') }}" alt="Logo" class="h-16" width="128" height="128" />
                 </div>
                 <p class="text-white/70 text-sm leading-relaxed">
                     Hệ thống mua bán nick FC Online uy tín, an toàn nhất Việt Nam. Giao dịch tự động 24/7, hỗ trợ nhiệt tình, bảo mật tuyệt đối.

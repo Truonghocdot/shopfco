@@ -104,6 +104,7 @@
         </div>
 
         @livewire('auth.set-transaction-pin')
+        @livewire('auth.set-security-question')
 
         <!-- Popup Modal -->
         @include('components.popup-modal')
