@@ -1,8 +1,12 @@
 @props(['topSpenders'])
 
-<div class="bg-white rounded-xl border border-gray-200 shadow-md p-4 md:p-6">
+<div class="bg-white rounded-xl border border-gray-200 shadow-md p-4 md:p-6 relative overflow-hidden">
+    <!-- Decorative fireworks -->
+    <img src="{{ asset('images/phao2.webp') }}" alt="" class="absolute -top-4 -right-4 w-28 md:w-32 opacity-80 rotate-6 pointer-events-none">
+    <img src="{{ asset('images/phao3.webp') }}" alt="" class="absolute -bottom-6 -left-6 w-24 md:w-28 opacity-70 -rotate-12 pointer-events-none">
+
     <!-- Header -->
-    <div class="flex items-center gap-2 md:gap-3 mb-4 md:mb-6">
+    <div class="flex items-center gap-2 md:gap-3 mb-4 md:mb-6 relative z-10">
         <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center shadow-md">
             <span class="material-icons text-white text-xl md:text-2xl">emoji_events</span>
         </div>

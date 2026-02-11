@@ -69,32 +69,8 @@
 <body class="min-h-screen relative">
     <!-- Tet Holiday Background -->
     <div id="tet-bg" class="fixed inset-0 z-0 pointer-events-none transition-all duration-1000 ease-in-out"
-        style="background-size: cover; background-position: center; background-attachment: fixed;">
+        style="background-size: cover; background-position: center; background-attachment: fixed; background-image: url('{{ asset("bg-tet-3.png") }}');">
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const images = [
-                "{{ asset('bg-tet-1.png') }}",
-                "{{ asset('bg-tet-2.png') }}",
-                "{{ asset('bg-tet-3.png') }}"
-            ];
-
-            images.forEach(src => {
-                const img = new Image();
-                img.src = src;
-            });
-
-            const bgElement = document.getElementById('tet-bg');
-            let currentIndex = 0;
-            bgElement.style.backgroundImage = `url('${images[0]}')`;
-
-            setInterval(() => {
-                currentIndex = (currentIndex + 1) % images.length;
-                bgElement.style.backgroundImage = `url('${images[currentIndex]}')`;
-            }, 5000);
-        });
-    </script>
 
     <!-- Content Wrapper -->
     <div class="relative z-10">

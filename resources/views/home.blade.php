@@ -39,29 +39,28 @@
         </div>
     </section>
 
-    <!-- Lucky Wheel Section -->
+    <!-- Lucky Tree Section -->
     <section class="mb-8 md:mb-12">
         <a href="{{ route('lucky-wheel.index') }}" class="block">
-            <div class="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-4 md:p-10 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8 border border-orange-200 shadow-md hover:shadow-lg transition-all group/wheel">
-                <div class="flex-1 text-center md:text-left">
+            <div class="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-4 md:p-10 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8 border border-orange-200 shadow-md hover:shadow-lg transition-all group/tree relative overflow-hidden">
+                <!-- Decorative fireworks -->
+                <img src="{{ asset('images/phao1.webp') }}" alt="" class="absolutea -top-8 -left-8 w-36 opacity-80 -rotate-12 pointer-events-none">
+                <img src="{{ asset('images/phao4.webp') }}" alt="" class="absolute -bottom-6 -right-6 w-32 opacity-70 rotate-12 pointer-events-none">
+
+                <div class="flex-1 text-center md:text-left relative z-10">
                     <h2 class="text-xl md:text-4xl font-black mb-2 md:mb-4 flex items-center justify-center md:justify-start gap-2 md:gap-3 text-primary uppercase tracking-wider">
-                        <span class="material-icons text-yellow-500 text-2xl md:text-5xl animate-pulse">casino</span>
-                        VÒNG QUAY MAY MẮN
+                        🌳 CÂY HÁI LỘC
                     </h2>
                     <p class="text-gray-600 text-sm md:text-lg mb-4 md:mb-8 max-w-md mx-auto md:mx-0">
-                        Cơ hội nhận ngay hàng trăm nghìn đồng vào tài khoản. Mọi đơn hàng từ <strong class="text-primary">300k</strong> đều được tặng lượt quay miễn phí!
+                        Hái lộc đầu xuân, nhận bao lì xì may mắn! Mọi đơn hàng từ <strong class="text-primary">300k</strong> đều được tặng lượt hái lộc miễn phí!
                     </p>
-                    <div class="inline-flex items-center gap-2 md:gap-3 btn-tet py-2 px-6 md:py-3 md:px-8 rounded-full group-hover/wheel:scale-105 transition-transform uppercase tracking-wide text-[10px] md:text-base">
-                        THỬ VẬN MAY NGAY <span class="material-icons text-sm md:text-base">arrow_forward</span>
+                    <div class="inline-flex items-center gap-2 md:gap-3 btn-tet py-2 px-6 md:py-3 md:px-8 rounded-full group-hover/tree:scale-105 transition-transform uppercase tracking-wide text-[10px] md:text-base">
+                        🧧 HÁI LỘC NGAY <span class="material-icons text-sm md:text-base">arrow_forward</span>
                     </div>
                 </div>
 
-                <div class="relative w-full max-w-[180px] md:max-w-[280px] aspect-square flex items-center justify-center">
-                    <canvas id="homeWheelCanvas" width="300" height="300" class="w-full h-full"></canvas>
-                    <!-- Static Pointer -->
-                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2 z-20">
-                        <div style="width: 0; height: 0; border-left: 12px solid transparent; border-right: 12px solid transparent; border-bottom: 24px solid #ef4444; transform: rotate(180deg);"></div>
-                    </div>
+                <div class="relative w-full max-w-[180px] md:max-w-[280px] flex items-center justify-center">
+                    <img src="{{ asset('images/cay.webp') }}" alt="Cây Hái Lộc" class="w-full group-hover/tree:scale-110 transition-transform duration-500 drop-shadow-lg" style="filter: drop-shadow(0 4px 20px rgba(212,32,32,0.2));">
                 </div>
             </div>
         </a>
@@ -127,7 +126,11 @@
     <!-- Product Grid -->
     <section class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-16">
         @forelse($flashSaleProducts as $product)
-        <div class="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg group transition-all hover:scale-[1.02]">
+        <div class="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg group transition-all hover:scale-[1.02] relative">
+            <!-- Flower decorations -->
+            <img src="{{ asset('images/hoa1.webp') }}" alt="" class="absolute -top-6 -left-6 w-40 md:w-48 opacity-90 -rotate-12 pointer-events-none z-10">
+            <img src="{{ asset('images/hoa2.webp') }}" alt="" class="absolute -bottom-6 -right-6 w-36 md:w-44 opacity-90 rotate-12 pointer-events-none z-10">
+
             <div class="relative overflow-hidden aspect-video">
                 <img alt="{{ $product->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ url('storage/'.$product->images[0]) ?? 'https://via.placeholder.com/400x225' }}" loading="lazy">
                 @if($product->getDiscountPercent())
@@ -254,95 +257,5 @@ $orgSchema = [
                 prevEl: '.swiper-button-prev'
             },
         });
-
-        // Lucky Wheel Home Preview
-        (function() {
-            const canvas = document.getElementById('homeWheelCanvas');
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
-            const size = 300,
-                cx = size / 2,
-                cy = size / 2,
-                radius = 120;
-            const segments = [{
-                    label: '200k',
-                    color: '#ef4444'
-                },
-                {
-                    label: '10k',
-                    color: '#22d3ee'
-                },
-                {
-                    label: '20k',
-                    color: '#10b981'
-                },
-                {
-                    label: 'Lost',
-                    color: '#fb7185'
-                },
-                {
-                    label: '50k',
-                    color: '#fbbf24'
-                },
-                {
-                    label: '10k',
-                    color: '#22d3ee'
-                },
-                {
-                    label: '100k',
-                    color: '#22d3ee'
-                },
-                {
-                    label: 'Lost',
-                    color: '#fb7185'
-                }
-            ];
-            let angle = 0;
-
-            function draw() {
-                ctx.clearRect(0, 0, size, size);
-                ctx.save();
-                ctx.translate(cx, cy);
-                ctx.rotate(angle);
-                const segRad = (Math.PI * 2) / segments.length;
-                const offset = -Math.PI / 2;
-                segments.forEach((seg, i) => {
-                    const a0 = offset + i * segRad;
-                    const a1 = a0 + segRad;
-                    ctx.beginPath();
-                    ctx.moveTo(0, 0);
-                    ctx.arc(0, 0, radius, a0, a1);
-                    ctx.closePath();
-                    ctx.fillStyle = seg.color;
-                    ctx.fill();
-                    ctx.strokeStyle = '#fff';
-                    ctx.lineWidth = 2;
-                    ctx.stroke();
-                    ctx.save();
-                    ctx.rotate(a0 + segRad / 2);
-                    ctx.fillStyle = '#fff';
-                    ctx.font = 'bold 12px Arial';
-                    ctx.textAlign = 'center';
-                    ctx.textBaseline = 'middle';
-                    ctx.fillText(seg.label, radius * 0.65, 0);
-                    ctx.restore();
-                });
-                ctx.beginPath();
-                ctx.arc(0, 0, 25, 0, Math.PI * 2);
-                ctx.fillStyle = '#fff';
-                ctx.fill();
-                ctx.strokeStyle = '#e5e7eb';
-                ctx.lineWidth = 2;
-                ctx.stroke();
-                ctx.beginPath();
-                ctx.arc(0, 0, 15, 0, Math.PI * 2);
-                ctx.fillStyle = '#f3f4f6';
-                ctx.fill();
-                ctx.restore();
-                angle += 0.005;
-                requestAnimationFrame(draw);
-            }
-            draw();
-        })();
     });
 </script>
