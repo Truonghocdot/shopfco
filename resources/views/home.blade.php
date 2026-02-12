@@ -38,9 +38,9 @@
             </div>
         </div>
 
-        <!-- Decorative oscillating firecrackers -->
-        <img src="{{ asset('images/phao1.webp') }}" alt="" class="absolute -top-12 -left-16 w-32 md:w-56 opacity-100 animate-shake pointer-events-none hidden lg:block z-0">
-        <img src="{{ asset('images/phao1.webp') }}" alt="" class="absolute -top-12 -right-16 w-32 md:w-56 opacity-100 animate-shake pointer-events-none hidden lg:block z-0 transform -scale-x-100">
+        <!-- Decorative oscillating firecrackers (Bells) -->
+        <img src="{{ asset('images/phao1.webp') }}" alt="" class="absolute -top-10 -left-6 w-24 md:-top-12 md:-left-16 md:w-56 opacity-100 animate-shake pointer-events-none z-0">
+        <img src="{{ asset('images/phao1.webp') }}" alt="" class="absolute -top-10 -right-6 w-24 md:-top-12 md:-right-16 md:w-56 opacity-100 animate-shake pointer-events-none z-0 transform -scale-x-100">
     </section>
 
     <!-- Lucky Tree Section -->
