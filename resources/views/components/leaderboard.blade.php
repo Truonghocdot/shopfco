@@ -2,7 +2,7 @@
 
 <div class="bg-white rounded-xl border border-gray-200 shadow-md p-4 md:p-6 relative overflow-hidden">
     <!-- Decorative fireworks -->
-    <img src="{{ asset('images/meo.webp') }}" alt="" class="absolute -top-4 -right-4 w-28 md:w-32 opacity-90 pointer-events-none z-0">
+    <img src="{{ asset('images/meo.webp') }}" alt="" class="absolute -top-4 -right-4 w-20 md:w-32 opacity-90 pointer-events-none z-0">
     <img src="{{ asset('images/phao3.webp') }}" alt="" class="absolute -bottom-6 -left-6 w-24 md:w-28 opacity-70 -rotate-12 pointer-events-none animate-swing">
     <img src="{{ asset('images/phao2.webp') }}" alt="" class="absolute -bottom-4 -right-4 w-24 md:w-28 opacity-80 rotate-6 pointer-events-none animate-swing">
 
@@ -20,7 +20,7 @@
     @if($topSpenders->isNotEmpty())
     <div class="space-y-2 md:space-y-3">
         @foreach($topSpenders as $index => $user)
-        <div class="flex items-center gap-3 md:gap-4 p-2 md:p-3 rounded-lg transition-all {{ $index < 3 ? 'bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-200' : 'bg-gray-50 border border-gray-100 hover:border-orange-200' }} hover:scale-[1.01]">
+        <div class="relative z-10 flex items-center gap-3 md:gap-4 p-2 md:p-3 rounded-lg transition-all {{ $index < 3 ? 'bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-200' : 'bg-gray-50 border border-gray-100 hover:border-orange-200' }} hover:scale-[1.01]">
             <!-- Rank -->
             <div class="shrink-0 w-8 md:w-10 text-center">
                 @if($index === 0)
