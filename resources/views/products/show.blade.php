@@ -19,8 +19,10 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
         <!-- Product Images -->
         <div class="lg:col-span-7 space-y-6">
-            <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-200">
-                <div class="relative group" id="product-carousel">
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-200 relative">
+                <!-- Decorative branch on carousel -->
+                <img src="{{ asset('images/hoa1.webp') }}" class="absolute -top-6 -left-6 w-40 opacity-90 -rotate-12 pointer-events-none z-20 animate-shake">
+                <div class="relative group z-10" id="product-carousel">
                     <div id="carousel-slides" class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth p-0 no-scrollbar" style="scrollbar-width: none; -ms-overflow-style: none;">
                         @if(!empty($product->images))
                         @foreach($product->images as $index => $image)
@@ -64,8 +66,11 @@
             </div>
 
             <!-- Product Info Card -->
-            <div class="bg-white rounded-2xl p-6 shadow-md border border-gray-200">
-                <h1 class="text-xl md:text-2xl font-black mb-4 text-gray-800">{{ $product->title }}</h1>
+            <div class="bg-white rounded-2xl p-6 shadow-md border border-gray-200 relative overflow-hidden">
+                <!-- Decorative branch -->
+                <img src="{{ asset('images/hoa3.webp') }}" class="absolute -bottom-6 -right-6 w-36 opacity-90 rotate-12 pointer-events-none z-10 animate-shake">
+
+                <h1 class="text-xl md:text-2xl font-black mb-4 text-gray-800 relative z-20">{{ $product->title }}</h1>
                 <div class="flex flex-wrap items-center justify-between gap-6 py-6 border-y border-gray-100">
                     <div class="space-y-1">
                         @if($product->sell_price && $product->sell_price > $product->getFinalPrice())
@@ -85,7 +90,7 @@
                         </span>
                         @endif
                         @auth
-                        <a href="{{ route('checkout', $product->slug) }}" class="w-full sm:w-auto btn-tet py-4 px-12 rounded-xl flex items-center justify-center gap-3 uppercase tracking-wide text-lg">
+                        <a href="{{ route('checkout', $product->slug) }}" class="w-full sm:w-auto btn-tet py-4 px-12 rounded-xl flex items-center justify-center gap-3 uppercase tracking-wide text-lg hover-glow-gold transition-all">
                             <span class="material-icons">shopping_cart</span> MUA NGAY
                         </a>
                         @else
@@ -107,7 +112,13 @@
 
         <!-- Product Details -->
         <div class="lg:col-span-5 space-y-6">
-            <div class="bg-white rounded-2xl p-8 shadow-md border border-gray-200 h-full">
+            <div class="bg-white rounded-2xl p-8 shadow-md border border-gray-200 h-full relative overflow-hidden">
+                <!-- Decorative firecracker hanger -->
+                <div class="absolute -top-2 -right-2 animate-swing z-10 pointer-events-none">
+                    <img src="{{ asset('images/phao1.webp') }}" class="w-20 drop-shadow-md transform -scale-x-100">
+                </div>
+                <!-- Decorative flower branch -->
+                <img src="{{ asset('images/hoa1.webp') }}" class="absolute -bottom-10 -left-10 w-44 opacity-80 -rotate-45 pointer-events-none z-10 animate-shake">
                 <div class="flex items-center gap-2 mb-6">
                     <span class="material-icons text-primary">info</span>
                     <h2 class="text-xl font-black text-primary uppercase tracking-wide">Giới thiệu tài khoản</h2>

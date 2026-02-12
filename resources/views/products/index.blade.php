@@ -11,9 +11,18 @@
         ['name' => 'Sản phẩm', 'url' => route('products.index')]
     ]" />
 
-    <h1 class="text-3xl font-black text-primary uppercase mb-8 tracking-wider">
-        Mua Acc FC Online - AccFCO
-    </h1>
+    <div class="mb-10 text-center relative">
+        <!-- Floating decorations -->
+        <img src="{{ asset('images/hoa1.webp') }}" class="absolute -top-10 left-10 w-32 opacity-70 animate-shake hidden md:block">
+        <img src="{{ asset('images/phao2.webp') }}" class="absolute -top-10 right-10 w-24 opacity-80 animate-swing hidden md:block">
+
+        <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight text-primary mb-3 flex justify-center items-center gap-3 relative z-10">
+            <span class="material-icons text-4xl md:text-5xl">shopping_cart</span>
+            MUA ACC FC ONLINE
+        </h1>
+        <p class="text-gray-500 font-bold uppercase tracking-widest text-sm">Kho tài khoản khổng lồ - Uy tín - Giao dịch tự động</p>
+        <div class="h-1.5 w-48 bg-linear-to-r from-transparent via-primary to-transparent mx-auto rounded-full mt-6"></div>
+    </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
         <!-- Filter Sidebar -->
@@ -82,8 +91,8 @@
                 @foreach($products as $product)
                 <div class="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg group transition-all hover:scale-[1.02] relative">
                     <!-- Flower decorations -->
-                    <img src="{{ asset('images/hoa3.webp') }}" alt="" class="absolute -top-6 -left-6 w-40 md:w-48 opacity-90 -rotate-12 pointer-events-none z-10">
-                    <img src="{{ asset('images/hoa5.png') }}" alt="" class="absolute -bottom-6 -right-6 w-36 md:w-44 opacity-90 rotate-12 pointer-events-none z-10">
+                    <img src="{{ asset('images/hoa3.webp') }}" alt="" class="absolute -top-6 -left-6 w-40 md:w-48 opacity-90 -rotate-12 pointer-events-none z-10 animate-shake">
+                    <img src="{{ asset('images/hoa5.png') }}" alt="" class="absolute -bottom-6 -right-6 w-36 md:w-44 opacity-90 rotate-12 pointer-events-none z-10 animate-shake">
                     <div class="relative overflow-hidden aspect-video">
                         <img alt="{{ $product->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ url('storage/'.$product->images[0]) ?? 'https://via.placeholder.com/400x225' }}" loading="lazy">
                         @if($product->getDiscountPercent())

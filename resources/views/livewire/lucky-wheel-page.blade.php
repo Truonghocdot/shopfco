@@ -18,8 +18,8 @@
             @endif
 
             <!-- Decorative corner flowers -->
-            <img src="{{ asset('images/hoa1.webp') }}" alt="" class="absolute -top-6 -left-6 w-28 opacity-80 -rotate-12 pointer-events-none">
-            <img src="{{ asset('images/hoa3.webp') }}" alt="" class="absolute -top-4 -right-6 w-24 opacity-75 rotate-12 pointer-events-none">
+            <img src="{{ asset('images/hoa1.webp') }}" alt="" class="absolute -top-6 -left-6 w-28 opacity-80 -rotate-12 pointer-events-none animate-shake">
+            <img src="{{ asset('images/hoa3.webp') }}" alt="" class="absolute -top-4 -right-6 w-24 opacity-75 rotate-12 pointer-events-none animate-shake">
 
             <!-- Tree Container -->
             <div class="relative flex justify-center mb-6" id="tree-container">
@@ -65,10 +65,10 @@
         <div class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4" style="animation: fadeIn 0.2s ease-out;">
             <div class="bg-white border border-gray-200 rounded-2xl p-8 max-w-sm w-full shadow-2xl text-center relative overflow-hidden" style="animation: scaleUp 0.3s ease-out;">
                 <!-- Decorative firecrackers in modal -->
-                <img src="{{ asset('images/phao3.webp') }}" alt="" class="absolute -top-8 -left-8 w-28 opacity-80 -rotate-12">
-                <img src="{{ asset('images/phao2.webp') }}" alt="" class="absolute -top-8 -right-8 w-28 opacity-80 rotate-12">
+                <img src="{{ asset('images/phao3.webp') }}" alt="" class="absolute -top-8 -left-8 w-28 opacity-80 -rotate-12 animate-swing">
+                <img src="{{ asset('images/phao2.webp') }}" alt="" class="absolute -top-8 -right-8 w-28 opacity-80 rotate-12 animate-swing">
                 <!-- Decorative flowers -->
-                <img src="{{ asset('images/hoa2.webp') }}" alt="" class="absolute -bottom-4 -right-4 w-20 opacity-75 rotate-6">
+                <img src="{{ asset('images/hoa2.webp') }}" alt="" class="absolute -bottom-4 -right-4 w-20 opacity-75 rotate-6 animate-shake">
 
                 <div class="mb-4 relative z-10">
                     @if($prizeAmount > 0)
@@ -96,7 +96,7 @@
         <!-- Rules -->
         <div class="bg-white rounded-2xl border border-gray-200 shadow-md mt-6 p-6 relative overflow-hidden">
             <!-- Decorative flower -->
-            <img src="{{ asset('images/hoa5.png') }}" alt="" class="absolute -bottom-4 -right-4 w-20 opacity-75 rotate-6 pointer-events-none">
+            <img src="{{ asset('images/hoa5.png') }}" alt="" class="absolute -bottom-4 -right-4 w-20 opacity-75 rotate-6 pointer-events-none animate-shake">
 
             <div class="flex items-center gap-2 mb-4">
                 <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm">ℹ</div>

@@ -1,57 +1,75 @@
-<header class="sticky top-0 z-50 shadow-md" style="background: linear-gradient(135deg, #C41E1E 0%, #D42020 50%, #E85D2A 100%);">
-    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+<!-- Top Marquee Bar -->
+<div class="bg-yellow-400 py-1 overflow-hidden whitespace-nowrap border-b border-yellow-500 relative z-[60]">
+    <div class="animate-marquee flex items-center gap-8">
+        <span class="text-primary font-black text-xs uppercase tracking-widest flex items-center gap-2">
+            🧧 CHÚC MỪNG NĂM MỚI 🧧 GIẢM GIÁ SỐC TẤT CẢ CÁC TÀI KHOẢN 🧧 HÁI LỘC ĐẦU XUÂN - NHẬN QUÀ CỰC KHỦNG 🧧 UY TÍN - CHẤT LƯỢNG - GIÁ RẺ 🧧
+        </span>
+
+    </div>
+    <div class="animate-marquee flex items-center gap-8">
+        <span class="text-primary font-black text-xs uppercase tracking-widest flex items-center gap-2">
+            🧧 CHÚC MỪNG NĂM MỚI 🧧 GIẢM GIÁ SỐC TẤT CẢ CÁC TÀI KHOẢN 🧧 HÁI LỘC ĐẦU XUÂN - NHẬN QUÀ CỰC KHỦNG 🧧 UY TÍN - CHẤT LƯỢNG - GIÁ RẺ 🧧
+        </span>
+
+    </div>
+</div>
+
+<header class="sticky top-0 z-50 shadow-md relative overflow-visible" style="background: linear-gradient(135deg, #C41E1E 0%, #D42020 50%, #E85D2A 100%);">
+    <!-- Decorative branches -->
+    <img src="{{ asset('images/hoa1.webp') }}" class="absolute -top-4 -left-8 w-48 opacity-90 -rotate-12 pointer-events-none hidden lg:block z-20">
+    <img src="{{ asset('images/hoa2.webp') }}" class="absolute -top-4 -right-12 w-48 opacity-90 rotate-12 pointer-events-none hidden lg:block z-20 transform -scale-x-100">
+
+    <!-- Hanging decorations -->
+    <div class="absolute left-4 top-full -mt-2 animate-swing hidden xl:block z-30 pointer-events-none">
+        <img src="{{ asset('images/phao1.webp') }}" class="w-16 drop-shadow-lg">
+    </div>
+    <div class="absolute right-4 top-full -mt-2 animate-swing hidden xl:block z-30 pointer-events-none">
+        <img src="{{ asset('images/phao1.webp') }}" class="w-16 drop-shadow-lg transform -scale-x-100">
+    </div>
+
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between relative z-40">
         <div class="flex items-center gap-8">
             <!-- Logo -->
-            <a href="{{ route('home') }}" class="flex items-center gap-2 group">
-                <!-- <div class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/30 group-hover:bg-white/30 transition-all">
-                    <span class="font-black text-xl italic text-white tracking-wide">VanhFCO</span>
-                </div>
-                <span class="hidden md:block font-bold text-lg text-yellow-300">.COM</span> -->
-
-                <img src="{{ asset('logo.webp') }}" alt="Logo" class="h-16" width="128" height="128" />
+            <a href="{{ route('home') }}" class="flex items-center gap-2 group relative">
+                <img src="{{ asset('logo.webp') }}" alt="Logo" class="h-16 relative z-10 transition-transform group-hover:scale-110" width="128" height="128" />
+                <div class="absolute inset-0 bg-yellow-400/20 blur-xl rounded-full scale-0 group-hover:scale-150 transition-transform duration-500"></div>
             </a>
 
             <!-- Desktop Navigation -->
             <nav class="hidden lg:flex items-center gap-1">
-                <a class="nav-link font-semibold flex items-center gap-2 text-white/90 hover:text-white hover:bg-white/15 transition-all px-4 py-2 rounded-lg" href="{{ route('home') }}">
-                    <span class="material-icons text-base">home</span>
-                    <span class="text-sm tracking-wide">TRANG CHỦ</span>
+                @php
+                $navItems = [
+                ['route' => 'home', 'icon' => 'home', 'label' => 'TRANG CHỦ'],
+                ['route' => 'products.index', 'icon' => 'shopping_bag', 'label' => 'SẢN PHẨM'],
+                ['route' => 'deposit', 'icon' => 'account_balance_wallet', 'label' => 'NẠP TIỀN'],
+                ['route' => 'lucky-wheel.index', 'icon' => 'park', 'label' => 'CÂY HÁI LỘC'],
+                ['route' => 'news.index', 'icon' => 'newspaper', 'label' => 'TIN TỨC'],
+                ['route' => 'policy', 'icon' => 'policy', 'label' => 'CHÍNH SÁCH'],
+                ];
+                @endphp
+
+                @foreach($navItems as $item)
+                <a class="nav-link font-semibold flex items-center gap-2 text-white/90 hover:text-white hover:bg-white/15 transition-all px-4 py-2 rounded-lg hover-glow-gold {{ request()->routeIs($item['route']) ? 'active bg-white/20' : '' }}" href="{{ route($item['route']) }}">
+                    <span class="material-icons text-base">{{ $item['icon'] }}</span>
+                    <span class="text-sm tracking-wide">{{ $item['label'] }}</span>
                 </a>
-                <a class="nav-link font-semibold flex items-center gap-2 text-white/90 hover:text-white hover:bg-white/15 transition-all px-4 py-2 rounded-lg" href="{{ route('products.index') }}">
-                    <span class="material-icons text-base">shopping_bag</span>
-                    <span class="text-sm tracking-wide">SẢN PHẨM</span>
-                </a>
-                <a class="nav-link font-semibold flex items-center gap-2 text-white/90 hover:text-white hover:bg-white/15 transition-all px-4 py-2 rounded-lg" href="{{ route('deposit') }}">
-                    <span class="material-icons text-base">account_balance_wallet</span>
-                    <span class="text-sm tracking-wide">NẠP TIỀN</span>
-                </a>
-                <a class="nav-link font-semibold flex items-center gap-2 text-white/90 hover:text-white hover:bg-white/15 transition-all px-4 py-2 rounded-lg" href="{{ route('lucky-wheel.index') }}">
-                    <span class="material-icons text-base">park</span>
-                    <span class="text-sm tracking-wide">CÂY HÁI LỘC</span>
-                </a>
-                <a class="nav-link font-semibold flex items-center gap-2 text-white/90 hover:text-white hover:bg-white/15 transition-all px-4 py-2 rounded-lg" href="{{ route('news.index') }}">
-                    <span class="material-icons text-base">newspaper</span>
-                    <span class="text-sm tracking-wide">TIN TỨC</span>
-                </a>
-                <a class="nav-link font-semibold flex items-center gap-2 text-white/90 hover:text-white hover:bg-white/15 transition-all px-4 py-2 rounded-lg" href="{{ route('policy') }}">
-                    <span class="material-icons text-base">policy</span>
-                    <span class="text-sm tracking-wide">CHÍNH SÁCH</span>
-                </a>
+                @endforeach
             </nav>
         </div>
 
         <div class="flex items-center gap-3">
             @auth
             <!-- Balance Display -->
-            <div class="hidden md:flex flex-col items-end px-4 py-2 rounded-lg bg-white/15 border border-white/20">
+            <div class="hidden md:flex flex-col items-end px-4 py-2 rounded-lg bg-white/15 border border-white/20 hover:bg-white/25 transition-all group cursor-pointer relative overflow-hidden">
+                <div class="absolute inset-0 bg-yellow-400 translate-y-full group-hover:translate-y-0 transition-transform duration-300 opacity-10"></div>
                 <span class="text-[10px] text-white/70 uppercase tracking-widest font-bold">Số dư</span>
-                <span class="text-yellow-300 font-black text-lg">
+                <span class="text-yellow-300 font-black text-lg group-hover:text-white transition-colors">
                     {{ number_format(auth()->user()->wallet()->value('balance'), 0, ',', '.') }} <span class="text-sm">đ</span>
                 </span>
             </div>
 
             <!-- User Profile -->
-            <a href="{{ route('user.profile') }}" class="hidden md:flex items-center gap-2 bg-white/15 hover:bg-white/25 px-4 py-2 rounded-lg border border-white/20 cursor-pointer transition-all">
+            <a href="{{ route('user.profile') }}" class="hidden md:flex items-center gap-2 bg-white/15 hover:bg-white/25 px-4 py-2 rounded-lg border border-white/20 cursor-pointer transition-all hover-glow-gold">
                 <span class="material-icons text-white text-2xl">account_circle</span>
                 <div class="flex flex-col">
                     <span class="text-white text-[12px] font-medium">{{ auth()->user()->name }}</span>
@@ -60,8 +78,8 @@
             </a>
             @else
             <!-- Login Button -->
-            <a href="{{ route('login') }}" class="hidden md:flex items-center gap-2 bg-white text-primary hover:bg-yellow-50 px-5 py-2 rounded-lg font-bold transition-all shadow-sm">
-                <span class="material-icons">login</span>
+            <a href="{{ route('login') }}" class="hidden md:flex items-center gap-2 bg-white text-primary hover:bg-yellow-400 hover:text-white px-5 py-2 rounded-lg font-bold transition-all shadow-sm group">
+                <span class="material-icons group-hover:scale-110 transition-transform">login</span>
                 <span class="text-sm">ĐĂNG NHẬP</span>
             </a>
             @endauth
@@ -77,7 +95,7 @@
     <div id="mobile-menu" class="hidden lg:hidden border-t border-white/20" style="background: linear-gradient(180deg, #B01818 0%, #C41E1E 100%);">
         <nav class="container mx-auto px-4 py-4 flex flex-col gap-1">
             @auth
-            <!-- Mobile Balance -->
+            <!-- Mobile User Info -->
             <div class="flex items-center justify-between p-4 mb-3 rounded-lg bg-white/10 border border-white/15">
                 <div class="flex items-center gap-3">
                     <span class="material-icons text-white text-3xl">account_circle</span>
@@ -95,41 +113,21 @@
             </div>
             @endauth
 
-            <a class="flex items-center gap-3 text-white/90 hover:text-white hover:bg-white/10 font-semibold py-3 px-4 rounded-lg transition-all" href="{{ route('home') }}">
-                <span class="material-icons text-xl">home</span>
-                <span class="tracking-wide">Trang chủ</span>
+            @foreach($navItems as $item)
+            <a class="flex items-center gap-3 text-white/90 hover:text-white hover:bg-white/10 font-semibold py-3 px-4 rounded-lg transition-all" href="{{ route($item['route']) }}">
+                <span class="material-icons text-xl">{{ $item['icon'] }}</span>
+                <span class="tracking-wide">{{ str_replace('TRANG CHỦ', 'Trang chủ', str_replace('SẢN PHẨM', 'Sản phẩm', str_replace('NẠP TIỀN', 'Nạp tiền', str_replace('CÂY HÁI LỘC', 'Cây Hái Lộc', str_replace('TIN TỨC', 'Tin tức', str_replace('CHÍNH SÁCH', 'Chính sách', $item['label'])))))) }}</span>
                 <span class="material-icons ml-auto text-white/40">chevron_right</span>
             </a>
-            <a class="flex items-center gap-3 text-white/90 hover:text-white hover:bg-white/10 font-semibold py-3 px-4 rounded-lg transition-all" href="{{ route('products.index') }}">
-                <span class="material-icons text-xl">shopping_bag</span>
-                <span class="tracking-wide">Sản phẩm</span>
-                <span class="material-icons ml-auto text-white/40">chevron_right</span>
-            </a>
-            <a class="flex items-center gap-3 text-white/90 hover:text-white hover:bg-white/10 font-semibold py-3 px-4 rounded-lg transition-all" href="{{ route('deposit') }}">
-                <span class="material-icons text-xl">account_balance_wallet</span>
-                <span class="tracking-wide">Nạp tiền</span>
-                <span class="material-icons ml-auto text-white/40">chevron_right</span>
-            </a>
-            <a class="flex items-center gap-3 text-white/90 hover:text-white hover:bg-white/10 font-semibold py-3 px-4 rounded-lg transition-all" href="{{ route('lucky-wheel.index') }}">
-                <span class="material-icons text-xl">park</span>
-                <span class="tracking-wide">Cây Hái Lộc</span>
-                <span class="material-icons ml-auto text-white/40">chevron_right</span>
-            </a>
-            <a class="flex items-center gap-3 text-white/90 hover:text-white hover:bg-white/10 font-semibold py-3 px-4 rounded-lg transition-all" href="{{ route('news.index') }}">
-                <span class="material-icons text-xl">newspaper</span>
-                <span class="tracking-wide">Tin tức</span>
-                <span class="material-icons ml-auto text-white/40">chevron_right</span>
-            </a>
-            <a class="flex items-center gap-3 text-white/90 hover:text-white hover:bg-white/10 font-semibold py-3 px-4 rounded-lg transition-all" href="{{ route('policy') }}">
-                <span class="material-icons text-xl">policy</span>
-                <span class="tracking-wide">Chính sách</span>
-                <span class="material-icons ml-auto text-white/40">chevron_right</span>
-            </a>
+            @endforeach
+
+            @auth
             <a class="flex items-center gap-3 text-white/90 hover:text-white hover:bg-white/10 font-semibold py-3 px-4 rounded-lg transition-all" href="{{ route('user.profile') }}">
                 <span class="material-icons text-xl">account_circle</span>
                 <span class="tracking-wide">Tài khoản</span>
                 <span class="material-icons ml-auto text-white/40">chevron_right</span>
             </a>
+            @endauth
         </nav>
     </div>
 </header>
@@ -173,6 +171,6 @@
 
     .nav-link.active {
         background: rgba(255, 255, 255, 0.2);
-        color: white;
+        color: #ffd700 !important;
     }
 </style>

@@ -10,8 +10,8 @@
 @section('content')
 <div class="container mx-auto px-4 py-8">
     <!-- Video Hero Section -->
-    <section class="mb-8 md:mb-12">
-        <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-200 p-2">
+    <section class="mb-8 md:mb-12 relative">
+        <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-200 p-2 relative z-10">
             <div class="aspect-video w-full rounded-xl overflow-hidden">
                 <iframe
                     class="w-full h-full"
@@ -25,18 +25,22 @@
             </div>
 
             <!-- Contact Info Badge -->
-            <div class="flex flex-wrap justify-center items-center gap-4 md:gap-6 py-4 px-4">
-                <div class="flex items-center gap-2 text-base md:text-lg font-bold text-gray-800">
+            <div class="flex flex-wrap justify-center items-center gap-4 md:gap-6 py-4 px-4 text-gray-800">
+                <div class="flex items-center gap-2 text-base md:text-lg font-bold">
                     <span class="material-icons text-primary text-2xl">call</span>
                     <span>0986526036</span>
                 </div>
                 <div class="w-px h-6 bg-gray-200 hidden sm:block"></div>
-                <a href="https://www.facebook.com/le.vietanh.939173" target="_blank" class="flex items-center gap-2 text-base md:text-lg font-bold text-gray-800 hover:text-primary transition-colors">
+                <a href="https://www.facebook.com/le.vietanh.939173" target="_blank" class="flex items-center gap-2 text-base md:text-lg font-bold hover:text-primary transition-colors">
                     <span class="material-icons text-blue-500 text-2xl">facebook</span>
                     <span>LE VIET ANH</span>
                 </a>
             </div>
         </div>
+
+        <!-- Decorative oscillating firecrackers -->
+        <img src="{{ asset('images/phao1.webp') }}" alt="" class="absolute -top-12 -left-16 w-32 md:w-56 opacity-100 animate-shake pointer-events-none hidden lg:block z-0">
+        <img src="{{ asset('images/phao1.webp') }}" alt="" class="absolute -top-12 -right-16 w-32 md:w-56 opacity-100 animate-shake pointer-events-none hidden lg:block z-0 transform -scale-x-100">
     </section>
 
     <!-- Lucky Tree Section -->
@@ -99,12 +103,16 @@
     <section class="mb-8 md:mb-12">
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             @forelse($categories as $category)
-            <a href="{{ route('categories.show', $category->slug) }}" class="group bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-lg p-3 md:p-4 flex flex-col items-center text-center transition-all hover:scale-[1.03]">
+            <a href="{{ route('categories.show', $category->slug) }}" class="group bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-lg p-3 md:p-4 flex flex-col items-center text-center transition-all hover:scale-[1.03] relative overflow-hidden">
+                <!-- Flower decorations -->
+                <img src="{{ asset('images/hoa1.webp') }}" alt="" class="absolute -top-6 -left-6 w-36 md:w-44 opacity-90 -rotate-12 pointer-events-none z-10">
+                <img src="{{ asset('images/hoa2.webp') }}" alt="" class="absolute -bottom-6 -right-6 w-32 md:w-40 opacity-90 rotate-12 pointer-events-none z-10">
+
                 <div class="w-full h-32 md:h-48 mb-3 md:mb-4 overflow-hidden rounded-lg">
                     <img alt="{{ $category->title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="{{ url('storage/'.$category->image) ?? 'https://via.placeholder.com/96' }}" loading="lazy">
                 </div>
-                <h3 class="font-black text-sm md:text-lg mb-1 text-gray-800 group-hover:text-primary transition-colors uppercase tracking-wide">{{ $category->title }}</h3>
-                <p class="text-gray-400 text-[10px] md:text-sm line-clamp-1 md:line-clamp-none">{!! strip_tags($category->description) !!}</p>
+                <h3 class="font-black text-sm md:text-lg mb-1 text-gray-800 group-hover:text-primary transition-colors uppercase tracking-wide relative z-20">{{ $category->title }}</h3>
+                <p class="text-red-700 text-[10px] md:text-sm line-clamp-1 md:line-clamp-none relative z-20">{!! strip_tags($category->description) !!}</p>
             </a>
             @empty
             <div class="col-span-4 text-center text-gray-400 p-12 bg-white rounded-xl border border-gray-200">Chưa có danh mục nào</div>
@@ -175,11 +183,14 @@
 
     <section class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         @forelse($latestNews as $news)
-        <a href="{{ route('news.show', $news->slug) }}" class="group bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition-all hover:scale-[1.02]">
+        <a href="{{ route('news.show', $news->slug) }}" class="group bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition-all hover:scale-[1.02] relative">
+            <!-- Decorative lixi -->
+            <img src="{{ asset('images/lixi1.png') }}" alt="" class="absolute -bottom-4 -right-4 w-24 opacity-60 rotate-12 pointer-events-none z-10 transition-transform group-hover:scale-110">
+
             <div class="relative overflow-hidden aspect-video">
                 <img alt="{{ $news->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ url('storage/'.$news->thumbnail) ?? 'https://via.placeholder.com/400x225' }}" loading="lazy">
             </div>
-            <div class="p-4">
+            <div class="p-4 relative z-20">
                 <h4 class="font-bold text-sm mb-2 line-clamp-2 h-10 text-gray-800 group-hover:text-primary transition-colors">{{ $news->title }}</h4>
                 <p class="text-gray-400 text-xs mb-4 line-clamp-2">{!! Str::limit(strip_tags($news->content), 100) !!}</p>
                 <div class="flex items-center justify-between text-xs">

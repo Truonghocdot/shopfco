@@ -10,15 +10,26 @@
         ['name' => 'Tin tức', 'url' => route('news.index')]
     ]" />
 
-    <h1 class="text-3xl font-black uppercase mb-8 text-white flex items-center gap-3 tracking-wider">
-        <span class="material-icons text-4xl">newspaper</span>
-        Tin tức & Sự kiện
-    </h1>
+    <div class="mb-10 text-center relative">
+        <!-- Floating decorations -->
+        <img src="{{ asset('images/hoa2.webp') }}" class="absolute -top-10 left-10 w-32 opacity-70 animate-shake hidden md:block">
+        <img src="{{ asset('images/phao3.webp') }}" class="absolute -top-10 right-10 w-24 opacity-80 animate-swing hidden md:block">
+
+        <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight text-primary mb-3 flex justify-center items-center gap-3 relative z-10">
+            <span class="material-icons text-4xl md:text-5xl text-white">newspaper</span>
+            TIN TỨC & SỰ KIỆN
+        </h1>
+        <p class="text-gray-200 font-bold uppercase tracking-widest text-sm">Cập nhật tin tức hot nhất về FC Online</p>
+        <div class="h-1.5 w-48 bg-linear-to-r from-transparent via-white to-transparent mx-auto rounded-full mt-6"></div>
+    </div>
 
     @if($news->count() > 0)
     <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8">
         @foreach($news as $item)
-        <article class="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg group transition-all hover:scale-[1.02]">
+        <article class="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg group transition-all hover:scale-[1.02] relative">
+            <!-- Decorative lixi -->
+            <img src="{{ asset('images/lixi1.png') }}" alt="" class="absolute -bottom-4 -right-4 w-24 opacity-60 rotate-12 pointer-events-none z-10 transition-transform group-hover:scale-110 animate-swing">
+
             <div class="relative overflow-hidden aspect-video">
                 <img alt="{{ $item->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ url('storage/'.$item->thumbnail) ?? 'https://via.placeholder.com/400x225' }}" loading="lazy">
                 <div class="absolute bottom-2 left-2 bg-white/90 px-3 py-1 rounded text-xs text-gray-600 font-bold flex items-center gap-2">
@@ -26,7 +37,7 @@
                     {{ $item->created_at->diffForHumans() }}
                 </div>
             </div>
-            <div class="p-5">
+            <div class="p-5 relative z-20">
                 <h3 class="font-bold text-lg mb-3 line-clamp-2 h-14 text-gray-800 group-hover:text-primary transition-colors">{{ $item->title }}</h3>
                 @if($item->description)
                 <p class="text-gray-400 text-sm line-clamp-3 mb-4">{!! $item->description !!}</p>

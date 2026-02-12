@@ -143,3 +143,65 @@ h4,
 .animate-float {
     animation: float 3s ease-in-out infinite;
 }
+
+@keyframes shake-gentle {
+    0%,
+    100% {
+        transform: rotate(-5deg);
+    }
+    50% {
+        transform: rotate(5deg);
+    }
+}
+@keyframes swing {
+    0%,
+    100% {
+        transform: rotate(-10deg);
+        transform-origin: top center;
+    }
+    50% {
+        transform: rotate(10deg);
+        transform-origin: top center;
+    }
+}
+
+.animate-swing {
+    animation: swing 3s ease-in-out infinite;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.animate-marquee {
+    display: inline-block;
+    animation: marquee 12s linear infinite;
+}
+
+@keyframes glow-gold {
+    0%,
+    100% {
+        box-shadow:
+            0 0 5px rgba(255, 215, 0, 0.5),
+            inset 0 0 5px rgba(255, 215, 0, 0.2);
+    }
+    50% {
+        box-shadow:
+            0 0 15px rgba(255, 215, 0, 0.8),
+            inset 0 0 10px rgba(255, 215, 0, 0.4);
+    }
+}
+
+.hover-glow-gold:hover {
+    animation: glow-gold 1.5s ease-in-out infinite;
+    border-color: rgba(255, 215, 0, 0.7) !important;
+}
+
+.nav-link:hover {
+    color: #ffd700 !important;
+}

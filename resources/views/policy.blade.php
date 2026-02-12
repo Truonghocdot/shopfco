@@ -96,12 +96,16 @@
     <div class="container mx-auto px-4 relative z-10 max-w-6xl">
         <!-- Hero Section -->
         <div class="text-center mb-16 relative">
+            <!-- Floating decorations around hero -->
+            <img src="{{ asset('images/hoa1.webp') }}" class="absolute -top-10 -left-10 w-32 opacity-30 animate-shake">
+            <img src="{{ asset('images/phao1.webp') }}" class="absolute -top-10 -right-10 w-24 opacity-40 animate-swing">
+
             <div class="inline-block relative mb-4">
-                <div class="relative bg-gradient-to-r from-primary to-orange-500 text-white px-8 py-3 font-black text-3xl rounded-xl shadow-lg">
+                <div class="relative bg-linear-to-r from-primary to-orange-500 text-white px-10 py-4 font-black text-3xl md:text-5xl rounded-2xl shadow-2xl transform hover:scale-105 transition-transform">
                     CHÍNH SÁCH & QUY ĐỊNH
                 </div>
             </div>
-            <p class="text-white font-bold tracking-[0.2em] uppercase text-sm">
+            <p class="text-white font-black tracking-[0.3em] uppercase text-xs md:text-sm mt-4 opacity-80">
                 VanhFCO - AccFCO Security & Support System Protocol v2.0
             </p>
         </div>
@@ -430,21 +434,29 @@
             </div>
 
             <!-- Closing Note -->
-            <div class="text-center max-w-3xl mx-auto bg-white border border-gray-200 shadow-md p-10 rounded-2xl relative overflow-hidden mt-16">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+            <div class="text-center max-w-4xl mx-auto bg-white border border-gray-200 shadow-2xl p-12 rounded-3xl relative overflow-hidden mt-20 group/thanks">
+                <!-- Decorative flowers in corners -->
+                <img src="{{ asset('images/hoa3.webp') }}" class="absolute -top-10 -left-10 w-40 opacity-10 rotate-12 group-hover:opacity-20 transition-opacity">
+                <img src="{{ asset('images/hoa1.webp') }}" class="absolute -bottom-10 -right-10 w-40 opacity-10 -rotate-12 group-hover:opacity-20 transition-opacity">
 
-                <span class="material-icons text-primary text-5xl mb-6 animate-bounce">favorite</span>
-                <h2 class="text-2xl font-black text-gray-800 mb-4 uppercase">LỜI CẢM ƠN</h2>
-                <p class="text-gray-500 mb-8 italic">
-                    "Cảm ơn tất cả anh em đã tin tưởng <strong class="text-primary">VanhFCO</strong> - <strong class="text-primary">AccFCO</strong>
-                    để mua <strong class="text-primary">Acc chứa FC</strong>, <strong class="text-primary">Acc Mở thẻ</strong>,
-                    <strong class="text-primary">Acc đội hình</strong>. Chúng tôi cam kết mang đến dịch vụ tốt nhất cho cộng đồng FC Online."
-                </p>
+                <div class="absolute top-0 left-0 w-full h-1.5 bg-linear-to-r from-transparent via-primary to-transparent"></div>
 
-                <div class="inline-flex items-center gap-4 text-xs font-bold tracking-widest text-primary/70">
-                    <span class="w-12 h-px bg-primary/30"></span>
-                    VanhFCO
-                    <span class="w-12 h-px bg-primary/30"></span>
+                <div class="relative z-10">
+                    <span class="material-icons text-primary text-6xl mb-6 animate-bounce">favorite</span>
+                    <h2 class="text-3xl font-black text-gray-800 mb-6 uppercase tracking-widest">LỜI CẢM ƠN CHÂN THÀNH</h2>
+                    <div class="max-w-2xl mx-auto">
+                        <p class="text-gray-600 mb-8 italic text-lg leading-relaxed">
+                            "Cảm ơn tất cả anh em đã tin tưởng <strong class="text-primary underline decoration-2 underline-offset-4">VanhFCO</strong> - <strong class="text-primary underline decoration-2 underline-offset-4">AccFCO</strong>
+                            để mua <strong class="text-primary">Acc chứa FC</strong>, <strong class="text-primary">Acc Mở thẻ</strong>,
+                            <strong class="text-primary">Acc đội hình</strong>. Chúng tôi cam kết mang đến dịch vụ tốt nhất cho cộng đồng FC Online."
+                        </p>
+                    </div>
+
+                    <div class="inline-flex items-center gap-6 text-sm font-black tracking-widest text-primary uppercase">
+                        <span class="w-16 h-0.5 bg-linear-to-r from-transparent to-primary/30"></span>
+                        VanhFCO - CHÚC MỪNG NĂM MỚI
+                        <span class="w-16 h-0.5 bg-linear-to-l from-transparent to-primary/30"></span>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,6 +1,16 @@
-<div class="container mx-auto px-4 py-8 min-h-screen">
-    <div class="max-w-4xl mx-auto">
-        <h1 class="text-3xl font-black mb-6 text-primary uppercase tracking-wider">Xác nhận thanh toán</h1>
+<div class="container mx-auto px-4 py-8 min-h-screen relative overflow-hidden">
+    <!-- Floating decorations -->
+    <img src="{{ asset('images/hoa1.webp') }}" class="absolute top-20 -left-10 w-44 opacity-20 -rotate-45 pointer-events-none animate-shake">
+    <img src="{{ asset('images/hoa3.webp') }}" class="absolute bottom-20 -right-10 w-44 opacity-20 rotate-45 pointer-events-none animate-shake">
+
+    <div class="max-w-4xl mx-auto relative z-10">
+        <div class="mb-10 text-center">
+            <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight text-primary mb-3 flex justify-center items-center gap-3">
+                <span class="material-icons text-4xl md:text-5xl">payments</span>
+                XÁC NHẬN THANH TOÁN
+            </h1>
+            <div class="h-1.5 w-32 bg-linear-to-r from-transparent via-primary to-transparent mx-auto rounded-full mt-4"></div>
+        </div>
 
         @if (session('error'))
         <div class="mb-6 border border-red-200 text-red-600 px-4 py-3 rounded-lg">
@@ -11,9 +21,10 @@
             <!-- Left Column: Product Info -->
             <div class="md:col-span-2 space-y-6">
                 <!-- Product Details -->
-                <div class="bg-white rounded-xl border border-gray-200 shadow-md p-6">
-                    <h2 class="text-lg font-black mb-4 flex items-center gap-2 text-primary uppercase tracking-wide">
-                        <span class="material-icons text-xl">shopping_bag</span>
+                <div class="bg-white rounded-2xl border border-gray-200 shadow-xl p-8 relative overflow-hidden group">
+                    <img src="{{ asset('images/hoa1.webp') }}" class="absolute -top-6 -right-6 w-32 opacity-10 rotate-12 pointer-events-none group-hover:opacity-20 transition-opacity">
+                    <h2 class="text-xl font-black mb-6 flex items-center gap-2 text-primary uppercase tracking-wide">
+                        <span class="material-icons">shopping_bag</span>
                         Thông tin sản phẩm
                     </h2>
 
@@ -41,8 +52,9 @@
                 </div>
 
                 <!-- Wallet Info -->
-                <div class="bg-white rounded-xl border border-gray-200 shadow-md p-6">
-                    <h2 class="text-lg font-black mb-4 flex items-center gap-2 text-primary uppercase tracking-wide">
+                <div class="bg-white rounded-2xl border border-gray-200 shadow-xl p-8 relative overflow-hidden group">
+                    <img src="{{ asset('images/lixi1.png') }}" class="absolute -bottom-4 -left-4 w-24 opacity-10 -rotate-12 pointer-events-none group-hover:opacity-20 transition-opacity">
+                    <h2 class="text-xl font-black mb-6 flex items-center gap-2 text-primary uppercase tracking-wide">
                         <span class="material-icons text-xl">account_balance_wallet</span>
                         Thông tin ví
                     </h2>
@@ -61,7 +73,7 @@
                         </div>
 
                         @if($this->wallet->balance < $this->finalAmount)
-                            <a href="{{ route('deposit') }}" class="px-4 py-2 btn-tet rounded-lg font-bold text-sm uppercase tracking-wide">
+                            <a href="{{ route('deposit') }}" class="px-6 py-3 btn-tet rounded-xl font-black text-sm uppercase tracking-widest hover-glow-gold">
                                 Nạp thêm tiền
                             </a>
                             @endif
@@ -71,8 +83,9 @@
 
             <!-- Right Column: Order Summary -->
             <div class="md:col-span-1">
-                <div class="bg-white rounded-xl border border-gray-200 shadow-md p-6 sticky top-24">
-                    <h2 class="text-lg font-black mb-4 text-primary uppercase tracking-wide">Tổng đơn hàng</h2>
+                <div class="bg-white rounded-3xl border border-gray-200 shadow-2xl p-8 sticky top-24 relative overflow-hidden">
+                    <img src="{{ asset('images/phao2.webp') }}" class="absolute -top-4 -right-4 w-20 opacity-20 animate-swing pointer-events-none">
+                    <h2 class="text-xl font-black mb-6 text-primary uppercase tracking-wide">Tổng đơn hàng</h2>
 
                     <!-- Coupon Input -->
                     <div class="mb-6">
@@ -140,7 +153,7 @@
                         {{ $this->wallet->balance < $this->finalAmount ? 'disabled' : '' }}
                         class="w-full py-3 rounded-lg font-black text-white shadow-lg transition-all transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed mt-6 uppercase tracking-wide {{ $this->wallet->balance < $this->finalAmount ? 'bg-gray-400 cursor-not-allowed' : 'bg-red-500 hover:bg-red-600' }}">
                         <span wire:loading.remove wire:target="purchase">
-                            {{ $this->wallet->balance < $this->finalAmount ? 'Số dư không đủ' : 'Xác nhận thanh toán' }}
+                            {{ $this->wallet->balance < $this->finalAmount ? 'Số dư không đủ' : 'XÁC NHẬN THANH TOÁN' }}
                         </span>
                         <span wire:loading wire:target="purchase" class="flex items-center justify-center gap-2">
                             <span class="material-icons animate-spin text-sm">refresh</span>
