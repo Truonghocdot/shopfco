@@ -17,8 +17,8 @@ $recentOrders = $recentOrdersResult->isSuccess() ? $recentOrdersResult->getData(
         </div>
 
         <!-- Marquee Content -->
-        <div class="flex-1 overflow-hidden">
-            <div class="marquee-content flex flex-nowrap gap-6 items-center w-max">
+        <div class="flex-1 overflow-hidden min-w-0">
+            <div class="marquee-content inline-flex flex-nowrap gap-6 items-center whitespace-nowrap">
                 @if($recentOrders->count() > 0)
                 @foreach($recentOrders as $order)
                 <div class="flex items-center gap-3 shrink-0 bg-white border border-gray-200 rounded-lg px-4 py-2 shadow-sm">
@@ -63,16 +63,18 @@ $recentOrders = $recentOrdersResult->isSuccess() ? $recentOrdersResult->getData(
 <style>
     @keyframes marquee {
         0% {
-            transform: translateX(0);
+            transform: translate3d(0, 0, 0);
         }
 
         100% {
-            transform: translateX(-50%);
+            transform: translate3d(-50%, 0, 0);
         }
     }
 
     .marquee-content {
-        animation: marquee 3s linear infinite;
+        width: max-content;
+        animation: marquee 25s linear infinite;
+        will-change: transform;
     }
 
     .marquee-content:hover {
