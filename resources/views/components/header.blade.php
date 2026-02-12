@@ -60,20 +60,20 @@
         <div class="flex items-center gap-3">
             @auth
             <!-- Balance Display -->
-            <div class="hidden md:flex flex-col items-end px-4 py-2 rounded-lg bg-white/15 border border-white/20 hover:bg-white/25 transition-all group cursor-pointer relative overflow-hidden">
+            <div class="flex flex-col items-end px-3 md:px-4 py-1 md:py-2 rounded-lg bg-white/15 border border-white/20 hover:bg-white/25 transition-all group cursor-pointer relative overflow-hidden">
                 <div class="absolute inset-0 bg-yellow-400 translate-y-full group-hover:translate-y-0 transition-transform duration-300 opacity-10"></div>
-                <span class="text-[10px] text-white/70 uppercase tracking-widest font-bold">Số dư</span>
-                <span class="text-yellow-300 font-black text-lg group-hover:text-white transition-colors">
-                    {{ number_format(auth()->user()->wallet()->value('balance'), 0, ',', '.') }} <span class="text-sm">đ</span>
+                <span class="hidden md:block text-[10px] text-white/70 uppercase tracking-widest font-bold">Số dư</span>
+                <span class="text-yellow-300 font-black text-sm md:text-lg group-hover:text-white transition-colors">
+                    {{ number_format(auth()->user()->wallet()->value('balance'), 0, ',', '.') }} <span class="text-[10px] md:text-sm">đ</span>
                 </span>
             </div>
 
             <!-- User Profile -->
-            <a href="{{ route('user.profile') }}" class="hidden md:flex items-center gap-2 bg-white/15 hover:bg-white/25 px-4 py-2 rounded-lg border border-white/20 cursor-pointer transition-all hover-glow-gold">
-                <span class="material-icons text-white text-2xl">account_circle</span>
+            <a href="{{ route('user.profile') }}" class="flex items-center gap-2 bg-white/15 hover:bg-white/25 px-3 md:px-4 py-1 md:py-2 rounded-lg border border-white/20 cursor-pointer transition-all hover-glow-gold">
+                <span class="material-icons text-white text-xl md:text-2xl">account_circle</span>
                 <div class="flex flex-col">
-                    <span class="text-white text-[12px] font-medium">{{ auth()->user()->name }}</span>
-                    <span class="text-[10px] text-white/70">ID: {{ auth()->user()->id }}</span>
+                    <span class="text-white text-[10px] md:text-[12px] font-medium max-w-[50px] md:max-w-none truncate">{{ auth()->user()->name }}</span>
+                    <span class="text-[8px] md:text-[10px] text-white/70">ID: {{ auth()->user()->id }}</span>
                 </div>
             </a>
             @else
@@ -96,19 +96,29 @@
         <nav class="container mx-auto px-4 py-4 flex flex-col gap-1">
             @auth
             <!-- Mobile User Info -->
-            <div class="flex items-center justify-between p-4 mb-3 rounded-lg bg-white/10 border border-white/15">
-                <div class="flex items-center gap-3">
-                    <span class="material-icons text-white text-3xl">account_circle</span>
-                    <div>
-                        <div class="font-bold text-white">{{ auth()->user()->username }}</div>
-                        <div class="text-xs text-white/70">ID: {{ auth()->user()->id }}</div>
+            <div class="p-4 mb-3 rounded-2xl bg-linear-to-br from-white/20 to-white/5 border border-white/20 shadow-xl relative overflow-hidden group">
+                <div class="absolute -top-10 -right-10 w-24 h-24 bg-yellow-400/10 rounded-full blur-2xl"></div>
+                <div class="flex items-center justify-between relative z-10">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center border border-white/30 shadow-inner">
+                            <span class="material-icons text-white text-3xl">account_circle</span>
+                        </div>
+                        <div>
+                            <div class="font-black text-white text-lg tracking-wide">{{ auth()->user()->name }}</div>
+                            <div class="text-xs text-white/70 font-bold">ID: {{ auth()->user()->id }}</div>
+                        </div>
                     </div>
                 </div>
-                <div class="text-right">
-                    <div class="text-[10px] text-white/70 uppercase">Số dư</div>
-                    <div class="text-yellow-300 font-black text-lg">
-                        {{ number_format(auth()->user()->wallet()->value('balance'), 0, ',', '.') }}đ
+                <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between relative z-10">
+                    <div>
+                        <div class="text-[10px] text-white/60 uppercase font-black tracking-widest">Ví tài khoản</div>
+                        <div class="text-yellow-400 font-black text-2xl tracking-tighter">
+                            {{ number_format(auth()->user()->wallet()->value('balance'), 0, ',', '.') }}<span class="text-sm ml-1">đ</span>
+                        </div>
                     </div>
+                    <a href="{{ route('deposit') }}" class="bg-yellow-400 text-primary font-black px-4 py-2 rounded-xl text-xs uppercase tracking-widest shadow-lg active:scale-95 transition-transform">
+                        Nạp ngay
+                    </a>
                 </div>
             </div>
             @endauth
