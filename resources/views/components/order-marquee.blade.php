@@ -73,7 +73,7 @@ $recentOrders = $recentOrdersResult->isSuccess() ? $recentOrdersResult->getData(
 
     .marquee-content {
         width: max-content;
-        animation: marquee 25s linear infinite;
+        animation: marquee 52s linear infinite;
         will-change: transform;
     }
 
