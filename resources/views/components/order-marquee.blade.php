@@ -72,7 +72,7 @@ $recentOrders = $recentOrdersResult->isSuccess() ? $recentOrdersResult->getData(
     }
 
     .marquee-content {
-        animation: marquee 12s linear infinite;
+        animation: marquee 3s linear infinite;
     }
 
     .marquee-content:hover {
