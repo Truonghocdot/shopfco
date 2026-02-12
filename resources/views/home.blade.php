@@ -105,8 +105,8 @@
             @forelse($categories as $category)
             <a href="{{ route('categories.show', $category->slug) }}" class="group bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-lg p-3 md:p-4 flex flex-col items-center text-center transition-all hover:scale-[1.03] relative overflow-hidden">
                 <!-- Flower decorations -->
-                <img src="{{ asset('images/hoa1.webp') }}" alt="" class="absolute -top-6 -left-6 w-36 md:w-44 opacity-90 -rotate-12 pointer-events-none z-10">
-                <img src="{{ asset('images/hoa2.webp') }}" alt="" class="absolute -bottom-6 -right-6 w-32 md:w-40 opacity-90 rotate-12 pointer-events-none z-10">
+                <img src="{{ asset('images/hoa1.webp') }}" alt="" class="absolute -top-6 -left-6 w-24 md:w-28 opacity-90 -rotate-12 pointer-events-none z-10">
+                <img src="{{ asset('images/hoa2.webp') }}" alt="" class="absolute -bottom-6 -right-6 w-24 md:w-28 opacity-90 rotate-12 pointer-events-none z-10">
 
                 <div class="w-full h-32 md:h-48 mb-3 md:mb-4 overflow-hidden rounded-lg">
                     <img alt="{{ $category->title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="{{ url('storage/'.$category->image) ?? 'https://via.placeholder.com/96' }}" loading="lazy">
