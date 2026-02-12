@@ -91,8 +91,8 @@
                 @foreach($products as $product)
                 <div class="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg group transition-all hover:scale-[1.02] relative">
                     <!-- Flower decorations -->
-                    <img src="{{ asset('images/hoa3.webp') }}" alt="" class="absolute -top-6 -left-6 w-40 md:w-48 opacity-90 -rotate-12 pointer-events-none z-10 animate-shake">
-                    <img src="{{ asset('images/hoa5.png') }}" alt="" class="absolute -bottom-6 -right-6 w-36 md:w-44 opacity-90 rotate-12 pointer-events-none z-10 animate-shake">
+                    <img src="{{ asset('images/hoa3.webp') }}" alt="" class="absolute -top-6 -left-6 w-22 md:w-28 opacity-90 -rotate-12 pointer-events-none z-10 animate-shake">
+                    <img src="{{ asset('images/hoa5.png') }}" alt="" class="absolute -bottom-6 -right-6 w-22 md:w-24 opacity-90 rotate-12 pointer-events-none z-10 animate-shake">
                     <div class="relative overflow-hidden aspect-video">
                         <img alt="{{ $product->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ url('storage/'.$product->images[0]) ?? 'https://via.placeholder.com/400x225' }}" loading="lazy">
                         @if($product->getDiscountPercent())

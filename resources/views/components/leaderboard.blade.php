@@ -2,8 +2,9 @@
 
 <div class="bg-white rounded-xl border border-gray-200 shadow-md p-4 md:p-6 relative overflow-hidden">
     <!-- Decorative fireworks -->
-    <img src="{{ asset('images/phao2.webp') }}" alt="" class="absolute -top-4 -right-4 w-28 md:w-32 opacity-80 rotate-6 pointer-events-none animate-swing">
+    <img src="{{ asset('images/meo.webp') }}" alt="" class="absolute -top-4 -right-4 w-28 md:w-32 opacity-90 pointer-events-none z-0">
     <img src="{{ asset('images/phao3.webp') }}" alt="" class="absolute -bottom-6 -left-6 w-24 md:w-28 opacity-70 -rotate-12 pointer-events-none animate-swing">
+    <img src="{{ asset('images/phao2.webp') }}" alt="" class="absolute -bottom-4 -right-4 w-24 md:w-28 opacity-80 rotate-6 pointer-events-none animate-swing">
 
     <!-- Header -->
     <div class="flex items-center gap-2 md:gap-3 mb-4 md:mb-6 relative z-10">

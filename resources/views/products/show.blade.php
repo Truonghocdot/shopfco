@@ -21,7 +21,7 @@
         <div class="lg:col-span-7 space-y-6">
             <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-200 relative">
                 <!-- Decorative branch on carousel -->
-                <img src="{{ asset('images/hoa1.webp') }}" class="absolute -top-6 -left-6 w-40 opacity-90 -rotate-12 pointer-events-none z-20 animate-shake">
+                <img src="{{ asset('images/hoa1.webp') }}" class="absolute -top-6 -left-6 w-22 md:w-28 opacity-90 -rotate-12 pointer-events-none z-20 animate-shake">
                 <div class="relative group z-10" id="product-carousel">
                     <div id="carousel-slides" class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth p-0 no-scrollbar" style="scrollbar-width: none; -ms-overflow-style: none;">
                         @if(!empty($product->images))
@@ -118,7 +118,7 @@
                     <img src="{{ asset('images/phao1.webp') }}" class="w-20 drop-shadow-md transform -scale-x-100">
                 </div>
                 <!-- Decorative flower branch -->
-                <img src="{{ asset('images/hoa1.webp') }}" class="absolute -bottom-10 -left-10 w-44 opacity-80 -rotate-45 pointer-events-none z-10 animate-shake">
+                <img src="{{ asset('images/hoa1.webp') }}" class="absolute -bottom-10 -left-10 w-22 opacity-80 -rotate-45 pointer-events-none z-10 animate-shake">
                 <div class="flex items-center gap-2 mb-6">
                     <span class="material-icons text-primary">info</span>
                     <h2 class="text-xl font-black text-primary uppercase tracking-wide">Giới thiệu tài khoản</h2>
