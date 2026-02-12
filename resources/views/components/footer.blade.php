@@ -4,7 +4,7 @@
             <!-- About -->
             <div>
                 <div class="flex items-center gap-2 mb-6">
-                    <img src="{{ asset('logo.webp') }}" alt="Logo" class="h-24 md:h-32" width="160" height="160" />
+                    <img src="{{ asset('logo.webp') }}" alt="Logo" class="w-full h-auto md:max-w-[280px]" width="280" height="280" />
                 </div>
                 <p class="text-white/70 text-sm leading-relaxed">
                     Hệ thống mua bán nick FC Online uy tín, an toàn nhất Việt Nam. Giao dịch tự động 24/7, hỗ trợ nhiệt tình, bảo mật tuyệt đối.
