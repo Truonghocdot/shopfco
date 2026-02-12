@@ -41,7 +41,6 @@
 /* Global Styles */
 body {
     background: var(--color-bg-warm);
-    background-attachment: fixed;
     color: var(--color-text-primary);
     font-family: var(--font-family-sans);
     line-height: 1.6;

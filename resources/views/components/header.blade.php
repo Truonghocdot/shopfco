@@ -27,11 +27,11 @@
         <img src="{{ asset('images/phao1.webp') }}" class="w-16 drop-shadow-lg transform -scale-x-100">
     </div>
 
-    <div class="container mx-auto px-4 py-3 flex items-center justify-between relative z-40">
+    <div class="container mx-auto px-2 md:px-4 py-3 flex items-center justify-between relative z-40">
         <div class="flex items-center gap-8">
             <!-- Logo -->
             <a href="{{ route('home') }}" class="flex items-center gap-2 group relative">
-                <img src="{{ asset('logo.webp') }}" alt="Logo" class="h-16 relative z-10 transition-transform group-hover:scale-110" width="128" height="128" />
+                <img src="{{ asset('logo.webp') }}" alt="Logo" class="h-20 md:h-28 relative z-10 transition-transform group-hover:scale-110" width="160" height="160" />
                 <div class="absolute inset-0 bg-yellow-400/20 blur-xl rounded-full scale-0 group-hover:scale-150 transition-transform duration-500"></div>
             </a>
 

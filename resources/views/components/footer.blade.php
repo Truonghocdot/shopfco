@@ -1,10 +1,10 @@
 <footer class="relative mt-16 pt-12 pb-6" style="background: linear-gradient(135deg, #8B1515 0%, #A01C1C 50%, #8B1515 100%);">
-    <div class="container mx-auto px-4">
+    <div class="container mx-auto px-2 md:px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
             <!-- About -->
             <div>
                 <div class="flex items-center gap-2 mb-6">
-                    <img src="{{ asset('logo.webp') }}" alt="Logo" class="h-16" width="128" height="128" />
+                    <img src="{{ asset('logo.webp') }}" alt="Logo" class="h-24 md:h-32" width="160" height="160" />
                 </div>
                 <p class="text-white/70 text-sm leading-relaxed">
                     Hệ thống mua bán nick FC Online uy tín, an toàn nhất Việt Nam. Giao dịch tự động 24/7, hỗ trợ nhiệt tình, bảo mật tuyệt đối.

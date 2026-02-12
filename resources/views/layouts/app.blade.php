@@ -69,7 +69,7 @@
 <body class="min-h-screen relative">
     <!-- Tet Holiday Background -->
     <div id="tet-bg" class="fixed inset-0 z-0 pointer-events-none transition-all duration-1000 ease-in-out"
-        style="background-size: cover; background-position: center; background-attachment: fixed; background-image: url('{{ asset("bg-tet-3.png") }}');">
+        style="background-size: cover; background-position: center; background-image: url('{{ asset("bg-tet-3.png") }}'); -webkit-backface-visibility: hidden; -webkit-transform: translate3d(0,0,0); will-change: transform;">
     </div>
 
     <!-- Content Wrapper -->
