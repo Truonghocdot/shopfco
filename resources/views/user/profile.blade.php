@@ -54,11 +54,18 @@
                             <p class="text-sm font-bold">Tài khoản đã mua</p>
                         </button>
                     </nav>
-                    <div class="mt-6 pt-6 border-t border-gray-100">
+                    <div class="mt-6 pt-6 border-t border-gray-100 flex flex-col gap-2">
                         <a href="{{ route('deposit') }}" class="w-full flex cursor-pointer items-center justify-center rounded-lg h-11 px-4 btn-tet text-sm uppercase tracking-wide">
                             <span class="material-icons mr-2 text-[20px]">add_circle</span>
                             <span>Nạp tiền ngay</span>
                         </a>
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="w-full flex cursor-pointer items-center justify-center rounded-lg h-11 px-4 bg-gray-100 hover:bg-gray-200 text-gray-600 transition-all text-sm font-bold uppercase tracking-wide">
+                                <span class="material-icons mr-2 text-[20px]">logout</span>
+                                <span>Đăng xuất</span>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>

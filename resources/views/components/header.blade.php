@@ -76,6 +76,14 @@
                     <span class="text-[8px] md:text-[10px] text-white/70">ID: {{ auth()->user()->id }}</span>
                 </div>
             </a>
+
+            <!-- Logout Button (Desktop) -->
+            <form action="{{ route('logout') }}" method="POST" class="hidden md:block">
+                @csrf
+                <button type="submit" class="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-all border border-white/10 hover:border-white/30" title="Đăng xuất">
+                    <span class="material-icons text-xl">logout</span>
+                </button>
+            </form>
             @else
             <!-- Login Button -->
             <a href="{{ route('login') }}" class="hidden md:flex items-center gap-2 bg-white text-primary hover:bg-yellow-400 hover:text-white px-5 py-2 rounded-lg font-bold transition-all shadow-sm group">
@@ -137,6 +145,15 @@
                 <span class="tracking-wide">Tài khoản</span>
                 <span class="material-icons ml-auto text-white/40">chevron_right</span>
             </a>
+
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="w-full flex items-center gap-3 text-red-200 hover:text-red-100 hover:bg-white/10 font-semibold py-3 px-4 rounded-lg transition-all">
+                    <span class="material-icons text-xl">logout</span>
+                    <span class="tracking-wide">Đăng xuất</span>
+                    <span class="material-icons ml-auto text-white/40">chevron_right</span>
+                </button>
+            </form>
             @endauth
         </nav>
     </div>
