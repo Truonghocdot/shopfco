@@ -16,7 +16,7 @@ $bonusAmount = $todayBonus->discount_amount;
 @endphp
 
 @if($bonusAmount > 0)
-<div id="tet-popup" class="fixed inset-0 z-[2147483647] hidden items-center justify-center p-4" style="background: radial-gradient(ellipse at center, rgb(139,0,0) 0%, rgb(0,0,0) 100%);">
+<div id="tet-popup" class="fixed inset-0 z-[2147483647] bg-black hidden items-center justify-center p-4 overflow-y-auto" style="background-image: radial-gradient(ellipse at center, rgb(139,0,0) 0%, rgb(0,0,0) 100%);">
     {{-- Particles --}}
     <div class="tet-particles" aria-hidden="true">
         @for($i = 0; $i < 20; $i++)
