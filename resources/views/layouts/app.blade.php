@@ -109,6 +109,9 @@
         <!-- Popup Modal -->
         @include('components.popup-modal')
 
+        <!-- Tet Greeting & Li Xi Popup -->
+        @include('components.tet-popup')
+
         @livewireScripts
     </div> <!-- End Content Wrapper -->
 </body>
