@@ -2,6 +2,7 @@
 @auth
 @php
 $user = auth()->user();
+$popupKey = 'tet_popup_' . session()->getId();
 $bonusAmount = 0;
 // Check if user received bonus today
 $todayBonus = \App\Models\CouponUsage::where('user_id', $user->id)
@@ -156,8 +157,10 @@ $bonusAmount = $todayBonus->discount_amount;
 </style>
 
 <script>
+    const popupKey = "{{ $popupKey }}";
+
     function shouldShowTetPopup() {
-        const hideUntil = localStorage.getItem('tet_popup_hide_until');
+        const hideUntil = localStorage.getItem(popupKey);
         if (!hideUntil) return true;
         return new Date() > new Date(hideUntil);
     }
@@ -169,7 +172,7 @@ $bonusAmount = $todayBonus->discount_amount;
         // Hide for 24 hours
         const hideUntil = new Date();
         hideUntil.setHours(hideUntil.getHours() + 24);
-        localStorage.setItem('tet_popup_hide_until', hideUntil.toISOString());
+        localStorage.setItem(popupKey, hideUntil.toISOString());
     }
 
     document.addEventListener('DOMContentLoaded', function() {
