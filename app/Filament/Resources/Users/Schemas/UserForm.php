@@ -6,6 +6,7 @@ use App\Constants\UserRole;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Group;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
@@ -48,15 +49,25 @@ class UserForm
                     ->required(),
                 TextInput::make('email')
                     ->label('Email')
-                    ->email()
                     ->required(),
                 TextInput::make('phone')
                     ->label('Số điện thoại')
                     ->tel(),
+                Group::make()
+                    ->relationship('wallet')
+                    ->schema([
+                        TextInput::make('balance')
+                            ->label('Số dư')
+                            ->numeric()
+                            ->minValue(0)
+                            ->required(),
+                    ]),
                 TextInput::make('password')
                     ->label('Mật khẩu')
                     ->password()
-                    ->required()
+                    ->dehydrateStateUsing(fn(string $state) => \Illuminate\Support\Facades\Hash::make($state))
+                    ->dehydrated(fn(?string $state) => filled($state))
+                    ->required(fn(string $operation): bool => $operation === 'create')
                     ->columnSpanFull(),
                 Select::make('role')
                     ->label('Vai trò')
