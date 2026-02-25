@@ -95,7 +95,29 @@ class CouponForm
                     ->required()
                     ->validationMessages([
                         'required' => 'Trạng thái không được để trống',
-                    ])  ,
+                    ]),
+                Section::make('Loại trừ theo danh mục và khoảng giá')
+                    ->description('Mã giảm giá sẽ không áp dụng cho sản phẩm thuộc danh mục đã chọn VÀ có giá nằm trong khoảng giá chỉ định.')
+                    ->columns(3)
+                    ->schema([
+                        Select::make('excludedCategories')
+                            ->label('Danh mục loại trừ')
+                            ->relationship('excludedCategories', 'title')
+                            ->multiple()
+                            ->searchable()
+                            ->preload()
+                            ->columnSpanFull(),
+                        TextInput::make('excluded_min_price')
+                            ->label('Giá tối thiểu loại trừ')
+                            ->numeric()
+                            ->minValue(0)
+                            ->suffix('đ'),
+                        TextInput::make('excluded_max_price')
+                            ->label('Giá tối đa loại trừ')
+                            ->numeric()
+                            ->minValue(0)
+                            ->suffix('đ'),
+                    ]),
             ]);
     }
 }

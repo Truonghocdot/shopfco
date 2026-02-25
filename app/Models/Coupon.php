@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\Product;
 
 class Coupon extends Model
 {
@@ -28,6 +30,8 @@ class Coupon extends Model
         'start_date',
         'end_date',
         'status',
+        'excluded_min_price',
+        'excluded_max_price',
     ];
 
     protected function casts(): array
@@ -43,6 +47,8 @@ class Coupon extends Model
             'start_date' => 'datetime',
             'end_date' => 'datetime',
             'status' => 'integer',
+            'excluded_min_price' => 'decimal:2',
+            'excluded_max_price' => 'decimal:2',
         ];
     }
 
@@ -50,6 +56,11 @@ class Coupon extends Model
     public function usages(): HasMany
     {
         return $this->hasMany(CouponUsage::class);
+    }
+
+    public function excludedCategories(): BelongsToMany
+    {
+        return $this->belongsToMany(Category::class, 'coupon_excluded_categories');
     }
 
     // Helper methods
@@ -81,7 +92,34 @@ class Coupon extends Model
         return $this->usage_limit && $this->usage_count >= $this->usage_limit;
     }
 
-    public function canBeUsedBy(User $user, float $orderAmount): array
+    /**
+     * Check if product is excluded by category + price range
+     * Coupon is rejected when product belongs to an excluded category
+     * AND its price falls within the excluded price range.
+     */
+    public function isExcludedByCategoryAndPrice(Product $product): bool
+    {
+        // Both conditions must be set
+        if (is_null($this->excluded_min_price) || is_null($this->excluded_max_price)) {
+            return false;
+        }
+
+        $excludedCategoryIds = $this->excludedCategories()->pluck('categories.id')->toArray();
+        if (empty($excludedCategoryIds)) {
+            return false;
+        }
+
+        // Check: product in excluded category AND price in excluded range
+        if (!in_array($product->category_id, $excludedCategoryIds)) {
+            return false;
+        }
+
+        $productPrice = $product->getFinalPrice();
+        return $productPrice >= (float)$this->excluded_min_price
+            && $productPrice <= (float)$this->excluded_max_price;
+    }
+
+    public function canBeUsedBy(User $user, float $orderAmount, ?Product $product = null): array
     {
         if (!$this->isActive()) {
             return ['valid' => false, 'message' => 'Mã giảm giá không còn hiệu lực'];
@@ -98,6 +136,18 @@ class Coupon extends Model
         $userUsageCount = $this->usages()->where('user_id', $user->id)->count();
         if ($userUsageCount >= $this->usage_per_user) {
             return ['valid' => false, 'message' => 'Bạn đã sử dụng hết lượt cho mã này'];
+        }
+
+        // Check category + price range exclusion
+        if ($product && $this->isExcludedByCategoryAndPrice($product)) {
+            $categoryNames = $this->excludedCategories()->pluck('title')->implode(', ');
+            return [
+                'valid' => false,
+                'message' => 'Mã giảm giá không áp dụng cho sản phẩm thuộc danh mục ['
+                    . $categoryNames . '] có giá trong khoảng '
+                    . number_format((float)$this->excluded_min_price) . 'đ - '
+                    . number_format((float)$this->excluded_max_price) . 'đ'
+            ];
         }
 
         return ['valid' => true, 'message' => 'Mã giảm giá hợp lệ'];

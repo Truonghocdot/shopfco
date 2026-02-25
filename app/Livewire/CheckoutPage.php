@@ -84,7 +84,8 @@ class CheckoutPage extends Component
         $validationResult = $this->couponService->validateCoupon(
             trim($this->couponCode),
             Auth::id(),
-            $this->originalPrice
+            $this->originalPrice,
+            $this->product
         );
 
         if ($validationResult->isError()) {

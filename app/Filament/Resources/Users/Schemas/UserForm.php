@@ -65,6 +65,7 @@ class UserForm
                 TextInput::make('password')
                     ->label('Mật khẩu')
                     ->password()
+                    ->revealable()
                     ->dehydrateStateUsing(fn(string $state) => \Illuminate\Support\Facades\Hash::make($state))
                     ->dehydrated(fn(?string $state) => filled($state))
                     ->required(fn(string $operation): bool => $operation === 'create')

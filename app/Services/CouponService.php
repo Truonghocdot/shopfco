@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Coupon;
 use App\Models\CouponUsage;
+use App\Models\Product;
 use App\Types\ServiceResult;
 use Illuminate\Support\Facades\Log;
 
@@ -14,7 +15,7 @@ class CouponService
     /**
      * Validate coupon for user and amount
      */
-    public function validateCoupon(string $code, int $userId, float $amount): ServiceResult
+    public function validateCoupon(string $code, int $userId, float $amount, ?Product $product = null): ServiceResult
     {
         try {
             $coupon = $this->coupon::where('code', trim($code))->first();
@@ -28,7 +29,7 @@ class CouponService
                 return ServiceResult::error('Người dùng không tồn tại');
             }
 
-            $validation = $coupon->canBeUsedBy($user, $amount);
+            $validation = $coupon->canBeUsedBy($user, $amount, $product);
 
             if (!$validation['valid']) {
                 return ServiceResult::error($validation['message']);

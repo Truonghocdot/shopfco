@@ -51,7 +51,7 @@ class OrderService
 
             // Validate and apply coupon if provided
             if ($couponCode) {
-                $couponResult = $this->couponService->validateCoupon($couponCode, $userId, $productPrice);
+                $couponResult = $this->couponService->validateCoupon($couponCode, $userId, $productPrice, $product);
 
                 if ($couponResult->isError()) {
                     DB::rollBack();
