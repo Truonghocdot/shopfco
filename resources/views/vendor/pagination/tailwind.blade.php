@@ -48,23 +48,9 @@
             @endif
         </div>
 
-        <p class="text-xs text-center text-gray-400 leading-5 font-bold">
-            Hiển thị <span class="font-black text-primary">{{ $paginator->firstItem() }}</span> - <span class="font-black text-primary">{{ $paginator->lastItem() }}</span> / <span class="font-black text-primary">{{ $paginator->total() }}</span>
-        </p>
     </div>
 
     <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
-        <div>
-            <p class="text-sm text-gray-400 leading-5 font-bold">
-                Hiển thị
-                <span class="font-black text-primary">{{ $paginator->firstItem() }}</span>
-                đến
-                <span class="font-black text-primary">{{ $paginator->lastItem() }}</span>
-                trong tổng số
-                <span class="font-black text-primary">{{ $paginator->total() }}</span>
-                kết quả
-            </p>
-        </div>
 
         <div>
             <span class="relative z-0 inline-flex shadow-sm rounded-lg">
