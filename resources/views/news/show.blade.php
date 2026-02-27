@@ -66,12 +66,12 @@
 
                 @if($news->description)
                 <div class="text-lg text-gray-500 mb-6 italic border-l-4 border-primary pl-4 bg-gray-50 p-4 rounded">
-                    {!! clean($news->description) !!}
+                    {!! $news->description !!}
                 </div>
                 @endif
 
                 <div class="news-content">
-                    {!! clean($news->content) !!}
+                    {!! $news->content !!}
                 </div>
             </div>
         </article>
