@@ -2,7 +2,7 @@
 
 namespace App\Filament\Widgets;
 
-use App\Models\Product;
+use App\Models\Order;
 use Filament\Widgets\ChartWidget;
 use Illuminate\Support\Facades\DB;
 
@@ -17,7 +17,7 @@ class ProductsSoldChart extends ChartWidget
     {
         $activeFilter = $this->filter;
 
-        $query = Product::where('status', 1); // Assuming status 1 means sold based on StatsOverview
+        $query = Order::where('status', Order::STATUS_COMPLETED);
 
         switch ($activeFilter) {
             case 'today':
@@ -47,9 +47,9 @@ class ProductsSoldChart extends ChartWidget
                 break;
         }
 
-        $data = $query->whereBetween('updated_at', [$start, $end])
+        $data = $query->whereBetween('created_at', [$start, $end])
             ->select(
-                DB::raw("DATE_FORMAT(updated_at, '{$dbFormat}') as period"),
+                DB::raw("DATE_FORMAT(created_at, '{$dbFormat}') as period"),
                 DB::raw('COUNT(*) as total')
             )
             ->groupBy('period')
