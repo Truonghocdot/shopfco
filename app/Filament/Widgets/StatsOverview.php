@@ -15,6 +15,11 @@ class StatsOverview extends BaseWidget
     protected function getStats(): array
     {
         $revenue = Transaction::where('status', 1)->sum('amount');
+        $monthlyRevenue = Transaction::where('status', 1)
+            ->whereMonth('created_at', now()->month)
+            ->whereYear('created_at', now()->year)
+            ->sum('amount');
+        $totalUsers = User::where('role', 0)->count();
         $newUsers = User::where('role', 0)->whereMonth('created_at', now()->month)->count();
         $pendingTransactions = Transaction::where('status', 0)->count();
         $soldProducts = Product::where('status', 1)->count();
@@ -31,6 +36,14 @@ class StatsOverview extends BaseWidget
                 ->description('Tổng tiền giao dịch thành công')
                 ->descriptionIcon('heroicon-m-banknotes')
                 ->color('success'),
+            Stat::make('Thu nhập tháng này', Number::currency($monthlyRevenue, 'VND'))
+                ->description('Doanh thu trong tháng ' . now()->month)
+                ->descriptionIcon('heroicon-m-calendar')
+                ->color('success'),
+            Stat::make('Tổng người dùng', $totalUsers)
+                ->description('Tổng số khách hàng hệ thống')
+                ->descriptionIcon('heroicon-m-users')
+                ->color('info'),
             Stat::make('Người dùng mới (Tháng này)', $newUsers)
                 ->description('Khách hàng mới đăng ký')
                 ->descriptionIcon('heroicon-m-user-group')
@@ -45,7 +58,7 @@ class StatsOverview extends BaseWidget
                 ->color('primary'),
 
             // New Stats Widgets
-            Stat::make('Sản phẩm tồn kho', $stockCount) 
+            Stat::make('Sản phẩm tồn kho', $stockCount)
                 ->description('Tổng số acc chưa bán')
                 ->descriptionIcon('heroicon-m-archive-box')
                 ->color('warning'),

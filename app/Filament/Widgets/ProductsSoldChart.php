@@ -2,40 +2,39 @@
 
 namespace App\Filament\Widgets;
 
-use App\Models\Transaction;
+use App\Models\Product;
 use Filament\Widgets\ChartWidget;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
-class RevenueChart extends ChartWidget
+class ProductsSoldChart extends ChartWidget
 {
+    protected ?string $heading = 'Lượng sản phẩm bán được';
     protected ?string $maxHeight = '300px';
+
+    public ?string $filter = 'month';
 
     protected function getData(): array
     {
         $activeFilter = $this->filter;
 
-        $query = Transaction::where('status', 1);
+        $query = Product::where('status', 1); // Assuming status 1 means sold based on StatsOverview
 
         switch ($activeFilter) {
             case 'today':
                 $start = now()->startOfDay();
                 $end = now()->endOfDay();
-                $format = 'H:00';
                 $dbFormat = '%H:00';
                 $interval = 'hour';
                 break;
             case 'week':
                 $start = now()->subDays(6)->startOfDay();
                 $end = now()->endOfDay();
-                $format = 'd/m';
                 $dbFormat = '%Y-%m-%d';
                 $interval = 'day';
                 break;
             case 'year':
                 $start = now()->startOfYear();
                 $end = now()->endOfYear();
-                $format = 'M';
                 $dbFormat = '%Y-%m';
                 $interval = 'month';
                 break;
@@ -43,16 +42,15 @@ class RevenueChart extends ChartWidget
             default:
                 $start = now()->startOfMonth();
                 $end = now()->endOfMonth();
-                $format = 'd/m';
                 $dbFormat = '%Y-%m-%d';
                 $interval = 'day';
                 break;
         }
 
-        $data = $query->whereBetween('created_at', [$start, $end])
+        $data = $query->whereBetween('updated_at', [$start, $end])
             ->select(
-                DB::raw("DATE_FORMAT(created_at, '{$dbFormat}') as period"),
-                DB::raw('SUM(amount) as total')
+                DB::raw("DATE_FORMAT(updated_at, '{$dbFormat}') as period"),
+                DB::raw('COUNT(*) as total')
             )
             ->groupBy('period')
             ->orderBy('period')
@@ -90,11 +88,11 @@ class RevenueChart extends ChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => 'Doanh thu (VND)',
+                    'label' => 'Sản phẩm đã bán',
                     'data' => $totals,
                     'fill' => 'start',
-                    'borderColor' => 'rgb(75, 192, 192)',
-                    'backgroundColor' => 'rgba(75, 192, 192, 0.2)',
+                    'borderColor' => 'rgb(54, 162, 235)',
+                    'backgroundColor' => 'rgba(54, 162, 235, 0.2)',
                     'tension' => 0.3,
                 ],
             ],
