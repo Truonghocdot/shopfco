@@ -70,11 +70,6 @@ class UserForm
                     ->dehydrated(fn(?string $state) => filled($state))
                     ->required(fn(string $operation): bool => $operation === 'create')
                     ->columnSpanFull(),
-                Select::make('role')
-                    ->label('Vai trò')
-                    ->required()
-                    ->options(UserRole::getRoleOptions())
-                    ->default(UserRole::CLIENT->value),
                 Placeholder::make('password2')
                     ->label('Mật khẩu 2')
                     ->content(function ($record) {
