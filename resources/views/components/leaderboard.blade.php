@@ -1,10 +1,5 @@
 @props(['topSpenders'])
 
-@php
-$shopOwner = $topSpenders->firstWhere('id', 3);
-$filteredSpenders = $topSpenders->reject(fn($u) => $u->id == 3)->values();
-@endphp
-
 <div class="bg-white rounded-xl border border-gray-200 shadow-md p-4 md:p-6 relative overflow-hidden">
     <!-- Decorative fireworks -->
     <img src="{{ asset('images/meo.webp') }}" alt="" class="absolute -top-4 -right-4 w-20 md:w-32 opacity-90 pointer-events-none z-0">
@@ -22,34 +17,9 @@ $filteredSpenders = $topSpenders->reject(fn($u) => $u->id == 3)->values();
         </div>
     </div>
 
-    @if($shopOwner)
-    <!-- Shop Owner Block -->
-    <div class="mb-6 relative z-10">
-        <div class="flex items-center gap-2 mb-2">
-            <div class="h-px flex-1 bg-red-100"></div>
-            <span class="text-[10px] md:text-xs font-black text-red-500 uppercase tracking-widest bg-red-50 px-3 py-1 rounded-full border border-red-100">CHỦ SHOP</span>
-            <div class="h-px flex-1 bg-red-100"></div>
-        </div>
-        <div class="flex items-center gap-3 md:gap-4 p-3 md:p-4 rounded-xl bg-gradient-to-br from-red-50 to-orange-50 border border-red-200 shadow-sm">
-            <div class="shrink-0 w-8 md:w-10 text-center">
-                <span class="text-2xl md:text-3xl">👑</span>
-            </div>
-            <div class="flex-1 min-w-0">
-                <p class="font-bold text-sm md:text-base text-red-600 truncate">{{ $shopOwner->name }}</p>
-                <p class="text-[10px] md:text-xs text-gray-400">{{ $shopOwner->total_orders }} đơn hàng</p>
-            </div>
-            <div class="text-right">
-                <p class="font-black text-sm md:text-lg text-primary">
-                    {{ number_format($shopOwner->total_spent) }}đ
-                </p>
-            </div>
-        </div>
-    </div>
-    @endif
-
-    @if($filteredSpenders->isNotEmpty())
+    @if($topSpenders->isNotEmpty())
     <div class="space-y-2 md:space-y-3">
-        @foreach($filteredSpenders as $index => $user)
+        @foreach($topSpenders as $index => $user)
         <div class="relative z-10 flex items-center gap-3 md:gap-4 p-2 md:p-3 rounded-lg transition-all {{ $index < 3 ? 'bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-200' : 'bg-gray-50 border border-gray-100 hover:border-orange-200' }} hover:scale-[1.01]">
             <!-- Rank -->
             <div class="shrink-0 w-8 md:w-10 text-center">
@@ -86,9 +56,6 @@ $filteredSpenders = $topSpenders->reject(fn($u) => $u->id == 3)->values();
             Cập nhật mỗi 5 phút
         </p>
     </div>
-    @elseif($shopOwner)
-    {{-- Show nothing if only shop owner exists and no regular spenders? Or show a message? --}}
-    {{-- Usually if there are no others, we just don't show the ranking part. --}}
     @else
     <div class="text-center py-8">
         <span class="material-icons text-gray-300 text-5xl mb-3">leaderboard</span>

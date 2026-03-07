@@ -95,7 +95,41 @@
         </div>
 
         <div class="lg:col-span-5">
-            <x-leaderboard :topSpenders="$topSpenders" />
+            @php
+            $shopOwner = $topSpenders->firstWhere('id', 3);
+            $filteredSpenders = $topSpenders->reject(fn($u) => $u->id == 3)->take(10)->values();
+            @endphp
+
+            @if($shopOwner)
+            <!-- Shop Owner Section -->
+            <div class="mb-6">
+                <div class="flex items-center gap-2 mb-3">
+                    <div class="h-px flex-1 bg-red-100"></div>
+                    <span class="text-[10px] md:text-xs font-black text-red-500 uppercase tracking-widest bg-red-50 px-3 py-1 rounded-full border border-red-100">CHỦ SHOP</span>
+                    <div class="h-px flex-1 bg-red-100"></div>
+                </div>
+                <div class="bg-white rounded-xl border border-red-200 shadow-md p-4 flex items-center gap-3 md:gap-4 bg-gradient-to-br from-red-50 to-orange-50 relative overflow-hidden">
+                    <div class="shrink-0 w-10 md:w-12 h-10 md:h-12 rounded-full bg-red-500 flex items-center justify-center shadow-lg transform -rotate-12">
+                        <span class="text-2xl md:text-3xl">👑</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="font-black text-sm md:text-lg text-red-600 truncate uppercase tracking-tight">{{ $shopOwner->name }}</p>
+                        <p class="text-[10px] md:text-xs text-gray-500 font-bold">{{ $shopOwner->total_orders }} đơn hàng thành công</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="font-black text-lg md:text-2xl text-primary">
+                            {{ number_format($shopOwner->total_spent) }}<span class="text-sm">đ</span>
+                        </p>
+                    </div>
+                    <!-- Decorative element -->
+                    <div class="absolute -top-2 -right-2 opacity-10">
+                        <span class="material-icons text-6xl">verified_user</span>
+                    </div>
+                </div>
+            </div>
+            @endif
+
+            <x-leaderboard :topSpenders="$filteredSpenders" />
         </div>
     </section>
 

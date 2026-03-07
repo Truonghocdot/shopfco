@@ -36,8 +36,8 @@ class HomeController extends Controller
         $latestNewsResult = $this->newsService->getLatestNews(8);
         $latestNews = $latestNewsResult->isSuccess() ? $latestNewsResult->getData() : collect();
 
-        // Get top 10 spenders for leaderboard
-        $topSpenders = $this->leaderboardService->getTopSpenders(10);
+        // Get top 11 spenders for leaderboard
+        $topSpenders = $this->leaderboardService->getTopSpenders(11);
 
         return view('home', compact('categories', 'flashSaleProducts', 'latestNews', 'topSpenders', 'banners'));
     }
