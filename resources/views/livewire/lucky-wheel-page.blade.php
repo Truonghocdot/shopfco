@@ -20,7 +20,7 @@
         <!-- Header -->
         <div class="text-center mb-12">
             <div class="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 mb-4 animate-bounce">
-                <span class="text-[10px] font-black text-primary uppercase tracking-[0.3em]">SUMMER EVENT 2024</span>
+                <span class="text-[10px] font-black text-primary uppercase tracking-[0.3em]">SUMMER EVENT {{ date('Y') }}</span>
             </div>
             <h1 class="text-4xl md:text-6xl font-black text-white italic tracking-tighter uppercase mb-2">
                 LƯỚT SÓNG <span class="text-primary drop-shadow-[0_0_15px_rgba(0,255,133,0.6)]">NHẬN QUÀ</span>
