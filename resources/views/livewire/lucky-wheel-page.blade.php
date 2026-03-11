@@ -23,7 +23,7 @@
                 <span class="text-[10px] font-black text-primary uppercase tracking-[0.3em]">SUMMER EVENT {{ date('Y') }}</span>
             </div>
             <h1 class="text-4xl md:text-6xl font-black text-white italic tracking-tighter uppercase mb-2">
-                LƯỚT SÓNG <span class="text-primary drop-shadow-[0_0_15px_rgba(0,255,133,0.6)]">NHẬN QUÀ</span>
+                LƯỚT SÓNG <span class="text-primary drop-shadow-[0_0_15px_rgba(0,255,133,0.6)]">ĐÓN QUÀ</span>
             </h1>
             <p class="text-neutral-500 font-bold uppercase tracking-widest text-xs">Ride the wave • Claim the prize • Extreme Luck</p>
         </div>

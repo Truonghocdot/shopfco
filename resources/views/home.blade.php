@@ -49,7 +49,7 @@
             <div class="bg-gradient-to-r from-neutral-950 to-neutral-900 rounded-2xl p-4 md:p-10 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8 border border-white/10 shadow-2xl hover:shadow-primary/20 transition-all group/tree relative overflow-hidden">
                 <div class="flex-1 text-center md:text-left relative z-10">
                     <h2 class="text-xl md:text-4xl font-black mb-2 md:mb-4 flex items-center justify-center md:justify-start gap-2 md:gap-3 text-neon uppercase tracking-wider">
-                        <span class="material-icons text-2xl md:text-4xl">surfing</span> LƯỚT SÓNG <span class="text-primary italic">NHẬN QUÀ</span>
+                        <span class="material-icons text-2xl md:text-4xl">surfing</span> LƯỚT SÓNG <span class="text-primary italic">ĐÓN QUÀ</span>
                     </h2>
                     <p class="text-neutral-400 text-sm md:text-lg mb-4 md:mb-8 max-w-md mx-auto md:mx-0">
                         Trải nghiệm cảm giác rẽ sóng săn quà cực khủng! Nhận ngay Acc FCO siêu phẩm, BP trắng cực hời chỉ từ một lượt lướt!
