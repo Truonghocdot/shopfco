@@ -87,8 +87,6 @@
 
         <!-- Main Content -->
         <main class="relative">
-            <div class="coconut-tree coconut-tree-left"></div>
-            <div class="coconut-tree coconut-tree-right"></div>
             {{ $slot ?? '' }}
             @yield('content')
         </main>
@@ -104,6 +102,9 @@
             </div>
             
             @include('components.footer')
+            
+            <div class="coconut-tree coconut-tree-left"></div>
+            <div class="coconut-tree coconut-tree-right"></div>
 
             <!-- Animated Wave Overlay -->
             <div class="absolute bottom-0 left-0 w-full h-[150px] opacity-30 pointer-events-none">

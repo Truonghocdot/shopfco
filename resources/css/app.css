@@ -339,15 +339,17 @@ h4,
 }
 
 .coconut-tree-left {
-    bottom: 50px;
-    left: -100px;
-    transform: rotate(12deg) scaleX(-1); /* Flipped and slanted slightly inwards */
+    bottom: -80px;
+    left: 20px;
+    transform: rotate(12deg) scaleX(-1);
+    z-index: 10;
 }
 
 .coconut-tree-right {
-    bottom: 20px;
-    right: -110px;
-    transform: rotate(-15deg); /* Flipped and slanted slightly inwards */
+    bottom: -100px;
+    right: 20px;
+    transform: rotate(-15deg);
+    z-index: 10;
 }
 
 /* Wave Divider */
