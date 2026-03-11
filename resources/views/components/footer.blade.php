@@ -1,4 +1,4 @@
-<footer class="relative mt-16 pt-16 pb-8 bg-slate-950 border-t border-white/5">
+<footer class="relative mt-16 pt-16 pb-8 bg-black border-t border-white/5">
     <!-- Decorative background glow -->
     <div class="absolute top-0 left-0 w-64 h-64 bg-primary/5 blur-[100px] rounded-full pointer-events-none"></div>
     <div class="container mx-auto px-2 md:px-4">
@@ -6,11 +6,11 @@
             <!-- About -->
             <div>
                 <div class="flex items-center gap-2 mb-8">
-                    <span class="text-4xl font-black italic tracking-tighter text-white drop-shadow-[0_0_15px_rgba(56,189,248,0.3)]">
+                    <span class="text-4xl font-black italic tracking-tighter text-white drop-shadow-[0_0_15px_rgba(74,222,128,0.3)]">
                         VANH<span class="text-primary">FCO</span>
                     </span>
                 </div>
-                <p class="text-slate-400 text-sm leading-relaxed max-w-sm">
+                <p class="text-neutral-400 text-sm leading-relaxed max-w-sm">
                     Hệ thống mua bán nick FC Online uy tín, an toàn nhất Việt Nam. Giao dịch tự động 24/7, hỗ trợ nhiệt tình, bảo mật tuyệt đối.
                 </p>
             </div>
@@ -21,7 +21,7 @@
                     <span class="w-2 h-2 bg-primary rounded-full"></span>
                     LIÊN KẾT NHANH
                 </h5>
-                <ul class="space-y-3 text-sm text-slate-400">
+                <ul class="space-y-3 text-sm text-neutral-400">
                     <li><a class="hover:text-white transition-colors flex items-center gap-2 group" href="{{ route('home') }}">
                             <span class="material-icons text-xs group-hover:translate-x-1 transition-transform">chevron_right</span>
                             Trang chủ
@@ -57,7 +57,7 @@
                             <span class="material-icons text-primary">phone</span>
                         </div>
                         <div>
-                            <p class="text-[10px] text-slate-500 uppercase tracking-widest font-black">Hotline</p>
+                            <p class="text-[10px] text-neutral-600 uppercase tracking-widest font-black">Hotline</p>
                             <p class="text-sm font-bold text-white group-hover:text-primary transition-colors">0986.526.036</p>
                         </div>
                     </li>
@@ -66,7 +66,7 @@
                             <span class="material-icons text-primary">schedule</span>
                         </div>
                         <div>
-                            <p class="text-[10px] text-slate-500 uppercase tracking-widest font-black">Giờ làm việc</p>
+                            <p class="text-[10px] text-neutral-600 uppercase tracking-widest font-black">Giờ làm việc</p>
                             <p class="text-sm font-bold text-white">08:00AM - 22:00PM</p>
                         </div>
                     </li>
@@ -91,8 +91,8 @@
         </div>
 
         <div class="text-center border-t border-white/5 pt-8">
-            <p class="text-slate-500 text-[10px] font-black uppercase tracking-[0.3em]">
-                Copyright © {{ date('Y') }} <span class="text-primary drop-shadow-[0_0_5px_rgba(56,189,248,0.3)]">VanhFCO.com</span> - <a href="https://www.facebook.com/truong.cut.5220" class="hover:text-white transition-colors">Truonghocdot</a>
+            <p class="text-neutral-600 text-[10px] font-black uppercase tracking-[0.3em]">
+                Copyright © {{ date('Y') }} <span class="text-primary drop-shadow-[0_0_5px_rgba(74,222,128,0.3)]">VanhFCO.com</span> - <a href="https://www.facebook.com/truong.cut.5220" class="hover:text-white transition-colors">Truonghocdot</a>
             </p>
         </div>
     </div>

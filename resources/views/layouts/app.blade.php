@@ -66,11 +66,11 @@
     @stack('schema')
 </head>
 
-<body class="min-h-screen bg-esport-darker bg-esport-gradient text-slate-200 selection:bg-primary/30 selection:text-white">
-    <!-- Animated background particles/glows could be added here later -->
+<body class="min-h-screen bg-black text-neutral-200 selection:bg-primary/30 selection:text-white">
+    <!-- Animated background particles/glows -->
     <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <div class="absolute top-1/4 -left-20 w-96 h-96 bg-primary/5 blur-[120px] rounded-full"></div>
-        <div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-indigo-500/5 blur-[120px] rounded-full"></div>
+        <div class="absolute top-1/4 -left-20 w-96 h-96 bg-primary/3 blur-[120px] rounded-full"></div>
+        <div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-white/2 blur-[120px] rounded-full"></div>
     </div>
 
     <!-- Content Wrapper -->
@@ -93,13 +93,13 @@
 
         <!-- Floating Action Buttons -->
         <div class="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
-            <a href="https://www.facebook.com/le.vietanh.939173" class="w-12 h-12 bg-slate-900 border border-primary/30 text-primary rounded-full flex items-center justify-center hover:scale-110 transition shadow-[0_0_15px_rgba(56,189,248,0.3)] hover:bg-primary hover:text-white group">
+            <a href="https://www.facebook.com/le.vietanh.939173" class="w-12 h-12 bg-neutral-950 border border-primary/30 text-primary rounded-full flex items-center justify-center hover:scale-110 transition shadow-[0_0_15px_rgba(74,222,128,0.3)] hover:bg-primary hover:text-white group">
                 <span class="material-icons">message</span>
             </a>
-            <a href="tel:0327182537" class="w-12 h-12 bg-slate-900 border border-primary/30 text-primary rounded-full flex items-center justify-center hover:scale-110 transition shadow-[0_0_15px_rgba(56,189,248,0.3)] hover:bg-primary hover:text-white">
+            <a href="tel:0327182537" class="w-12 h-12 bg-neutral-950 border border-primary/30 text-primary rounded-full flex items-center justify-center hover:scale-110 transition shadow-[0_0_15px_rgba(74,222,128,0.3)] hover:bg-primary hover:text-white">
                 <span class="material-icons">phone</span>
             </a>
-            <a href="https://zalo.me/g/wilgna867" class="w-12 h-12 bg-slate-900 border border-primary/30 rounded-full flex items-center justify-center hover:scale-110 transition shadow-[0_0_15px_rgba(56,189,248,0.3)] p-1">
+            <a href="https://zalo.me/g/wilgna867" class="w-12 h-12 bg-neutral-950 border border-primary/30 rounded-full flex items-center justify-center hover:scale-110 transition shadow-[0_0_15px_rgba(74,222,128,0.3)] p-1">
                 <img src="{{ asset('images/zalo.png') }}" alt="Zalo" class="w-full h-full rounded-full grayscale hover:grayscale-0 transition-all">
             </a>
         </div>

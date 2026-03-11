@@ -9,7 +9,7 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 
 #[Layout('layouts.app')]
-#[Title('Cây Hái Lộc - Nhận Quà May Mắn')]
+#[Title('Lướt Sóng Nhận Quà - Summer Surfing')]
 class LuckyWheelPage extends Component
 {
     public $prizeAmount = null;

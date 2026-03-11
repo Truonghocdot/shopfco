@@ -5,7 +5,7 @@
             <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-indigo-500/10 blur-[100px] rounded-full pointer-events-none"></div>
 
             <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight text-white mb-3 flex justify-center items-center gap-4 relative z-10">
-                <span class="material-icons text-4xl md:text-5xl text-primary drop-shadow-[0_0_10px_rgba(56,189,248,0.5)]">payments</span>
+                <span class="material-icons text-4xl md:text-5xl text-primary drop-shadow-[0_0_10px_rgba(74,222,128,0.5)]">payments</span>
                 XÁC NHẬN THANH TOÁN
             </h1>
             <div class="h-1 w-32 bg-linear-to-r from-transparent via-primary to-transparent mx-auto rounded-full mt-8"></div>
@@ -27,25 +27,25 @@
                     </h2>
 
                     <div class="flex gap-6">
-                        <div class="w-28 h-28 shrink-0 bg-slate-900/50 rounded-xl overflow-hidden border border-white/5">
+                        <div class="w-28 h-28 shrink-0 bg-neutral-950/50 rounded-xl overflow-hidden border border-white/5">
                             @if($product->images[0])
                             <img src="{{ url('storage/'.$product->images[0]) }}" alt="{{ $product->title }}" class="w-full h-full object-cover">
                             @else
-                            <div class="w-full h-full flex items-center justify-center text-slate-700">
+                            <div class="w-full h-full flex items-center justify-center text-neutral-800">
                                 <span class="material-icons text-4xl">image</span>
                             </div>
                             @endif
                         </div>
                         <div class="flex-1">
                             <h3 class="font-black text-lg mb-2 text-white leading-tight">{{ $product->title }}</h3>
-                            <p class="text-[10px] text-slate-500 mb-4 font-black uppercase tracking-widest flex items-center gap-2">
+                            <p class="text-[10px] text-neutral-600 mb-4 font-black uppercase tracking-widest flex items-center gap-2">
                                 <span class="w-1 h-3 bg-primary rounded-full"></span>
                                 DANH MỤC: {{ $product->category->title ?? 'N/A' }}
                             </p>
                             <div class="flex items-center gap-3">
-                                <span class="text-2xl font-black text-primary drop-shadow-[0_0_8px_rgba(56,189,248,0.4)]">{{ number_format($this->originalPrice) }}đ</span>
+                                <span class="text-2xl font-black text-primary drop-shadow-[0_0_8px_rgba(74,222,128,0.4)]">{{ number_format($this->originalPrice) }}đ</span>
                                 @if($product->sale_price && $product->sale_price < $product->sell_price)
-                                    <span class="text-xs text-slate-500 line-through font-bold">{{ number_format($product->sell_price) }}đ</span>
+                                    <span class="text-xs text-neutral-600 line-through font-bold">{{ number_format($product->sell_price) }}đ</span>
                                     @endif
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                                 <span class="material-icons text-xl">account_balance_wallet</span>
                             </div>
                             <div>
-                                <p class="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-1">Số dư hiện tại</p>
+                                <p class="text-[10px] text-neutral-600 font-black uppercase tracking-widest mb-1">Số dư hiện tại</p>
                                 <p class="font-black text-2xl {{ $this->wallet->balance < $this->finalAmount ? 'text-pink-500 shadow-pink-500/10' : 'text-emerald-400 drop-shadow-[0_0_8px_rgba(52,211,153,0.3)]' }}">
                                     {{ number_format($this->wallet->balance) }}đ
                                 </p>
@@ -88,12 +88,12 @@
 
                     <!-- Coupon Input -->
                     <div class="mb-8">
-                        <label class="block text-[10px] font-black text-slate-600 mb-3 uppercase tracking-widest">MÃ GIẢM GIÁ</label>
+                        <label class="block text-[10px] font-black text-neutral-700 mb-3 uppercase tracking-widest">MÃ GIẢM GIÁ</label>
                         <div class="flex gap-2">
                             <input
                                 type="text"
                                 wire:model.defer="couponCode"
-                                class="flex-1 bg-slate-900/50 border border-white/10 focus:border-primary focus:ring-primary/20 rounded-xl px-4 py-3 text-slate-200 text-sm outline-hidden placeholder-slate-600 transition-all font-bold"
+                                class="flex-1 bg-neutral-950/50 border border-white/10 focus:border-primary focus:ring-primary/20 rounded-xl px-4 py-3 text-neutral-200 text-sm outline-hidden placeholder-neutral-700 transition-all font-bold"
                                 placeholder="NHẬP MÃ..."
                                 @if($couponValid)
                                 disabled
@@ -129,8 +129,8 @@
 
                     <div class="space-y-4 pt-6 border-t border-white/5">
                         <div class="flex justify-between text-xs font-bold">
-                            <span class="text-slate-500 uppercase tracking-widest">Tạm tính</span>
-                            <span class="font-black text-slate-200">{{ number_format($this->originalPrice) }}đ</span>
+                            <span class="text-neutral-600 uppercase tracking-widest">Tạm tính</span>
+                            <span class="font-black text-neutral-200">{{ number_format($this->originalPrice) }}đ</span>
                         </div>
                         @if($discount > 0)
                         <div class="flex justify-between text-xs font-black text-emerald-400 uppercase tracking-widest">
@@ -139,8 +139,8 @@
                         </div>
                         @endif
                         <div class="flex justify-between items-center text-sm font-black pt-5 border-t border-white/5">
-                            <span class="text-slate-400 uppercase tracking-widest">Tổng thanh toán</span>
-                            <span class="text-primary text-2xl drop-shadow-[0_0_10px_rgba(56,189,248,0.4)]">{{ number_format($this->finalAmount) }}đ</span>
+                            <span class="text-neutral-400 uppercase tracking-widest">Tổng thanh toán</span>
+                            <span class="text-primary text-2xl drop-shadow-[0_0_10px_rgba(74,222,128,0.4)]">{{ number_format($this->finalAmount) }}đ</span>
                         </div>
                     </div>
 
@@ -150,7 +150,7 @@
                         wire:loading.attr="disabled"
                         wire:target="purchase"
                         {{ $this->wallet->balance < $this->finalAmount ? 'disabled' : '' }}
-                        class="w-full py-5 rounded-2xl font-black text-white shadow-2xl transition-all transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed mt-8 uppercase tracking-widest text-sm border-none {{ $this->wallet->balance < $this->finalAmount ? 'bg-slate-700 text-slate-500 cursor-not-allowed' : 'btn-esport shadow-primary/20' }}">
+                        class="w-full py-5 rounded-2xl font-black text-white shadow-2xl transition-all transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed mt-8 uppercase tracking-widest text-sm border-none {{ $this->wallet->balance < $this->finalAmount ? 'bg-neutral-800 text-neutral-600 cursor-not-allowed' : 'btn-esport shadow-primary/20' }}">
                         <span wire:loading.remove wire:target="purchase">
                             {{ $this->wallet->balance < $this->finalAmount ? 'SỐ DƯ KHÔNG ĐỦ' : 'XÁC NHẬN THANH TOÁN' }}
                         </span>
@@ -160,7 +160,7 @@
                         </span>
                     </button>
 
-                    <p class="text-[10px] text-slate-500 font-bold text-center mt-6 leading-relaxed uppercase tracking-widest">
+                    <p class="text-[10px] text-neutral-600 font-bold text-center mt-6 leading-relaxed uppercase tracking-widest">
                         Bằng việc xác nhận thanh toán, bạn đồng ý với <a href="{{ route('policy') }}" class="text-primary hover:underline">điều khoản dịch vụ</a> của chúng tôi.
                     </p>
                 </div>

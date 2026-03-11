@@ -41,7 +41,7 @@
                     <div class="absolute -top-10 -right-10 w-32 h-32 bg-primary/10 blur-[50px] rounded-full pointer-events-none"></div>
 
                     <div class="flex items-center gap-4 mb-8 relative z-10">
-                        <div class="shrink-0 aspect-square rounded-2xl size-14 border-2 border-primary shadow-[0_0_15px_rgba(56,189,248,0.4)] overflow-hidden">
+                        <div class="shrink-0 aspect-square rounded-2xl size-14 border-2 border-primary shadow-[0_0_15px_rgba(74,222,128,0.4)] overflow-hidden">
                             <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVGaTwIrah77vJVAoTY2oc_aYDyOz5LSOrCGtbT5xJGT8vhdJvPOeQhIfBXNGNP1OqlZ6rjdWRwY4Mvx_HLW1et0PwzS_48fJA9OLtGrnJjhVdHO7LwLY3lHSfwiMXSZiJFKYF7iMtWE5zyEJMiCP8WTJyqpKenn1bOSaBIENdAPC8fapysJ-DAqblpdj0C_bv17YfZMqWv_n4NyPWgJumLLYNtr7AUfCnVI5C_5JWL09YXcVEfripuVOhgYaLq2aWga_ajQXo9m-e" class="w-full h-full object-cover">
                         </div>
                         <div class="flex flex-col">
@@ -55,13 +55,13 @@
 
                     <nav class="flex flex-col gap-3 relative z-10">
                         <button @click="activeTab = 'info'"
-                            :class="activeTab === 'info' ? 'bg-primary/10 text-primary border-primary/20 shadow-[0_0_15px_rgba(56,189,248,0.1)]' : 'text-slate-500 hover:text-slate-300 hover:bg-white/5 border-transparent'"
+                            :class="activeTab === 'info' ? 'bg-primary/10 text-primary border-primary/20 shadow-[0_0_15px_rgba(74,222,128,0.1)]' : 'text-neutral-600 hover:text-neutral-300 hover:bg-white/5 border-transparent'"
                             class="flex items-center gap-4 px-4 py-3.5 rounded-2xl border transition-all text-left w-full group">
                             <span class="material-icons text-[20px] transition-transform group-hover:scale-110">person</span>
                             <p class="text-[11px] font-black uppercase tracking-widest">Thông tin tài khoản</p>
                         </button>
                         <button @click="activeTab = 'orders'"
-                            :class="activeTab === 'orders' ? 'bg-primary/10 text-primary border-primary/20 shadow-[0_0_15px_rgba(56,189,248,0.1)]' : 'text-slate-500 hover:text-slate-300 hover:bg-white/5 border-transparent'"
+                            :class="activeTab === 'orders' ? 'bg-primary/10 text-primary border-primary/20 shadow-[0_0_15px_rgba(74,222,128,0.1)]' : 'text-neutral-600 hover:text-neutral-300 hover:bg-white/5 border-transparent'"
                             class="flex items-center gap-4 px-4 py-3.5 rounded-2xl border transition-all text-left w-full group">
                             <span class="material-icons text-[20px] transition-transform group-hover:scale-110">shopping_bag</span>
                             <p class="text-[11px] font-black uppercase tracking-widest">Tài khoản đã mua</p>
@@ -75,7 +75,7 @@
                         </a>
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
-                            <button type="submit" class="w-full flex cursor-pointer items-center justify-center rounded-2xl py-4 bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-all text-[11px] font-black uppercase tracking-widest active:scale-95">
+                            <button type="submit" class="w-full flex cursor-pointer items-center justify-center rounded-2xl py-4 bg-white/5 hover:bg-white/10 text-neutral-400 hover:text-white transition-all text-[11px] font-black uppercase tracking-widest active:scale-95">
                                 <span class="material-icons mr-2 text-[20px]">logout</span>
                                 <span>Đăng xuất</span>
                             </button>

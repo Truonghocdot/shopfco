@@ -25,7 +25,7 @@
             </div>
 
             <!-- Contact Info Badge -->
-            <div class="flex flex-wrap justify-center items-center gap-4 md:gap-6 py-4 px-4 text-slate-300">
+            <div class="flex flex-wrap justify-center items-center gap-4 md:gap-6 py-4 px-4 text-neutral-300">
                 <div class="flex items-center gap-2 text-base md:text-lg font-bold">
                     <span class="material-icons text-primary text-2xl">call</span>
                     <span class="text-white">0986526036</span>
@@ -46,21 +46,21 @@
     <!-- Mystery Box Section -->
     <section class="mb-8 md:mb-12">
         <a href="{{ route('lucky-wheel.index') }}" class="block">
-            <div class="bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-4 md:p-10 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8 border border-white/10 shadow-2xl hover:shadow-primary/20 transition-all group/tree relative overflow-hidden">
+            <div class="bg-gradient-to-r from-neutral-950 to-neutral-900 rounded-2xl p-4 md:p-10 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8 border border-white/10 shadow-2xl hover:shadow-primary/20 transition-all group/tree relative overflow-hidden">
                 <div class="flex-1 text-center md:text-left relative z-10">
                     <h2 class="text-xl md:text-4xl font-black mb-2 md:mb-4 flex items-center justify-center md:justify-start gap-2 md:gap-3 text-neon uppercase tracking-wider">
-                        <span class="material-icons text-2xl md:text-4xl">inventory_2</span> HÒM BÍ ẨN <span class="text-primary italic">LIMITED</span>
+                        <span class="material-icons text-2xl md:text-4xl">surfing</span> LƯỚT SÓNG <span class="text-primary italic">NHẬN QUÀ</span>
                     </h2>
-                    <p class="text-slate-400 text-sm md:text-lg mb-4 md:mb-8 max-w-md mx-auto md:mx-0">
-                        Thử vận may ngay với <strong class="text-primary">Hòm Bí Ẩn</strong>! Nhận ngay Acc FCO siêu phẩm, BP trắng cực khủng chỉ từ một lượt mở!
+                    <p class="text-neutral-400 text-sm md:text-lg mb-4 md:mb-8 max-w-md mx-auto md:mx-0">
+                        Trải nghiệm cảm giác rẽ sóng săn quà cực khủng! Nhận ngay Acc FCO siêu phẩm, BP trắng cực hời chỉ từ một lượt lướt!
                     </p>
                     <div class="inline-flex items-center gap-2 md:gap-3 btn-esport py-2 px-6 md:py-3 md:px-8 rounded-full group-hover/tree:scale-105 transition-transform">
-                        <span class="material-icons text-sm md:text-base">auto_awesome</span> MỞ HÒM NGAY <span class="material-icons text-sm md:text-base">arrow_forward</span>
+                        <span class="material-icons text-sm md:text-base">surfing</span> LƯỚT SÓNG NGAY <span class="material-icons text-sm md:text-base">arrow_forward</span>
                     </div>
                 </div>
 
                 <div class="relative w-full max-w-[180px] md:max-w-[280px] flex items-center justify-center">
-                    <img src="{{ asset('images/esport/mystery_box.png') }}" alt="Mystery Box" class="w-full group-hover/tree:scale-110 transition-transform duration-500 drop-shadow-lg" style="filter: drop-shadow(0 0 20px rgba(56,189,248,0.3));">
+                    <img src="{{ asset('images/esport/mystery_box.png') }}" alt="Mystery Box" class="w-full group-hover/tree:scale-110 transition-transform duration-500 drop-shadow-lg" style="filter: drop-shadow(0 0 20px rgba(74,222,128,0.3));">
                 </div>
             </div>
         </a>
@@ -84,8 +84,8 @@
                         @endforelse
                     </div>
                     <div class="swiper-pagination !bottom-4"></div>
-                    <div class="swiper-button-next text-white w-10 h-10 after:text-xl bg-slate-900/60! hover:bg-primary/80! rounded-full backdrop-blur-md! transition-all"></div>
-                    <div class="swiper-button-prev text-white w-10 h-10 after:text-xl bg-slate-900/60! hover:bg-primary/80! rounded-full backdrop-blur-md! transition-all"></div>
+                    <div class="swiper-button-next text-white w-10 h-10 after:text-xl bg-neutral-950/60! hover:bg-primary/80! rounded-full backdrop-blur-md! transition-all"></div>
+                    <div class="swiper-button-prev text-white w-10 h-10 after:text-xl bg-neutral-950/60! hover:bg-primary/80! rounded-full backdrop-blur-md! transition-all"></div>
                 </div>
             </div>
         </div>
@@ -106,15 +106,15 @@
                 </div>
                 <div class="card-esport p-4 flex items-center gap-3 md:gap-4 relative overflow-hidden group">
                     <div class="shrink-0 w-10 md:w-12 h-10 md:h-12 rounded-full bg-primary flex items-center 
-                    justify-center shadow-[0_0_15px_rgba(56,189,248,0.5)] transform transition-transform group-hover:rotate-12">
+                    justify-center shadow-[0_0_15px_rgba(74,222,128,0.5)] transform transition-transform group-hover:rotate-12">
                         <span class="text-2xl md:text-3xl">👑</span>
                     </div>
                     <div class="flex-1 min-w-0">
                         <p class="font-black text-sm md:text-lg text-white truncate uppercase tracking-tight group-hover:text-primary transition-colors">{{ $shopOwner->name }}</p>
-                        <p class="text-[10px] md:text-xs text-slate-400 font-bold">{{ $shopOwner->total_orders }} đơn hàng thành công</p>
+                        <p class="text-[10px] md:text-xs text-neutral-400 font-bold">{{ $shopOwner->total_orders }} đơn hàng thành công</p>
                     </div>
                     <div class="text-right">
-                        <p class="font-black text-lg md:text-2xl text-primary drop-shadow-[0_0_8px_rgba(56,189,248,0.4)]">
+                        <p class="font-black text-lg md:text-2xl text-primary drop-shadow-[0_0_8px_rgba(74,222,128,0.4)]">
                             {{ number_format($shopOwner->total_spent) }}<span class="text-sm">đ</span>
                         </p>
                     </div>
@@ -137,21 +137,21 @@
             <a href="{{ route('categories.show', $category->slug) }}" class="group card-esport p-3 md:p-4 flex flex-col items-center text-center transition-all hover:scale-[1.03] hover:border-primary/50">
                 <div class="w-full h-32 md:h-48 mb-3 md:mb-4 overflow-hidden rounded-lg relative">
                     <img alt="{{ $category->title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="{{ url('storage/'.$category->image) ?? 'https://via.placeholder.com/96' }}" loading="lazy">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-neutral-950/80 to-transparent"></div>
                 </div>
                 <h3 class="font-black text-sm md:text-lg mb-1 text-white group-hover:text-primary transition-colors uppercase tracking-wide">{{ $category->title }}</h3>
-                <p class="text-slate-400 text-[10px] md:text-sm line-clamp-1 md:line-clamp-none">{!! strip_tags($category->description) !!}</p>
+                <p class="text-neutral-400 text-[10px] md:text-sm line-clamp-1 md:line-clamp-none">{!! strip_tags($category->description) !!}</p>
             </a>
             @empty
-            <div class="col-span-4 text-center text-slate-500 p-12 glass rounded-xl border border-white/5">Chưa có danh mục nào</div>
+            <div class="col-span-4 text-center text-neutral-600 p-12 glass rounded-xl border border-white/5">Chưa có danh mục nào</div>
             @endforelse
         </div>
     </section>
 
     <!-- Flash Sale Section -->
     <div class="flex items-center justify-between mb-6">
-        <h2 class="text-2xl font-black text-slate-700 uppercase flex items-center gap-2">
-            <span class="material-icons text-slate-700">local_fire_department</span>
+        <h2 class="text-2xl font-black text-neutral-800 uppercase flex items-center gap-2">
+            <span class="material-icons text-neutral-800">local_fire_department</span>
             FLASH SALE SIÊU HOT
         </h2>
         <a href="{{ route('products.index', ['sort' => 'discount']) }}" class="text-white hover:text-orange-500 font-bold text-sm flex items-center gap-1 transition-colors">
@@ -170,17 +170,17 @@
                     -{{ number_format($product->getDiscountPercent()) }}%
                 </div>
                 @endif
-                <div class="absolute bottom-2 left-2 bg-slate-900/80 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] text-slate-300 font-bold border border-white/10">
+                <div class="absolute bottom-2 left-2 bg-neutral-950/80 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] text-neutral-300 font-bold border border-white/10">
                     ID: {{ $product->id }}
                 </div>
             </div>
             <div class="p-4">
-                <h4 class="font-bold text-sm mb-3 line-clamp-2 h-10 text-slate-100 group-hover:text-primary transition-colors tracking-tight">{{ $product->title }}</h4>
+                <h4 class="font-bold text-sm mb-3 line-clamp-2 h-10 text-neutral-100 group-hover:text-primary transition-colors tracking-tight">{{ $product->title }}</h4>
                 <div class="flex flex-col mb-4">
                     @if($product->sell_price)
-                    <span class="text-xs text-slate-500 line-through">{{ number_format($product->sell_price) }} đ</span>
+                    <span class="text-xs text-neutral-600 line-through">{{ number_format($product->sell_price) }} đ</span>
                     @endif
-                    <span class="text-xl font-black text-primary drop-shadow-[0_0_8px_rgba(56,189,248,0.3)]">{{ number_format($product->getFinalPrice()) }} <span class="text-sm">đ</span></span>
+                    <span class="text-xl font-black text-primary drop-shadow-[0_0_8px_rgba(74,222,128,0.3)]">{{ number_format($product->getFinalPrice()) }} <span class="text-sm">đ</span></span>
                 </div>
                 <a href="{{ route('products.show', $product->slug) }}" class="block w-full btn-esport justify-center py-2 rounded-lg text-center text-[10px] md:text-sm transition-all group-hover:gap-3">
                     <span class="material-icons text-sm">shopping_cart</span> MUA NGAY
@@ -189,14 +189,14 @@
         </div>
         @empty
         <div class="col-span-4 glass rounded-xl p-12 text-center border border-white/5">
-            <p class="text-slate-500">Chưa có sản phẩm flash sale</p>
+            <p class="text-neutral-600">Chưa có sản phẩm flash sale</p>
         </div>
         @endforelse
     </section>
 
     <!-- News Section -->
     <div class="flex items-center justify-between mb-6">
-        <h2 class="text-2xl md:text-3xl font-black text-slate-700 uppercase flex items-center gap-3 tracking-wider">
+        <h2 class="text-2xl md:text-3xl font-black text-neutral-800 uppercase flex items-center gap-3 tracking-wider">
             <span class="material-icons text-3xl md:text-4xl">article</span>
             TIN TỨC MỚI NHẤT
         </h2>
@@ -210,13 +210,13 @@
         <a href="{{ route('news.show', $news->slug) }}" class="group card-esport overflow-hidden transition-all hover:scale-[1.02]">
             <div class="relative overflow-hidden aspect-video">
                 <img alt="{{ $news->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ url('storage/'.$news->thumbnail) ?? 'https://via.placeholder.com/400x225' }}" loading="lazy">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-neutral-950 to-transparent opacity-60"></div>
             </div>
             <div class="p-4 relative z-20">
-                <h4 class="font-bold text-sm mb-2 line-clamp-2 h-10 text-slate-100 group-hover:text-primary transition-colors tracking-tight">{{ $news->title }}</h4>
-                <p class="text-slate-400 text-xs mb-4 line-clamp-2">{!! Str::limit(strip_tags($news->content), 100) !!}</p>
+                <h4 class="font-bold text-sm mb-2 line-clamp-2 h-10 text-neutral-100 group-hover:text-primary transition-colors tracking-tight">{{ $news->title }}</h4>
+                <p class="text-neutral-400 text-xs mb-4 line-clamp-2">{!! Str::limit(strip_tags($news->content), 100) !!}</p>
                 <div class="flex items-center justify-between text-xs">
-                    <span class="text-slate-500">{{ $news->created_at->format('d/m/Y') }}</span>
+                    <span class="text-neutral-600">{{ $news->created_at->format('d/m/Y') }}</span>
                     <span class="text-primary font-bold flex items-center gap-1 group-hover:gap-2 transition-all">
                         Đọc thêm <span class="material-icons text-sm">arrow_forward</span>
                     </span>

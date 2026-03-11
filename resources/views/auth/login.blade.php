@@ -14,7 +14,7 @@
 
         <div class="text-center relative">
             <h1 class="text-3xl font-black text-white uppercase tracking-tighter mb-2 italic">
-                ĐĂNG NHẬP <span class="text-primary drop-shadow-[0_0_8px_rgba(56,189,248,0.5)]">TÀI KHOẢN</span>
+                ĐĂNG NHẬP <span class="text-primary drop-shadow-[0_0_8px_rgba(74,222,128,0.5)]">TÀI KHOẢN</span>
             </h1>
             <p class="text-xs font-bold text-white uppercase tracking-widest">
                 Chưa có tài khoản?
@@ -40,11 +40,11 @@
                 <div>
                     <label for="username" class="block text-[10px] font-black text-white mb-2 ml-4 uppercase tracking-[0.2em]">TÊN ĐĂNG NHẬP</label>
                     <div class="relative group/field">
-                        <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 transition-colors group-hover/field:text-primary">
+                        <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-neutral-600 transition-colors group-hover/field:text-primary">
                             <span class="material-icons text-sm">person</span>
                         </span>
                         <input id="username" name="username" type="text" autocomplete="username" required
-                            class="appearance-none rounded-2xl relative block w-full pl-11 pr-4 py-4 bg-slate-900/80 border border-white/10 placeholder-slate-600 text-white focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm font-bold tracking-tight transition-all shadow-inner"
+                            class="appearance-none rounded-2xl relative block w-full pl-11 pr-4 py-4 bg-neutral-950/80 border border-white/10 placeholder-neutral-700 text-white focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm font-bold tracking-tight transition-all shadow-inner"
                             placeholder="Tên đăng nhập"
                             value="{{ old('username') }}">
                     </div>
@@ -52,15 +52,15 @@
                 <div>
                     <label for="password" class="block text-[10px] font-black text-white mb-2 ml-4 uppercase tracking-[0.2em]">MẬT KHẨU</label>
                     <div class="relative group/field">
-                        <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 transition-colors group-hover/field:text-primary">
+                        <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-neutral-600 transition-colors group-hover/field:text-primary">
                             <span class="material-icons text-sm">lock</span>
                         </span>
                         <input id="password" name="password" :type="showPassword ? 'text' : 'password'" autocomplete="current-password" required
-                            class="appearance-none rounded-2xl relative block w-full pl-11 pr-12 py-4 bg-slate-900/80 border border-white/10 placeholder-slate-600 text-white focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm font-bold tracking-tight transition-all shadow-inner"
+                            class="appearance-none rounded-2xl relative block w-full pl-11 pr-12 py-4 bg-neutral-950/80 border border-white/10 placeholder-neutral-700 text-white focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm font-bold tracking-tight transition-all shadow-inner"
                             placeholder="••••••••">
 
                         <!-- Revealable Toggle -->
-                        <button type="button" @click="showPassword = !showPassword" class="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-500 hover:text-white transition-colors cursor-pointer outline-none">
+                        <button type="button" @click="showPassword = !showPassword" class="absolute inset-y-0 right-0 pr-4 flex items-center text-neutral-600 hover:text-white transition-colors cursor-pointer outline-none">
                             <span class="material-icons text-sm" x-show="!showPassword">visibility</span>
                             <span class="material-icons text-sm" x-show="showPassword" x-cloak>visibility_off</span>
                         </button>
@@ -70,14 +70,14 @@
 
             <div class="flex items-center justify-between px-2">
                 <div class="flex items-center">
-                    <input id="remember" name="remember" type="checkbox" class="h-4 w-4 rounded-md bg-slate-900 border-white/10 text-primary focus:ring-primary/20 focus:ring-offset-slate-900">
-                    <label for="remember" class="ml-2 block text-[10px] font-black text-slate-400 uppercase tracking-widest cursor-pointer hover:text-white transition-colors">
+                    <input id="remember" name="remember" type="checkbox" class="h-4 w-4 rounded-md bg-neutral-950 border-white/10 text-primary focus:ring-primary/20 focus:ring-offset-neutral-950">
+                    <label for="remember" class="ml-2 block text-[10px] font-black text-neutral-400 uppercase tracking-widest cursor-pointer hover:text-white transition-colors">
                         Ghi nhớ tôi
                     </label>
                 </div>
 
                 <div class="text-[10px] font-black">
-                    <a href="#" class="text-slate-500 hover:text-white transition-colors uppercase tracking-widest">
+                    <a href="#" class="text-neutral-600 hover:text-white transition-colors uppercase tracking-widest">
                         Quên mật khẩu?
                     </a>
                 </div>

@@ -13,7 +13,7 @@ $recentOrders = $recentOrdersResult->isSuccess() ? $recentOrdersResult->getData(
             <div class="bg-primary/10 border border-primary/20 rounded-lg p-2">
                 <span class="material-icons text-primary text-xl">shopping_cart</span>
             </div>
-            <span class="text-white font-black text-xs md:text-sm uppercase tracking-[0.2em] drop-shadow-[0_0_8px_rgba(56,189,248,0.3)]">Mua gần đây:</span>
+            <span class="text-white font-black text-xs md:text-sm uppercase tracking-[0.2em] drop-shadow-[0_0_8px_rgba(74,222,128,0.3)]">Mua gần đây:</span>
         </div>
 
         <!-- Marquee Content -->
@@ -23,14 +23,14 @@ $recentOrders = $recentOrdersResult->isSuccess() ? $recentOrdersResult->getData(
                 @foreach($recentOrders as $order)
                 <div class="flex items-center gap-3 shrink-0 glass border border-white/10 rounded-lg px-4 py-2 shadow-xl group hover:border-primary/50 transition-all">
                     <span class="material-icons text-primary text-sm">person</span>
-                    <span class="text-slate-100 font-bold text-sm">
+                    <span class="text-neutral-100 font-bold text-sm">
                         {{ substr($order->user->name ?? 'User', 0, 3) }}***
                     </span>
-                    <span class="text-slate-600">→</span>
-                    <span class="text-slate-400 text-sm group-hover:text-white transition-colors">
+                    <span class="text-neutral-700">→</span>
+                    <span class="text-neutral-400 text-sm group-hover:text-white transition-colors">
                         {{ Str::limit($order->product->title ?? 'Sản phẩm', 30) }}
                     </span>
-                    <span class="text-primary text-xs font-black drop-shadow-[0_0_5px_rgba(56,189,248,0.3)]">
+                    <span class="text-primary text-xs font-black drop-shadow-[0_0_5px_rgba(74,222,128,0.3)]">
                         +{{ number_format($order->final_amount, 0, ',', '.') }}đ
                     </span>
                 </div>
@@ -40,14 +40,14 @@ $recentOrders = $recentOrdersResult->isSuccess() ? $recentOrdersResult->getData(
                 @foreach($recentOrders as $order)
                 <div class="flex items-center gap-3 shrink-0 glass border border-white/10 rounded-lg px-4 py-2 shadow-xl group hover:border-primary/50 transition-all">
                     <span class="material-icons text-primary text-sm">person</span>
-                    <span class="text-slate-100 font-bold text-sm">
+                    <span class="text-neutral-100 font-bold text-sm">
                         {{ substr($order->user->name ?? 'User', 0, 3) }}***
                     </span>
-                    <span class="text-slate-600">→</span>
-                    <span class="text-slate-400 text-sm group-hover:text-white transition-colors">
+                    <span class="text-neutral-700">→</span>
+                    <span class="text-neutral-400 text-sm group-hover:text-white transition-colors">
                         {{ Str::limit($order->product->title ?? 'Sản phẩm', 30) }}
                     </span>
-                    <span class="text-primary text-xs font-black drop-shadow-[0_0_5px_rgba(56,189,248,0.3)]">
+                    <span class="text-primary text-xs font-black drop-shadow-[0_0_5px_rgba(74,222,128,0.3)]">
                         +{{ number_format($order->final_amount, 0, ',', '.') }}đ
                     </span>
                 </div>

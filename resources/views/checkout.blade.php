@@ -10,7 +10,7 @@
         <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-indigo-500/5 blur-[100px] rounded-full pointer-events-none"></div>
 
         <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight text-white mb-3 flex justify-center items-center gap-4 relative z-10 drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
-            <span class="material-icons text-4xl md:text-5xl text-white drop-shadow-[0_0_15px_rgba(56,189,248,0.6)]">payments</span>
+            <span class="material-icons text-4xl md:text-5xl text-white drop-shadow-[0_0_15px_rgba(74,222,128,0.6)]">payments</span>
             XÁC NHẬN THANH TOÁN
         </h1>
         <div class="h-1 w-32 bg-linear-to-r from-transparent via-primary to-transparent mx-auto rounded-full mt-6 opacity-50"></div>
@@ -30,11 +30,11 @@
                 </h2>
 
                 <div class="flex flex-col sm:flex-row gap-8 relative z-10">
-                    <div class="w-full sm:w-32 h-32 shrink-0 bg-slate-900/80 rounded-2xl overflow-hidden border border-white/10 shadow-inner">
+                    <div class="w-full sm:w-32 h-32 shrink-0 bg-neutral-950/80 rounded-2xl overflow-hidden border border-white/10 shadow-inner">
                         @if($product->images[0])
                         <img src="{{ url('storage/'.$product->images[0]) }}" alt="{{ $product->title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                         @else
-                        <div class="w-full h-full flex items-center justify-center text-slate-700 bg-slate-800">
+                        <div class="w-full h-full flex items-center justify-center text-neutral-800 bg-neutral-900">
                             <span class="material-icons text-4xl">image</span>
                         </div>
                         @endif
@@ -49,9 +49,9 @@
                             <span class="text-[10px] text-white font-bold uppercase tracking-widest">Mã: #{{ $product->id }}</span>
                         </div>
                         <div class="mt-6 flex items-baseline gap-3">
-                            <span class="text-3xl font-black text-primary drop-shadow-[0_0_12px_rgba(56,189,248,0.4)] tracking-tighter">{{ number_format($product->getFinalPrice()) }}đ</span>
+                            <span class="text-3xl font-black text-primary drop-shadow-[0_0_12px_rgba(74,222,128,0.4)] tracking-tighter">{{ number_format($product->getFinalPrice()) }}đ</span>
                             @if($product->sale_price && $product->sale_price < $product->sell_price)
-                                <span class="text-sm text-slate-500 line-through font-bold opacity-50">{{ number_format($product->sell_price) }}đ</span>
+                                <span class="text-sm text-neutral-600 line-through font-bold opacity-50">{{ number_format($product->sell_price) }}đ</span>
                                 @endif
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                             <span class="material-icons text-3xl">account_balance_wallet</span>
                         </div>
                         <div>
-                            <p class="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-1.5">Số dư hiện tại</p>
+                            <p class="text-[10px] text-neutral-600 font-black uppercase tracking-widest mb-1.5">Số dư hiện tại</p>
                             <p class="font-black text-3xl tracking-tight {{ $wallet->balance < $product->getFinalPrice() ? 'text-pink-500 drop-shadow-[0_0_10px_rgba(236,72,153,0.4)]' : 'text-emerald-400 drop-shadow-[0_0_10px_rgba(52,211,153,0.4)]' }}">
                                 {{ number_format($wallet->balance) }}đ
                             </p>
@@ -108,9 +108,9 @@
 
                 <!-- Coupon Input -->
                 <div class="mb-10">
-                    <label class="block text-[10px] font-black text-slate-500 mb-4 uppercase tracking-[0.2em]">MÃ GIẢM GIÁ</label>
+                    <label class="block text-[10px] font-black text-neutral-600 mb-4 uppercase tracking-[0.2em]">MÃ GIẢM GIÁ</label>
                     <div class="flex gap-2">
-                        <input type="text" id="coupon_code" class="flex-1 bg-slate-900/80 border border-white/10 focus:border-primary focus:ring-4 focus:ring-primary/10 rounded-2xl px-5 py-4 text-slate-100 text-sm outline-hidden placeholder-slate-700 transition-all font-bold tracking-tight shadow-inner" placeholder="PST-888...">
+                        <input type="text" id="coupon_code" class="flex-1 bg-neutral-950/80 border border-white/10 focus:border-primary focus:ring-4 focus:ring-primary/10 rounded-2xl px-5 py-4 text-neutral-100 text-sm outline-hidden placeholder-neutral-800 transition-all font-bold tracking-tight shadow-inner" placeholder="PST-888...">
                         <button type="button" id="apply_coupon" class="px-5 py-4 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-2xl text-[10px] font-black transition-all uppercase tracking-widest active:scale-95">
                             DÙNG
                         </button>
@@ -121,15 +121,15 @@
                 <div class="space-y-4 pt-8 border-t border-white/5">
                     <div class="flex justify-between text-xs font-bold tracking-tight">
                         <span class="text-white uppercase">TẠM TÍNH</span>
-                        <span class="text-slate-300">{{ number_format($product->getFinalPrice()) }}đ</span>
+                        <span class="text-neutral-300">{{ number_format($product->getFinalPrice()) }}đ</span>
                     </div>
                     <div class="flex justify-between items-center text-[10px] font-black text-white bg-white/5 px-3 py-2 rounded-lg border border-white/10" id="discount_row" style="display: none;">
                         <span class="uppercase tracking-widest">GIẢM GIÁ</span>
                         <span class="text-sm">-<span id="discount_amount">0</span>đ</span>
                     </div>
                     <div class="flex flex-col gap-1 text-sm font-black pt-8 mt-4 border-t border-white/5">
-                        <span class="text-[10px] text-slate-500 uppercase tracking-[0.3em] text-center mb-1">TỔNG THANH TOÁN</span>
-                        <span class="text-primary text-4xl text-center drop-shadow-[0_0_15px_rgba(56,189,248,0.5)] tracking-tighter italic" id="final_total">{{ number_format($product->getFinalPrice()) }}đ</span>
+                        <span class="text-[10px] text-neutral-600 uppercase tracking-[0.3em] text-center mb-1">TỔNG THANH TOÁN</span>
+                        <span class="text-primary text-4xl text-center drop-shadow-[0_0_15px_rgba(74,222,128,0.5)] tracking-tighter italic" id="final_total">{{ number_format($product->getFinalPrice()) }}đ</span>
                     </div>
                 </div>
 
@@ -140,7 +140,7 @@
 
                     <button type="submit"
                         class="w-full py-6 rounded-2xl font-black text-white shadow-2xl transition-all transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-[0.2em] text-sm border-none shadow-primary/20
-                            {{ $wallet->balance < $product->getFinalPrice() ? 'bg-slate-800 text-slate-600 grayscale cursor-not-allowed' : 'btn-esport' }}"
+                            {{ $wallet->balance < $product->getFinalPrice() ? 'bg-neutral-900 text-neutral-700 grayscale cursor-not-allowed' : 'btn-esport' }}"
                         {{ $wallet->balance < $product->getFinalPrice() ? 'disabled' : '' }}>
                         {{ $wallet->balance < $product->getFinalPrice() ? 'SỐ DƯ KHÔNG ĐỦ' : 'THANH TOÁN NGAY' }}
                     </button>

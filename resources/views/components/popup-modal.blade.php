@@ -7,7 +7,7 @@ $popupContent = $popupContentResult->isSuccess() ? $popupContentResult->getData(
 @endphp
 
 @if($popupContent)
-<div id="popup-modal" class="fixed inset-0 z-[99999] hidden items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xl transition-all duration-500">
+<div id="popup-modal" class="fixed inset-0 z-[99999] hidden items-center justify-center p-4 bg-black/60 backdrop-blur-xl transition-all duration-500">
     <div class="relative max-w-2xl w-full transform transition-all duration-500 scale-95 opacity-0" id="popup-content-wrapper">
         <!-- Modal Content -->
         <div class="glass rounded-[2rem] shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden border border-white/10">
@@ -23,17 +23,17 @@ $popupContent = $popupContentResult->isSuccess() ? $popupContentResult->getData(
             </div>
 
             <!-- Content -->
-            <div class="p-8 max-h-[60vh] overflow-y-auto scrollbar-thin scrollbar-thumb-primary/20 bg-slate-900/40">
+            <div class="p-8 max-h-[60vh] overflow-y-auto scrollbar-thin scrollbar-thumb-primary/20 bg-neutral-950/40">
                 <div class="prose prose-invert prose-primary max-w-full overflow-hidden break-words">
                     {!! $popupContent !!}
                 </div>
             </div>
 
             <!-- Footer with Duration Options -->
-            <div class="bg-slate-900/50 p-6 border-t border-white/5 backdrop-blur-xl">
-                <p class="text-[10px] text-slate-500 mb-4 font-black uppercase tracking-[0.2em] text-center">Ẩn thông báo này trong</p>
+            <div class="bg-neutral-950/50 p-6 border-t border-white/5 backdrop-blur-xl">
+                <p class="text-[10px] text-neutral-600 mb-4 font-black uppercase tracking-[0.2em] text-center">Ẩn thông báo này trong</p>
                 <div class="flex gap-4">
-                    <button onclick="closePopup(1)" class="flex-1 bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 px-4 py-3 rounded-xl font-black text-xs transition-all active:scale-95 uppercase tracking-widest flex items-center justify-center gap-2">
+                    <button onclick="closePopup(1)" class="flex-1 bg-white/5 hover:bg-white/10 border border-white/10 text-neutral-300 px-4 py-3 rounded-xl font-black text-xs transition-all active:scale-95 uppercase tracking-widest flex items-center justify-center gap-2">
                         <span class="material-icons text-sm">schedule</span> 1 GIỜ
                     </button>
                     <button onclick="closePopup(24)" class="flex-1 btn-esport px-4 py-3 rounded-xl font-black text-xs transition-all active:scale-95 uppercase tracking-widest flex items-center justify-center gap-2 border-none">
@@ -100,7 +100,7 @@ $popupContent = $popupContentResult->isSuccess() ? $popupContentResult->getData(
     }
 
     .prose-primary a {
-        color: #38bdf8;
+        color: #4ade80;
         text-decoration: underline;
         text-underline-offset: 4px;
         transition: 0.3s;
@@ -108,11 +108,11 @@ $popupContent = $popupContentResult->isSuccess() ? $popupContentResult->getData(
 
     .prose-primary a:hover {
         color: #fff;
-        text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+        text-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
     }
 
     .prose-primary strong {
-        color: #38bdf8;
+        color: #4ade80;
         font-weight: 900;
     }
 </style>

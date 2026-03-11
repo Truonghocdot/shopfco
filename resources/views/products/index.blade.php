@@ -17,10 +17,10 @@
         <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-indigo-500/10 blur-[100px] rounded-full pointer-events-none"></div>
 
         <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight text-white mb-3 flex justify-center items-center gap-4 relative z-10">
-            <span class="material-icons text-4xl md:text-5xl text-primary drop-shadow-[0_0_10px_rgba(56,189,248,0.5)]">shopping_cart</span>
+            <span class="material-icons text-4xl md:text-5xl text-primary drop-shadow-[0_0_10px_rgba(74,222,128,0.5)]">shopping_cart</span>
             MUA ACC FC ONLINE
         </h1>
-        <p class="text-slate-400 font-black uppercase tracking-[0.3em] text-xs md:text-sm">Kho tài khoản khổng lồ • Uy tín • Giao dịch tự động</p>
+        <p class="text-neutral-400 font-black uppercase tracking-[0.3em] text-xs md:text-sm">Kho tài khoản khổng lồ • Uy tín • Giao dịch tự động</p>
         <div class="h-1 w-32 bg-linear-to-r from-transparent via-primary to-transparent mx-auto rounded-full mt-8"></div>
     </div>
 
@@ -36,16 +36,16 @@
                 <form method="GET" action="{{ route('products.index') }}">
                     <!-- Category Filter -->
                     <div class="mb-6">
-                        <label class="block text-[10px] font-black mb-3 text-slate-500 uppercase tracking-[0.2em]">Danh mục</label>
-                        <select name="category" class="w-full bg-slate-900/50 border border-white/10 focus:border-primary focus:ring-primary/20 rounded-xl px-4 py-3 text-slate-200 outline-hidden transition-all">
-                            <option value="" class="bg-slate-900">Tất cả danh mục</option>
+                        <label class="block text-[10px] font-black mb-3 text-neutral-600 uppercase tracking-[0.2em]">Danh mục</label>
+                        <select name="category" class="w-full bg-neutral-950/50 border border-white/10 focus:border-primary focus:ring-primary/20 rounded-xl px-4 py-3 text-neutral-200 outline-hidden transition-all">
+                            <option value="" class="bg-neutral-950">Tất cả danh mục</option>
                             @foreach($categories as $cat)
-                            <option value="{{ $cat->id }}" {{ request('category') == $cat->id ? 'selected' : '' }} class="bg-slate-900">
+                            <option value="{{ $cat->id }}" {{ request('category') == $cat->id ? 'selected' : '' }} class="bg-neutral-950">
                                 {{ $cat->title }}
                             </option>
                             @if($cat->children->count() > 0)
                             @foreach($cat->children as $child)
-                            <option value="{{ $child->id }}" {{ request('category') == $child->id ? 'selected' : '' }} class="bg-slate-900">
+                            <option value="{{ $child->id }}" {{ request('category') == $child->id ? 'selected' : '' }} class="bg-neutral-950">
                                 &nbsp;&nbsp;&nbsp;↳ {{ $child->title }}
                             </option>
                             @endforeach
@@ -56,28 +56,28 @@
 
                     <!-- Price Range -->
                     <div class="mb-6">
-                        <label class="block text-[10px] font-black mb-3 text-slate-500 uppercase tracking-[0.2em]">Khoảng giá</label>
+                        <label class="block text-[10px] font-black mb-3 text-neutral-600 uppercase tracking-[0.2em]">Khoảng giá</label>
                         <div class="flex gap-2">
-                            <input type="number" name="min_price" placeholder="Từ" value="{{ request('min_price') }}" class="w-1/2 bg-slate-900/50 border border-white/10 focus:border-primary rounded-xl px-3 py-3 text-slate-200 placeholder-slate-600 outline-hidden transition-all">
-                            <input type="number" name="max_price" placeholder="Đến" value="{{ request('max_price') }}" class="w-1/2 bg-slate-900/50 border border-white/10 focus:border-primary rounded-xl px-3 py-3 text-slate-200 placeholder-slate-600 outline-hidden transition-all">
+                            <input type="number" name="min_price" placeholder="Từ" value="{{ request('min_price') }}" class="w-1/2 bg-neutral-950/50 border border-white/10 focus:border-primary rounded-xl px-3 py-3 text-neutral-200 placeholder-neutral-700 outline-hidden transition-all">
+                            <input type="number" name="max_price" placeholder="Đến" value="{{ request('max_price') }}" class="w-1/2 bg-neutral-950/50 border border-white/10 focus:border-primary rounded-xl px-3 py-3 text-neutral-200 placeholder-neutral-700 outline-hidden transition-all">
                         </div>
                     </div>
 
                     <!-- Sort -->
                     <div class="mb-8">
-                        <label class="block text-[10px] font-black mb-3 text-slate-500 uppercase tracking-[0.2em]">Sắp xếp</label>
-                        <select name="sort" class="w-full bg-slate-900/50 border border-white/10 focus:border-primary rounded-xl px-4 py-3 text-slate-200 outline-hidden transition-all">
-                            <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }} class="bg-slate-900">Mới nhất</option>
-                            <option value="price_low" {{ request('sort') == 'price_low' ? 'selected' : '' }} class="bg-slate-900">Giá thấp đến cao</option>
-                            <option value="price_high" {{ request('sort') == 'price_high' ? 'selected' : '' }} class="bg-slate-900">Giá cao đến thấp</option>
-                            <option value="discount" {{ request('sort') == 'discount' ? 'selected' : '' }} class="bg-slate-900">Giảm giá nhiều</option>
+                        <label class="block text-[10px] font-black mb-3 text-neutral-600 uppercase tracking-[0.2em]">Sắp xếp</label>
+                        <select name="sort" class="w-full bg-neutral-950/50 border border-white/10 focus:border-primary rounded-xl px-4 py-3 text-neutral-200 outline-hidden transition-all">
+                            <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }} class="bg-neutral-950">Mới nhất</option>
+                            <option value="price_low" {{ request('sort') == 'price_low' ? 'selected' : '' }} class="bg-neutral-950">Giá thấp đến cao</option>
+                            <option value="price_high" {{ request('sort') == 'price_high' ? 'selected' : '' }} class="bg-neutral-950">Giá cao đến thấp</option>
+                            <option value="discount" {{ request('sort') == 'discount' ? 'selected' : '' }} class="bg-neutral-950">Giảm giá nhiều</option>
                         </select>
                     </div>
 
                     <button type="submit" class="w-full btn-esport py-4 rounded-xl uppercase tracking-widest text-center text-xs font-black shadow-lg shadow-primary/20 border-none">
                         ÁP DỤNG
                     </button>
-                    <a href="{{ route('products.index') }}" class="block w-full text-center bg-white/5 hover:bg-white/10 border border-white/10 text-slate-400 font-black py-4 rounded-xl mt-3 transition-all uppercase tracking-widest text-xs">
+                    <a href="{{ route('products.index') }}" class="block w-full text-center bg-white/5 hover:bg-white/10 border border-white/10 text-neutral-400 font-black py-4 rounded-xl mt-3 transition-all uppercase tracking-widest text-xs">
                         XÓA BỘ LỌC
                     </a>
                 </form>
@@ -97,17 +97,17 @@
                             -{{ number_format($product->getDiscountPercent()) }}%
                         </div>
                         @endif
-                        <div class="absolute bottom-2 left-2 bg-slate-900/80 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] text-slate-300 font-bold border border-white/10">
+                        <div class="absolute bottom-2 left-2 bg-neutral-950/80 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] text-neutral-300 font-bold border border-white/10">
                             ID: {{ $product->id }}
                         </div>
                     </div>
                     <div class="p-4">
-                        <h4 class="font-bold text-sm mb-3 line-clamp-2 h-10 text-slate-100 group-hover:text-primary transition-colors tracking-tight">{{ $product->title }}</h4>
+                        <h4 class="font-bold text-sm mb-3 line-clamp-2 h-10 text-neutral-100 group-hover:text-primary transition-colors tracking-tight">{{ $product->title }}</h4>
                         <div class="flex flex-col mb-4">
                             @if($product->sale_price && $product->sell_price)
-                            <span class="text-xs text-slate-500 line-through">{{ number_format($product->sell_price) }} đ</span>
+                            <span class="text-xs text-neutral-600 line-through">{{ number_format($product->sell_price) }} đ</span>
                             @endif
-                            <span class="text-xl font-black text-primary drop-shadow-[0_0_8px_rgba(56,189,248,0.3)]">{{ number_format($product->getFinalPrice()) }} <span class="text-sm">đ</span></span>
+                            <span class="text-xl font-black text-primary drop-shadow-[0_0_8px_rgba(74,222,128,0.3)]">{{ number_format($product->getFinalPrice()) }} <span class="text-sm">đ</span></span>
                         </div>
                         <a href="{{ route('products.show', $product->slug) }}" class="block w-full btn-esport py-2.5 rounded-xl text-center text-xs md:text-sm font-black uppercase tracking-widest transition-all">
                             <span class="material-icons text-sm align-middle mr-1">shopping_cart</span> XEM CHI TIẾT
@@ -123,9 +123,9 @@
             </div>
             @else
             <div class="glass rounded-2xl border border-white/10 p-12 text-center">
-                <span class="material-icons text-6xl text-slate-700 mb-6 drop-shadow-[0_0_15px_rgba(255,255,255,0.05)]">search_off</span>
+                <span class="material-icons text-6xl text-neutral-800 mb-6 drop-shadow-[0_0_15px_rgba(255,255,255,0.05)]">search_off</span>
                 <p class="text-2xl font-black mb-3 text-white uppercase tracking-tighter">Không tìm thấy sản phẩm</p>
-                <p class="text-slate-500 font-bold">Vui lòng thử lại với bộ lọc hoặc từ khóa khác</p>
+                <p class="text-neutral-600 font-bold">Vui lòng thử lại với bộ lọc hoặc từ khóa khác</p>
             </div>
             @endif
         </div>

@@ -1,5 +1,5 @@
 <!-- Top Info Bar -->
-<div class="bg-slate-950 py-1 overflow-hidden whitespace-nowrap border-b border-white/5 relative z-60">
+<div class="bg-black py-1 overflow-hidden whitespace-nowrap border-b border-white/5 relative z-60">
     <div class="animate-marquee flex items-center gap-8">
         <span class="text-primary font-black text-[10px] uppercase tracking-[0.2em] flex items-center gap-2">
             ⚡ HỆ THỐNG MUA BÁN ACC FC ONLINE UY TÍN ⚡ GIAO DỊCH TỰ ĐỘNG 24/7 ⚡ HỖ TRỢ NHIỆT TÌNH ⚡ BẢO MẬT TUYỆT ĐỐI ⚡
@@ -14,7 +14,7 @@
         <div class="flex items-center gap-8">
             <!-- Logo -->
             <a href="{{ route('home') }}" class="flex items-center gap-2 group relative">
-                <span class="text-3xl md:text-4xl font-black italic tracking-tighter text-white group-hover:text-primary transition-all duration-500 relative z-10 drop-shadow-[0_0_10px_rgba(56,189,248,0.5)]">
+                <span class="text-3xl md:text-4xl font-black italic tracking-tighter text-white group-hover:text-primary transition-all duration-500 relative z-10 drop-shadow-[0_0_10px_rgba(74,222,128,0.5)]">
                     VANH<span class="text-primary group-hover:text-white transition-colors">FCO</span>
                 </span>
                 <div class="absolute -inset-2 bg-primary/20 blur-xl rounded-full scale-0 group-hover:scale-110 transition-transform duration-700 opacity-0 group-hover:opacity-100"></div>
@@ -27,14 +27,14 @@
                 ['route' => 'home', 'icon' => 'home', 'label' => 'TRANG CHỦ'],
                 ['route' => 'products.index', 'icon' => 'shopping_bag', 'label' => 'SẢN PHẨM'],
                 ['route' => 'deposit', 'icon' => 'account_balance_wallet', 'label' => 'NẠP TIỀN'],
-                ['route' => 'lucky-wheel.index', 'icon' => 'inventory_2', 'label' => 'HÒM BÍ ẨN'],
+                ['route' => 'lucky-wheel.index', 'icon' => 'surfing', 'label' => 'LƯỚT SÓNG'],
                 ['route' => 'news.index', 'icon' => 'newspaper', 'label' => 'TIN TỨC'],
                 ['route' => 'policy', 'icon' => 'policy', 'label' => 'CHÍNH SÁCH'],
                 ];
                 @endphp
 
                 @foreach($navItems as $item)
-                <a class="nav-link font-bold flex items-center gap-2 text-slate-300 hover:text-white px-4 py-2 rounded-lg transition-all {{ request()->routeIs($item['route']) ? 'active text-primary' : '' }}" href="{{ route($item['route']) }}">
+                <a class="nav-link font-bold flex items-center gap-2 text-neutral-300 hover:text-white px-4 py-2 rounded-lg transition-all {{ request()->routeIs($item['route']) ? 'active text-primary' : '' }}" href="{{ route($item['route']) }}">
                     <span class="material-icons text-base">{{ $item['icon'] }}</span>
                     <span class="text-xs tracking-widest">{{ $item['label'] }}</span>
                 </a>
@@ -46,8 +46,8 @@
             @auth
             <!-- Balance Display -->
             <div class="flex flex-col items-end px-3 md:px-4 py-1 md:py-2 rounded-lg bg-white/5 border border-white/10 hover:border-primary/50 transition-all group cursor-pointer relative overflow-hidden">
-                <span class="hidden md:block text-[9px] text-slate-500 uppercase tracking-widest font-black">Số dư</span>
-                <span class="text-primary font-black text-sm md:text-lg drop-shadow-[0_0_8px_rgba(56,189,248,0.4)]">
+                <span class="hidden md:block text-[9px] text-neutral-600 uppercase tracking-widest font-black">Số dư</span>
+                <span class="text-primary font-black text-sm md:text-lg drop-shadow-[0_0_8px_rgba(74,222,128,0.4)]">
                     {{ number_format(auth()->user()->wallet()->value('balance'), 0, ',', '.') }} <span class="text-[10px] md:text-sm">đ</span>
                 </span>
             </div>
@@ -57,7 +57,7 @@
                 <span class="material-icons text-primary text-xl md:text-2xl">account_circle</span>
                 <div class="flex flex-col">
                     <span class="text-white text-[10px] md:text-[12px] font-bold max-w-[50px] md:max-w-none truncate">{{ auth()->user()->name }}</span>
-                    <span class="text-[8px] md:text-[10px] text-slate-500 font-black tracking-tighter">ID: {{ auth()->user()->id }}</span>
+                    <span class="text-[8px] md:text-[10px] text-neutral-600 font-black tracking-tighter">ID: {{ auth()->user()->id }}</span>
                 </div>
             </a>
 
@@ -84,7 +84,7 @@
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden lg:hidden border-t border-white/5 bg-slate-900/95 backdrop-blur-xl">
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-white/5 bg-neutral-950/95 backdrop-blur-xl">
         <nav class="container mx-auto px-4 py-4 flex flex-col gap-1">
             @auth
             <!-- Mobile User Info -->
@@ -92,19 +92,19 @@
                 <div class="absolute -top-10 -right-10 w-24 h-24 bg-primary/10 rounded-full blur-2xl"></div>
                 <div class="flex items-center justify-between relative z-10">
                     <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center border border-white/10 shadow-inner">
+                        <div class="w-12 h-12 rounded-full bg-neutral-900 flex items-center justify-center border border-white/10 shadow-inner">
                             <span class="material-icons text-primary text-3xl">account_circle</span>
                         </div>
                         <div>
                             <div class="font-black text-white text-lg tracking-tight">{{ auth()->user()->name }}</div>
-                            <div class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">ID: {{ auth()->user()->id }}</div>
+                            <div class="text-[10px] text-neutral-600 font-bold uppercase tracking-wider">ID: {{ auth()->user()->id }}</div>
                         </div>
                     </div>
                 </div>
                 <div class="mt-4 pt-4 border-t border-white/5 flex items-center justify-between relative z-10">
                     <div>
-                        <div class="text-[9px] text-slate-500 uppercase font-black tracking-[0.2em]">Ví tài khoản</div>
-                        <div class="text-primary font-black text-2xl tracking-tighter drop-shadow-[0_0_8px_rgba(56,189,248,0.4)]">
+                        <div class="text-[9px] text-neutral-600 uppercase font-black tracking-[0.2em]">Ví tài khoản</div>
+                        <div class="text-primary font-black text-2xl tracking-tighter drop-shadow-[0_0_8px_rgba(74,222,128,0.4)]">
                             {{ number_format(auth()->user()->wallet()->value('balance'), 0, ',', '.') }}<span class="text-sm ml-1">đ</span>
                         </div>
                     </div>
@@ -118,7 +118,7 @@
             @foreach($navItems as $item)
             <a class="flex items-center gap-3 text-white/90 hover:text-white hover:bg-white/10 font-semibold py-3 px-4 rounded-lg transition-all" href="{{ route($item['route']) }}">
                 <span class="material-icons text-xl">{{ $item['icon'] }}</span>
-                <span class="tracking-wide">{{ str_replace('TRANG CHỦ', 'Trang chủ', str_replace('SẢN PHẨM', 'Sản phẩm', str_replace('NẠP TIỀN', 'Nạp tiền', str_replace('CÂY HÁI LỘC', 'Cây Hái Lộc', str_replace('TIN TỨC', 'Tin tức', str_replace('CHÍNH SÁCH', 'Chính sách', $item['label'])))))) }}</span>
+                <span class="tracking-wide">{{ str_replace('TRANG CHỦ', 'Trang chủ', str_replace('SẢN PHẨM', 'Sản phẩm', str_replace('NẠP TIỀN', 'Nạp tiền', str_replace('LƯỚT SÓNG', 'Lướt sóng', str_replace('TIN TỨC', 'Tin tức', str_replace('CHÍNH SÁCH', 'Chính sách', $item['label'])))))) }}</span>
                 <span class="material-icons ml-auto text-white/40">chevron_right</span>
             </a>
             @endforeach

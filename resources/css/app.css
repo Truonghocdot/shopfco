@@ -14,28 +14,28 @@
     --font-family-sans: "Inter", system-ui, -apple-system, sans-serif;
     --font-family-display: "Outfit", "Inter", sans-serif;
 
-    /* Dark Esport Color Palette */
-    --color-primary: #38bdf8; /* Sky 400 */
-    --color-primary-dark: #0284c7; /* Sky 600 */
-    --color-primary-light: #7dd3fc; /* Sky 300 */
-    --color-accent-indigo: #818cf8; /* Indigo 400 */
-    --color-accent-pink: #f472b6; /* Pink 400 */
-    --color-accent-emerald: #34d399; /* Emerald 400 */
+    /* FC Online Neon Green Palette */
+    --color-primary: #00ff85; /* Neon Green */
+    --color-primary-dark: #00d66f;
+    --color-primary-light: #4dffa9;
+    --color-accent-indigo: #404040; /* Neutral 700 */
+    --color-accent-pink: #f472b6;
+    --color-accent-emerald: #10b981;
 
-    /* Dark Backgrounds */
-    --color-bg-dark: #020617; /* Slate 950 */
-    --color-bg-card: #0f172a; /* Slate 900 */
-    --color-bg-surface: #1e293b; /* Slate 800 */
+    /* Black & Neutral Backgrounds */
+    --color-bg-dark: #000000; /* True Black */
+    --color-bg-card: #0a0a0a; /* Neutral 950 */
+    --color-bg-surface: #171717; /* Neutral 900 */
 
-    /* Text Colors */
-    --color-text-primary: #f8fafc; /* Slate 50 */
-    --color-text-secondary: #94a3b8; /* Slate 400 */
-    --color-text-muted: #64748b; /* Slate 500 */
+    /* White & Neutral Text Colors */
+    --color-text-primary: #ffffff; /* Pure White */
+    --color-text-secondary: #a3a3a3; /* Neutral 400 */
+    --color-text-muted: #737373; /* Neutral 500 */
 
     /* Border Colors */
-    --color-border: #1e293b; /* Slate 800 */
-    --color-border-light: #334155; /* Slate 700 */
-    --color-border-glow: rgba(56, 189, 248, 0.4);
+    --color-border: #262626; /* Neutral 800 */
+    --color-border-light: #404040; /* Neutral 700 */
+    --color-border-glow: rgba(0, 255, 133, 0.4);
 }
 
 /* Global Styles */
@@ -78,12 +78,12 @@ h4,
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(56, 189, 248, 0.05), transparent);
+    background: linear-gradient(135deg, rgba(74, 222, 128, 0.05), transparent);
     pointer-events: none;
 }
 
 .card-esport:hover {
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+    box-shadow: 0 0 20px rgba(74, 222, 128, 0.15);
     border-color: var(--color-primary);
     transform: translateY(-2px);
 }
@@ -101,7 +101,7 @@ h4,
     border-radius: 0.5rem;
     transition: all 0.2s;
     border: none;
-    box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+    box-shadow: 0 0 15px rgba(74, 222, 128, 0.3);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     display: inline-flex;
@@ -110,7 +110,7 @@ h4,
 }
 
 .btn-esport:hover {
-    box-shadow: 0 0 25px rgba(56, 189, 248, 0.5);
+    box-shadow: 0 0 25px rgba(74, 222, 128, 0.5);
     transform: scale(1.02);
     filter: brightness(1.1);
 }
@@ -124,12 +124,12 @@ h4,
     background:
         radial-gradient(
             circle at top right,
-            rgba(56, 189, 248, 0.1),
+            rgba(0, 255, 133, 0.05),
             transparent 40%
         ),
         radial-gradient(
             circle at bottom left,
-            rgba(129, 140, 248, 0.1),
+            rgba(255, 255, 255, 0.02),
             transparent 40%
         );
 }
@@ -220,13 +220,13 @@ h4,
     0%,
     100% {
         box-shadow:
-            0 0 5px rgba(56, 189, 248, 0.2),
-            inset 0 0 2px rgba(56, 189, 248, 0.1);
+            0 0 5px rgba(74, 222, 128, 0.2),
+            inset 0 0 2px rgba(74, 222, 128, 0.1);
     }
     50% {
         box-shadow:
-            0 0 20px rgba(56, 189, 248, 0.6),
-            inset 0 0 10px rgba(56, 189, 248, 0.3);
+            0 0 20px rgba(74, 222, 128, 0.6),
+            inset 0 0 10px rgba(74, 222, 128, 0.3);
     }
 }
 
@@ -243,7 +243,7 @@ h4,
 
 .nav-link:hover {
     color: var(--color-primary) !important;
-    text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+    text-shadow: 0 0 8px rgba(74, 222, 128, 0.5);
 }
 
 .nav-link::after {
@@ -263,16 +263,16 @@ h4,
 
 /* Glassmorphism utility */
 .glass {
-    background: rgba(15, 23, 42, 0.6);
+    background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* Neon Text */
 .text-neon {
     color: var(--color-primary);
     text-shadow:
-        0 0 10px rgba(56, 189, 248, 0.5),
-        0 0 20px rgba(56, 189, 248, 0.3);
+        0 0 10px rgba(74, 222, 128, 0.5),
+        0 0 20px rgba(74, 222, 128, 0.3);
 }

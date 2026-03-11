@@ -6,14 +6,14 @@
 @section('content')
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     <!-- Breadcrumb -->
-    <nav class="flex mb-8 text-[10px] font-black text-slate-500 overflow-x-auto whitespace-nowrap pb-2 uppercase tracking-[0.2em]">
+    <nav class="flex mb-8 text-[10px] font-black text-neutral-600 overflow-x-auto whitespace-nowrap pb-2 uppercase tracking-[0.2em]">
         <a class="hover:text-primary flex items-center transition-colors" href="{{ route('home') }}">
             <span class="material-icons text-sm mr-2 text-primary">home</span> Trang chủ
         </a>
         <span class="mx-3 text-white/10">/</span>
-        <a class="hover:text-primary transition-colors font-black text-slate-400" href="#">{{ $product->category->title }}</a>
+        <a class="hover:text-primary transition-colors font-black text-neutral-400" href="#">{{ $product->category->title }}</a>
         <span class="mx-3 text-white/10">/</span>
-        <span class="text-primary font-black drop-shadow-[0_0_8px_rgba(56,189,248,0.3)]">ID #{{ $product->id }}</span>
+        <span class="text-primary font-black drop-shadow-[0_0_8px_rgba(74,222,128,0.3)]">ID #{{ $product->id }}</span>
     </nav>
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -36,24 +36,24 @@
                     </div>
 
                     @if(!empty($product->images) && count($product->images) > 1)
-                    <button onclick="moveSlide(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-slate-900/80 hover:bg-primary text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all shadow-lg z-20 backdrop-blur-md border border-white/10">
+                    <button onclick="moveSlide(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-neutral-950/80 hover:bg-primary text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all shadow-lg z-20 backdrop-blur-md border border-white/10">
                         <span class="material-icons">chevron_left</span>
                     </button>
-                    <button onclick="moveSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-slate-900/80 hover:bg-primary text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all shadow-lg z-20 backdrop-blur-md border border-white/10">
+                    <button onclick="moveSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-neutral-950/80 hover:bg-primary text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all shadow-lg z-20 backdrop-blur-md border border-white/10">
                         <span class="material-icons">chevron_right</span>
                     </button>
-                    <div class="absolute bottom-4 right-4 bg-slate-900/80 backdrop-blur-md text-white text-[10px] font-black px-4 py-1.5 rounded-full z-20 border border-white/10 uppercase tracking-widest">
+                    <div class="absolute bottom-4 right-4 bg-neutral-950/80 backdrop-blur-md text-white text-[10px] font-black px-4 py-1.5 rounded-full z-20 border border-white/10 uppercase tracking-widest">
                         <span id="current-slide" class="text-primary">1</span> / {{ count($product->images) }}
                     </div>
                     @endif
                 </div>
 
                 @if(!empty($product->images) && count($product->images) > 1)
-                <div class="px-4 pb-4 pt-3 bg-slate-900/40 backdrop-blur-md border-t border-white/5">
+                <div class="px-4 pb-4 pt-3 bg-neutral-950/40 backdrop-blur-md border-t border-white/5">
                     <div class="flex gap-3 overflow-x-auto pb-2 no-scrollbar scroll-smooth" id="carousel-thumbnails">
                         @foreach($product->images as $index => $image)
                         <button type="button" onclick="scrollToSlide({{ $index }})"
-                            class="relative shrink-0 w-20 h-14 rounded-xl overflow-hidden border-2 transition-all thumbnail-btn {{ $index === 0 ? 'border-primary shadow-[0_0_15px_rgba(56,189,248,0.4)]' : 'border-white/5 opacity-40 hover:opacity-100 hover:border-white/20' }}"
+                            class="relative shrink-0 w-20 h-14 rounded-xl overflow-hidden border-2 transition-all thumbnail-btn {{ $index === 0 ? 'border-primary shadow-[0_0_15px_rgba(74,222,128,0.4)]' : 'border-white/5 opacity-40 hover:opacity-100 hover:border-white/20' }}"
                             data-index="{{ $index }}">
                             <img src="{{ url('storage/'.$image) }}" alt="Thumbnail {{ $index + 1 }}" class="w-full h-full object-cover">
                         </button>
@@ -69,10 +69,10 @@
                 <div class="flex flex-wrap items-center justify-between gap-8 py-8 border-y border-white/5 relative z-20">
                     <div class="space-y-2">
                         @if($product->sell_price && $product->sell_price > $product->getFinalPrice())
-                        <span class="text-slate-500 line-through text-lg font-bold">{{ number_format($product->sell_price) }}đ</span>
+                        <span class="text-neutral-600 line-through text-lg font-bold">{{ number_format($product->sell_price) }}đ</span>
                         @endif
                         <div class="flex items-baseline gap-3">
-                            <span class="text-3xl md:text-5xl font-black text-white drop-shadow-[0_0_15px_rgba(56,189,248,0.4)]">{{ number_format($product->getFinalPrice()) }} <span class="text-lg">đ</span></span>
+                            <span class="text-3xl md:text-5xl font-black text-white drop-shadow-[0_0_15px_rgba(74,222,128,0.4)]">{{ number_format($product->getFinalPrice()) }} <span class="text-lg">đ</span></span>
                             @if($product->getDiscountPercent())
                             <span class="bg-pink-500 text-white text-[10px] md:text-xs font-black px-3 py-1 rounded-full shadow-[0_0_10px_rgba(244,114,182,0.4)] uppercase tracking-widest">SIÊU GIẢM GIÁ</span>
                             @endif
@@ -109,12 +109,12 @@
         <div class="lg:col-span-5 space-y-6">
             <div class="glass rounded-2xl p-8 shadow-2xl border border-white/10 h-full relative overflow-hidden">
                 <div class="flex items-center gap-3 mb-8">
-                    <span class="material-icons text-primary drop-shadow-[0_0_8px_rgba(56,189,248,0.5)]">info</span>
+                    <span class="material-icons text-primary drop-shadow-[0_0_8px_rgba(74,222,128,0.5)]">info</span>
                     <h2 class="text-xl font-black text-white uppercase tracking-tight">THÔNG TIN CHI TIẾT</h2>
                 </div>
                 <div class="prose prose-invert prose-primary max-w-none space-y-6">
-                    <div class="bg-slate-900/50 backdrop-blur-md border border-white/5 p-6 rounded-2xl border-l-4 border-l-primary shadow-xl">
-                        <div class="font-bold text-slate-300 leading-relaxed">
+                    <div class="bg-neutral-950/50 backdrop-blur-md border border-white/5 p-6 rounded-2xl border-l-4 border-l-primary shadow-xl">
+                        <div class="font-bold text-neutral-300 leading-relaxed">
                             {!! $product->content !!}
                         </div>
                         <div class="mt-6 pt-4 border-t border-white/5">
@@ -128,7 +128,7 @@
                             <span class="material-icons text-primary">verified_user</span>
                             CAM KẾT & ĐIỀU KHOẢN
                         </h3>
-                        <ol class="space-y-4 text-slate-400 text-sm font-bold">
+                        <ol class="space-y-4 text-neutral-400 text-sm font-bold">
                             <li class="flex gap-3 leading-relaxed">
                                 <span class="text-primary font-black">01.</span> SĐT tới hạn đổi SĐT Quý khách vui lòng liên hệ shop để lấy code thay đổi SĐT.
                             </li>

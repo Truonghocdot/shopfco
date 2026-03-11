@@ -97,7 +97,7 @@
         <!-- Hero Section -->
         <div class="text-center mb-16 relative scroll-reveal">
             <div class="inline-block relative mb-6">
-                <div class="relative bg-linear-to-r from-primary to-indigo-600 text-white px-12 py-5 font-black text-3xl md:text-6xl rounded-3xl shadow-[0_0_30px_rgba(56,189,248,0.3)] transform hover:scale-105 transition-all">
+                <div class="relative bg-linear-to-r from-primary to-indigo-600 text-white px-12 py-5 font-black text-3xl md:text-6xl rounded-3xl shadow-[0_0_30px_rgba(74,222,128,0.3)] transform hover:scale-105 transition-all">
                     CHÍNH SÁCH & QUY ĐỊNH
                 </div>
             </div>
@@ -111,14 +111,14 @@
             <!-- 1. Affiliate Commission Policy -->
             <section class="policy-section scroll-reveal">
                 <h2 class="section-title text-white">
-                    <span class="material-icons text-primary drop-shadow-[0_0_8px_rgba(56,189,248,0.5)]">card_giftcard</span>
+                    <span class="material-icons text-primary drop-shadow-[0_0_8px_rgba(74,222,128,0.5)]">card_giftcard</span>
                     1. Chính Sách Hoa Hồng Giới Thiệu
                 </h2>
 
                 <div class="content-box glass space-y-6 border-white/10">
                     <div>
                         <h3 class="subsection-title text-white">1.1 Giới thiệu chương trình</h3>
-                        <p class="text-slate-400 leading-relaxed">
+                        <p class="text-neutral-400 leading-relaxed">
                             Chương trình hoa hồng giới thiệu tại <strong class="text-primary font-black uppercase">VanhFCO</strong> được thiết kế để tri ân khách hàng thân thiết.
                             Khi bạn giới thiệu bạn bè mua <strong class="text-primary">Acc chứa FC</strong>, <strong class="text-primary">Acc Mở thẻ</strong>,
                             <strong class="text-primary">Acc chứa BP trắng</strong> hoặc <strong class="text-primary">Acc đội hình</strong>,
@@ -128,7 +128,7 @@
 
                     <div>
                         <h3 class="subsection-title text-white">1.2 Cách thức hoạt động</h3>
-                        <ol class="list-decimal list-inside space-y-3 text-slate-400 leading-relaxed">
+                        <ol class="list-decimal list-inside space-y-3 text-neutral-400 leading-relaxed">
                             <li>Đăng ký tài khoản tại <strong class="text-primary">AccFCO</strong></li>
                             <li>Truy cập <a href="{{ route('user.profile') }}" class="text-primary hover:text-white transition-colors underline decoration-primary/30 underline-offset-4">trang cá nhân</a> để lấy link giới thiệu riêng</li>
                             <li>Chia sẻ link với bạn bè, người thân</li>
@@ -139,7 +139,7 @@
 
                     <div>
                         <h3 class="subsection-title text-white">1.3 Điều kiện tham gia</h3>
-                        <ul class="list-disc list-inside space-y-3 text-slate-400 leading-relaxed">
+                        <ul class="list-disc list-inside space-y-3 text-neutral-400 leading-relaxed">
                             <li>Tài khoản đã đăng ký tại <strong class="text-primary">VanhFCO</strong></li>
                             <li>Không được tự giới thiệu chính mình</li>
                             <li>Tuân thủ các quy định sử dụng dịch vụ</li>
@@ -152,7 +152,7 @@
                             <span class="material-icons text-sm">lightbulb</span>
                             Lưu ý quan trọng
                         </p>
-                        <p class="text-slate-400 text-sm leading-relaxed">
+                        <p class="text-neutral-400 text-sm leading-relaxed">
                             Hoa hồng được tính trên tổng giá trị đơn hàng sau khi áp dụng giảm giá.
                             Bạn có thể theo dõi thu nhập từ giới thiệu và số lượng người đã giới thiệu trong trang cá nhân.
                         </p>
@@ -225,7 +225,7 @@
 
                     <div>
                         <h3 class="subsection-title text-white">3.3 Quy trình mua Acc đội hình</h3>
-                        <p class="text-slate-400 leading-relaxed">
+                        <p class="text-neutral-400 leading-relaxed">
                             <strong class="text-primary">Acc đội hình</strong> được phân loại theo chất lượng cầu thủ và tổng OVR.
                             Khách hàng có thể xem chi tiết đội hình trước khi mua tại <strong class="text-primary">VanhFCO</strong>.
                         </p>
@@ -233,7 +233,7 @@
 
                     <div class="bg-primary/5 border border-primary/20 rounded-2xl p-6">
                         <p class="text-primary font-black mb-2 uppercase text-[10px] tracking-widest">✓ Cam kết chất lượng</p>
-                        <p class="text-slate-400 text-sm leading-relaxed">
+                        <p class="text-neutral-400 text-sm leading-relaxed">
                             Tất cả <strong class="text-primary">Acc chứa FC</strong>, <strong class="text-primary">Acc Mở thẻ</strong>,
                             <strong class="text-primary">Acc chứa BP trắng</strong> và <strong class="text-primary">Acc đội hình</strong>
                             tại <strong class="text-primary">AccFCO</strong> đều được kiểm tra kỹ lưỡng trước khi bán.
@@ -334,7 +334,7 @@
                             <h3 class="text-sm font-black text-white mb-3 flex items-center gap-2 uppercase tracking-widest leading-tight">
                                 BẢO MẬT OTP
                             </h3>
-                            <p class="text-slate-500 leading-relaxed text-xs font-bold">
+                            <p class="text-neutral-600 leading-relaxed text-xs font-bold">
                                 Đối với <strong class="text-primary">Acc chứa FC</strong> có SĐT, quý khách liên hệ shop để lấy mã OTP.
                                 <strong class="text-primary">VanhFCO</strong> bảo lưu và bảo hành bảo mật tuyệt đối.
                             </p>
@@ -430,7 +430,7 @@
             </div>
 
             <!-- Closing Note -->
-            <div class="text-center max-w-4xl mx-auto bg-slate-900/50 border border-white/10 backdrop-blur-3xl p-12 rounded-[2.5rem] relative overflow-hidden mt-20 group/thanks shadow-3xl">
+            <div class="text-center max-w-4xl mx-auto bg-neutral-950/50 border border-white/10 backdrop-blur-3xl p-12 rounded-[2.5rem] relative overflow-hidden mt-20 group/thanks shadow-3xl">
                 <!-- Removed Tet flowers -->
 
                 <div class="absolute top-0 left-0 w-full h-1.5 bg-linear-to-r from-transparent via-primary to-transparent"></div>
@@ -491,7 +491,7 @@
         background: rgba(15, 23, 42, 0.6);
         backdrop-filter: blur(12px);
         border: 1px solid rgba(255, 255, 255, 0.05);
-        border-left: 4px solid #38bdf8;
+        border-left: 4px solid #4ade80;
         padding: 2.5rem;
         border-radius: 1.5rem;
         box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
@@ -509,8 +509,8 @@
 
     .policy-card:hover {
         transform: translateY(-8px);
-        box-shadow: 0 30px 60px rgba(56, 189, 248, 0.15);
-        border-color: rgba(56, 189, 248, 0.4);
+        box-shadow: 0 30px 60px rgba(74, 222, 128, 0.15);
+        border-color: rgba(74, 222, 128, 0.4);
     }
 
     .policy-icon-box {
@@ -523,15 +523,15 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #38bdf8;
+        color: #4ade80;
         transition: 0.4s;
     }
 
     .policy-card:hover .policy-icon-box {
-        background: #38bdf8;
+        background: #4ade80;
         color: #fff;
-        border-color: #38bdf8;
-        box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+        border-color: #4ade80;
+        box-shadow: 0 0 20px rgba(74, 222, 128, 0.4);
     }
 
     /* Social Buttons */

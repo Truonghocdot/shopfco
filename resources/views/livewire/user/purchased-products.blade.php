@@ -206,7 +206,7 @@
                         </div>
                         @endif
 
-                        <div class="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-100 italic text-[13px] text-blue-700">
+                        <div class="mt-4 p-3 bg-green-50 rounded-lg border border-green-100 italic text-[13px] text-green-700">
                             <span class="font-bold">Ghi chú:</span> Sử dụng Mật khẩu 2 để lấy thông tin tài khoản trong trang quản lý đơn hàng
                         </div>
                         @endif
