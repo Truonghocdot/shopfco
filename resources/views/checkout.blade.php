@@ -42,11 +42,11 @@
                     <div class="flex-1 flex flex-col justify-center">
                         <h3 class="font-black text-xl mb-3 text-white leading-tight tracking-tight group-hover:text-primary transition-colors">{{ $product->title }}</h3>
                         <div class="flex flex-wrap items-center gap-4">
-                            <p class="text-[10px] text-slate-400 font-black uppercase tracking-widest flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-full border border-white/5">
+                            <p class="text-[10px] text-white font-black uppercase tracking-widest flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-full border border-white/5">
                                 <span class="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></span>
                                 {{ $product->category->title ?? 'N/A' }}
                             </p>
-                            <span class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Mã: #{{ $product->id }}</span>
+                            <span class="text-[10px] text-white font-bold uppercase tracking-widest">Mã: #{{ $product->id }}</span>
                         </div>
                         <div class="mt-6 flex items-baseline gap-3">
                             <span class="text-3xl font-black text-primary drop-shadow-[0_0_12px_rgba(56,189,248,0.4)] tracking-tighter">{{ number_format($product->getFinalPrice()) }}đ</span>
@@ -123,7 +123,7 @@
                         <span class="text-white uppercase">TẠM TÍNH</span>
                         <span class="text-slate-300">{{ number_format($product->getFinalPrice()) }}đ</span>
                     </div>
-                    <div class="flex justify-between items-center text-[10px] font-black text-emerald-400 bg-emerald-500/5 px-3 py-2 rounded-lg border border-emerald-500/10" id="discount_row" style="display: none;">
+                    <div class="flex justify-between items-center text-[10px] font-black text-white bg-white/5 px-3 py-2 rounded-lg border border-white/10" id="discount_row" style="display: none;">
                         <span class="uppercase tracking-widest">GIẢM GIÁ</span>
                         <span class="text-sm">-<span id="discount_amount">0</span>đ</span>
                     </div>
@@ -146,8 +146,8 @@
                     </button>
                 </form>
 
-                <p class="text-[9px] text-slate-600 font-bold text-center mt-8 leading-loose uppercase tracking-[0.1em] max-w-[200px] mx-auto">
-                    Xác nhận đồng ý với <a href="{{ route('policy') }}" class="text-primary hover:text-white transition-colors underline underline-offset-4">điều khoản dịch vụ</a>
+                <p class="text-[9px] text-white font-bold text-center mt-8 leading-loose uppercase tracking-[0.1em] max-w-[200px] mx-auto opacity-60">
+                    Bằng việc xác nhận thanh toán, bạn đồng ý với <a href="{{ route('policy') }}" class="text-primary hover:text-white transition-colors underline underline-offset-4">điều khoản dịch vụ</a>
                 </p>
             </div>
         </div>
