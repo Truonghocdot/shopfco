@@ -8,37 +8,47 @@
 
 :root {
     --swiper-theme-color: #ffffff !important;
+    --sky-blue: #00AEEF;
+    --sky-blue-light: #87CEEB;
+    --golden-sun: #FFD700;
+    --golden-hover: #FFA500;
+    --cloud-white: #FFFFFF;
+    --deep-navy: #003366;
+    --glass-bg: rgba(255, 255, 255, 0.2);
+    --glass-border: rgba(255, 255, 255, 0.3);
 }
+
 @theme {
     /* Font Families */
     --font-family-sans: "Inter", system-ui, -apple-system, sans-serif;
-    --font-family-display: "Inter", "Outfit", sans-serif;
+    --font-family-display: "Outfit", "Lexend", sans-serif;
 
-    /* Modern Gaming Palette (Slate & Emerald) */
-    --color-primary: #22c55e; /* Emerald 500 */
-    --color-primary-dark: #16a34a; /* Emerald 600 */
-    --color-primary-light: #4ade80; /* Emerald 400 */
-    --color-secondary: #4ade80;
+    /* Summer Breeze Palette */
+    --color-primary: #FFD700; /* Golden Sun */
+    --color-primary-dark: #FFA500; /* Orange/Gold */
+    --color-primary-light: #FFF9C4; /* Light Yellow */
+    --color-secondary: #00AEEF; /* Sky Blue */
     
-    /* Slate Backgrounds */
-    --color-bg-dark: #0f172a; /* Slate 900 */
-    --color-bg-card: #1e293b; /* Slate 800 */
-    --color-bg-surface: #1e293b;
+    /* Summer Backgrounds */
+    --color-bg-dark: #87CEEB; /* Sky Blue Light */
+    --color-bg-card: rgba(255, 255, 255, 0.15); /* Glass Background */
+    --color-bg-surface: rgba(255, 255, 255, 0.2);
 
-    /* Modern Text Colors */
-    --color-text-primary: #f1f5f9; /* Slate 100 */
-    --color-text-secondary: #cbd5e1; /* Slate 300 */
-    --color-text-muted: #94a3b8; /* Slate 400 */
+    /* Text Colors for Light Background */
+    --color-text-primary: #003366; /* Deep Navy */
+    --color-text-secondary: #004d99;
+    --color-text-muted: #1e40af;
 
     /* Premium Border Colors */
-    --color-border: #334155; /* Slate 700 */
-    --color-border-light: #475569; /* Slate 600 */
-    --color-border-glow: rgba(34, 197, 94, 0.4);
+    --color-border: rgba(255, 255, 255, 0.3);
+    --color-border-light: rgba(255, 255, 255, 0.5);
+    --color-border-glow: rgba(255, 215, 0, 0.4);
 }
 
 /* Global Styles */
 body {
-    background: var(--color-bg-dark);
+    background: linear-gradient(135deg, var(--sky-blue-light) 0%, var(--sky-blue) 100%);
+    background-attachment: fixed;
     color: var(--color-text-primary);
     font-family: var(--font-family-sans);
     line-height: 1.6;
@@ -56,13 +66,15 @@ h4,
     letter-spacing: -0.01em;
 }
 
-/* Card Styles - Modern Gaming */
+/* Card Styles - Golden Summer */
 .card-esport {
-    background: var(--color-bg-card);
-    border: 1px solid var(--color-border);
-    border-radius: 0.75rem;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 1.25rem;
+    box-shadow: 0 10px 30px rgba(0, 51, 102, 0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
 }
@@ -74,26 +86,27 @@ h4,
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(34, 197, 94, 0.05), transparent);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
     pointer-events: none;
 }
 
 .card-esport:hover {
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.45);
-    border-color: var(--color-primary);
-    transform: translateY(-4px);
+    box-shadow: 0 15px 45px rgba(0, 51, 102, 0.15);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.25);
 }
 
-/* Esport Button - Premium Gradient */
+/* Summer Button - Golden Glow */
 .btn-esport {
-    background: linear-gradient(135deg, #22c55e, #4ade80);
-    color: #052e16; /* Deep green for contrast */
-    font-weight: 600;
-    padding: 0.75rem 1.25rem;
-    border-radius: 0.625rem;
-    transition: all 0.25s;
+    background: linear-gradient(135deg, var(--golden-sun), var(--golden-hover));
+    color: var(--deep-navy);
+    font-weight: 800;
+    padding: 0.875rem 1.5rem;
+    border-radius: 50px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: none;
-    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
+    box-shadow: 0 8px 15px rgba(255, 165, 0, 0.3);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     display: inline-flex;
@@ -102,9 +115,9 @@ h4,
 }
 
 .btn-esport:hover {
-    box-shadow: 0 10px 20px rgba(34, 197, 94, 0.4);
-    transform: scale(1.05);
-    filter: brightness(1.05);
+    box-shadow: 0 12px 25px rgba(255, 165, 0, 0.5);
+    transform: scale(1.05) translateY(-2px);
+    filter: brightness(1.1);
 }
 
 /* Esport accent backgrounds */
@@ -255,16 +268,157 @@ h4,
 
 /* Glassmorphism utility */
 .glass {
-    background: rgba(15, 23, 42, 0.8);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--color-border);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Neon Text */
+/* Neon Text - Golden Glow */
 .text-neon {
-    color: var(--color-primary);
+    color: #fff;
     text-shadow:
-        0 0 10px rgba(34, 197, 94, 0.5),
-        0 0 20px rgba(34, 197, 94, 0.3);
+        0 0 10px rgba(255, 215, 0, 0.8),
+        0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+/* Background Elements */
+.sun-glow {
+    position: fixed;
+    top: -100px;
+    right: -100px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.15) 0%, rgba(255, 215, 0, 0) 70%);
+    filter: blur(60px);
+    z-index: -1;
+    pointer-events: none;
+    animation: pulse-sun 15s infinite alternate ease-in-out;
+}
+
+@keyframes pulse-sun {
+    0% { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(1.3); opacity: 1; }
+}
+
+.cloud-element {
+    position: fixed;
+    background: white;
+    filter: blur(40px);
+    border-radius: 50%;
+    opacity: 0.3;
+    z-index: -1;
+    pointer-events: none;
+}
+
+@keyframes drift-right {
+    0% { transform: translateX(-10vw); }
+    100% { transform: translateX(110vw); }
+}
+
+/* Beach Decorations */
+.coconut-tree {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    background-image: url('/images/summer/coconut.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 5;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+}
+
+.coconut-tree-left {
+    bottom: -10px;
+    left: -60px;
+    transform: rotate(-12deg);
+}
+
+.coconut-tree-right {
+    bottom: -20px;
+    right: -70px;
+    transform: rotate(15deg) scaleX(-1);
+}
+
+/* Wave Divider */
+.wave-divider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+    z-index: 5;
+}
+
+.wave-divider svg {
+    position: relative;
+    display: block;
+    width: calc(150% + 1.3px);
+    height: 100px;
+}
+
+.wave-divider .shape-fill {
+    fill: #FFFFFF;
+}
+
+/* Sea Footer */
+.sea-footer {
+    position: relative;
+    background: linear-gradient(180deg, var(--sky-blue) 0%, #004d99 100%);
+    padding-top: 150px;
+    margin-top: 150px;
+    overflow: hidden;
+}
+
+/* Background Highlight */
+.beach-bg-highlight {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30vh;
+    background-image: url('/images/summer/beach_bg.png');
+    background-size: cover;
+    background-position: bottom center;
+    opacity: 0.15;
+    z-index: -1;
+}
+
+.wave-animation > use {
+    animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
+}
+.wave-animation > use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 7s;
+}
+.wave-animation > use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 10s;
+}
+.wave-animation > use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+}
+.wave-animation > use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s;
+}
+
+@keyframes move-forever {
+    0% { transform: translate3d(-90px,0,0); }
+    100% { transform: translate3d(85px,0,0); }
+}
+
+/* Summer Stickers for Cards */
+.card-sticker {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    font-size: 2.5rem;
+    transform: rotate(15deg);
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+    z-index: 10;
 }

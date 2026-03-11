@@ -25,14 +25,14 @@
             </div>
 
             <!-- Contact Info Badge -->
-            <div class="flex flex-wrap justify-center items-center gap-4 md:gap-6 py-4 px-4 text-neutral-300">
+            <div class="flex flex-wrap justify-center items-center gap-4 md:gap-6 py-4 px-4 text-white/90">
                 <div class="flex items-center gap-2 text-base md:text-lg font-bold">
                     <span class="material-icons text-primary text-2xl">call</span>
                     <span class="text-white">0986526036</span>
                 </div>
-                <div class="w-px h-6 bg-white/10 hidden sm:block"></div>
-                <a href="https://www.facebook.com/le.vietanh.939173" target="_blank" class="flex items-center gap-2 text-base md:text-lg font-bold hover:text-primary transition-all hover:scale-105">
-                    <span class="material-icons text-primary text-2xl">facebook</span>
+                <div class="w-px h-6 bg-white/20 hidden sm:block"></div>
+                <a href="https://www.facebook.com/le.vietanh.939173" target="_blank" class="flex items-center gap-2 text-base md:text-lg font-bold hover:text-white transition-all hover:scale-105">
+                    <span class="material-icons text-white text-2xl">facebook</span>
                     <span class="text-white">LE VIET ANH</span>
                 </a>
             </div>
@@ -46,12 +46,12 @@
     <!-- Mystery Box Section -->
     <section class="mb-8 md:mb-12">
         <a href="{{ route('lucky-wheel.index') }}" class="block">
-        <div class="bg-gradient-to-r from-neutral-950 to-neutral-900 rounded-2xl p-3 md:p-10 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8 border border-white/10 shadow-2xl hover:shadow-primary/20 transition-all group/tree relative overflow-hidden">
+        <div class="card-esport p-3 md:p-10 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8 border border-white/30 shadow-2xl transition-all group/tree relative overflow-hidden">
                 <div class="flex-1 text-center md:text-left relative z-10">
-                    <h2 class="text-xl md:text-4xl font-black mb-2 md:mb-4 flex items-center justify-center md:justify-start gap-2 md:gap-3 text-neon uppercase tracking-wider drop-shadow-[0_0_15px_rgba(34,197,94,0.4)]">
-                        <span class="material-icons text-2xl md:text-4xl">surfing</span> LƯỚT SÓNG <span class="text-secondary italic">ĐÓN QUÀ</span>
+                    <h2 class="text-xl md:text-4xl font-black mb-2 md:mb-4 flex items-center justify-center md:justify-start gap-2 md:gap-3 text-neon uppercase tracking-wider drop-shadow-lg">
+                        <span class="material-icons text-2xl md:text-4xl text-white">surfing</span> LƯỚT SÓNG <span class="text-white italic">ĐÓN QUÀ</span>
                     </h2>
-                    <p class="text-text-secondary text-sm md:text-lg mb-4 md:mb-8 max-w-md mx-auto md:mx-0">
+                    <p class="text-white/90 text-sm md:text-lg mb-4 md:mb-8 max-w-md mx-auto md:mx-0">
                         Trải nghiệm cảm giác rẽ sóng săn quà cực khủng! Nhận ngay Acc FCO siêu phẩm, BP trắng cực hời chỉ từ một lượt lướt!
                     </p>
                     <div class="inline-flex items-center gap-2 md:gap-3 btn-esport py-2 px-6 md:py-3 md:px-8 rounded-full group-hover/tree:scale-105 transition-transform">
@@ -83,9 +83,9 @@
                         </div>
                         @endforelse
                     </div>
-                    <div class="swiper-pagination !bottom-4"></div>
-                    <div class="swiper-button-next text-white w-10 h-10 after:text-xl bg-neutral-950/60! hover:bg-primary/80! rounded-full backdrop-blur-md! transition-all"></div>
-                    <div class="swiper-button-prev text-white w-10 h-10 after:text-xl bg-neutral-950/60! hover:bg-primary/80! rounded-full backdrop-blur-md! transition-all"></div>
+                    <div class="swiper-pagination bottom-4!"></div>
+                    <div class="swiper-button-next text-white w-10 h-10 after:text-xl bg-white/20! hover:bg-white/40! rounded-full backdrop-blur-md! transition-all"></div>
+                    <div class="swiper-button-prev text-white w-10 h-10 after:text-xl bg-white/20! hover:bg-white/40! rounded-full backdrop-blur-md! transition-all"></div>
                 </div>
             </div>
         </div>
@@ -137,10 +137,10 @@
             <a href="{{ route('categories.show', $category->slug) }}" class="group card-esport p-3 md:p-4 flex flex-col items-center text-center transition-all hover:scale-[1.03] hover:border-primary/50">
                 <div class="w-full h-32 md:h-48 mb-3 md:mb-4 overflow-hidden rounded-lg relative">
                     <img alt="{{ $category->title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="{{ url('storage/'.$category->image) ?? 'https://via.placeholder.com/96' }}" loading="lazy">
-                    <div class="absolute inset-0 bg-gradient-to-t from-neutral-950/80 to-transparent"></div>
+                    <div class="absolute inset-0 bg-linear-to-t from-sky-900/40 to-transparent"></div>
                 </div>
-                <h3 class="font-black text-sm md:text-lg mb-1 text-text-primary group-hover:text-primary transition-colors uppercase tracking-wide">{{ $category->title }}</h3>
-                <p class="text-text-muted text-[10px] md:text-sm line-clamp-1 md:line-clamp-none">{!! strip_tags($category->description) !!}</p>
+                <h3 class="font-black text-sm md:text-lg mb-1 text-white group-hover:text-primary transition-colors uppercase tracking-wide">{{ $category->title }}</h3>
+                <p class="text-white/80 text-[10px] md:text-sm line-clamp-1 md:line-clamp-none">{!! strip_tags($category->description) !!}</p>
             </a>
             @empty
             <div class="col-span-4 text-center text-neutral-600 p-12 glass rounded-xl border border-white/5">Chưa có danh mục nào</div>
@@ -149,20 +149,21 @@
     </section>
 
     <!-- Flash Sale Section -->
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
-        <h2 class="text-xl md:text-2xl font-black text-text-secondary uppercase flex items-center gap-2">
-            <span class="material-icons text-primary/60">local_fire_department</span>
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6 relative">
+        <h2 class="text-xl md:text-2xl font-black text-white uppercase flex items-center gap-2">
+            <span class="material-icons text-primary/80">local_fire_department</span>
             FLASH SALE SIÊU HOT
         </h2>
-        <a href="{{ route('products.index', ['sort' => 'discount']) }}" class="text-white hover:text-orange-500 font-bold text-sm flex items-center gap-1 transition-colors">
+        <a href="{{ route('products.index', ['sort' => 'discount']) }}" class="text-white hover:text-primary font-bold text-sm flex items-center gap-1 transition-colors">
             Xem tất cả <span class="material-icons text-sm">arrow_forward</span>
         </a>
     </div>
 
     <!-- Product Grid -->
-    <section class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-16">
+    <section class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-16 relative">
         @forelse($flashSaleProducts as $product)
-        <div class="card-esport group transition-all hover:scale-[1.02] relative">
+        <div class="card-esport group transition-all relative">
+            <div class="card-sticker">🏷️</div>
             <div class="relative overflow-hidden aspect-video">
                 <img alt="{{ $product->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ url('storage/'.$product->images[0]) ?? 'https://via.placeholder.com/400x225' }}" loading="lazy">
                 @if($product->getDiscountPercent())
@@ -196,27 +197,29 @@
 
     <!-- News Section -->
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
-        <h2 class="text-xl md:text-3xl font-black text-text-secondary uppercase flex items-center gap-3 tracking-wider">
-            <span class="material-icons text-2xl md:text-4xl text-primary/60">article</span>
+        <h2 class="text-xl md:text-3xl font-black text-white uppercase flex items-center gap-3 tracking-wider">
+            <span class="material-icons text-2xl md:text-4xl text-primary/80">article</span>
             TIN TỨC MỚI NHẤT
         </h2>
-        <a href="{{ route('news.index') }}" class="text-white hover:text-orange-500 font-bold text-sm flex items-center gap-1 transition-colors">
+        <a href="{{ route('news.index') }}" class="text-white hover:text-primary font-bold text-sm flex items-center gap-1 transition-colors">
             Xem tất cả <span class="material-icons text-sm">arrow_forward</span>
         </a>
     </div>
 
-    <section class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+    <section class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 relative">
+        <div class="absolute -top-10 -right-10 text-6xl opacity-20 pointer-events-none animate-float">🏖️</div>
         @forelse($latestNews as $news)
-        <a href="{{ route('news.show', $news->slug) }}" class="group card-esport overflow-hidden transition-all hover:scale-[1.02]">
+        <a href="{{ route('news.show', $news->slug) }}" class="group card-esport overflow-hidden transition-all">
+            <div class="card-sticker text-2xl">🔥</div>
             <div class="relative overflow-hidden aspect-video">
                 <img alt="{{ $news->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ url('storage/'.$news->thumbnail) ?? 'https://via.placeholder.com/400x225' }}" loading="lazy">
-                <div class="absolute inset-0 bg-gradient-to-t from-neutral-950 to-transparent opacity-60"></div>
+                <div class="absolute inset-0 bg-linear-to-t from-sky-950/40 to-transparent"></div>
             </div>
             <div class="p-4 relative z-20">
-                <h4 class="font-bold text-sm mb-2 line-clamp-2 h-10 text-text-primary group-hover:text-primary transition-colors tracking-tight">{{ $news->title }}</h4>
-                <p class="text-text-muted text-xs mb-4 line-clamp-2">{!! Str::limit(strip_tags($news->content), 100) !!}</p>
+                <h4 class="font-bold text-sm mb-2 line-clamp-2 h-10 text-white group-hover:text-primary transition-colors tracking-tight">{{ $news->title }}</h4>
+                <p class="text-white/80 text-xs mb-4 line-clamp-2">{!! Str::limit(strip_tags($news->content), 100) !!}</p>
                 <div class="flex items-center justify-between text-xs">
-                    <span class="text-text-muted">{{ $news->created_at->format('d/m/Y') }}</span>
+                    <span class="text-white/60">{{ $news->created_at->format('d/m/Y') }}</span>
                     <span class="text-primary font-bold flex items-center gap-1 group-hover:gap-2 transition-all">
                         Đọc thêm <span class="material-icons text-sm">arrow_forward</span>
                     </span>
