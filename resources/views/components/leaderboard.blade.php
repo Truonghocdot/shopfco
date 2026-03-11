@@ -6,14 +6,17 @@
     <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-secondary/10 blur-3xl rounded-full pointer-events-none transition-all group-hover:bg-secondary/20"></div>
 
     <!-- Header -->
-    <div class="flex items-center gap-2 md:gap-3 mb-4 md:mb-6 relative z-10">
-        <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-bg-dark border border-primary/30 flex items-center justify-center shadow-[0_0_15px_rgba(34,197,94,0.2)]">
-            <span class="material-icons text-primary text-xl md:text-2xl">emoji_events</span>
+    <div class="flex items-center justify-between mb-4 md:mb-6 relative z-10">
+        <div class="flex items-center gap-2 md:gap-3">
+            <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-bg-dark border border-primary/30 flex items-center justify-center shadow-[0_0_15px_rgba(34,197,94,0.2)]">
+                <span class="material-icons text-primary text-xl md:text-2xl">emoji_events</span>
+            </div>
+            <div>
+                <h3 class="text-base md:text-xl font-black text-text-primary uppercase tracking-wider">Bảng Xếp Hạng</h3>
+                <p class="text-[10px] md:text-sm text-text-muted font-medium">Top người chi tiêu nhiều nhất</p>
+            </div>
         </div>
-        <div>
-            <h3 class="text-base md:text-xl font-black text-text-primary uppercase tracking-wider">Bảng Xếp Hạng</h3>
-            <p class="text-[10px] md:text-sm text-text-muted font-medium">Top người chi tiêu nhiều nhất</p>
-        </div>
+        <img src="{{ asset('images/summer/rank.png') }}" alt="Rank" class="h-10 md:h-14 drop-shadow-lg animate-float">
     </div>
 
     @if($topSpenders->isNotEmpty())

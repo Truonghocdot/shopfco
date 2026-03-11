@@ -12,7 +12,7 @@
     <!-- Video Hero Section -->
     <section class="mb-8 md:mb-12 relative">
         <div class="glass rounded-2xl overflow-hidden shadow-2xl border border-white/10 p-2 relative z-10">
-            <div class="aspect-video w-full rounded-xl overflow-hidden">
+            <div class="aspect-video w-full rounded-xl overflow-hidden relative">
                 <iframe
                     class="w-full h-full"
                     src="https://www.youtube.com/embed/gQkpw5JtnuQ?si=M54VBBoQfaZhYSf3"
@@ -22,6 +22,8 @@
                     referrerpolicy="strict-origin-when-cross-origin"
                     allowfullscreen>
                 </iframe>
+                <!-- Flying birds decorative image -->
+                <img src="{{ asset('images/summer/chim.png') }}" alt="Birds" class="absolute top-4 right-4 w-16 md:w-32 opacity-80 pointer-events-none drop-shadow-lg animate-float">
             </div>
 
             <!-- Contact Info Badge -->
@@ -138,8 +140,17 @@
                 <div class="w-full h-32 md:h-48 mb-3 md:mb-4 overflow-hidden rounded-lg relative">
                     <img alt="{{ $category->title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="{{ url('storage/'.$category->image) ?? 'https://via.placeholder.com/96' }}" loading="lazy">
                     <div class="absolute inset-0 bg-linear-to-t from-sky-900/40 to-transparent"></div>
+                    <!-- Starfish stickers on corners -->
+                    @php 
+                        $starfish = ['saobien1.png', 'saobien2.png', 'saobien3.png', 'saobien4.png'];
+                        $randomStar = $starfish[$loop->index % 4];
+                    @endphp
+                    <img src="{{ asset('images/summer/' . $randomStar) }}" alt="Starfish" class="absolute -bottom-2 -left-2 w-8 md:w-12 transform -rotate-12 group-hover:scale-110 transition-transform duration-300">
                 </div>
-                <h3 class="font-black text-sm md:text-lg mb-1 text-white group-hover:text-primary transition-colors uppercase tracking-wide">{{ $category->title }}</h3>
+                <h3 class="font-black text-sm md:text-lg mb-1 text-white group-hover:text-primary transition-colors uppercase tracking-wide flex items-center justify-center gap-2">
+                    <img src="{{ asset('images/summer/saobien'.(($loop->index % 4) + 1).'.png') }}" alt="Icon" class="w-4 h-4">
+                    {{ $category->title }}
+                </h3>
                 <p class="text-white/80 text-[10px] md:text-sm line-clamp-1 md:line-clamp-none">{!! strip_tags($category->description) !!}</p>
             </a>
             @empty
@@ -151,8 +162,9 @@
     <!-- Flash Sale Section -->
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6 relative">
         <h2 class="text-xl md:text-2xl font-black text-white uppercase flex items-center gap-2">
-            <span class="material-icons text-primary/80">local_fire_department</span>
+            <img src="{{ asset('images/summer/saobien1.png') }}" alt="Starfish" class="w-8 h-8 animate-pulse">
             FLASH SALE SIÊU HOT
+            <img src="{{ asset('images/summer/saobien2.png') }}" alt="Starfish" class="w-8 h-8 animate-pulse">
         </h2>
         <a href="{{ route('products.index', ['sort' => 'discount']) }}" class="text-white hover:text-primary font-bold text-sm flex items-center gap-1 transition-colors">
             Xem tất cả <span class="material-icons text-sm">arrow_forward</span>
@@ -163,7 +175,9 @@
     <section class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-16 relative">
         @forelse($flashSaleProducts as $product)
         <div class="card-esport group transition-all relative">
-            <div class="card-sticker">🏷️</div>
+            <div class="card-sticker">
+                <img src="{{ asset('images/summer/saobien'.(($loop->index % 4) + 1).'.png') }}" alt="Starfish" class="w-10 h-10">
+            </div>
             <div class="relative overflow-hidden aspect-video">
                 <img alt="{{ $product->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ url('storage/'.$product->images[0]) ?? 'https://via.placeholder.com/400x225' }}" loading="lazy">
                 @if($product->getDiscountPercent())
@@ -198,8 +212,9 @@
     <!-- News Section -->
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
         <h2 class="text-xl md:text-3xl font-black text-white uppercase flex items-center gap-3 tracking-wider">
-            <span class="material-icons text-2xl md:text-4xl text-primary/80">article</span>
+            <img src="{{ asset('images/summer/saobien3.png') }}" alt="Starfish" class="w-10 h-10 animate-spin-slow">
             TIN TỨC MỚI NHẤT
+            <img src="{{ asset('images/summer/saobien4.png') }}" alt="Starfish" class="w-10 h-10 animate-spin-slow" style="animation-direction: reverse;">
         </h2>
         <a href="{{ route('news.index') }}" class="text-white hover:text-primary font-bold text-sm flex items-center gap-1 transition-colors">
             Xem tất cả <span class="material-icons text-sm">arrow_forward</span>
@@ -209,8 +224,10 @@
     <section class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 relative">
         <div class="absolute -top-10 -right-10 text-6xl opacity-20 pointer-events-none animate-float">🏖️</div>
         @forelse($latestNews as $news)
-        <a href="{{ route('news.show', $news->slug) }}" class="group card-esport overflow-hidden transition-all">
-            <div class="card-sticker text-2xl">🔥</div>
+        <a href="{{ route('news.show', $news->slug) }}" class="group card-esport overflow-hidden transition-all relative">
+            <div class="card-sticker">
+                <img src="{{ asset('images/summer/saobien'.((($loop->index + 2) % 4) + 1).'.png') }}" alt="Starfish" class="w-10 h-10">
+            </div>
             <div class="relative overflow-hidden aspect-video">
                 <img alt="{{ $news->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ url('storage/'.$news->thumbnail) ?? 'https://via.placeholder.com/400x225' }}" loading="lazy">
                 <div class="absolute inset-0 bg-linear-to-t from-sky-950/40 to-transparent"></div>
