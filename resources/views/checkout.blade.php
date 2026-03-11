@@ -9,8 +9,8 @@
         <div class="absolute -top-20 -left-20 w-64 h-64 bg-primary/5 blur-[100px] rounded-full pointer-events-none"></div>
         <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-indigo-500/5 blur-[100px] rounded-full pointer-events-none"></div>
 
-        <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight text-slate-500 mb-3 flex justify-center items-center gap-4 relative z-10 drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
-            <span class="material-icons text-4xl md:text-5xl text-primary drop-shadow-[0_0_15px_rgba(56,189,248,0.6)]">payments</span>
+        <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight text-white mb-3 flex justify-center items-center gap-4 relative z-10 drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+            <span class="material-icons text-4xl md:text-5xl text-white drop-shadow-[0_0_15px_rgba(56,189,248,0.6)]">payments</span>
             XÁC NHẬN THANH TOÁN
         </h1>
         <div class="h-1 w-32 bg-linear-to-r from-transparent via-primary to-transparent mx-auto rounded-full mt-6 opacity-50"></div>
@@ -43,7 +43,7 @@
                         <h3 class="font-black text-xl mb-3 text-white leading-tight tracking-tight group-hover:text-primary transition-colors">{{ $product->title }}</h3>
                         <div class="flex flex-wrap items-center gap-4">
                             <p class="text-[10px] text-slate-400 font-black uppercase tracking-widest flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-full border border-white/5">
-                                <span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span>
+                                <span class="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></span>
                                 {{ $product->category->title ?? 'N/A' }}
                             </p>
                             <span class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Mã: #{{ $product->id }}</span>
@@ -120,7 +120,7 @@
 
                 <div class="space-y-4 pt-8 border-t border-white/5">
                     <div class="flex justify-between text-xs font-bold tracking-tight">
-                        <span class="text-slate-500 uppercase">TẠM TÍNH</span>
+                        <span class="text-white uppercase">TẠM TÍNH</span>
                         <span class="text-slate-300">{{ number_format($product->getFinalPrice()) }}đ</span>
                     </div>
                     <div class="flex justify-between items-center text-[10px] font-black text-emerald-400 bg-emerald-500/5 px-3 py-2 rounded-lg border border-emerald-500/10" id="discount_row" style="display: none;">

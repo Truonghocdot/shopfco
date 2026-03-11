@@ -72,7 +72,7 @@
                         <span class="text-slate-500 line-through text-lg font-bold">{{ number_format($product->sell_price) }}đ</span>
                         @endif
                         <div class="flex items-baseline gap-3">
-                            <span class="text-3xl md:text-5xl font-black text-primary drop-shadow-[0_0_15px_rgba(56,189,248,0.4)]">{{ number_format($product->getFinalPrice()) }} <span class="text-lg">đ</span></span>
+                            <span class="text-3xl md:text-5xl font-black text-white drop-shadow-[0_0_15px_rgba(56,189,248,0.4)]">{{ number_format($product->getFinalPrice()) }} <span class="text-lg">đ</span></span>
                             @if($product->getDiscountPercent())
                             <span class="bg-pink-500 text-white text-[10px] md:text-xs font-black px-3 py-1 rounded-full shadow-[0_0_10px_rgba(244,114,182,0.4)] uppercase tracking-widest">SIÊU GIẢM GIÁ</span>
                             @endif

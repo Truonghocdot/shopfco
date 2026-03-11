@@ -7,10 +7,10 @@ $popupContent = $popupContentResult->isSuccess() ? $popupContentResult->getData(
 @endphp
 
 @if($popupContent)
-<div id="popup-modal" class="fixed inset-0 z-9999 hidden items-center justify-center p-4 bg-black/50">
-    <div class="relative max-w-2xl w-full">
+<div id="popup-modal" class="fixed inset-0 z-[99999] hidden items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xl transition-all duration-500">
+    <div class="relative max-w-2xl w-full transform transition-all duration-500 scale-95 opacity-0" id="popup-content-wrapper">
         <!-- Modal Content -->
-        <div class="glass rounded-4xl shadow-3xl overflow-hidden border border-white/10">
+        <div class="glass rounded-[2rem] shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden border border-white/10">
             <!-- Header -->
             <div class="bg-linear-to-r from-primary to-indigo-600 p-5 flex justify-between items-center">
                 <h3 class="text-xl font-black uppercase text-white flex items-center gap-3 tracking-tighter">
@@ -23,8 +23,10 @@ $popupContent = $popupContentResult->isSuccess() ? $popupContentResult->getData(
             </div>
 
             <!-- Content -->
-            <div class="p-8 max-h-[60vh] overflow-y-auto prose prose-invert prose-primary max-w-none scrollbar-thin scrollbar-thumb-primary/20">
-                {!! $popupContent !!}
+            <div class="p-8 max-h-[60vh] overflow-y-auto scrollbar-thin scrollbar-thumb-primary/20 bg-slate-900/40">
+                <div class="prose prose-invert prose-primary max-w-full overflow-hidden break-words">
+                    {!! $popupContent !!}
+                </div>
             </div>
 
             <!-- Footer with Duration Options -->
@@ -64,9 +66,15 @@ $popupContent = $popupContentResult->isSuccess() ? $popupContentResult->getData(
     document.addEventListener('DOMContentLoaded', function() {
         if (shouldShowPopup()) {
             const modal = document.getElementById('popup-modal');
+            const wrapper = document.getElementById('popup-content-wrapper');
             setTimeout(() => {
                 modal.classList.remove('hidden');
                 modal.classList.add('flex');
+                // Trigger animation
+                setTimeout(() => {
+                    wrapper.classList.remove('scale-95', 'opacity-0');
+                    wrapper.classList.add('scale-100', 'opacity-100');
+                }, 50);
             }, 1000);
         }
     });
