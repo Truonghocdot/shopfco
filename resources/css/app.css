@@ -331,20 +331,23 @@ h4,
 
 @media (max-width: 1024px) {
     .coconut-tree {
-        display: none;
+        width: 150px;
+        height: 150px;
+        z-index: 1; /* Ensure they stay behind content on small screens if needed */
+        opacity: 0.6; /* Subtler on mobile */
     }
 }
 
 .coconut-tree-left {
     bottom: 50px;
     left: -100px;
-    transform: rotate(-12deg);
+    transform: rotate(12deg) scaleX(-1); /* Flipped and slanted slightly inwards */
 }
 
 .coconut-tree-right {
     bottom: 20px;
     right: -110px;
-    transform: rotate(15deg) scaleX(-1);
+    transform: rotate(-15deg); /* Flipped and slanted slightly inwards */
 }
 
 /* Wave Divider */
