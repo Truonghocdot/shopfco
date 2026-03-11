@@ -329,15 +329,21 @@ h4,
     filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
 }
 
+@media (max-width: 1024px) {
+    .coconut-tree {
+        display: none;
+    }
+}
+
 .coconut-tree-left {
-    bottom: -10px;
-    left: -60px;
+    bottom: 50px;
+    left: -100px;
     transform: rotate(-12deg);
 }
 
 .coconut-tree-right {
-    bottom: -20px;
-    right: -70px;
+    bottom: 20px;
+    right: -110px;
     transform: rotate(15deg) scaleX(-1);
 }
 
