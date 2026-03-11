@@ -27,7 +27,7 @@
                 ['route' => 'home', 'icon' => 'home', 'label' => 'TRANG CHỦ'],
                 ['route' => 'products.index', 'icon' => 'shopping_bag', 'label' => 'SẢN PHẨM'],
                 ['route' => 'deposit', 'icon' => 'account_balance_wallet', 'label' => 'NẠP TIỀN'],
-                ['route' => 'lucky-wheel.index', 'icon' => 'surfing', 'label' => 'LƯỚT SÓNG'],
+                ['route' => 'lucky-wheel.index', 'icon' => 'surfing', 'label' => 'LƯỚT SÓNG ĐÓN QUÀ'],
                 ['route' => 'news.index', 'icon' => 'newspaper', 'label' => 'TIN TỨC'],
                 ['route' => 'policy', 'icon' => 'policy', 'label' => 'CHÍNH SÁCH'],
                 ];
