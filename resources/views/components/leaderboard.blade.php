@@ -8,15 +8,15 @@
     <!-- Header -->
     <div class="flex items-center justify-between mb-4 md:mb-6 relative z-10">
         <div class="flex items-center gap-2 md:gap-3">
-            <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-bg-dark border border-primary/30 flex items-center justify-center shadow-[0_0_15px_rgba(34,197,94,0.2)]">
-                <span class="material-icons text-primary text-xl md:text-2xl">emoji_events</span>
+            <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-bg-dark border border-primary/30 flex items-center justify-center shadow-[0_0_15px_rgba(34,197,94,0.2)]">
+                <span class="material-icons text-primary text-3xl md:text-4xl">emoji_events</span>
             </div>
             <div>
-                <h3 class="text-base md:text-xl font-black text-text-primary uppercase tracking-wider">Bảng Xếp Hạng</h3>
-                <p class="text-[10px] md:text-sm text-text-muted font-medium">Top người chi tiêu nhiều nhất</p>
+                <h3 class="text-lg md:text-xl font-black text-text-primary uppercase tracking-wider">Bảng Xếp Hạng</h3>
+                <p class="text-[11px] md:text-sm text-text-muted font-medium">Top người chi tiêu nhiều nhất</p>
             </div>
         </div>
-        <img src="{{ asset('images/summer/rank.png') }}" alt="Rank" class="h-10 md:h-14 drop-shadow-lg animate-float">
+        <img src="{{ asset('images/summer/rank.png') }}" alt="Rank" class="h-12 md:h-16 drop-shadow-lg animate-float">
     </div>
 
     @if($topSpenders->isNotEmpty())
@@ -24,18 +24,17 @@
         @foreach($topSpenders as $index => $user)
         <div class="relative z-10 flex items-center gap-3 md:gap-4 p-2 md:p-3 rounded-lg transition-all {{ $index < 3 ? 'bg-primary/5 border border-primary/20 shadow-[0_0_10px_rgba(74,222,128,0.05)]' : 'bg-white/5 border border-white/5 hover:border-primary/30' }} hover:scale-[1.01] group/item">
             <!-- Rank -->
-            <div class="shrink-0 w-8 md:w-10 text-center">
+            <div class="shrink-0 w-10 md:w-12 text-center">
                 @if($index === 0)
-                <span class="text-2xl md:text-3xl drop-shadow-[0_0_8px_rgba(255,215,0,0.5)]">🥇</span>
+                <span class="text-3xl md:text-4xl drop-shadow-[0_0_8px_rgba(255,215,0,0.5)]">🥇</span>
                 @elseif($index === 1)
-                <span class="text-2xl md:text-3xl drop-shadow-[0_0_8px_rgba(192,192,192,0.5)]">🥈</span>
+                <span class="text-3xl md:text-4xl drop-shadow-[0_0_8px_rgba(192,192,192,0.5)]">🥈</span>
                 @elseif($index === 2)
-                <span class="text-2xl md:text-3xl drop-shadow-[0_0_8px_rgba(205,127,50,0.5)]">🥉</span>
+                <span class="text-3xl md:text-4xl drop-shadow-[0_0_8px_rgba(205,127,50,0.5)]">🥉</span>
                 @else
-                <span class="text-sm md:text-lg font-black text-neutral-700 group-hover/item:text-primary/50 transition-colors">#{{ $index + 1 }}</span>
+                <span class="text-base md:text-xl font-black text-neutral-700 group-hover/item:text-primary/50 transition-colors">#{{ $index + 1 }}</span>
                 @endif
             </div>
-
             <!-- User Info -->
             <div class="flex-1 min-w-0">
                 <p class="font-bold text-sm md:text-base {{ $index < 3 ? 'text-text-primary' : 'text-text-secondary' }} truncate group-hover/item:text-primary transition-colors">{{ $user->name }}</p>
@@ -53,8 +52,8 @@
     </div>
 
     <div class="mt-4 md:mt-6 pt-3 md:pt-4 border-t border-white/5 text-center">
-        <p class="text-xs text-neutral-700 font-medium flex items-center justify-center gap-1 italic">
-            <span class="material-icons text-xs align-middle text-primary/50">info</span>
+        <p class="text-[10px] md:text-sm text-neutral-700 font-medium flex items-center justify-center gap-1 italic">
+            <span class="material-icons text-sm md:text-base align-middle text-primary/50">info</span>
             Cập nhật mỗi 5 phút
         </p>
     </div>

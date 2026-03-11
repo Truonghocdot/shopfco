@@ -198,10 +198,9 @@
                     <span class="text-xl font-black text-primary drop-shadow-[0_0_8px_rgba(34,197,94,0.3)]">{{ number_format($product->getFinalPrice()) }} <span class="text-sm">đ</span></span>
                 </div>
                 <a href="{{ route('products.show', $product->slug) }}" class="block w-full btn-esport justify-center items-center py-2.5 rounded-lg text-center text-[10px] md:text-sm transition-all group-hover:gap-3 relative overflow-hidden">
-                    <img src="{{ asset('images/summer/saobien'.(($loop->index % 4) + 1).'.png') }}" alt="Icon" class="w-6 h-6 md:w-5 md:h-5 mr-1 animate-float">
+                    <img src="{{ asset('images/summer/saobien'.(($loop->index % 4) + 1).'.png') }}" alt="Icon" class="w-10 h-10 md:w-7 md:h-7 mr-1 animate-float">
                     MUA NGAY
                 </a>
-节
             </div>
         </div>
         @empty
