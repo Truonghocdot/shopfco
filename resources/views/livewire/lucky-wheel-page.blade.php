@@ -102,7 +102,7 @@
             <!-- Speed lines effect -->
             <div class="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:animate-shimmer"></div>
         </button>
-        <p class="text-[10px] font-bold text-neutral-600 uppercase tracking-[0.3em]">Cơ hội nhận đến 1,000,000đ trực tiếp vào ví</p>
+        <p class="text-[10px] font-bold text-neutral-600 uppercase tracking-[0.3em]">Cơ hội nhận đến 200,000đ trực tiếp vào ví</p>
     </div>
 
     <!-- Result Modal -->
