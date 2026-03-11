@@ -6,27 +6,30 @@
 <style>
     .news-content {
         line-height: 1.8;
-        color: #374151;
+        color: var(--color-text-secondary);
     }
 
     .news-content img {
         max-width: 100%;
         height: auto;
-        border-radius: 0.5rem;
-        margin: 1.5rem 0;
-        border: 1px solid #e5e7eb;
+        border-radius: 1rem;
+        margin: 2rem 0;
+        border: 1px solid var(--color-border);
+        box-shadow: 0 0 30px rgba(0,0,0,0.3);
     }
 
     .news-content h2,
     .news-content h3 {
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-        font-weight: bold;
-        color: #D42020;
+        margin-top: 2.5rem;
+        margin-bottom: 1.25rem;
+        font-weight: 900;
+        color: var(--color-text-primary);
+        text-transform: uppercase;
+        letter-spacing: -0.025em;
     }
 
     .news-content p {
-        margin-bottom: 1rem;
+        margin-bottom: 1.5rem;
     }
 </style>
 
@@ -34,38 +37,43 @@
 <div class="container mx-auto px-4 py-8">
     <div class="w-full mx-auto">
         <!-- Breadcrumb -->
-        <div class="mb-6 text-sm text-gray-400 font-bold">
-            <a href="{{ route('home') }}" class="hover:text-primary transition-colors">Trang chủ</a>
-            <span class="mx-2 text-gray-300">/</span>
+        <div class="mb-6 text-[10px] font-black text-text-muted flex items-center gap-2 uppercase tracking-[0.2em]">
+            <a href="{{ route('home') }}" class="hover:text-primary transition-colors flex items-center gap-1.5">
+                <span class="material-icons text-xs text-primary">home</span> Trang chủ
+            </a>
+            <span class="mx-1 text-white/10">/</span>
             <a href="{{ route('news.index') }}" class="hover:text-primary transition-colors">Tin tức</a>
-            <span class="mx-2 text-gray-300">/</span>
-            <span class="text-primary">{{ $news->title }}</span>
+            <span class="mx-1 text-white/10">/</span>
+            <span class="text-primary drop-shadow-[0_0_8px_rgba(34,197,94,0.3)]">{{ $news->title }}</span>
         </div>
 
         <!-- Article -->
-        <article class="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-md mb-8">
+        <article class="bg-bg-card rounded-2xl overflow-hidden border border-border shadow-3xl mb-12 relative">
+            <div class="absolute -top-40 -right-40 w-96 h-96 bg-primary/5 blur-[120px] rounded-full pointer-events-none"></div>
+            
             @if($news->thumbnail)
-            <div class="aspect-video w-full overflow-hidden">
+            <div class="aspect-video w-full overflow-hidden relative">
                 <img alt="{{ $news->title }}" class="w-full h-full object-cover" src="{{ url('storage/'.$news->thumbnail) }}" loading="lazy">
+                <div class="absolute inset-0 bg-linear-to-t from-bg-card via-transparent to-transparent"></div>
             </div>
             @endif
 
-            <div class="p-8">
-                <h1 class="text-3xl md:text-4xl font-black mb-4 text-gray-800">{{ $news->title }}</h1>
+            <div class="p-6 md:p-12 relative z-10">
+                <h1 class="text-3xl md:text-5xl font-black mb-6 text-text-primary leading-tight tracking-tight">{{ $news->title }}</h1>
 
-                <div class="flex items-center gap-6 text-sm text-gray-400 mb-6 pb-6 border-b border-gray-100">
-                    <div class="flex items-center gap-2 font-bold">
+                <div class="flex items-center gap-6 text-[10px] font-black text-text-muted mb-8 pb-8 border-b border-white/5 uppercase tracking-widest">
+                    <div class="flex items-center gap-2">
                         <span class="material-icons text-sm text-primary">schedule</span>
                         {{ $news->created_at->format('d/m/Y H:i') }}
                     </div>
-                    <div class="flex items-center gap-2 font-bold">
+                    <div class="flex items-center gap-2">
                         <span class="material-icons text-sm text-primary">visibility</span>
                         {{ number_format($news->view_count) }} lượt xem
                     </div>
                 </div>
 
                 @if($news->description)
-                <div class="text-lg text-gray-500 mb-6 italic border-l-4 border-primary pl-4 bg-gray-50 p-4 rounded">
+                <div class="text-lg text-text-secondary mb-8 italic border-l-4 border-primary pl-6 bg-bg-dark/50 p-6 rounded-2xl border">
                     {!! $news->description !!}
                 </div>
                 @endif
@@ -78,22 +86,25 @@
 
         <!-- Related News -->
         @if($relatedNews->count() > 0)
-        <div class="mb-8">
-            <h2 class="text-2xl font-black mb-6 text-primary uppercase tracking-wide">Tin tức liên quan</h2>
+        <div class="mb-12">
+            <h2 class="text-2xl font-black mb-8 text-text-primary uppercase tracking-tight flex items-center gap-3">
+                <span class="w-8 h-1 bg-primary rounded-full"></span>
+                TIN TỨC LIÊN QUAN
+            </h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 @foreach($relatedNews as $item)
-                <article class="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg group transition-all hover:scale-[1.02]">
+                <article class="card-esport group transition-all hover:scale-[1.02] relative">
                     <div class="relative overflow-hidden aspect-video">
                         <img alt="{{ $item->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ url('storage/'.$item->thumbnail) ?? 'https://via.placeholder.com/400x225' }}" loading="lazy">
                     </div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-sm mb-2 line-clamp-2 text-gray-800 group-hover:text-primary transition-colors">{{ $item->title }}</h3>
-                        <div class="flex items-center gap-2 text-xs text-gray-400 mb-3 font-bold">
+                    <div class="p-5">
+                        <h3 class="font-bold text-base mb-3 line-clamp-2 h-12 text-text-primary group-hover:text-primary transition-colors tracking-tight leading-tight">{{ $item->title }}</h3>
+                        <div class="flex items-center gap-2 text-[10px] text-text-muted mb-4 font-black uppercase tracking-widest">
                             <span class="material-icons text-xs text-primary">schedule</span>
                             {{ $item->created_at->diffForHumans() }}
                         </div>
-                        <a href="{{ route('news.show', $item->slug) }}" class="text-primary hover:text-orange-500 font-bold text-sm flex items-center gap-1 transition-colors group/link">
-                            Đọc thêm <span class="material-icons text-sm group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
+                        <a href="{{ route('news.show', $item->slug) }}" class="text-text-primary hover:text-primary font-black text-xs uppercase tracking-widest flex items-center gap-1 transition-colors group/link border-t border-white/5 pt-4">
+                            ĐỌC THÊM <span class="material-icons text-sm group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
                         </a>
                     </div>
                 </article>

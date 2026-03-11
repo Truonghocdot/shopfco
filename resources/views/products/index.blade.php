@@ -14,30 +14,30 @@
     <div class="mb-12 text-center relative">
         <!-- Decorative background glow -->
         <div class="absolute -top-20 -left-20 w-64 h-64 bg-primary/10 blur-[100px] rounded-full pointer-events-none"></div>
-        <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-indigo-500/10 blur-[100px] rounded-full pointer-events-none"></div>
+        <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-secondary/10 blur-[100px] rounded-full pointer-events-none"></div>
 
-        <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight text-white mb-3 flex justify-center items-center gap-4 relative z-10">
-            <span class="material-icons text-4xl md:text-5xl text-primary drop-shadow-[0_0_10px_rgba(74,222,128,0.5)]">shopping_cart</span>
+        <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight text-text-primary mb-3 flex justify-center items-center gap-4 relative z-10">
+            <span class="material-icons text-4xl md:text-5xl text-primary drop-shadow-[0_0_15px_rgba(34,197,94,0.4)]">shopping_cart</span>
             MUA ACC FC ONLINE
         </h1>
-        <p class="text-neutral-400 font-black uppercase tracking-[0.3em] text-xs md:text-sm">Kho tài khoản khổng lồ • Uy tín • Giao dịch tự động</p>
+        <p class="text-text-muted font-black uppercase tracking-[0.3em] text-[10px] md:text-xs">Kho tài khoản khổng lồ • Uy tín • Giao dịch tự động</p>
         <div class="h-1 w-32 bg-linear-to-r from-transparent via-primary to-transparent mx-auto rounded-full mt-8"></div>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
         <!-- Filter Sidebar -->
         <aside class="lg:col-span-1">
-            <div class="glass rounded-2xl border border-white/10 shadow-3xl p-6 sticky top-24">
-                <h2 class="text-xl font-black mb-8 flex items-center gap-3 text-white uppercase tracking-tighter">
-                    <span class="material-icons text-primary">filter_list</span>
+            <div class="bg-bg-card rounded-2xl border border-border shadow-3xl p-6 sticky top-24">
+                <h2 class="text-xl font-black mb-8 flex items-center gap-3 text-text-primary uppercase tracking-tighter">
+                    <span class="material-icons text-primary/80">filter_list</span>
                     BỘ LỌC
                 </h2>
 
                 <form method="GET" action="{{ route('products.index') }}">
                     <!-- Category Filter -->
                     <div class="mb-6">
-                        <label class="block text-[10px] font-black mb-3 text-neutral-600 uppercase tracking-[0.2em]">Danh mục</label>
-                        <select name="category" class="w-full bg-neutral-950/50 border border-white/10 focus:border-primary focus:ring-primary/20 rounded-xl px-4 py-3 text-neutral-200 outline-hidden transition-all">
+                        <label class="block text-[10px] font-black mb-3 text-text-muted uppercase tracking-[0.2em]">Danh mục</label>
+                        <select name="category" class="w-full bg-bg-dark/50 border border-border focus:border-primary focus:ring-primary/20 rounded-xl px-4 py-3 text-text-secondary outline-hidden transition-all">
                             <option value="" class="bg-neutral-950">Tất cả danh mục</option>
                             @foreach($categories as $cat)
                             <option value="{{ $cat->id }}" {{ request('category') == $cat->id ? 'selected' : '' }} class="bg-neutral-950">
@@ -56,28 +56,28 @@
 
                     <!-- Price Range -->
                     <div class="mb-6">
-                        <label class="block text-[10px] font-black mb-3 text-neutral-600 uppercase tracking-[0.2em]">Khoảng giá</label>
+                        <label class="block text-[10px] font-black mb-3 text-text-muted uppercase tracking-[0.2em]">Khoảng giá</label>
                         <div class="flex gap-2">
-                            <input type="number" name="min_price" placeholder="Từ" value="{{ request('min_price') }}" class="w-1/2 bg-neutral-950/50 border border-white/10 focus:border-primary rounded-xl px-3 py-3 text-neutral-200 placeholder-neutral-700 outline-hidden transition-all">
-                            <input type="number" name="max_price" placeholder="Đến" value="{{ request('max_price') }}" class="w-1/2 bg-neutral-950/50 border border-white/10 focus:border-primary rounded-xl px-3 py-3 text-neutral-200 placeholder-neutral-700 outline-hidden transition-all">
+                            <input type="number" name="min_price" placeholder="Từ" value="{{ request('min_price') }}" class="w-1/2 bg-bg-dark/50 border border-border focus:border-primary rounded-xl px-3 py-3 text-text-secondary placeholder-text-muted outline-hidden transition-all">
+                            <input type="number" name="max_price" placeholder="Đến" value="{{ request('max_price') }}" class="w-1/2 bg-bg-dark/50 border border-border focus:border-primary rounded-xl px-3 py-3 text-text-secondary placeholder-text-muted outline-hidden transition-all">
                         </div>
                     </div>
 
                     <!-- Sort -->
                     <div class="mb-8">
-                        <label class="block text-[10px] font-black mb-3 text-neutral-600 uppercase tracking-[0.2em]">Sắp xếp</label>
-                        <select name="sort" class="w-full bg-neutral-950/50 border border-white/10 focus:border-primary rounded-xl px-4 py-3 text-neutral-200 outline-hidden transition-all">
-                            <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }} class="bg-neutral-950">Mới nhất</option>
-                            <option value="price_low" {{ request('sort') == 'price_low' ? 'selected' : '' }} class="bg-neutral-950">Giá thấp đến cao</option>
-                            <option value="price_high" {{ request('sort') == 'price_high' ? 'selected' : '' }} class="bg-neutral-950">Giá cao đến thấp</option>
-                            <option value="discount" {{ request('sort') == 'discount' ? 'selected' : '' }} class="bg-neutral-950">Giảm giá nhiều</option>
+                        <label class="block text-[10px] font-black mb-3 text-text-muted uppercase tracking-[0.2em]">Sắp xếp</label>
+                        <select name="sort" class="w-full bg-bg-dark/50 border border-border focus:border-primary rounded-xl px-4 py-3 text-text-secondary outline-hidden transition-all">
+                            <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }} class="bg-bg-dark">Mới nhất</option>
+                            <option value="price_low" {{ request('sort') == 'price_low' ? 'selected' : '' }} class="bg-bg-dark">Giá thấp đến cao</option>
+                            <option value="price_high" {{ request('sort') == 'price_high' ? 'selected' : '' }} class="bg-bg-dark">Giá cao đến thấp</option>
+                            <option value="discount" {{ request('sort') == 'discount' ? 'selected' : '' }} class="bg-bg-dark">Giảm giá nhiều</option>
                         </select>
                     </div>
 
                     <button type="submit" class="w-full btn-esport py-4 rounded-xl uppercase tracking-widest text-center text-xs font-black shadow-lg shadow-primary/20 border-none">
                         ÁP DỤNG
                     </button>
-                    <a href="{{ route('products.index') }}" class="block w-full text-center bg-white/5 hover:bg-white/10 border border-white/10 text-neutral-400 font-black py-4 rounded-xl mt-3 transition-all uppercase tracking-widest text-xs">
+                    <a href="{{ route('products.index') }}" class="block w-full text-center bg-bg-dark/80 hover:bg-white/5 border border-border text-text-muted hover:text-text-primary px-4 py-4 rounded-xl mt-3 transition-all uppercase tracking-widest text-xs font-black">
                         XÓA BỘ LỌC
                     </a>
                 </form>
@@ -102,12 +102,12 @@
                         </div>
                     </div>
                     <div class="p-4">
-                        <h4 class="font-bold text-sm mb-3 line-clamp-2 h-10 text-neutral-100 group-hover:text-primary transition-colors tracking-tight">{{ $product->title }}</h4>
+                        <h4 class="font-bold text-sm mb-3 line-clamp-2 h-10 text-text-primary group-hover:text-primary transition-colors tracking-tight">{{ $product->title }}</h4>
                         <div class="flex flex-col mb-4">
-                            @if($product->sale_price && $product->sell_price)
-                            <span class="text-xs text-neutral-600 line-through">{{ number_format($product->sell_price) }} đ</span>
+                            @if($product->sell_price)
+                            <span class="text-xs text-text-muted line-through">{{ number_format($product->sell_price) }} đ</span>
                             @endif
-                            <span class="text-xl font-black text-primary drop-shadow-[0_0_8px_rgba(74,222,128,0.3)]">{{ number_format($product->getFinalPrice()) }} <span class="text-sm">đ</span></span>
+                            <span class="text-xl font-black text-primary drop-shadow-[0_0_8px_rgba(34,197,94,0.3)]">{{ number_format($product->getFinalPrice()) }} <span class="text-sm">đ</span></span>
                         </div>
                         <a href="{{ route('products.show', $product->slug) }}" class="block w-full btn-esport py-2.5 rounded-xl text-center text-xs md:text-sm font-black uppercase tracking-widest transition-all">
                             <span class="material-icons text-sm align-middle mr-1">shopping_cart</span> XEM CHI TIẾT

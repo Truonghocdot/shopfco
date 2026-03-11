@@ -8,17 +8,17 @@
     <!-- Decorative background glow -->
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-full max-h-3xl bg-primary/5 blur-[150px] rounded-full pointer-events-none"></div>
 
-    <div class="max-w-md w-full space-y-8 glass p-8 md:p-12 rounded-[2.5rem] shadow-2xl border border-white/10 relative z-10 group">
+    <div class="max-w-md w-full space-y-8 bg-bg-card p-8 md:p-12 rounded-[2.5rem] shadow-3xl border border-border relative z-10 group">
         <!-- Inner glow effect on group hover -->
         <div class="absolute -inset-1 bg-linear-to-r from-primary/20 to-indigo-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-[2.5rem]"></div>
 
         <div class="text-center relative">
-            <h1 class="text-3xl font-black text-white uppercase tracking-tighter mb-2 italic">
-                ĐĂNG KÝ <span class="text-primary drop-shadow-[0_0_8px_rgba(74,222,128,0.5)]">THÀNH VIÊN</span>
+            <h1 class="text-3xl font-black text-text-primary uppercase tracking-tighter mb-2 italic">
+                ĐĂNG KÝ <span class="text-primary drop-shadow-[0_0_15px_rgba(34,197,94,0.4)]">THÀNH VIÊN</span>
             </h1>
-            <p class="text-xs font-bold text-white uppercase tracking-widest">
+            <p class="text-xs font-bold text-text-muted uppercase tracking-widest">
                 Đã có tài khoản?
-                <a href="{{ route('login') }}" class="text-primary hover:text-white transition-colors underline underline-offset-4 decoration-primary/30">
+                <a href="{{ route('login') }}" class="text-primary hover:text-text-primary transition-colors underline underline-offset-4 decoration-primary/30">
                     ĐĂNG NHẬP NGAY
                 </a>
             </p>
@@ -30,13 +30,13 @@
             <div class="space-y-4">
                 <!-- Username -->
                 <div>
-                    <label for="username" class="block text-[10px] font-black text-white mb-2 ml-4 uppercase tracking-[0.2em]">TÊN ĐĂNG NHẬP</label>
+                    <label for="username" class="block text-[10px] font-black text-text-muted mb-2 ml-4 uppercase tracking-[0.2em]">TÊN ĐĂNG NHẬP</label>
                     <div class="relative group/field">
                         <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-neutral-600 transition-colors group-hover/field:text-primary">
                             <span class="material-icons text-sm">person</span>
                         </span>
                         <input id="username" name="username" type="text" autocomplete="username" required
-                            class="appearance-none rounded-2xl relative block w-full pl-11 pr-4 py-4 bg-neutral-950/80 border border-white/10 placeholder-neutral-700 text-white focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm font-bold tracking-tight transition-all shadow-inner"
+                            class="appearance-none rounded-2xl relative block w-full pl-11 pr-4 py-4 bg-bg-dark/80 border border-border placeholder-text-muted text-text-primary focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm font-bold tracking-tight transition-all shadow-inner"
                             placeholder="Nhập tên đăng nhập..." value="{{ old('username') }}">
                     </div>
                     @error('username')
@@ -46,13 +46,13 @@
 
                 <!-- Password -->
                 <div>
-                    <label for="password" class="block text-[10px] font-black text-white mb-2 ml-4 uppercase tracking-[0.2em]">MẬT KHẨU</label>
+                    <label for="password" class="block text-[10px] font-black text-text-muted mb-2 ml-4 uppercase tracking-[0.2em]">MẬT KHẨU</label>
                     <div class="relative group/field">
                         <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-neutral-600 transition-colors group-hover/field:text-primary">
                             <span class="material-icons text-sm">lock</span>
                         </span>
                         <input id="password" name="password" :type="showPassword ? 'text' : 'password'" autocomplete="new-password" required
-                            class="appearance-none rounded-2xl relative block w-full pl-11 pr-12 py-4 bg-neutral-950/80 border border-white/10 placeholder-neutral-700 text-white focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm font-bold tracking-tight transition-all shadow-inner"
+                            class="appearance-none rounded-2xl relative block w-full pl-11 pr-12 py-4 bg-bg-dark/80 border border-border placeholder-text-muted text-text-primary focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm font-bold tracking-tight transition-all shadow-inner"
                             placeholder="Tối thiểu 8 ký tự">
                         <button type="button" @click="showPassword = !showPassword" class="absolute inset-y-0 right-0 pr-4 flex items-center text-neutral-600 hover:text-white transition-colors cursor-pointer outline-none">
                             <span class="material-icons text-sm" x-show="!showPassword">visibility</span>
@@ -66,30 +66,30 @@
 
                 <!-- Confirm Password -->
                 <div>
-                    <label for="password_confirmation" class="block text-[10px] font-black text-white mb-2 ml-4 uppercase tracking-[0.2em]">XÁC NHẬN MẬT KHẨU</label>
+                    <label for="password_confirmation" class="block text-[10px] font-black text-text-muted mb-2 ml-4 uppercase tracking-[0.2em]">XÁC NHẬN MẬT KHẨU</label>
                     <div class="relative group/field">
                         <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-neutral-600 transition-colors group-hover/field:text-primary">
                             <span class="material-icons text-sm">lock_clock</span>
                         </span>
                         <input id="password_confirmation" name="password_confirmation" :type="showPassword ? 'text' : 'password'" autocomplete="new-password" required
-                            class="appearance-none rounded-2xl relative block w-full pl-11 pr-4 py-4 bg-neutral-950/80 border border-white/10 placeholder-neutral-700 text-white focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm font-bold tracking-tight transition-all shadow-inner"
+                            class="appearance-none rounded-2xl relative block w-full pl-11 pr-4 py-4 bg-bg-dark/80 border border-border placeholder-text-muted text-text-primary focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm font-bold tracking-tight transition-all shadow-inner"
                             placeholder="Nhập lại mật khẩu...">
                     </div>
                 </div>
 
                 <!-- Referrer ID -->
                 <div>
-                    <label for="referrer_id" class="block text-[10px] font-black text-white mb-2 ml-4 uppercase tracking-[0.2em]">MÃ GIỚI THIỆU (TÙY CHỌN)</label>
+                    <label for="referrer_id" class="block text-[10px] font-black text-text-muted mb-2 ml-4 uppercase tracking-[0.2em]">MÃ GIỜI THIỆU (TÙY CHỌN)</label>
                     <div class="relative group/field">
                         <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-neutral-600 transition-colors group-hover/field:text-primary">
                             <span class="material-icons text-sm">group_add</span>
                         </span>
                         <input id="referrer_id" name="referrer_id" type="text"
-                            class="appearance-none rounded-2xl relative block w-full pl-11 pr-4 py-4 bg-neutral-950/80 border border-white/10 placeholder-neutral-700 text-white focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm font-bold tracking-tight transition-all shadow-inner"
+                            class="appearance-none rounded-2xl relative block w-full pl-11 pr-4 py-4 bg-bg-dark/80 border border-border placeholder-text-muted text-text-primary focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm font-bold tracking-tight transition-all shadow-inner"
                             placeholder="Nhập mã giới thiệu..."
                             value="{{ request('ref') ?? old('referrer_id') }}">
                     </div>
-                    <p class="mt-2 ml-4 text-[9px] font-bold text-white uppercase tracking-widest leading-relaxed">Nhập mã giới thiệu để nhận ưu đãi từ hệ thống</p>
+                    <p class="mt-2 ml-4 text-[9px] font-bold text-text-muted uppercase tracking-widest leading-relaxed">Nhập mã giới thiệu để nhận ưu đãi từ hệ thống</p>
                 </div>
             </div>
 
@@ -103,8 +103,8 @@
                 </button>
             </div>
 
-            <p class="text-[9px] text-neutral-700 font-bold text-center mt-6 leading-relaxed uppercase tracking-widest max-w-[280px] mx-auto">
-                Bằng việc đăng ký, bạn đồng ý với <a href="#" class="text-primary hover:text-white transition-colors underline underline-offset-4">Điều khoản dịch vụ</a> và <a href="#" class="text-primary hover:text-white transition-colors underline underline-offset-4">Chính sách bảo mật</a>.
+            <p class="text-[9px] text-text-muted font-bold text-center mt-6 leading-relaxed uppercase tracking-widest max-w-[280px] mx-auto opacity-60">
+                Bằng việc đăng ký, bạn đồng ý với <a href="#" class="text-primary hover:text-text-primary transition-colors underline underline-offset-4">Điều khoản dịch vụ</a> và <a href="#" class="text-primary hover:text-text-primary transition-colors underline underline-offset-4">Chính sách bảo mật</a>.
             </p>
         </form>
     </div>

@@ -12,30 +12,28 @@
 @theme {
     /* Font Families */
     --font-family-sans: "Inter", system-ui, -apple-system, sans-serif;
-    --font-family-display: "Outfit", "Inter", sans-serif;
+    --font-family-display: "Inter", "Outfit", sans-serif;
 
-    /* FC Online Neon Green Palette */
-    --color-primary: #00ff85; /* Neon Green */
-    --color-primary-dark: #00d66f;
-    --color-primary-light: #4dffa9;
-    --color-accent-indigo: #404040; /* Neutral 700 */
-    --color-accent-pink: #f472b6;
-    --color-accent-emerald: #10b981;
+    /* Modern Gaming Palette (Slate & Emerald) */
+    --color-primary: #22c55e; /* Emerald 500 */
+    --color-primary-dark: #16a34a; /* Emerald 600 */
+    --color-primary-light: #4ade80; /* Emerald 400 */
+    --color-secondary: #4ade80;
+    
+    /* Slate Backgrounds */
+    --color-bg-dark: #0f172a; /* Slate 900 */
+    --color-bg-card: #1e293b; /* Slate 800 */
+    --color-bg-surface: #1e293b;
 
-    /* Black & Neutral Backgrounds */
-    --color-bg-dark: #000000; /* True Black */
-    --color-bg-card: #0a0a0a; /* Neutral 950 */
-    --color-bg-surface: #171717; /* Neutral 900 */
+    /* Modern Text Colors */
+    --color-text-primary: #f1f5f9; /* Slate 100 */
+    --color-text-secondary: #cbd5e1; /* Slate 300 */
+    --color-text-muted: #94a3b8; /* Slate 400 */
 
-    /* White & Neutral Text Colors */
-    --color-text-primary: #ffffff; /* Pure White */
-    --color-text-secondary: #a3a3a3; /* Neutral 400 */
-    --color-text-muted: #737373; /* Neutral 500 */
-
-    /* Border Colors */
-    --color-border: #262626; /* Neutral 800 */
-    --color-border-light: #404040; /* Neutral 700 */
-    --color-border-glow: rgba(0, 255, 133, 0.4);
+    /* Premium Border Colors */
+    --color-border: #334155; /* Slate 700 */
+    --color-border-light: #475569; /* Slate 600 */
+    --color-border-glow: rgba(34, 197, 94, 0.4);
 }
 
 /* Global Styles */
@@ -55,18 +53,16 @@ h4,
 .font-display {
     font-family: var(--font-family-display);
     font-weight: 700;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
 }
 
-/* Card Styles - Dark Esport */
+/* Card Styles - Modern Gaming */
 .card-esport {
     background: var(--color-bg-card);
     border: 1px solid var(--color-border);
-    border-radius: 1rem;
-    box-shadow:
-        0 4px 6px -1px rgba(0, 0, 0, 0.1),
-        0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
 }
@@ -78,30 +74,26 @@ h4,
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(74, 222, 128, 0.05), transparent);
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.05), transparent);
     pointer-events: none;
 }
 
 .card-esport:hover {
-    box-shadow: 0 0 20px rgba(74, 222, 128, 0.15);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.45);
     border-color: var(--color-primary);
-    transform: translateY(-2px);
+    transform: translateY(-4px);
 }
 
-/* Esport Button */
+/* Esport Button - Premium Gradient */
 .btn-esport {
-    background: linear-gradient(
-        135deg,
-        var(--color-primary),
-        var(--color-accent-indigo)
-    );
-    color: white;
-    font-weight: 700;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
-    transition: all 0.2s;
+    background: linear-gradient(135deg, #22c55e, #4ade80);
+    color: #052e16; /* Deep green for contrast */
+    font-weight: 600;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.625rem;
+    transition: all 0.25s;
     border: none;
-    box-shadow: 0 0 15px rgba(74, 222, 128, 0.3);
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     display: inline-flex;
@@ -110,9 +102,9 @@ h4,
 }
 
 .btn-esport:hover {
-    box-shadow: 0 0 25px rgba(74, 222, 128, 0.5);
-    transform: scale(1.02);
-    filter: brightness(1.1);
+    box-shadow: 0 10px 20px rgba(34, 197, 94, 0.4);
+    transform: scale(1.05);
+    filter: brightness(1.05);
 }
 
 /* Esport accent backgrounds */
@@ -124,13 +116,13 @@ h4,
     background:
         radial-gradient(
             circle at top right,
-            rgba(0, 255, 133, 0.05),
-            transparent 40%
+            rgba(34, 197, 94, 0.08),
+            transparent 45%
         ),
         radial-gradient(
             circle at bottom left,
-            rgba(255, 255, 255, 0.02),
-            transparent 40%
+            rgba(255, 255, 255, 0.03),
+            transparent 45%
         );
 }
 
@@ -220,13 +212,13 @@ h4,
     0%,
     100% {
         box-shadow:
-            0 0 5px rgba(74, 222, 128, 0.2),
-            inset 0 0 2px rgba(74, 222, 128, 0.1);
+            0 0 5px rgba(34, 197, 94, 0.2),
+            inset 0 0 2px rgba(34, 197, 94, 0.1);
     }
     50% {
         box-shadow:
-            0 0 20px rgba(74, 222, 128, 0.6),
-            inset 0 0 10px rgba(74, 222, 128, 0.3);
+            0 0 20px rgba(34, 197, 94, 0.6),
+            inset 0 0 10px rgba(34, 197, 94, 0.3);
     }
 }
 
@@ -243,7 +235,7 @@ h4,
 
 .nav-link:hover {
     color: var(--color-primary) !important;
-    text-shadow: 0 0 8px rgba(74, 222, 128, 0.5);
+    text-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
 }
 
 .nav-link::after {
@@ -263,16 +255,16 @@ h4,
 
 /* Glassmorphism utility */
 .glass {
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--color-border);
 }
 
 /* Neon Text */
 .text-neon {
     color: var(--color-primary);
     text-shadow:
-        0 0 10px rgba(74, 222, 128, 0.5),
-        0 0 20px rgba(74, 222, 128, 0.3);
+        0 0 10px rgba(34, 197, 94, 0.5),
+        0 0 20px rgba(34, 197, 94, 0.3);
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="overflow-x-hidden">
 
 <head>
     <meta charset="utf-8">
@@ -66,11 +66,11 @@
     @stack('schema')
 </head>
 
-<body class="min-h-screen bg-black text-neutral-200 selection:bg-primary/30 selection:text-white">
+<body class="min-h-screen bg-bg-dark text-text-primary selection:bg-primary/30 selection:text-white overflow-x-hidden">
     <!-- Animated background particles/glows -->
     <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <div class="absolute top-1/4 -left-20 w-96 h-96 bg-primary/3 blur-[120px] rounded-full"></div>
-        <div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-white/2 blur-[120px] rounded-full"></div>
+        <div class="absolute top-1/4 -left-20 w-96 h-96 bg-primary/5 blur-[120px] rounded-full"></div>
+        <div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-secondary/3 blur-[120px] rounded-full"></div>
     </div>
 
     <!-- Content Wrapper -->
@@ -92,14 +92,14 @@
         @include('components.footer')
 
         <!-- Floating Action Buttons -->
-        <div class="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
-            <a href="https://www.facebook.com/le.vietanh.939173" class="w-12 h-12 bg-neutral-950 border border-primary/30 text-primary rounded-full flex items-center justify-center hover:scale-110 transition shadow-[0_0_15px_rgba(74,222,128,0.3)] hover:bg-primary hover:text-white group">
-                <span class="material-icons">message</span>
+        <div class="fixed bottom-4 md:bottom-6 right-4 md:right-6 flex flex-col gap-2 md:gap-3 z-50">
+            <a href="https://www.facebook.com/le.vietanh.939173" class="w-10 h-10 md:w-12 md:h-12 bg-bg-card border border-primary/20 text-primary rounded-full flex items-center justify-center hover:scale-110 transition shadow-[0_0_15px_rgba(34,197,94,0.3)] hover:bg-primary hover:text-bg-dark group">
+                <span class="material-icons text-xl md:text-2xl">message</span>
             </a>
-            <a href="tel:0327182537" class="w-12 h-12 bg-neutral-950 border border-primary/30 text-primary rounded-full flex items-center justify-center hover:scale-110 transition shadow-[0_0_15px_rgba(74,222,128,0.3)] hover:bg-primary hover:text-white">
-                <span class="material-icons">phone</span>
+            <a href="tel:0327182537" class="w-10 h-10 md:w-12 md:h-12 bg-bg-card border border-primary/20 text-primary rounded-full flex items-center justify-center hover:scale-110 transition shadow-[0_0_15px_rgba(34,197,94,0.3)] hover:bg-primary hover:text-bg-dark">
+                <span class="material-icons text-xl md:text-2xl">phone</span>
             </a>
-            <a href="https://zalo.me/g/wilgna867" class="w-12 h-12 bg-neutral-950 border border-primary/30 rounded-full flex items-center justify-center hover:scale-110 transition shadow-[0_0_15px_rgba(74,222,128,0.3)] p-1">
+            <a href="https://zalo.me/g/wilgna867" class="w-10 h-10 md:w-12 md:h-12 bg-bg-card border border-primary/20 rounded-full flex items-center justify-center hover:scale-110 transition shadow-[0_0_15px_rgba(34,197,94,0.3)] p-1">
                 <img src="{{ asset('images/zalo.png') }}" alt="Zalo" class="w-full h-full rounded-full grayscale hover:grayscale-0 transition-all">
             </a>
         </div>

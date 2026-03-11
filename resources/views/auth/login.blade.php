@@ -8,17 +8,17 @@
     <!-- Decorative background glow -->
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl h-full max-h-2xl bg-primary/5 blur-[120px] rounded-full pointer-events-none"></div>
 
-    <div class="max-w-md w-full space-y-8 glass p-8 md:p-12 rounded-[2.5rem] shadow-2xl border border-white/10 relative z-10 group">
+    <div class="max-w-md w-full space-y-8 bg-bg-card p-8 md:p-12 rounded-[2.5rem] shadow-3xl border border-border relative z-10 group">
         <!-- Inner glow effect on group hover -->
         <div class="absolute -inset-1 bg-linear-to-r from-primary/20 to-indigo-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-[2.5rem]"></div>
 
         <div class="text-center relative">
-            <h1 class="text-3xl font-black text-white uppercase tracking-tighter mb-2 italic">
-                ĐĂNG NHẬP <span class="text-primary drop-shadow-[0_0_8px_rgba(74,222,128,0.5)]">TÀI KHOẢN</span>
+            <h1 class="text-3xl font-black text-text-primary uppercase tracking-tighter mb-2 italic">
+                ĐĂNG NHẬP <span class="text-primary drop-shadow-[0_0_15px_rgba(34,197,94,0.4)]">TÀI KHOẢN</span>
             </h1>
-            <p class="text-xs font-bold text-white uppercase tracking-widest">
+            <p class="text-xs font-bold text-text-muted uppercase tracking-widest">
                 Chưa có tài khoản?
-                <a href="{{ route('register') }}" class="text-primary hover:text-white transition-colors underline underline-offset-4 decoration-primary/30">
+                <a href="{{ route('register') }}" class="text-primary hover:text-text-primary transition-colors underline underline-offset-4 decoration-primary/30">
                     ĐĂNG KÝ NGAY
                 </a>
             </p>
@@ -38,25 +38,25 @@
 
             <div class="space-y-5">
                 <div>
-                    <label for="username" class="block text-[10px] font-black text-white mb-2 ml-4 uppercase tracking-[0.2em]">TÊN ĐĂNG NHẬP</label>
+                    <label for="username" class="block text-[10px] font-black text-text-muted mb-2 ml-4 uppercase tracking-[0.2em]">TÊN ĐĂNG NHẬP</label>
                     <div class="relative group/field">
                         <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-neutral-600 transition-colors group-hover/field:text-primary">
                             <span class="material-icons text-sm">person</span>
                         </span>
                         <input id="username" name="username" type="text" autocomplete="username" required
-                            class="appearance-none rounded-2xl relative block w-full pl-11 pr-4 py-4 bg-neutral-950/80 border border-white/10 placeholder-neutral-700 text-white focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm font-bold tracking-tight transition-all shadow-inner"
+                            class="appearance-none rounded-2xl relative block w-full pl-11 pr-4 py-4 bg-bg-dark/80 border border-border placeholder-text-muted text-text-primary focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm font-bold tracking-tight transition-all shadow-inner"
                             placeholder="Tên đăng nhập"
                             value="{{ old('username') }}">
                     </div>
                 </div>
                 <div>
-                    <label for="password" class="block text-[10px] font-black text-white mb-2 ml-4 uppercase tracking-[0.2em]">MẬT KHẨU</label>
+                    <label for="password" class="block text-[10px] font-black text-text-muted mb-2 ml-4 uppercase tracking-[0.2em]">MẬT KHẨU</label>
                     <div class="relative group/field">
                         <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-neutral-600 transition-colors group-hover/field:text-primary">
                             <span class="material-icons text-sm">lock</span>
                         </span>
                         <input id="password" name="password" :type="showPassword ? 'text' : 'password'" autocomplete="current-password" required
-                            class="appearance-none rounded-2xl relative block w-full pl-11 pr-12 py-4 bg-neutral-950/80 border border-white/10 placeholder-neutral-700 text-white focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm font-bold tracking-tight transition-all shadow-inner"
+                            class="appearance-none rounded-2xl relative block w-full pl-11 pr-12 py-4 bg-bg-dark/80 border border-border placeholder-text-muted text-text-primary focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm font-bold tracking-tight transition-all shadow-inner"
                             placeholder="••••••••">
 
                         <!-- Revealable Toggle -->

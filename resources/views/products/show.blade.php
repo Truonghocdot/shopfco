@@ -6,20 +6,20 @@
 @section('content')
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     <!-- Breadcrumb -->
-    <nav class="flex mb-8 text-[10px] font-black text-neutral-600 overflow-x-auto whitespace-nowrap pb-2 uppercase tracking-[0.2em]">
+    <nav class="flex mb-8 text-[10px] font-black text-text-muted overflow-x-auto whitespace-nowrap pb-2 uppercase tracking-[0.2em]">
         <a class="hover:text-primary flex items-center transition-colors" href="{{ route('home') }}">
             <span class="material-icons text-sm mr-2 text-primary">home</span> Trang chủ
         </a>
         <span class="mx-3 text-white/10">/</span>
-        <a class="hover:text-primary transition-colors font-black text-neutral-400" href="#">{{ $product->category->title }}</a>
+        <a class="hover:text-primary transition-colors font-black text-text-secondary" href="{{ route('products.index', ['category' => $product->category_id]) }}">{{ $product->category->title }}</a>
         <span class="mx-3 text-white/10">/</span>
-        <span class="text-primary font-black drop-shadow-[0_0_8px_rgba(74,222,128,0.3)]">ID #{{ $product->id }}</span>
+        <span class="text-primary font-black drop-shadow-[0_0_8px_rgba(34,197,94,0.3)]">ID #{{ $product->id }}</span>
     </nav>
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
         <!-- Product Images -->
         <div class="lg:col-span-7 space-y-6">
-            <div class="glass rounded-2xl overflow-hidden shadow-2xl border border-white/10 relative">
+            <div class="bg-bg-card rounded-2xl overflow-hidden shadow-2xl border border-border relative">
                 <div class="relative group z-10" id="product-carousel">
                     <div id="carousel-slides" class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth p-0 no-scrollbar" style="scrollbar-width: none; -ms-overflow-style: none;">
                         @if(!empty($product->images))
@@ -36,24 +36,24 @@
                     </div>
 
                     @if(!empty($product->images) && count($product->images) > 1)
-                    <button onclick="moveSlide(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-neutral-950/80 hover:bg-primary text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all shadow-lg z-20 backdrop-blur-md border border-white/10">
+                    <button onclick="moveSlide(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-bg-dark/80 hover:bg-primary text-text-primary p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all shadow-lg z-20 backdrop-blur-md border border-border">
                         <span class="material-icons">chevron_left</span>
                     </button>
-                    <button onclick="moveSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-neutral-950/80 hover:bg-primary text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all shadow-lg z-20 backdrop-blur-md border border-white/10">
+                    <button onclick="moveSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-bg-dark/80 hover:bg-primary text-text-primary p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all shadow-lg z-20 backdrop-blur-md border border-border">
                         <span class="material-icons">chevron_right</span>
                     </button>
-                    <div class="absolute bottom-4 right-4 bg-neutral-950/80 backdrop-blur-md text-white text-[10px] font-black px-4 py-1.5 rounded-full z-20 border border-white/10 uppercase tracking-widest">
+                    <div class="absolute bottom-4 right-4 bg-bg-dark/80 backdrop-blur-md text-text-primary text-[10px] font-black px-4 py-1.5 rounded-full z-20 border border-border uppercase tracking-widest">
                         <span id="current-slide" class="text-primary">1</span> / {{ count($product->images) }}
                     </div>
                     @endif
                 </div>
 
                 @if(!empty($product->images) && count($product->images) > 1)
-                <div class="px-4 pb-4 pt-3 bg-neutral-950/40 backdrop-blur-md border-t border-white/5">
+                <div class="px-4 pb-4 pt-3 bg-bg-dark/40 backdrop-blur-md border-t border-border">
                     <div class="flex gap-3 overflow-x-auto pb-2 no-scrollbar scroll-smooth" id="carousel-thumbnails">
                         @foreach($product->images as $index => $image)
                         <button type="button" onclick="scrollToSlide({{ $index }})"
-                            class="relative shrink-0 w-20 h-14 rounded-xl overflow-hidden border-2 transition-all thumbnail-btn {{ $index === 0 ? 'border-primary shadow-[0_0_15px_rgba(74,222,128,0.4)]' : 'border-white/5 opacity-40 hover:opacity-100 hover:border-white/20' }}"
+                            class="relative shrink-0 w-20 h-14 rounded-xl overflow-hidden border-2 transition-all thumbnail-btn {{ $index === 0 ? 'border-primary shadow-[0_0_15px_rgba(34,197,94,0.4)]' : 'border-border opacity-40 hover:opacity-100 hover:border-primary/50' }}"
                             data-index="{{ $index }}">
                             <img src="{{ url('storage/'.$image) }}" alt="Thumbnail {{ $index + 1 }}" class="w-full h-full object-cover">
                         </button>
@@ -64,17 +64,17 @@
             </div>
 
             <!-- Product Info Card -->
-            <div class="glass rounded-2xl p-8 shadow-2xl border border-white/10 relative overflow-hidden">
-                <h1 class="text-xl md:text-3xl font-black mb-6 text-white uppercase tracking-tight relative z-20 leading-tight">{{ $product->title }}</h1>
-                <div class="flex flex-wrap items-center justify-between gap-8 py-8 border-y border-white/5 relative z-20">
+            <div class="bg-bg-card rounded-2xl p-8 shadow-2xl border border-border relative overflow-hidden">
+                <h1 class="text-xl md:text-3xl font-black mb-6 text-text-primary uppercase tracking-tight relative z-20 leading-tight">{{ $product->title }}</h1>
+                <div class="flex flex-wrap items-center justify-between gap-8 py-8 border-y border-border relative z-20">
                     <div class="space-y-2">
                         @if($product->sell_price && $product->sell_price > $product->getFinalPrice())
-                        <span class="text-neutral-600 line-through text-lg font-bold">{{ number_format($product->sell_price) }}đ</span>
+                        <span class="text-text-muted line-through text-lg font-bold">{{ number_format($product->sell_price) }}đ</span>
                         @endif
                         <div class="flex items-baseline gap-3">
-                            <span class="text-3xl md:text-5xl font-black text-white drop-shadow-[0_0_15px_rgba(74,222,128,0.4)]">{{ number_format($product->getFinalPrice()) }} <span class="text-lg">đ</span></span>
+                            <span class="text-3xl md:text-5xl font-black text-text-primary drop-shadow-[0_0_15px_rgba(34,197,94,0.4)]">{{ number_format($product->getFinalPrice()) }} <span class="text-lg">đ</span></span>
                             @if($product->getDiscountPercent())
-                            <span class="bg-pink-500 text-white text-[10px] md:text-xs font-black px-3 py-1 rounded-full shadow-[0_0_10px_rgba(244,114,182,0.4)] uppercase tracking-widest">SIÊU GIẢM GIÁ</span>
+                            <span class="bg-primary text-bg-dark text-[10px] md:text-xs font-black px-3 py-1 rounded-full shadow-[0_0_10px_rgba(34,197,94,0.4)] uppercase tracking-widest">SIÊU GIẢM GIÁ</span>
                             @endif
                         </div>
                     </div>
@@ -95,10 +95,10 @@
                         @endauth
                     </div>
                 </div>
-                <div class="mt-8 flex flex-col md:flex-row items-center justify-between text-white text-[10px] font-black uppercase tracking-widest gap-4">
+                <div class="mt-8 flex flex-col md:flex-row items-center justify-between text-text-primary text-[10px] font-black uppercase tracking-widest gap-4">
                     <div class="flex items-center gap-6">
-                        <span class="flex items-center gap-2 transition-colors hover:text-primary"><span class="material-icons text-sm text-white">visibility</span> {{ rand(100, 5000) }} lượt xem</span>
-                        <span class="flex items-center gap-2 transition-colors hover:text-primary"><span class="material-icons text-sm text-white">schedule</span> Đăng {{ $product->created_at->diffForHumans() }}</span>
+                        <span class="flex items-center gap-2 transition-colors hover:text-primary"><span class="material-icons text-sm text-primary/60">visibility</span> {{ rand(100, 5000) }} lượt xem</span>
+                        <span class="flex items-center gap-2 transition-colors hover:text-primary"><span class="material-icons text-sm text-primary/60">schedule</span> Đăng {{ $product->created_at->diffForHumans() }}</span>
                     </div>
                     <span class="text-primary bg-primary/10 px-4 py-1.5 rounded-full border border-primary/20">MÃ SẢN PHẨM: #{{ $product->id }}</span>
                 </div>
@@ -107,28 +107,28 @@
 
         <!-- Product Details -->
         <div class="lg:col-span-5 space-y-6">
-            <div class="glass rounded-2xl p-8 shadow-2xl border border-white/10 h-full relative overflow-hidden">
+            <div class="bg-bg-card rounded-2xl p-8 shadow-2xl border border-border h-full relative overflow-hidden">
                 <div class="flex items-center gap-3 mb-8">
-                    <span class="material-icons text-primary drop-shadow-[0_0_8px_rgba(74,222,128,0.5)]">info</span>
-                    <h2 class="text-xl font-black text-white uppercase tracking-tight">THÔNG TIN CHI TIẾT</h2>
+                    <span class="material-icons text-primary drop-shadow-[0_0_8px_rgba(34,197,94,0.5)]">info</span>
+                    <h2 class="text-xl font-black text-text-primary uppercase tracking-tight">THÔNG TIN CHI TIẾT</h2>
                 </div>
-                <div class="prose prose-invert prose-primary max-w-none space-y-6">
-                    <div class="bg-neutral-950/50 backdrop-blur-md border border-white/5 p-6 rounded-2xl border-l-4 border-l-primary shadow-xl">
-                        <div class="font-bold text-neutral-300 leading-relaxed">
+                <div class="prose prose-invert prose-emerald max-w-none space-y-6">
+                    <div class="bg-bg-dark/50 backdrop-blur-md border border-border p-6 rounded-2xl border-l-4 border-l-primary shadow-xl">
+                        <div class="font-bold text-text-secondary leading-relaxed">
                             {!! $product->content !!}
                         </div>
-                        <div class="mt-6 pt-4 border-t border-white/5">
-                            <a href="https://zalo.me/g/wilgna867" class="text-primary font-black hover:text-white transition-colors text-xs flex items-center gap-2">
+                        <div class="mt-6 pt-4 border-t border-border">
+                            <a href="https://zalo.me/g/wilgna867" class="text-primary font-black hover:text-text-primary transition-colors text-xs flex items-center gap-2">
                                 <span class="material-icons text-sm">group</span> THAM GIA GROUP ZALO NHẬN MÃ GIẢM GIÁ
                             </a>
                         </div>
                     </div>
                     <div class="space-y-6 pt-6">
-                        <h3 class="text-lg font-black flex items-center gap-3 text-white uppercase tracking-tight">
+                        <h3 class="text-lg font-black flex items-center gap-3 text-text-primary uppercase tracking-tight">
                             <span class="material-icons text-primary">verified_user</span>
                             CAM KẾT & ĐIỀU KHOẢN
                         </h3>
-                        <ol class="space-y-4 text-neutral-400 text-sm font-bold">
+                        <ol class="space-y-4 text-text-muted text-sm font-bold">
                             <li class="flex gap-3 leading-relaxed">
                                 <span class="text-primary font-black">01.</span> SĐT tới hạn đổi SĐT Quý khách vui lòng liên hệ shop để lấy code thay đổi SĐT.
                             </li>

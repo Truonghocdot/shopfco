@@ -7,17 +7,17 @@
     </div>
 </div>
 
-<header class="sticky top-0 z-50 glass border-b border-white/5 shadow-2xl overflow-visible">
+<header class="sticky top-0 z-50 glass border-b border-border shadow-2xl overflow-visible h-[70px] flex items-center">
     <!-- Removed Tet decorative branches and firecrackers -->
 
-    <div class="container mx-auto px-2 md:px-4 py-3 flex items-center justify-between relative z-40">
+    <div class="container mx-auto px-2 md:px-4 py-2 md:py-3 flex items-center justify-between relative z-40">
         <div class="flex items-center gap-8">
             <!-- Logo -->
             <a href="{{ route('home') }}" class="flex items-center gap-2 group relative">
-                <span class="text-3xl md:text-4xl font-black italic tracking-tighter text-white group-hover:text-primary transition-all duration-500 relative z-10 drop-shadow-[0_0_10px_rgba(74,222,128,0.5)]">
+                <span class="text-3xl md:text-[36px] font-black italic tracking-tighter text-text-primary group-hover:text-primary transition-all duration-500 relative z-10 drop-shadow-[0_0_10px_rgba(34,197,94,0.3)]">
                     VANH<span class="text-primary group-hover:text-white transition-colors">FCO</span>
                 </span>
-                <div class="absolute -inset-2 bg-primary/20 blur-xl rounded-full scale-0 group-hover:scale-110 transition-transform duration-700 opacity-0 group-hover:opacity-100"></div>
+                <div class="absolute -inset-2 bg-primary/10 blur-xl rounded-full scale-0 group-hover:scale-110 transition-transform duration-700 opacity-0 group-hover:opacity-100"></div>
             </a>
 
             <!-- Desktop Navigation -->
@@ -34,7 +34,7 @@
                 @endphp
 
                 @foreach($navItems as $item)
-                <a class="nav-link font-bold flex items-center gap-2 text-neutral-300 hover:text-white px-4 py-2 rounded-lg transition-all {{ request()->routeIs($item['route']) ? 'active text-primary' : '' }}" href="{{ route($item['route']) }}">
+                <a class="nav-link font-bold flex items-center gap-2 text-text-secondary hover:text-text-primary px-4 py-2 rounded-lg transition-all {{ request()->routeIs($item['route']) ? 'active text-primary bg-white/5' : '' }}" href="{{ route($item['route']) }}">
                     <span class="material-icons text-base">{{ $item['icon'] }}</span>
                     <span class="text-xs tracking-widest">{{ $item['label'] }}</span>
                 </a>
@@ -45,19 +45,19 @@
         <div class="flex items-center gap-3">
             @auth
             <!-- Balance Display -->
-            <div class="flex flex-col items-end px-3 md:px-4 py-1 md:py-2 rounded-lg bg-white/5 border border-white/10 hover:border-primary/50 transition-all group cursor-pointer relative overflow-hidden">
-                <span class="hidden md:block text-[9px] text-neutral-600 uppercase tracking-widest font-black">Số dư</span>
-                <span class="text-primary font-black text-sm md:text-lg drop-shadow-[0_0_8px_rgba(74,222,128,0.4)]">
+            <div class="flex flex-col items-end px-2 md:px-4 py-1 md:py-2 rounded-lg bg-bg-card border border-border hover:border-primary/50 transition-all group cursor-pointer relative overflow-hidden shadow-inner">
+                <span class="hidden md:block text-[9px] text-text-muted uppercase tracking-widest font-black">Số dư</span>
+                <span class="text-primary font-black text-sm md:text-lg drop-shadow-[0_0_8px_rgba(34,197,94,0.3)]">
                     {{ number_format(auth()->user()->wallet()->value('balance'), 0, ',', '.') }} <span class="text-[10px] md:text-sm">đ</span>
                 </span>
             </div>
 
             <!-- User Profile -->
-            <a href="{{ route('user.profile') }}" class="flex items-center gap-2 bg-white/5 hover:bg-white/10 px-3 md:px-4 py-1 md:py-2 rounded-lg border border-white/10 cursor-pointer transition-all hover:border-primary/50">
+            <a href="{{ route('user.profile') }}" class="flex items-center gap-1 md:gap-2 bg-bg-card hover:bg-white/5 px-2 md:px-4 py-1 md:py-2 rounded-lg border border-border cursor-pointer transition-all hover:border-primary/50">
                 <span class="material-icons text-primary text-xl md:text-2xl">account_circle</span>
                 <div class="flex flex-col">
-                    <span class="text-white text-[10px] md:text-[12px] font-bold max-w-[50px] md:max-w-none truncate">{{ auth()->user()->name }}</span>
-                    <span class="text-[8px] md:text-[10px] text-neutral-600 font-black tracking-tighter">ID: {{ auth()->user()->id }}</span>
+                    <span class="text-text-primary text-[10px] md:text-[12px] font-bold max-w-[40px] md:max-w-none truncate">{{ auth()->user()->name }}</span>
+                    <span class="text-[8px] md:text-[10px] text-text-muted font-black tracking-tighter">ID: {{ auth()->user()->id }}</span>
                 </div>
             </a>
 
@@ -70,9 +70,9 @@
             </form>
             @else
             <!-- Login Button -->
-            <a href="{{ route('login') }}" class="hidden md:flex items-center gap-2 btn-esport px-5 py-2 rounded-lg font-black transition-all shadow-lg group">
-                <span class="material-icons group-hover:rotate-12 transition-transform">login</span>
-                <span class="text-xs tracking-widest">ĐĂNG NHẬP</span>
+            <a href="{{ route('login') }}" class="flex items-center gap-1.5 md:gap-2 btn-esport px-3 md:px-5 py-1.5 md:py-2 rounded-lg font-black transition-all shadow-lg group text-[10px] md:text-xs">
+                <span class="material-icons group-hover:rotate-12 transition-transform text-sm md:text-base">login</span>
+                <span class="tracking-widest whitespace-nowrap">ĐĂNG NHẬP</span>
             </a>
             @endauth
 
@@ -181,7 +181,7 @@
     }
 
     .nav-link.active {
-        background: rgba(255, 255, 255, 0.2);
-        color: #ffd700 !important;
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--color-primary) !important;
     }
 </style>

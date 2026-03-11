@@ -39,19 +39,19 @@
         </div>
 
         <!-- Decorative background glow -->
-        <div class="absolute -top-20 -left-20 w-64 h-64 bg-primary/20 blur-[100px] rounded-full pointer-events-none"></div>
-        <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-indigo-500/20 blur-[100px] rounded-full pointer-events-none"></div>
+        <div class="absolute -top-20 -left-20 w-64 h-64 bg-primary/10 blur-[100px] rounded-full pointer-events-none"></div>
+        <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-indigo-500/10 blur-[100px] rounded-full pointer-events-none"></div>
     </section>
 
     <!-- Mystery Box Section -->
     <section class="mb-8 md:mb-12">
         <a href="{{ route('lucky-wheel.index') }}" class="block">
-            <div class="bg-gradient-to-r from-neutral-950 to-neutral-900 rounded-2xl p-4 md:p-10 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8 border border-white/10 shadow-2xl hover:shadow-primary/20 transition-all group/tree relative overflow-hidden">
+        <div class="bg-gradient-to-r from-neutral-950 to-neutral-900 rounded-2xl p-3 md:p-10 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8 border border-white/10 shadow-2xl hover:shadow-primary/20 transition-all group/tree relative overflow-hidden">
                 <div class="flex-1 text-center md:text-left relative z-10">
-                    <h2 class="text-xl md:text-4xl font-black mb-2 md:mb-4 flex items-center justify-center md:justify-start gap-2 md:gap-3 text-neon uppercase tracking-wider">
-                        <span class="material-icons text-2xl md:text-4xl">surfing</span> LƯỚT SÓNG <span class="text-primary italic">ĐÓN QUÀ</span>
+                    <h2 class="text-xl md:text-4xl font-black mb-2 md:mb-4 flex items-center justify-center md:justify-start gap-2 md:gap-3 text-neon uppercase tracking-wider drop-shadow-[0_0_15px_rgba(34,197,94,0.4)]">
+                        <span class="material-icons text-2xl md:text-4xl">surfing</span> LƯỚT SÓNG <span class="text-secondary italic">ĐÓN QUÀ</span>
                     </h2>
-                    <p class="text-neutral-400 text-sm md:text-lg mb-4 md:mb-8 max-w-md mx-auto md:mx-0">
+                    <p class="text-text-secondary text-sm md:text-lg mb-4 md:mb-8 max-w-md mx-auto md:mx-0">
                         Trải nghiệm cảm giác rẽ sóng săn quà cực khủng! Nhận ngay Acc FCO siêu phẩm, BP trắng cực hời chỉ từ một lượt lướt!
                     </p>
                     <div class="inline-flex items-center gap-2 md:gap-3 btn-esport py-2 px-6 md:py-3 md:px-8 rounded-full group-hover/tree:scale-105 transition-transform">
@@ -59,7 +59,7 @@
                     </div>
                 </div>
 
-                <div class="relative w-full max-w-[180px] md:max-w-[280px] flex items-center justify-center">
+                <div class="relative w-full max-w-[140px] md:max-w-[280px] flex items-center justify-center">
                     <img src="{{ asset('images/esport/mystery_box.png') }}" alt="Mystery Box" class="w-full group-hover/tree:scale-110 transition-transform duration-500 drop-shadow-lg" style="filter: drop-shadow(0 0 20px rgba(74,222,128,0.3));">
                 </div>
             </div>
@@ -110,8 +110,8 @@
                         <span class="text-2xl md:text-3xl">👑</span>
                     </div>
                     <div class="flex-1 min-w-0">
-                        <p class="font-black text-sm md:text-lg text-white truncate uppercase tracking-tight group-hover:text-primary transition-colors">{{ $shopOwner->name }}</p>
-                        <p class="text-[10px] md:text-xs text-neutral-400 font-bold">{{ $shopOwner->total_orders }} đơn hàng thành công</p>
+                        <p class="font-black text-sm md:text-lg text-text-primary truncate uppercase tracking-tight group-hover:text-primary transition-colors">{{ $shopOwner->name }}</p>
+                        <p class="text-[10px] md:text-xs text-text-muted font-bold">{{ $shopOwner->total_orders }} đơn hàng thành công</p>
                     </div>
                     <div class="text-right">
                         <p class="font-black text-lg md:text-2xl text-primary drop-shadow-[0_0_8px_rgba(74,222,128,0.4)]">
@@ -139,8 +139,8 @@
                     <img alt="{{ $category->title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="{{ url('storage/'.$category->image) ?? 'https://via.placeholder.com/96' }}" loading="lazy">
                     <div class="absolute inset-0 bg-gradient-to-t from-neutral-950/80 to-transparent"></div>
                 </div>
-                <h3 class="font-black text-sm md:text-lg mb-1 text-white group-hover:text-primary transition-colors uppercase tracking-wide">{{ $category->title }}</h3>
-                <p class="text-neutral-400 text-[10px] md:text-sm line-clamp-1 md:line-clamp-none">{!! strip_tags($category->description) !!}</p>
+                <h3 class="font-black text-sm md:text-lg mb-1 text-text-primary group-hover:text-primary transition-colors uppercase tracking-wide">{{ $category->title }}</h3>
+                <p class="text-text-muted text-[10px] md:text-sm line-clamp-1 md:line-clamp-none">{!! strip_tags($category->description) !!}</p>
             </a>
             @empty
             <div class="col-span-4 text-center text-neutral-600 p-12 glass rounded-xl border border-white/5">Chưa có danh mục nào</div>
@@ -149,9 +149,9 @@
     </section>
 
     <!-- Flash Sale Section -->
-    <div class="flex items-center justify-between mb-6">
-        <h2 class="text-2xl font-black text-neutral-800 uppercase flex items-center gap-2">
-            <span class="material-icons text-neutral-800">local_fire_department</span>
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+        <h2 class="text-xl md:text-2xl font-black text-text-secondary uppercase flex items-center gap-2">
+            <span class="material-icons text-primary/60">local_fire_department</span>
             FLASH SALE SIÊU HOT
         </h2>
         <a href="{{ route('products.index', ['sort' => 'discount']) }}" class="text-white hover:text-orange-500 font-bold text-sm flex items-center gap-1 transition-colors">
@@ -170,7 +170,7 @@
                     -{{ number_format($product->getDiscountPercent()) }}%
                 </div>
                 @endif
-                <div class="absolute bottom-2 left-2 bg-neutral-950/80 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] text-neutral-300 font-bold border border-white/10">
+                <div class="absolute bottom-2 left-2 bg-bg-dark/80 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] text-text-muted font-bold border border-border">
                     ID: {{ $product->id }}
                 </div>
             </div>
@@ -178,9 +178,9 @@
                 <h4 class="font-bold text-sm mb-3 line-clamp-2 h-10 text-neutral-100 group-hover:text-primary transition-colors tracking-tight">{{ $product->title }}</h4>
                 <div class="flex flex-col mb-4">
                     @if($product->sell_price)
-                    <span class="text-xs text-neutral-600 line-through">{{ number_format($product->sell_price) }} đ</span>
+                    <span class="text-xs text-text-muted line-through">{{ number_format($product->sell_price) }} đ</span>
                     @endif
-                    <span class="text-xl font-black text-primary drop-shadow-[0_0_8px_rgba(74,222,128,0.3)]">{{ number_format($product->getFinalPrice()) }} <span class="text-sm">đ</span></span>
+                    <span class="text-xl font-black text-primary drop-shadow-[0_0_8px_rgba(34,197,94,0.3)]">{{ number_format($product->getFinalPrice()) }} <span class="text-sm">đ</span></span>
                 </div>
                 <a href="{{ route('products.show', $product->slug) }}" class="block w-full btn-esport justify-center py-2 rounded-lg text-center text-[10px] md:text-sm transition-all group-hover:gap-3">
                     <span class="material-icons text-sm">shopping_cart</span> MUA NGAY
@@ -195,9 +195,9 @@
     </section>
 
     <!-- News Section -->
-    <div class="flex items-center justify-between mb-6">
-        <h2 class="text-2xl md:text-3xl font-black text-neutral-800 uppercase flex items-center gap-3 tracking-wider">
-            <span class="material-icons text-3xl md:text-4xl">article</span>
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+        <h2 class="text-xl md:text-3xl font-black text-text-secondary uppercase flex items-center gap-3 tracking-wider">
+            <span class="material-icons text-2xl md:text-4xl text-primary/60">article</span>
             TIN TỨC MỚI NHẤT
         </h2>
         <a href="{{ route('news.index') }}" class="text-white hover:text-orange-500 font-bold text-sm flex items-center gap-1 transition-colors">
@@ -213,10 +213,10 @@
                 <div class="absolute inset-0 bg-gradient-to-t from-neutral-950 to-transparent opacity-60"></div>
             </div>
             <div class="p-4 relative z-20">
-                <h4 class="font-bold text-sm mb-2 line-clamp-2 h-10 text-neutral-100 group-hover:text-primary transition-colors tracking-tight">{{ $news->title }}</h4>
-                <p class="text-neutral-400 text-xs mb-4 line-clamp-2">{!! Str::limit(strip_tags($news->content), 100) !!}</p>
+                <h4 class="font-bold text-sm mb-2 line-clamp-2 h-10 text-text-primary group-hover:text-primary transition-colors tracking-tight">{{ $news->title }}</h4>
+                <p class="text-text-muted text-xs mb-4 line-clamp-2">{!! Str::limit(strip_tags($news->content), 100) !!}</p>
                 <div class="flex items-center justify-between text-xs">
-                    <span class="text-neutral-600">{{ $news->created_at->format('d/m/Y') }}</span>
+                    <span class="text-text-muted">{{ $news->created_at->format('d/m/Y') }}</span>
                     <span class="text-primary font-bold flex items-center gap-1 group-hover:gap-2 transition-all">
                         Đọc thêm <span class="material-icons text-sm">arrow_forward</span>
                     </span>
