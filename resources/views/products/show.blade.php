@@ -95,10 +95,10 @@
                         @endauth
                     </div>
                 </div>
-                <div class="mt-8 flex flex-col md:flex-row items-center justify-between text-slate-500 text-[10px] font-black uppercase tracking-widest gap-4">
+                <div class="mt-8 flex flex-col md:flex-row items-center justify-between text-white text-[10px] font-black uppercase tracking-widest gap-4">
                     <div class="flex items-center gap-6">
-                        <span class="flex items-center gap-2 transition-colors hover:text-primary"><span class="material-icons text-sm text-primary">visibility</span> {{ rand(100, 5000) }} lượt xem</span>
-                        <span class="flex items-center gap-2 transition-colors hover:text-primary"><span class="material-icons text-sm text-primary">schedule</span> Đăng {{ $product->created_at->diffForHumans() }}</span>
+                        <span class="flex items-center gap-2 transition-colors hover:text-primary"><span class="material-icons text-sm text-white">visibility</span> {{ rand(100, 5000) }} lượt xem</span>
+                        <span class="flex items-center gap-2 transition-colors hover:text-primary"><span class="material-icons text-sm text-white">schedule</span> Đăng {{ $product->created_at->diffForHumans() }}</span>
                     </div>
                     <span class="text-primary bg-primary/10 px-4 py-1.5 rounded-full border border-primary/20">MÃ SẢN PHẨM: #{{ $product->id }}</span>
                 </div>

@@ -41,10 +41,10 @@
                 @endif
                 <div class="flex items-center justify-between pt-4 border-t border-white/5">
                     <div class="flex items-center gap-2 text-[10px] text-slate-500 font-bold uppercase tracking-widest">
-                        <span class="material-icons text-xs text-primary">visibility</span>
+                        <span class="material-icons text-xs text-white">visibility</span>
                         {{ number_format($item->view_count) }} lượt xem
                     </div>
-                    <a href="{{ route('news.show', $item->slug) }}" class="text-primary hover:text-white font-black text-xs uppercase tracking-widest flex items-center gap-1 transition-colors group/link">
+                    <a href="{{ route('news.show', $item->slug) }}" class="text-white hover:text-white font-black text-xs uppercase tracking-widest flex items-center gap-1 transition-colors group/link">
                         ĐỌC THÊM <span class="material-icons text-sm group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
                     </a>
                 </div>
