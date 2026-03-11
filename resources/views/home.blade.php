@@ -50,8 +50,8 @@
         <a href="{{ route('lucky-wheel.index') }}" class="block">
         <div class="card-esport p-3 md:p-10 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8 border border-white/30 shadow-2xl transition-all group/tree relative overflow-hidden">
                 <div class="flex-1 text-center md:text-left relative z-10">
-                    <h2 class="text-xl md:text-4xl font-black mb-2 md:mb-4 flex items-center justify-center md:justify-start gap-2 md:gap-3 text-neon uppercase tracking-wider drop-shadow-lg">
-                        <span class="material-icons text-2xl md:text-4xl text-white">surfing</span> LƯỚT SÓNG <span class="text-white italic">ĐÓN QUÀ</span>
+                    <h2 class="text-2xl md:text-4xl font-black mb-2 md:mb-4 flex items-center justify-center md:justify-start gap-2 md:gap-3 text-neon uppercase tracking-wider drop-shadow-lg">
+                        <span class="material-icons text-3xl md:text-4xl text-white">surfing</span> LƯỚT SÓNG <span class="text-white italic">ĐÓN QUÀ</span>
                     </h2>
                     <p class="text-white/90 text-sm md:text-lg mb-4 md:mb-8 max-w-md mx-auto md:mx-0">
                         Trải nghiệm cảm giác rẽ sóng săn quà cực khủng! Nhận ngay Acc FCO siêu phẩm, BP trắng cực hời chỉ từ một lượt lướt!
@@ -61,7 +61,7 @@
                     </div>
                 </div>
 
-                <div class="relative w-full max-w-[140px] md:max-w-[280px] flex items-center justify-center">
+                <div class="relative w-full max-w-[180px] md:max-w-[280px] flex items-center justify-center">
                     <img src="{{ asset('images/summer/coconut.png') }}" alt="Coconut" class="w-full group-hover/tree:scale-110 transition-transform duration-500 drop-shadow-lg" style="filter: drop-shadow(0 0 20px rgba(74,222,128,0.3));">
                 </div>
             </div>
@@ -145,10 +145,10 @@
                         $starfish = ['saobien1.png', 'saobien2.png', 'saobien3.png', 'saobien4.png'];
                         $randomStar = $starfish[$loop->index % 4];
                     @endphp
-                    <img src="{{ asset('images/summer/' . $randomStar) }}" alt="Starfish" class="absolute -bottom-2 -left-2 w-10 md:w-12 transform -rotate-12 group-hover:scale-110 transition-transform duration-300">
+                    <img src="{{ asset('images/summer/' . $randomStar) }}" alt="Starfish" class="absolute -bottom-2 -left-2 w-12 md:w-12 transform -rotate-12 group-hover:scale-110 transition-transform duration-300">
                 </div>
                 <h3 class="font-black text-sm md:text-lg mb-1 text-white group-hover:text-primary transition-colors uppercase tracking-wide flex items-center justify-center gap-2">
-                    <img src="{{ asset('images/summer/saobien'.(($loop->index % 4) + 1).'.png') }}" alt="Icon" class="w-4 h-4">
+                    <img src="{{ asset('images/summer/saobien'.(($loop->index % 4) + 1).'.png') }}" alt="Icon" class="w-6 h-6 md:w-4 md:h-4">
                     {{ $category->title }}
                 </h3>
                 <p class="text-white/80 text-[10px] md:text-sm line-clamp-1 md:line-clamp-none">{!! strip_tags($category->description) !!}</p>
@@ -162,9 +162,9 @@
     <!-- Flash Sale Section -->
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6 relative">
         <h2 class="text-xl md:text-2xl font-black text-white uppercase flex items-center gap-2">
-            <img src="{{ asset('images/summer/saobien1.png') }}" alt="Starfish" class="w-8 h-8 animate-pulse">
+            <img src="{{ asset('images/summer/saobien1.png') }}" alt="Starfish" class="w-10 h-10 md:w-8 md:h-8 animate-pulse">
             FLASH SALE SIÊU HOT
-            <img src="{{ asset('images/summer/saobien2.png') }}" alt="Starfish" class="w-8 h-8 animate-pulse">
+            <img src="{{ asset('images/summer/saobien2.png') }}" alt="Starfish" class="w-10 h-10 md:w-8 md:h-8 animate-pulse">
         </h2>
         <a href="{{ route('products.index', ['sort' => 'discount']) }}" class="text-white hover:text-primary font-bold text-sm flex items-center gap-1 transition-colors">
             Xem tất cả <span class="material-icons text-sm">arrow_forward</span>
@@ -176,7 +176,7 @@
         @forelse($flashSaleProducts as $product)
         <div class="card-esport group transition-all relative">
             <div class="card-sticker">
-                <img src="{{ asset('images/summer/saobien'.(($loop->index % 4) + 1).'.png') }}" alt="Starfish" class="w-10 h-10">
+                <img src="{{ asset('images/summer/saobien'.(($loop->index % 4) + 1).'.png') }}" alt="Starfish" class="w-12 h-12 md:w-10 md:h-10">
             </div>
             <div class="relative overflow-hidden aspect-video">
                 <img alt="{{ $product->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ url('storage/'.$product->images[0]) ?? 'https://via.placeholder.com/400x225' }}" loading="lazy">
@@ -198,9 +198,10 @@
                     <span class="text-xl font-black text-primary drop-shadow-[0_0_8px_rgba(34,197,94,0.3)]">{{ number_format($product->getFinalPrice()) }} <span class="text-sm">đ</span></span>
                 </div>
                 <a href="{{ route('products.show', $product->slug) }}" class="block w-full btn-esport justify-center items-center py-2.5 rounded-lg text-center text-[10px] md:text-sm transition-all group-hover:gap-3 relative overflow-hidden">
-                    <img src="{{ asset('images/summer/saobien'.(($loop->index % 4) + 1).'.png') }}" alt="Icon" class="w-4 h-4 md:w-5 md:h-5 mr-1 animate-float">
+                    <img src="{{ asset('images/summer/saobien'.(($loop->index % 4) + 1).'.png') }}" alt="Icon" class="w-6 h-6 md:w-5 md:h-5 mr-1 animate-float">
                     MUA NGAY
                 </a>
+节
             </div>
         </div>
         @empty
@@ -213,9 +214,9 @@
     <!-- News Section -->
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
         <h2 class="text-xl md:text-3xl font-black text-white uppercase flex items-center gap-3 tracking-wider">
-            <img src="{{ asset('images/summer/saobien3.png') }}" alt="Starfish" class="w-10 h-10 animate-float">
+            <img src="{{ asset('images/summer/saobien3.png') }}" alt="Starfish" class="w-12 h-12 md:w-10 md:h-10 animate-float">
             TIN TỨC MỚI NHẤT
-            <img src="{{ asset('images/summer/saobien4.png') }}" alt="Starfish" class="w-10 h-10 animate-float" style="animation-delay: 1s;">
+            <img src="{{ asset('images/summer/saobien4.png') }}" alt="Starfish" class="w-12 h-12 md:w-10 md:h-10 animate-float" style="animation-delay: 1s;">
         </h2>
         <a href="{{ route('news.index') }}" class="text-white hover:text-primary font-bold text-sm flex items-center gap-1 transition-colors">
             Xem tất cả <span class="material-icons text-sm">arrow_forward</span>
@@ -227,7 +228,7 @@
         @forelse($latestNews as $news)
         <a href="{{ route('news.show', $news->slug) }}" class="group card-esport overflow-hidden transition-all relative">
             <div class="card-sticker">
-                <img src="{{ asset('images/summer/saobien'.((($loop->index + 2) % 4) + 1).'.png') }}" alt="Starfish" class="w-10 h-10">
+                <img src="{{ asset('images/summer/saobien'.((($loop->index + 2) % 4) + 1).'.png') }}" alt="Starfish" class="w-12 h-12 md:w-10 md:h-10">
             </div>
             <div class="relative overflow-hidden aspect-video md:aspect-[16/9] min-h-[140px] md:min-h-0">
                 <img alt="{{ $news->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ url('storage/'.$news->thumbnail) ?? 'https://via.placeholder.com/400x225' }}" loading="lazy">
