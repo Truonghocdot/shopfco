@@ -455,7 +455,7 @@
             coconuts.push({
                 x: 0.15 + Math.random() * 0.7,
                 y: -0.05,
-                speed: 0.0008 + Math.random() * 0.0004,
+                speed: 0.005 + Math.random() * 0.003,
                 golden: isGolden,
                 radius: isGolden ? 14 : 10,
                 rotation: Math.random() * Math.PI * 2,
@@ -664,7 +664,7 @@
 
         // Spawn regular coconuts at intervals
         for (let i = 0; i < 8; i++) {
-            spawnCoconut(false, 300 + i * 500);
+            spawnCoconut(false, 200 + i * 350);
         }
 
         // Spawn golden coconut at ~3.5s if prize > 0
@@ -674,7 +674,7 @@
                 const golden = {
                     x: surfer.x + (Math.random() - 0.5) * 0.15,
                     y: -0.05,
-                    speed: 0.0009,
+                    speed: 0.006,
                     golden: true,
                     radius: 16,
                     rotation: 0,
@@ -685,7 +685,7 @@
                 };
                 coconuts.push(golden);
                 goldenSpawned = true;
-            }, 3200);
+            }, 2500);
         }
 
         // Start game loop
