@@ -85,6 +85,11 @@ class UserForm
                         0 => 'Khóa',
                     ])
                     ->default(1),
+                TextInput::make('lucky_wheel_spins')
+                    ->label('Số lần quay trúng thưởng')
+                    ->numeric()
+                    ->minValue(0)
+                    ->required(),
             ]);
     }
 }
