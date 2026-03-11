@@ -10,12 +10,12 @@ $popupContent = $popupContentResult->isSuccess() ? $popupContentResult->getData(
 <div id="popup-modal" class="fixed inset-0 z-9999 hidden items-center justify-center p-4 bg-black/50">
     <div class="relative max-w-2xl w-full">
         <!-- Modal Content -->
-        <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-200">
+        <div class="glass rounded-4xl shadow-3xl overflow-hidden border border-white/10">
             <!-- Header -->
-            <div class="bg-gradient-to-r from-primary to-orange-500 p-4 flex justify-between items-center">
-                <h3 class="text-xl font-black uppercase text-white flex items-center gap-2">
-                    <span class="material-icons">campaign</span>
-                    THÔNG BÁO
+            <div class="bg-linear-to-r from-primary to-indigo-600 p-5 flex justify-between items-center">
+                <h3 class="text-xl font-black uppercase text-white flex items-center gap-3 tracking-tighter">
+                    <span class="material-icons text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">campaign</span>
+                    THÔNG BÁO <span class="text-[10px] bg-white/20 px-2 py-0.5 rounded-full ml-1">SYSTEM</span>
                 </h3>
                 <button onclick="closePopup()" class="text-white/80 hover:text-white transition-colors">
                     <span class="material-icons">close</span>
@@ -23,21 +23,19 @@ $popupContent = $popupContentResult->isSuccess() ? $popupContentResult->getData(
             </div>
 
             <!-- Content -->
-            <div class="p-6 max-h-[60vh] overflow-y-auto prose prose-primary max-w-none">
+            <div class="p-8 max-h-[60vh] overflow-y-auto prose prose-invert prose-primary max-w-none scrollbar-thin scrollbar-thumb-primary/20">
                 {!! $popupContent !!}
             </div>
 
             <!-- Footer with Duration Options -->
-            <div class="bg-gray-50 p-4 border-t border-gray-100">
-                <p class="text-sm text-gray-500 mb-3 font-bold">Ẩn thông báo này trong:</p>
-                <div class="flex gap-3">
-                    <button onclick="closePopup(1)" class="flex-1 bg-white hover:bg-gray-50 border border-gray-200 text-primary px-4 py-2 rounded-lg font-bold transition-all active:scale-95">
-                        <span class="material-icons text-sm align-middle mr-1">schedule</span>
-                        1 Giờ
+            <div class="bg-slate-900/50 p-6 border-t border-white/5 backdrop-blur-xl">
+                <p class="text-[10px] text-slate-500 mb-4 font-black uppercase tracking-[0.2em] text-center">Ẩn thông báo này trong</p>
+                <div class="flex gap-4">
+                    <button onclick="closePopup(1)" class="flex-1 bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 px-4 py-3 rounded-xl font-black text-xs transition-all active:scale-95 uppercase tracking-widest flex items-center justify-center gap-2">
+                        <span class="material-icons text-sm">schedule</span> 1 GIỜ
                     </button>
-                    <button onclick="closePopup(24)" class="flex-1 bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg font-bold transition-all active:scale-95">
-                        <span class="material-icons text-sm align-middle mr-1">event</span>
-                        24 Giờ
+                    <button onclick="closePopup(24)" class="flex-1 btn-esport px-4 py-3 rounded-xl font-black text-xs transition-all active:scale-95 uppercase tracking-widest flex items-center justify-center gap-2 border-none">
+                        <span class="material-icons text-sm">event</span> 24 GIỜ
                     </button>
                 </div>
             </div>
@@ -80,23 +78,34 @@ $popupContent = $popupContentResult->isSuccess() ? $popupContentResult->getData(
 
 <style>
     .prose-primary {
-        color: #333;
+        color: #94a3b8;
     }
 
     .prose-primary h1,
     .prose-primary h2,
     .prose-primary h3,
     .prose-primary h4 {
-        color: #D42020;
+        color: #fff;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
     }
 
     .prose-primary a {
-        color: #D42020;
+        color: #38bdf8;
         text-decoration: underline;
+        text-underline-offset: 4px;
+        transition: 0.3s;
+    }
+
+    .prose-primary a:hover {
+        color: #fff;
+        text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
     }
 
     .prose-primary strong {
-        color: #D42020;
+        color: #38bdf8;
+        font-weight: 900;
     }
 </style>
 @endif

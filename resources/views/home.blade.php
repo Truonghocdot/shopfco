@@ -11,11 +11,11 @@
 <div class="container mx-auto px-4 py-8">
     <!-- Video Hero Section -->
     <section class="mb-8 md:mb-12 relative">
-        <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-200 p-2 relative z-10">
+        <div class="glass rounded-2xl overflow-hidden shadow-2xl border border-white/10 p-2 relative z-10">
             <div class="aspect-video w-full rounded-xl overflow-hidden">
                 <iframe
                     class="w-full h-full"
-                    src="https://www.youtube.com/embed/J5vX4tceqCc?si=zqLarLOd25hZkMvS"
+                    src="https://www.youtube.com/embed/gQkpw5JtnuQ?si=M54VBBoQfaZhYSf3"
                     title="YouTube video player"
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -25,46 +25,42 @@
             </div>
 
             <!-- Contact Info Badge -->
-            <div class="flex flex-wrap justify-center items-center gap-4 md:gap-6 py-4 px-4 text-gray-800">
+            <div class="flex flex-wrap justify-center items-center gap-4 md:gap-6 py-4 px-4 text-slate-300">
                 <div class="flex items-center gap-2 text-base md:text-lg font-bold">
                     <span class="material-icons text-primary text-2xl">call</span>
-                    <span>0986526036</span>
+                    <span class="text-white">0986526036</span>
                 </div>
-                <div class="w-px h-6 bg-gray-200 hidden sm:block"></div>
-                <a href="https://www.facebook.com/le.vietanh.939173" target="_blank" class="flex items-center gap-2 text-base md:text-lg font-bold hover:text-primary transition-colors">
-                    <span class="material-icons text-blue-500 text-2xl">facebook</span>
-                    <span>LE VIET ANH</span>
+                <div class="w-px h-6 bg-white/10 hidden sm:block"></div>
+                <a href="https://www.facebook.com/le.vietanh.939173" target="_blank" class="flex items-center gap-2 text-base md:text-lg font-bold hover:text-primary transition-all hover:scale-105">
+                    <span class="material-icons text-primary text-2xl">facebook</span>
+                    <span class="text-white">LE VIET ANH</span>
                 </a>
             </div>
         </div>
 
-        <!-- Decorative oscillating firecrackers (Bells) -->
-        <img src="{{ asset('images/phao-left.webp') }}" alt="" class="absolute -top-10 -left-6 w-24 md:-top-12 md:-left-16 md:w-56 opacity-100 animate-shake pointer-events-none z-20">
-        <img src="{{ asset('images/phao-right.webp') }}" alt="" class="absolute -top-10 -right-6 w-24 md:-top-12 md:-right-16 md:w-56 opacity-100 animate-shake pointer-events-none z-20">
+        <!-- Decorative background glow -->
+        <div class="absolute -top-20 -left-20 w-64 h-64 bg-primary/20 blur-[100px] rounded-full pointer-events-none"></div>
+        <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-indigo-500/20 blur-[100px] rounded-full pointer-events-none"></div>
     </section>
 
-    <!-- Lucky Tree Section -->
+    <!-- Mystery Box Section -->
     <section class="mb-8 md:mb-12">
         <a href="{{ route('lucky-wheel.index') }}" class="block">
-            <div class="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-4 md:p-10 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8 border border-orange-200 shadow-md hover:shadow-lg transition-all group/tree relative overflow-hidden">
-                <!-- Decorative fireworks -->
-                <img src="{{ asset('images/phao1.webp') }}" alt="" class="absolute -top-8 -left-8 w-36 opacity-80 -rotate-12 pointer-events-none">
-                <img src="{{ asset('images/phao4.webp') }}" alt="" class="absolute -bottom-6 -right-6 w-32 opacity-70 rotate-12 pointer-events-none">
-
+            <div class="bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-4 md:p-10 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8 border border-white/10 shadow-2xl hover:shadow-primary/20 transition-all group/tree relative overflow-hidden">
                 <div class="flex-1 text-center md:text-left relative z-10">
-                    <h2 class="text-xl md:text-4xl font-black mb-2 md:mb-4 flex items-center justify-center md:justify-start gap-2 md:gap-3 text-primary uppercase tracking-wider">
-                        🌳 CÂY HÁI LỘC
+                    <h2 class="text-xl md:text-4xl font-black mb-2 md:mb-4 flex items-center justify-center md:justify-start gap-2 md:gap-3 text-neon uppercase tracking-wider">
+                        <span class="material-icons text-2xl md:text-4xl">inventory_2</span> HÒM BÍ ẨN <span class="text-primary italic">LIMITED</span>
                     </h2>
-                    <p class="text-gray-600 text-sm md:text-lg mb-4 md:mb-8 max-w-md mx-auto md:mx-0">
-                        Hái lộc đầu xuân, nhận bao lì xì may mắn! Mọi đơn hàng từ <strong class="text-primary">300k</strong> đều được tặng lượt hái lộc miễn phí!
+                    <p class="text-slate-400 text-sm md:text-lg mb-4 md:mb-8 max-w-md mx-auto md:mx-0">
+                        Thử vận may ngay với <strong class="text-primary">Hòm Bí Ẩn</strong>! Nhận ngay Acc FCO siêu phẩm, BP trắng cực khủng chỉ từ một lượt mở!
                     </p>
-                    <div class="inline-flex items-center gap-2 md:gap-3 btn-tet py-2 px-6 md:py-3 md:px-8 rounded-full group-hover/tree:scale-105 transition-transform uppercase tracking-wide text-[10px] md:text-base">
-                        🧧 HÁI LỘC NGAY <span class="material-icons text-sm md:text-base">arrow_forward</span>
+                    <div class="inline-flex items-center gap-2 md:gap-3 btn-esport py-2 px-6 md:py-3 md:px-8 rounded-full group-hover/tree:scale-105 transition-transform">
+                        <span class="material-icons text-sm md:text-base">auto_awesome</span> MỞ HÒM NGAY <span class="material-icons text-sm md:text-base">arrow_forward</span>
                     </div>
                 </div>
 
                 <div class="relative w-full max-w-[180px] md:max-w-[280px] flex items-center justify-center">
-                    <img src="{{ asset('images/cay.webp') }}" alt="Cây Hái Lộc" class="w-full group-hover/tree:scale-110 transition-transform duration-500 drop-shadow-lg" style="filter: drop-shadow(0 4px 20px rgba(212,32,32,0.2));">
+                    <img src="{{ asset('images/esport/mystery_box.png') }}" alt="Mystery Box" class="w-full group-hover/tree:scale-110 transition-transform duration-500 drop-shadow-lg" style="filter: drop-shadow(0 0 20px rgba(56,189,248,0.3));">
                 </div>
             </div>
         </a>
@@ -74,7 +70,7 @@
     <section class="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-8 mb-8 md:mb-12">
         <div class="hidden lg:block lg:col-span-7">
             <!-- Banner Carousel -->
-            <div class="relative overflow-hidden rounded-2xl shadow-md border border-gray-200">
+            <div class="relative overflow-hidden rounded-2xl shadow-2xl border border-white/10">
                 <div class="swiper-container home-banner-swiper h-[50vh] max-h-[400px]">
                     <div class="swiper-wrapper">
                         @forelse($banners as $banner)
@@ -88,8 +84,8 @@
                         @endforelse
                     </div>
                     <div class="swiper-pagination !bottom-4"></div>
-                    <div class="swiper-button-next !text-white !w-10 !h-10 after:!text-xl !bg-primary/80 !rounded-full !transition-all hover:!bg-primary"></div>
-                    <div class="swiper-button-prev !text-white !w-10 !h-10 after:!text-xl !bg-primary/80 !rounded-full !transition-all hover:!bg-primary"></div>
+                    <div class="swiper-button-next text-white w-10 h-10 after:text-xl bg-slate-900/60! hover:bg-primary/80! rounded-full backdrop-blur-md! transition-all"></div>
+                    <div class="swiper-button-prev text-white w-10 h-10 after:text-xl bg-slate-900/60! hover:bg-primary/80! rounded-full backdrop-blur-md! transition-all"></div>
                 </div>
             </div>
         </div>
@@ -104,25 +100,26 @@
             <!-- Shop Owner Section -->
             <div class="mb-6">
                 <div class="flex items-center gap-2 mb-3">
-                    <div class="h-px flex-1 bg-red-100"></div>
-                    <span class="text-[10px] md:text-xs font-black text-red-500 uppercase tracking-widest bg-red-50 px-3 py-1 rounded-full border border-red-100">CHỦ SHOP</span>
-                    <div class="h-px flex-1 bg-red-100"></div>
+                    <div class="h-px flex-1 bg-white/10"></div>
+                    <span class="text-[10px] md:text-xs font-black text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full border border-primary/20">CHỦ SHOP</span>
+                    <div class="h-px flex-1 bg-white/10"></div>
                 </div>
-                <div class="bg-white rounded-xl border border-red-200 shadow-md p-4 flex items-center gap-3 md:gap-4 bg-gradient-to-br from-red-50 to-orange-50 relative overflow-hidden">
-                    <div class="shrink-0 w-10 md:w-12 h-10 md:h-12 rounded-full bg-red-500 flex items-center justify-center shadow-lg transform -rotate-12">
+                <div class="card-esport p-4 flex items-center gap-3 md:gap-4 relative overflow-hidden group">
+                    <div class="shrink-0 w-10 md:w-12 h-10 md:h-12 rounded-full bg-primary flex items-center 
+                    justify-center shadow-[0_0_15px_rgba(56,189,248,0.5)] transform transition-transform group-hover:rotate-12">
                         <span class="text-2xl md:text-3xl">👑</span>
                     </div>
                     <div class="flex-1 min-w-0">
-                        <p class="font-black text-sm md:text-lg text-red-600 truncate uppercase tracking-tight">{{ $shopOwner->name }}</p>
-                        <p class="text-[10px] md:text-xs text-gray-500 font-bold">{{ $shopOwner->total_orders }} đơn hàng thành công</p>
+                        <p class="font-black text-sm md:text-lg text-white truncate uppercase tracking-tight group-hover:text-primary transition-colors">{{ $shopOwner->name }}</p>
+                        <p class="text-[10px] md:text-xs text-slate-400 font-bold">{{ $shopOwner->total_orders }} đơn hàng thành công</p>
                     </div>
                     <div class="text-right">
-                        <p class="font-black text-lg md:text-2xl text-primary">
+                        <p class="font-black text-lg md:text-2xl text-primary drop-shadow-[0_0_8px_rgba(56,189,248,0.4)]">
                             {{ number_format($shopOwner->total_spent) }}<span class="text-sm">đ</span>
                         </p>
                     </div>
                     <!-- Decorative element -->
-                    <div class="absolute -top-2 -right-2 opacity-10">
+                    <div class="absolute -top-2 -right-2 opacity-5 text-primary">
                         <span class="material-icons text-6xl">verified_user</span>
                     </div>
                 </div>
@@ -137,27 +134,24 @@
     <section class="mb-8 md:mb-12">
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             @forelse($categories as $category)
-            <a href="{{ route('categories.show', $category->slug) }}" class="group bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-lg p-3 md:p-4 flex flex-col items-center text-center transition-all hover:scale-[1.03] relative overflow-hidden">
-                <!-- Flower decorations -->
-                <img src="{{ asset('images/hoa1.webp') }}" alt="" class="absolute -top-6 -left-6 w-24 md:w-28 opacity-90 -rotate-12 pointer-events-none z-10">
-                <img src="{{ asset('images/hoa2.webp') }}" alt="" class="absolute -bottom-6 -right-6 w-24 md:w-28 opacity-90 rotate-12 pointer-events-none z-10">
-
-                <div class="w-full h-32 md:h-48 mb-3 md:mb-4 overflow-hidden rounded-lg">
+            <a href="{{ route('categories.show', $category->slug) }}" class="group card-esport p-3 md:p-4 flex flex-col items-center text-center transition-all hover:scale-[1.03] hover:border-primary/50">
+                <div class="w-full h-32 md:h-48 mb-3 md:mb-4 overflow-hidden rounded-lg relative">
                     <img alt="{{ $category->title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="{{ url('storage/'.$category->image) ?? 'https://via.placeholder.com/96' }}" loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
                 </div>
-                <h3 class="font-black text-sm md:text-lg mb-1 text-gray-800 group-hover:text-primary transition-colors uppercase tracking-wide relative z-20">{{ $category->title }}</h3>
-                <p class="text-red-700 text-[10px] md:text-sm line-clamp-1 md:line-clamp-none relative z-20">{!! strip_tags($category->description) !!}</p>
+                <h3 class="font-black text-sm md:text-lg mb-1 text-white group-hover:text-primary transition-colors uppercase tracking-wide">{{ $category->title }}</h3>
+                <p class="text-slate-400 text-[10px] md:text-sm line-clamp-1 md:line-clamp-none">{!! strip_tags($category->description) !!}</p>
             </a>
             @empty
-            <div class="col-span-4 text-center text-gray-400 p-12 bg-white rounded-xl border border-gray-200">Chưa có danh mục nào</div>
+            <div class="col-span-4 text-center text-slate-500 p-12 glass rounded-xl border border-white/5">Chưa có danh mục nào</div>
             @endforelse
         </div>
     </section>
 
     <!-- Flash Sale Section -->
     <div class="flex items-center justify-between mb-6">
-        <h2 class="text-2xl font-black text-white uppercase flex items-center gap-2">
-            <span class="material-icons text-white">local_fire_department</span>
+        <h2 class="text-2xl font-black text-slate-700 uppercase flex items-center gap-2">
+            <span class="material-icons text-slate-700">local_fire_department</span>
             FLASH SALE SIÊU HOT
         </h2>
         <a href="{{ route('products.index', ['sort' => 'discount']) }}" class="text-white hover:text-orange-500 font-bold text-sm flex items-center gap-1 transition-colors">
@@ -168,45 +162,41 @@
     <!-- Product Grid -->
     <section class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-16">
         @forelse($flashSaleProducts as $product)
-        <div class="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg group transition-all hover:scale-[1.02] relative">
-            <!-- Flower decorations -->
-            <img src="{{ asset('images/hoa3.webp') }}" alt="" class="absolute -top-6 -left-6 w-22 md:w-28 opacity-90 -rotate-12 pointer-events-none z-10 animate-shake">
-            <img src="{{ asset('images/hoa5.png') }}" alt="" class="absolute -bottom-6 -right-6 w-22 md:w-24 opacity-90 rotate-12 pointer-events-none z-10 animate-shake">
-
+        <div class="card-esport group transition-all hover:scale-[1.02] relative">
             <div class="relative overflow-hidden aspect-video">
                 <img alt="{{ $product->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ url('storage/'.$product->images[0]) ?? 'https://via.placeholder.com/400x225' }}" loading="lazy">
                 @if($product->getDiscountPercent())
-                <div class="absolute top-2 right-2 bg-red-500 text-white text-xs md:text-sm font-black px-2 py-1 rounded-full">
+                <div class="absolute top-2 right-2 bg-pink-500 text-white text-xs md:text-sm font-black px-2 py-1 rounded-full shadow-[0_0_10px_rgba(244,114,182,0.5)]">
                     -{{ number_format($product->getDiscountPercent()) }}%
                 </div>
                 @endif
-                <div class="absolute bottom-2 left-2 bg-white/90 px-2 py-0.5 rounded text-[10px] text-gray-600 font-bold">
+                <div class="absolute bottom-2 left-2 bg-slate-900/80 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] text-slate-300 font-bold border border-white/10">
                     ID: {{ $product->id }}
                 </div>
             </div>
             <div class="p-4">
-                <h4 class="font-bold text-sm mb-3 line-clamp-2 h-10 text-gray-800 group-hover:text-primary transition-colors">{{ $product->title }}</h4>
+                <h4 class="font-bold text-sm mb-3 line-clamp-2 h-10 text-slate-100 group-hover:text-primary transition-colors tracking-tight">{{ $product->title }}</h4>
                 <div class="flex flex-col mb-4">
                     @if($product->sell_price)
-                    <span class="text-xs text-gray-400 line-through">{{ number_format($product->sell_price) }} đ</span>
+                    <span class="text-xs text-slate-500 line-through">{{ number_format($product->sell_price) }} đ</span>
                     @endif
-                    <span class="text-xl font-black text-primary">{{ number_format($product->getFinalPrice()) }} <span class="text-sm">đ</span></span>
+                    <span class="text-xl font-black text-primary drop-shadow-[0_0_8px_rgba(56,189,248,0.3)]">{{ number_format($product->getFinalPrice()) }} <span class="text-sm">đ</span></span>
                 </div>
-                <a href="{{ route('products.show', $product->slug) }}" class="block w-full btn-tet py-2 rounded-lg text-center text-sm uppercase tracking-wide">
-                    <span class="material-icons text-sm align-middle mr-1">shopping_cart</span> MUA NGAY
+                <a href="{{ route('products.show', $product->slug) }}" class="block w-full btn-esport justify-center py-2 rounded-lg text-center text-[10px] md:text-sm transition-all group-hover:gap-3">
+                    <span class="material-icons text-sm">shopping_cart</span> MUA NGAY
                 </a>
             </div>
         </div>
         @empty
-        <div class="col-span-4 bg-white rounded-xl p-12 text-center border border-gray-200">
-            <p class="text-gray-400">Chưa có sản phẩm flash sale</p>
+        <div class="col-span-4 glass rounded-xl p-12 text-center border border-white/5">
+            <p class="text-slate-500">Chưa có sản phẩm flash sale</p>
         </div>
         @endforelse
     </section>
 
     <!-- News Section -->
     <div class="flex items-center justify-between mb-6">
-        <h2 class="text-2xl md:text-3xl font-black text-white uppercase flex items-center gap-3 tracking-wider">
+        <h2 class="text-2xl md:text-3xl font-black text-slate-700 uppercase flex items-center gap-3 tracking-wider">
             <span class="material-icons text-3xl md:text-4xl">article</span>
             TIN TỨC MỚI NHẤT
         </h2>
@@ -217,18 +207,16 @@
 
     <section class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         @forelse($latestNews as $news)
-        <a href="{{ route('news.show', $news->slug) }}" class="group bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition-all hover:scale-[1.02] relative">
-            <!-- Decorative lixi -->
-            <img src="{{ asset('images/lixi1.png') }}" alt="" class="absolute -bottom-4 -right-4 w-24 opacity-60 rotate-12 pointer-events-none z-10 transition-transform group-hover:scale-110">
-
+        <a href="{{ route('news.show', $news->slug) }}" class="group card-esport overflow-hidden transition-all hover:scale-[1.02]">
             <div class="relative overflow-hidden aspect-video">
                 <img alt="{{ $news->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ url('storage/'.$news->thumbnail) ?? 'https://via.placeholder.com/400x225' }}" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60"></div>
             </div>
             <div class="p-4 relative z-20">
-                <h4 class="font-bold text-sm mb-2 line-clamp-2 h-10 text-gray-800 group-hover:text-primary transition-colors">{{ $news->title }}</h4>
-                <p class="text-gray-400 text-xs mb-4 line-clamp-2">{!! Str::limit(strip_tags($news->content), 100) !!}</p>
+                <h4 class="font-bold text-sm mb-2 line-clamp-2 h-10 text-slate-100 group-hover:text-primary transition-colors tracking-tight">{{ $news->title }}</h4>
+                <p class="text-slate-400 text-xs mb-4 line-clamp-2">{!! Str::limit(strip_tags($news->content), 100) !!}</p>
                 <div class="flex items-center justify-between text-xs">
-                    <span class="text-gray-400">{{ $news->created_at->format('d/m/Y') }}</span>
+                    <span class="text-slate-500">{{ $news->created_at->format('d/m/Y') }}</span>
                     <span class="text-primary font-bold flex items-center gap-1 group-hover:gap-2 transition-all">
                         Đọc thêm <span class="material-icons text-sm">arrow_forward</span>
                     </span>
@@ -236,8 +224,8 @@
             </div>
         </a>
         @empty
-        <div class="col-span-3 bg-white rounded-xl border border-gray-200 p-12 text-center">
-            <p class="text-gray-400">Chưa có tin tức nào</p>
+        <div class="col-span-3 glass rounded-xl border border-white/5 p-12 text-center">
+            <p class="text-white">Chưa có tin tức nào</p>
         </div>
         @endforelse
     </section>

@@ -1,12 +1,15 @@
-<div class="bg-white rounded-xl border border-gray-200 shadow-md overflow-hidden">
-    <div class="p-4 border-b border-gray-100">
-        <h2 class="text-primary text-lg font-black uppercase tracking-wide">Cập nhật thông tin</h2>
+<div class="glass rounded-2xl border border-white/10 overflow-hidden shadow-2xl">
+    <div class="p-6 border-b border-white/5 bg-white/5">
+        <h2 class="text-white text-lg font-black uppercase tracking-tighter flex items-center gap-3">
+            <span class="w-1 h-6 bg-primary rounded-full"></span>
+            CẬP NHẬT THÔNG TIN
+        </h2>
     </div>
 
     @if (session()->has('success'))
-    <div class="px-6 pt-6">
-        <div class="p-4 bg-green-50 border border-green-200 text-green-700 rounded-lg flex items-center gap-2">
-            <span class="material-icons">check_circle</span>
+    <div class="px-6 pt-6 text-[10px] md:text-xs">
+        <div class="p-4 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-xl flex items-center gap-3 font-black uppercase tracking-widest">
+            <span class="material-icons text-sm">check_circle</span>
             {{ session('success') }}
         </div>
     </div>
@@ -14,34 +17,34 @@
 
     <!-- Affiliate Link Section -->
     <div class="px-6 pb-6 pt-6">
-        <div class="border border-gray-200 rounded-xl p-6">
-            <h3 class="text-primary font-black mb-3 flex items-center gap-2 uppercase tracking-wide text-sm">
+        <div class="bg-white/5 rounded-2xl p-6 border border-white/5">
+            <h3 class="text-primary font-black mb-3 flex items-center gap-2 uppercase tracking-widest text-xs">
                 <span class="material-icons text-base">share</span>
-                Link giới thiệu của bạn
+                LINK GIỚI THIỆU CỦA BẠN
             </h3>
-            <p class="text-gray-500 text-xs mb-4">Chia sẻ link này để nhận 5% hoa hồng từ mỗi đơn hàng của người bạn giới thiệu</p>
+            <p class="text-slate-500 text-[10px] mb-6 font-bold uppercase tracking-widest">Chia sẻ link này để nhận 5% hoa hồng từ mỗi đơn hàng của người bạn giới thiệu</p>
 
             <div class="flex gap-2">
-                <div class="flex-1 min-w-0 bg-white border border-gray-200 rounded-lg px-4 py-3 font-mono text-xs text-gray-700 break-all">
+                <div class="flex-1 min-w-0 bg-slate-900/50 border border-white/5 rounded-xl px-4 py-3 font-mono text-[10px] text-slate-300 break-all select-all">
                     {{ $this->affiliateUrl }}
                 </div>
                 <button
                     type="button"
                     onclick="navigator.clipboard.writeText('{{ $this->affiliateUrl }}'); alert('Đã copy link giới thiệu!');"
-                    class="shrink-0 bg-primary hover:bg-primary-dark text-white px-4 py-3 rounded-lg transition-all active:scale-95 flex items-center gap-2 font-bold uppercase text-xs whitespace-nowrap">
+                    class="shrink-0 btn-esport px-6 py-3 rounded-xl transition-all active:scale-95 flex items-center gap-2 font-black uppercase text-[10px] whitespace-nowrap shadow-primary/20">
                     <span class="material-icons text-sm">content_copy</span>
-                    Copy
+                    COPY
                 </button>
             </div>
 
             <div class="mt-4 grid grid-cols-2 gap-4">
-                <div class="bg-white border border-gray-200 rounded-lg p-3">
-                    <p class="text-gray-500 text-xs uppercase mb-1">Người đã giới thiệu</p>
-                    <p class="text-gray-800 font-black text-xl">{{ auth()->user()->referrals()->count() }}</p>
+                <div class="bg-slate-900/40 border border-white/5 rounded-xl p-4">
+                    <p class="text-slate-500 text-[9px] uppercase font-black tracking-widest mb-1">NGƯỜI ĐÃ GIỚI THIỆU</p>
+                    <p class="text-white font-black text-2xl tracking-tighter">{{ auth()->user()->referrals()->count() }}</p>
                 </div>
-                <div class="bg-white border border-gray-200 rounded-lg p-3">
-                    <p class="text-gray-500 text-xs uppercase mb-1">Tổng hoa hồng</p>
-                    <p class="text-primary font-black text-xl">
+                <div class="bg-slate-900/40 border border-white/5 rounded-xl p-4">
+                    <p class="text-slate-500 text-[9px] uppercase font-black tracking-widest mb-1">TỔNG HOA HỒNG</p>
+                    <p class="text-primary font-black text-2xl tracking-tighter drop-shadow-[0_0_8px_rgba(56,189,248,0.3)]">
                         {{ number_format(auth()->user()->commissionsEarned()->where('status', 'paid')->sum('commission_amount')) }}đ
                     </p>
                 </div>
@@ -50,69 +53,69 @@
     </div>
 
     <form wire:submit.prevent="updateProfile" class="p-6 space-y-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="space-y-2">
-                <label class="text-gray-600 text-sm font-bold uppercase tracking-wide">Họ và tên</label>
-                <div class="relative">
-                    <span class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-[20px]">badge</span>
-                    <input wire:model="name" type="text" readonly class="w-full pl-10 pr-4 py-2.5 rounded-lg bg-gray-50 border border-gray-200 text-gray-500 font-medium cursor-not-allowed">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-3">
+                <label class="text-slate-500 text-[10px] font-black uppercase tracking-widest pl-1">Họ và tên</label>
+                <div class="relative group">
+                    <span class="material-icons absolute left-4 top-1/2 -translate-y-1/2 text-slate-600 text-[20px] transition-colors group-focus-within:text-primary">badge</span>
+                    <input wire:model="name" type="text" readonly class="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-slate-900/50 border border-white/5 text-slate-500 font-bold cursor-not-allowed uppercase tracking-wide text-sm">
                 </div>
-                @error('name') <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span> @enderror
+                @error('name') <span class="text-pink-500 text-[10px] mt-1 block font-black uppercase tracking-widest">{{ $message }}</span> @enderror
             </div>
-            <div class="space-y-2">
-                <label class="text-gray-600 text-sm font-bold uppercase tracking-wide">Số điện thoại</label>
-                <div class="relative">
-                    <span class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-[20px]">call</span>
-                    <input wire:model="phone" type="text" class="w-full pl-10 pr-4 py-2.5 rounded-lg bg-white border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-medium text-gray-800 placeholder:text-gray-400">
+            <div class="space-y-3">
+                <label class="text-slate-500 text-[10px] font-black uppercase tracking-widest pl-1">Số điện thoại</label>
+                <div class="relative group">
+                    <span class="material-icons absolute left-4 top-1/2 -translate-y-1/2 text-slate-600 text-[20px] transition-colors group-focus-within:text-primary">call</span>
+                    <input wire:model="phone" type="text" class="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-white/5 border border-white/5 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-hidden transition-all font-black text-slate-200 placeholder:text-slate-700 text-sm">
                 </div>
-                @error('phone') <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span> @enderror
+                @error('phone') <span class="text-pink-500 text-[10px] mt-1 block font-black uppercase tracking-widest">{{ $message }}</span> @enderror
             </div>
-            <div class="space-y-2">
-                <label class="text-gray-600 text-sm font-bold uppercase tracking-wide">Email</label>
-                <div class="relative">
-                    <span class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-[20px]">mail</span>
-                    <input wire:model="email" type="email" class="w-full pl-10 pr-4 py-2.5 rounded-lg bg-white border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-medium text-gray-800 placeholder:text-gray-400">
+            <div class="space-y-3">
+                <label class="text-slate-500 text-[10px] font-black uppercase tracking-widest pl-1">Email</label>
+                <div class="relative group">
+                    <span class="material-icons absolute left-4 top-1/2 -translate-y-1/2 text-slate-600 text-[20px] transition-colors group-focus-within:text-primary">mail</span>
+                    <input wire:model="email" type="email" class="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-white/5 border border-white/5 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-hidden transition-all font-black text-slate-200 placeholder:text-slate-700 text-sm">
                 </div>
-                @error('email') <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span> @enderror
+                @error('email') <span class="text-pink-500 text-[10px] mt-1 block font-black uppercase tracking-widest">{{ $message }}</span> @enderror
             </div>
         </div>
 
-        <div class="border-t border-gray-100 pt-6">
-            <h3 class="text-gray-800 font-black mb-4 flex items-center gap-2">
-                <span class="material-icons text-primary">lock</span>
-                Đổi mật khẩu
+        <div class="border-t border-white/5 pt-8">
+            <h3 class="text-white font-black mb-6 flex items-center gap-3 uppercase tracking-tighter">
+                <span class="material-icons text-primary drop-shadow-[0_0_8px_rgba(56,189,248,0.4)]">lock</span>
+                ĐỔI MẬT KHẨU
             </h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="space-y-2" x-data="{ show: false }">
-                    <label class="text-gray-600 text-sm font-bold uppercase tracking-wide">Mật khẩu hiện tại</label>
-                    <div class="relative w-full">
+                <div class="space-y-3" x-data="{ show: false }">
+                    <label class="text-slate-500 text-[10px] font-black uppercase tracking-widest pl-1">Mật khẩu hiện tại</label>
+                    <div class="relative w-full group">
                         <input wire:model="current_password" :type="show ? 'text' : 'password'"
-                            class="w-full pl-4 pr-10 py-2.5 rounded-lg bg-white border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-gray-800">
-                        <button type="button" @click="show = !show" class="absolute inset-y-0 right-0 px-3 flex items-center text-gray-400 hover:text-primary transition-colors z-10">
+                            class="w-full pl-4 pr-12 py-3.5 rounded-2xl bg-white/5 border border-white/5 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-hidden transition-all text-slate-200 font-black text-sm">
+                        <button type="button" @click="show = !show" class="absolute inset-y-0 right-0 px-4 flex items-center text-slate-600 hover:text-primary transition-colors z-10">
                             <span class="material-icons text-[20px]" x-text="show ? 'visibility_off' : 'visibility'"></span>
                         </button>
                     </div>
-                    @error('current_password') <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span> @enderror
+                    @error('current_password') <span class="text-pink-500 text-[10px] mt-1 block font-black uppercase tracking-widest">{{ $message }}</span> @enderror
                 </div>
 
-                <div class="space-y-2" x-data="{ show: false }">
-                    <label class="text-gray-600 text-sm font-bold uppercase tracking-wide">Mật khẩu mới</label>
-                    <div class="relative w-full">
+                <div class="space-y-3" x-data="{ show: false }">
+                    <label class="text-slate-500 text-[10px] font-black uppercase tracking-widest pl-1">Mật khẩu mới</label>
+                    <div class="relative w-full group">
                         <input wire:model="new_password" :type="show ? 'text' : 'password'"
-                            class="w-full pl-4 pr-10 py-2.5 rounded-lg bg-white border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-gray-800">
-                        <button type="button" @click="show = !show" class="absolute inset-y-0 right-0 px-3 flex items-center text-gray-400 hover:text-primary transition-colors z-10">
+                            class="w-full pl-4 pr-12 py-3.5 rounded-2xl bg-white/5 border border-white/5 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-hidden transition-all text-slate-200 font-black text-sm">
+                        <button type="button" @click="show = !show" class="absolute inset-y-0 right-0 px-4 flex items-center text-slate-600 hover:text-primary transition-colors z-10">
                             <span class="material-icons text-[20px]" x-text="show ? 'visibility_off' : 'visibility'"></span>
                         </button>
                     </div>
-                    @error('new_password') <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span> @enderror
+                    @error('new_password') <span class="text-pink-500 text-[10px] mt-1 block font-black uppercase tracking-widest">{{ $message }}</span> @enderror
                 </div>
 
-                <div class="space-y-2" x-data="{ show: false }">
-                    <label class="text-gray-600 text-sm font-bold uppercase tracking-wide">Xác nhận mật khẩu mới</label>
-                    <div class="relative w-full">
+                <div class="space-y-3" x-data="{ show: false }">
+                    <label class="text-slate-500 text-[10px] font-black uppercase tracking-widest pl-1">Xác nhận mật khẩu mới</label>
+                    <div class="relative w-full group">
                         <input wire:model="new_password_confirmation" :type="show ? 'text' : 'password'"
-                            class="w-full pl-4 pr-10 py-2.5 rounded-lg bg-white border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-gray-800">
-                        <button type="button" @click="show = !show" class="absolute inset-y-0 right-0 px-3 flex items-center text-gray-400 hover:text-primary transition-colors z-10">
+                            class="w-full pl-4 pr-12 py-3.5 rounded-2xl bg-white/5 border border-white/5 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-hidden transition-all text-slate-200 font-black text-sm">
+                        <button type="button" @click="show = !show" class="absolute inset-y-0 right-0 px-4 flex items-center text-slate-600 hover:text-primary transition-colors z-10">
                             <span class="material-icons text-[20px]" x-text="show ? 'visibility_off' : 'visibility'"></span>
                         </button>
                     </div>
@@ -121,72 +124,69 @@
         </div>
 
         <!-- Change Password2 Section -->
-        <div class="border-t border-gray-100 pt-6">
-            <div class="flex items-center justify-between mb-4">
-                <h3 class="text-gray-800 font-black flex items-center gap-2">
-                    <span class="material-icons text-primary">enhanced_encryption</span>
-                    Đổi mật khẩu cấp 2
+        <div class="border-t border-white/5 pt-8">
+            <div class="flex items-center justify-between mb-8">
+                <h3 class="text-white font-black flex items-center gap-3 uppercase tracking-tighter">
+                    <span class="material-icons text-primary drop-shadow-[0_0_8px_rgba(56,189,248,0.4)]">enhanced_encryption</span>
+                    ĐỔI MẬT KHẨU CẤP 2
                 </h3>
                 <button type="button" wire:click="togglePassword2Form"
-                    class="text-primary hover:text-primary-dark text-sm font-bold uppercase tracking-wide flex items-center gap-1 transition-colors">
+                    class="text-primary hover:text-white text-[10px] font-black uppercase tracking-widest flex items-center gap-2 transition-all">
                     <span class="material-icons text-sm">{{ $showPassword2Form ? 'expand_less' : 'expand_more' }}</span>
-                    {{ $showPassword2Form ? 'Ẩn' : 'Mở' }}
+                    {{ $showPassword2Form ? 'ẨN' : 'MỞ' }}
                 </button>
             </div>
 
             @if($showPassword2Form)
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white/5 p-6 rounded-2xl border border-white/5">
                 @if(!empty(auth()->user()->password2) && auth()->user()->hasSecurityQuestion())
-                <div class="space-y-2 md:col-span-2">
-                    <label class="text-gray-600 text-sm font-bold uppercase tracking-wide">
-                        Câu hỏi bảo mật: <span class="text-primary">{{ $this->securityQuestionText }}</span>
+                <div class="space-y-3 md:col-span-2">
+                    <label class="text-slate-500 text-[10px] font-black uppercase tracking-widest pl-1">
+                        CÂU HỎI BẢO MẬT: <span class="text-primary">{{ $this->securityQuestionText }}</span>
                     </label>
-                    <div class="relative">
-                        <span class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-[20px]">quiz</span>
+                    <div class="relative group">
+                        <span class="material-icons absolute left-4 top-1/2 -translate-y-1/2 text-slate-600 text-[20px] transition-colors group-focus-within:text-primary">quiz</span>
                         <input wire:model="security_answer" type="text"
-                            class="w-full pl-10 pr-4 py-2.5 rounded-lg bg-white border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-medium text-gray-800 placeholder:text-gray-400"
-                            placeholder="Nhập câu trả lời bảo mật...">
+                            class="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-slate-900/50 border border-white/5 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-hidden transition-all font-black text-slate-200 placeholder:text-slate-700 text-sm"
+                            placeholder="NHẬP CÂU TRẢ LỜI BẢO MẬT...">
                     </div>
-                    @error('security_answer') <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span> @enderror
+                    @error('security_answer') <span class="text-pink-500 text-[10px] mt-1 block font-black uppercase tracking-widest">{{ $message }}</span> @enderror
                 </div>
                 @endif
 
-                <div class="space-y-2" x-data="{ show: false }">
-                    <label class="text-gray-600 text-sm font-bold uppercase tracking-wide">Mật khẩu cấp 2 mới (6 số)</label>
-                    <div class="relative w-full">
+                <div class="space-y-3" x-data="{ show: false }">
+                    <label class="text-slate-500 text-[10px] font-black uppercase tracking-widest pl-1">MẬT KHẨU CẤP 2 MỚI (6 SỐ)</label>
+                    <div class="relative w-full group">
                         <input wire:model="new_password2" :type="show ? 'text' : 'password'"
-                            class="w-full pl-4 pr-10 py-2.5 rounded-lg bg-white border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-gray-800"
+                            class="w-full pl-4 pr-12 py-3.5 rounded-2xl bg-slate-900/50 border border-white/5 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-hidden transition-all text-slate-200 font-black text-sm"
                             placeholder="******" maxlength="6" inputmode="numeric">
-                        <button type="button" @click="show = !show" class="absolute inset-y-0 right-0 px-3 flex items-center text-gray-400 hover:text-primary transition-colors z-10">
+                        <button type="button" @click="show = !show" class="absolute inset-y-0 right-0 px-4 flex items-center text-slate-600 hover:text-primary transition-colors z-10">
                             <span class="material-icons text-[20px]" x-text="show ? 'visibility_off' : 'visibility'"></span>
                         </button>
                     </div>
-                    @error('new_password2') <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span> @enderror
+                    @error('new_password2') <span class="text-pink-500 text-[10px] mt-1 block font-black uppercase tracking-widest">{{ $message }}</span> @enderror
                 </div>
 
-                <div class="space-y-2" x-data="{ show: false }">
-                    <label class="text-gray-600 text-sm font-bold uppercase tracking-wide">Xác nhận mật khẩu cấp 2 mới</label>
-                    <div class="relative w-full">
+                <div class="space-y-3" x-data="{ show: false }">
+                    <label class="text-slate-500 text-[10px] font-black uppercase tracking-widest pl-1">XÁC NHẬN MẬT KHẨU CẤP 2 MỚI</label>
+                    <div class="relative w-full group">
                         <input wire:model="new_password2_confirmation" :type="show ? 'text' : 'password'"
-                            class="w-full pl-4 pr-10 py-2.5 rounded-lg bg-white border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-gray-800"
+                            class="w-full pl-4 pr-12 py-3.5 rounded-2xl bg-slate-900/50 border border-white/5 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-hidden transition-all text-slate-200 font-black text-sm"
                             placeholder="******" maxlength="6" inputmode="numeric">
-                        <button type="button" @click="show = !show" class="absolute inset-y-0 right-0 px-3 flex items-center text-gray-400 hover:text-primary transition-colors z-10">
+                        <button type="button" @click="show = !show" class="absolute inset-y-0 right-0 px-4 flex items-center text-slate-600 hover:text-primary transition-colors z-10">
                             <span class="material-icons text-[20px]" x-text="show ? 'visibility_off' : 'visibility'"></span>
                         </button>
                     </div>
                 </div>
 
-                <div class="md:col-span-2 flex justify-end">
+                <div class="md:col-span-2 flex justify-end pt-4">
                     <button type="button" wire:click="changePassword2"
-                        class="btn-tet font-black py-2.5 px-6 rounded-lg flex items-center gap-2 uppercase tracking-wide text-sm">
+                        class="btn-esport font-black py-4 px-10 rounded-2xl flex items-center gap-3 uppercase tracking-widest text-xs border-none shadow-primary/20 active:scale-95 transition-all">
                         <span class="material-icons text-[20px]">lock_reset</span>
-                        <span wire:loading.remove wire:target="changePassword2">Đổi mật khẩu cấp 2</span>
+                        <span wire:loading.remove wire:target="changePassword2">ĐỔI MẬT KHẨU CẤP 2</span>
                         <span wire:loading wire:target="changePassword2" class="flex items-center gap-2">
-                            <svg class="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                            </svg>
-                            Đang xử lý...
+                            <span class="material-icons animate-spin text-sm">refresh</span>
+                            ĐANG XỬ LÝ...
                         </span>
                     </button>
                 </div>
@@ -194,16 +194,13 @@
             @endif
         </div>
 
-        <div class="flex justify-end">
-            <button type="submit" class="btn-tet font-black py-2.5 px-6 rounded-lg flex items-center gap-2 uppercase tracking-wide">
-                <span class="material-icons text-[20px]">save</span>
-                <span wire:loading.remove>Lưu thay đổi</span>
+        <div class="flex justify-end pt-8">
+            <button type="submit" class="btn-esport font-black py-5 px-12 rounded-2xl flex items-center gap-3 uppercase tracking-widest text-sm border-none shadow-primary/30 active:scale-95 transition-all">
+                <span class="material-icons text-[22px]">save</span>
+                <span wire:loading.remove>LƯU THAY ĐỔI</span>
                 <span wire:loading class="flex items-center gap-2">
-                    <svg class="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Đang lưu...
+                    <span class="material-icons animate-spin text-sm">refresh</span>
+                    ĐANG LƯU...
                 </span>
             </button>
         </div>

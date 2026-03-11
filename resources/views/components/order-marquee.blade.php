@@ -6,14 +6,14 @@ $recentOrdersResult = $viewDataService->getRecentOrdersForMarquee(20);
 $recentOrders = $recentOrdersResult->isSuccess() ? $recentOrdersResult->getData() : collect();
 @endphp
 
-<div class="border-y border-gray-200 py-3 overflow-hidden bg-white">
+<div class="border-y border-white/5 py-3 overflow-hidden glass">
     <div class="container mx-auto px-4 flex items-center gap-4">
         <!-- Icon & Label -->
         <div class="flex items-center gap-2 shrink-0">
             <div class="bg-primary/10 border border-primary/20 rounded-lg p-2">
                 <span class="material-icons text-primary text-xl">shopping_cart</span>
             </div>
-            <span class="text-primary font-black text-sm uppercase tracking-wider">Mua gần đây:</span>
+            <span class="text-white font-black text-xs md:text-sm uppercase tracking-[0.2em] drop-shadow-[0_0_8px_rgba(56,189,248,0.3)]">Mua gần đây:</span>
         </div>
 
         <!-- Marquee Content -->
@@ -21,34 +21,34 @@ $recentOrders = $recentOrdersResult->isSuccess() ? $recentOrdersResult->getData(
             <div class="marquee-content inline-flex flex-nowrap gap-6 items-center whitespace-nowrap">
                 @if($recentOrders->count() > 0)
                 @foreach($recentOrders as $order)
-                <div class="flex items-center gap-3 shrink-0 bg-white border border-gray-200 rounded-lg px-4 py-2 shadow-sm">
+                <div class="flex items-center gap-3 shrink-0 glass border border-white/10 rounded-lg px-4 py-2 shadow-xl group hover:border-primary/50 transition-all">
                     <span class="material-icons text-primary text-sm">person</span>
-                    <span class="text-gray-800 font-semibold text-sm">
+                    <span class="text-slate-100 font-bold text-sm">
                         {{ substr($order->user->name ?? 'User', 0, 3) }}***
                     </span>
-                    <span class="text-gray-400">→</span>
-                    <span class="text-gray-600 text-sm">
+                    <span class="text-slate-600">→</span>
+                    <span class="text-slate-400 text-sm group-hover:text-white transition-colors">
                         {{ Str::limit($order->product->title ?? 'Sản phẩm', 30) }}
                     </span>
-                    <span class="text-primary text-xs font-bold">
-                        {{ number_format($order->final_amount, 0, ',', '.') }}đ
+                    <span class="text-primary text-xs font-black drop-shadow-[0_0_5px_rgba(56,189,248,0.3)]">
+                        +{{ number_format($order->final_amount, 0, ',', '.') }}đ
                     </span>
                 </div>
                 @endforeach
 
                 <!-- Duplicate for seamless loop -->
                 @foreach($recentOrders as $order)
-                <div class="flex items-center gap-3 shrink-0 bg-white border border-gray-200 rounded-lg px-4 py-2 shadow-sm">
+                <div class="flex items-center gap-3 shrink-0 glass border border-white/10 rounded-lg px-4 py-2 shadow-xl group hover:border-primary/50 transition-all">
                     <span class="material-icons text-primary text-sm">person</span>
-                    <span class="text-gray-800 font-semibold text-sm">
+                    <span class="text-slate-100 font-bold text-sm">
                         {{ substr($order->user->name ?? 'User', 0, 3) }}***
                     </span>
-                    <span class="text-gray-400">→</span>
-                    <span class="text-gray-600 text-sm">
+                    <span class="text-slate-600">→</span>
+                    <span class="text-slate-400 text-sm group-hover:text-white transition-colors">
                         {{ Str::limit($order->product->title ?? 'Sản phẩm', 30) }}
                     </span>
-                    <span class="text-primary text-xs font-bold">
-                        {{ number_format($order->final_amount, 0, ',', '.') }}đ
+                    <span class="text-primary text-xs font-black drop-shadow-[0_0_5px_rgba(56,189,248,0.3)]">
+                        +{{ number_format($order->final_amount, 0, ',', '.') }}đ
                     </span>
                 </div>
                 @endforeach

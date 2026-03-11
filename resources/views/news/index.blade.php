@@ -10,45 +10,42 @@
         ['name' => 'Tin tức', 'url' => route('news.index')]
     ]" />
 
-    <div class="mb-10 text-center relative">
-        <!-- Floating decorations -->
-        <img src="{{ asset('images/hoa2.webp') }}" class="absolute -top-10 left-10 w-32 opacity-70 animate-shake hidden md:block">
-        <img src="{{ asset('images/phao3.webp') }}" class="absolute -top-10 right-10 w-24 opacity-80 animate-swing hidden md:block">
+    <div class="mb-12 text-center relative">
+        <!-- Decorative background glow -->
+        <div class="absolute -top-20 -left-20 w-64 h-64 bg-primary/10 blur-[100px] rounded-full pointer-events-none"></div>
+        <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-indigo-500/10 blur-[100px] rounded-full pointer-events-none"></div>
 
-        <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight text-primary mb-3 flex justify-center items-center gap-3 relative z-10">
-            <span class="material-icons text-4xl md:text-5xl text-white">newspaper</span>
+        <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight text-white mb-3 flex justify-center items-center gap-4 relative z-10">
+            <span class="material-icons text-4xl md:text-5xl text-primary drop-shadow-[0_0_10px_rgba(56,189,248,0.5)]">newspaper</span>
             TIN TỨC & SỰ KIỆN
         </h1>
-        <p class="text-gray-200 font-bold uppercase tracking-widest text-sm">Cập nhật tin tức hot nhất về FC Online</p>
-        <div class="h-1.5 w-48 bg-linear-to-r from-transparent via-white to-transparent mx-auto rounded-full mt-6"></div>
+        <p class="text-slate-400 font-black uppercase tracking-[0.3em] text-xs md:text-sm">Cập nhật tin tức hot nhất về FC Online</p>
+        <div class="h-1 w-32 bg-linear-to-r from-transparent via-primary to-transparent mx-auto rounded-full mt-8"></div>
     </div>
 
     @if($news->count() > 0)
     <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8">
         @foreach($news as $item)
-        <article class="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg group transition-all hover:scale-[1.02] relative">
-            <!-- Decorative lixi -->
-            <img src="{{ asset('images/lixi1.png') }}" alt="" class="absolute -bottom-4 -right-4 w-24 opacity-60 rotate-12 pointer-events-none z-10 transition-transform group-hover:scale-110 animate-swing">
-
+        <article class="card-esport group transition-all hover:scale-[1.02] relative">
             <div class="relative overflow-hidden aspect-video">
                 <img alt="{{ $item->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ url('storage/'.$item->thumbnail) ?? 'https://via.placeholder.com/400x225' }}" loading="lazy">
-                <div class="absolute bottom-2 left-2 bg-white/90 px-3 py-1 rounded text-xs text-gray-600 font-bold flex items-center gap-2">
-                    <span class="material-icons text-sm">schedule</span>
+                <div class="absolute bottom-2 left-2 bg-slate-900/80 backdrop-blur-sm px-3 py-1 rounded text-[10px] text-slate-300 font-bold flex items-center gap-2 border border-white/10 uppercase tracking-widest">
+                    <span class="material-icons text-xs text-primary">schedule</span>
                     {{ $item->created_at->diffForHumans() }}
                 </div>
             </div>
             <div class="p-5 relative z-20">
-                <h3 class="font-bold text-lg mb-3 line-clamp-2 h-14 text-gray-800 group-hover:text-primary transition-colors">{{ $item->title }}</h3>
+                <h3 class="font-bold text-lg mb-3 line-clamp-2 h-14 text-slate-100 group-hover:text-primary transition-colors tracking-tight leading-tight">{{ $item->title }}</h3>
                 @if($item->description)
-                <p class="text-gray-400 text-sm line-clamp-3 mb-4">{!! $item->description !!}</p>
+                <p class="text-slate-500 text-sm line-clamp-3 mb-4 leading-relaxed font-bold">{!! $item->description !!}</p>
                 @endif
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-2 text-xs text-gray-400">
-                        <span class="material-icons text-sm text-primary">visibility</span>
+                <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                    <div class="flex items-center gap-2 text-[10px] text-slate-500 font-bold uppercase tracking-widest">
+                        <span class="material-icons text-xs text-primary">visibility</span>
                         {{ number_format($item->view_count) }} lượt xem
                     </div>
-                    <a href="{{ route('news.show', $item->slug) }}" class="text-primary hover:text-orange-500 font-bold text-sm flex items-center gap-1 transition-colors group/link">
-                        Đọc thêm <span class="material-icons text-sm group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
+                    <a href="{{ route('news.show', $item->slug) }}" class="text-primary hover:text-white font-black text-xs uppercase tracking-widest flex items-center gap-1 transition-colors group/link">
+                        ĐỌC THÊM <span class="material-icons text-sm group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
                     </a>
                 </div>
             </div>
@@ -60,10 +57,10 @@
         {{ $news->links('vendor.pagination.tailwind') }}
     </div>
     @else
-    <div class="bg-white rounded-xl border border-gray-200 shadow-md p-12 text-center">
-        <span class="material-icons text-6xl text-gray-300 mb-4">article</span>
-        <p class="text-xl font-black mb-2 text-primary">Chưa có tin tức</p>
-        <p class="text-gray-400">Hiện tại chưa có tin tức nào được đăng</p>
+    <div class="glass rounded-2xl border border-white/10 p-12 text-center">
+        <span class="material-icons text-6xl text-slate-700 mb-6 drop-shadow-[0_0_15px_rgba(255,255,255,0.05)]">newspaper</span>
+        <p class="text-2xl font-black mb-3 text-white uppercase tracking-tighter">Chưa có tin tức</p>
+        <p class="text-slate-500 font-bold">Hiện tại chưa có tin tức nào được cập nhật</p>
     </div>
     @endif
 </div>

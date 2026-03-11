@@ -32,7 +32,7 @@
                     </div>
 
                     <button type="submit"
-                        class="w-full btn-tet inline-flex justify-center rounded-md px-4 py-2 text-base font-black sm:text-sm transition-all duration-200 uppercase tracking-wide">
+                        class="w-full btn-esport inline-flex justify-center rounded-md px-4 py-2 text-base font-black sm:text-sm transition-all duration-200 uppercase tracking-wide">
                         Xác nhận và Lưu
                     </button>
                 </form>

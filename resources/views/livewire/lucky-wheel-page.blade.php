@@ -1,119 +1,127 @@
 <div class="min-h-screen">
-    <div class="container mx-auto px-4 py-6 max-w-lg">
+    <div class="container mx-auto px-4 py-8 max-w-lg">
 
         <!-- Spins Counter -->
         @if($this->spinsLeft > 0)
-        <div class="text-center mb-4">
-            <p class="text-primary text-sm font-bold uppercase tracking-wider">Số lượt hái lộc còn lại</p>
-            <p class="text-gray-800 text-5xl font-black animate-pulse">{{ $this->spinsLeft }}</p>
+        <div class="text-center mb-8">
+            <p class="text-primary text-[10px] font-black uppercase tracking-[0.2em] mb-2">SỐ LƯỢT MỞ HÒM CÒN LẠI</p>
+            <p class="text-white text-6xl font-black tracking-tighter drop-shadow-[0_0_15px_rgba(56,189,248,0.4)]">{{ $this->spinsLeft }}</p>
         </div>
         @endif
 
-        <!-- Lucky Tree Card -->
-        <div class="bg-white rounded-2xl border border-gray-200 shadow-lg p-6 relative overflow-hidden">
+        <!-- Mystery Box Card -->
+        <div class="glass rounded-3xl border border-white/10 shadow-3xl p-8 relative overflow-hidden group">
             @if (session()->has('error'))
-            <div class="border border-red-200 text-red-600 px-4 py-3 rounded-lg mb-4 text-sm">
+            <div class="bg-pink-500/10 border border-pink-500/20 text-pink-500 px-4 py-3 rounded-xl mb-6 text-xs font-black uppercase tracking-widest text-center">
                 {{ session('error') }}
             </div>
             @endif
 
-            <!-- Decorative corner flowers -->
-            <img src="{{ asset('images/hoa1.webp') }}" alt="" class="absolute -top-6 -left-6 w-28 opacity-80 -rotate-12 pointer-events-none animate-shake">
-            <img src="{{ asset('images/hoa3.webp') }}" alt="" class="absolute -top-4 -right-6 w-24 opacity-75 rotate-12 pointer-events-none animate-shake">
+            <!-- Decorative background elements -->
+            <div class="absolute -top-24 -left-24 w-48 h-48 bg-primary/10 blur-[80px] rounded-full pointer-events-none group-hover:bg-primary/20 transition-all duration-700"></div>
+            <div class="absolute -bottom-24 -right-24 w-48 h-48 bg-indigo-500/10 blur-[80px] rounded-full pointer-events-none group-hover:bg-indigo-500/20 transition-all duration-700"></div>
 
-            <!-- Tree Container -->
-            <div class="relative flex justify-center mb-6" id="tree-container">
-                <!-- Firecrackers (hidden, shown on shake) -->
-                <img src="{{ asset('images/phao1.webp') }}" alt="Pháo hoa" id="fireworks-left"
-                    class="absolute -left-8 top-2 w-28 md:w-36 opacity-0 pointer-events-none z-20 transition-none">
-                <img src="{{ asset('images/phao4.webp') }}" alt="Pháo hoa" id="fireworks-right"
-                    class="absolute -right-8 top-2 w-28 md:w-36 opacity-0 pointer-events-none z-20 transition-none">
-
-                <!-- Envelope (hidden, flies up on shake) -->
-                <div id="envelope-container" class="absolute inset-0 flex items-center justify-center z-30 pointer-events-none">
-                    <img src="{{ asset('images/lixi1.png') }}" alt="Lì xì" id="envelope"
-                        class="w-32 md:w-40 opacity-0 transition-none">
+            <!-- Box Container -->
+            <div class="relative flex justify-center mb-10" id="box-container">
+                <!-- Energy bursts (hidden, shown on click) -->
+                <div id="energy-burst" class="absolute inset-0 flex items-center justify-center opacity-0 pointer-events-none z-20">
+                    <div class="w-64 h-64 bg-primary/30 blur-[60px] rounded-full animate-ping"></div>
                 </div>
 
-                <!-- The Lucky Tree -->
-                <img src="{{ asset('images/cay.webp') }}" alt="Cây Hái Lộc" id="lucky-tree"
-                    class="w-72 md:w-80 cursor-pointer select-none drop-shadow-lg transition-transform hover:scale-105"
-                    style="filter: drop-shadow(0 8px 30px rgba(212,32,32,0.2));">
+                <!-- Mystery Box Image -->
+                <div class="relative z-10 transition-transform hover:scale-105 duration-500 cursor-pointer select-none" id="mystery-box-wrapper">
+                    <img src="{{ asset('images/esport/mystery_box.png') }}" alt="Hòm Bí Ẩn" id="mystery-box"
+                        class="w-72 md:w-80 drop-shadow-[0_0_30px_rgba(56,189,248,0.3)]">
 
-                <!-- Glow ring under tree -->
-                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-48 h-8 bg-gradient-to-r from-transparent via-yellow-300/30 to-transparent rounded-full blur-md animate-pulse"></div>
+                    <!-- Digital scan line -->
+                    <div class="absolute inset-0 bg-linear-to-b from-transparent via-primary/20 to-transparent h-1 w-full top-0 opacity-0 group-hover:opacity-100 group-hover:top-full transition-all duration-2000 linear infinite"></div>
+                </div>
+
+                <!-- Tech pedestal under box -->
+                <div class="absolute bottom-[-20px] left-1/2 -translate-x-1/2 w-64 h-12 bg-linear-to-r from-transparent via-primary/20 to-transparent rounded-full blur-xl animate-pulse"></div>
             </div>
 
-            <!-- Shake Button -->
-            <div class="flex justify-center relative z-10">
+            <!-- Action Button -->
+            <div class="flex justify-center relative z-10 px-4">
                 <button
                     wire:click="spin"
                     wire:loading.attr="disabled"
                     {{ $this->spinsLeft <= 0 ? 'disabled' : '' }}
                     id="shake-btn"
-                    class="relative px-12 py-4 rounded-full shadow-lg hover:shadow-xl transition-all active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed btn-tet group overflow-hidden">
-                    <span wire:loading.remove class="px-4 font-black text-lg uppercase tracking-wider relative z-10 flex items-center gap-2">
-                        🌳 HÁI LỘC NGAY!
+                    class="w-full py-5 rounded-2xl font-black text-white shadow-2xl transition-all transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-widest text-sm border-none btn-esport shadow-primary/20">
+                    <span wire:loading.remove class="flex items-center justify-center gap-3">
+                        <span class="material-icons">auto_fix_high</span>
+                        MỞ HÒM NGAY!
                     </span>
-                    <span wire:loading class="font-semibold text-sm relative z-10 text-white">Đang hái lộc...</span>
+                    <span wire:loading class="flex items-center justify-center gap-2">
+                        <span class="material-icons animate-spin">refresh</span>
+                        ĐANG XỬ LÝ...
+                    </span>
                 </button>
             </div>
         </div>
 
         <!-- Result Modal -->
         @if($showResult)
-        <div class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4" style="animation: fadeIn 0.2s ease-out;">
-            <div class="bg-white border border-gray-200 rounded-2xl p-8 max-w-sm w-full shadow-2xl text-center relative overflow-hidden" style="animation: scaleUp 0.3s ease-out;">
-                <!-- Decorative firecrackers in modal -->
-                <img src="{{ asset('images/phao3.webp') }}" alt="" class="absolute -top-8 -left-8 w-28 opacity-80 -rotate-12 animate-swing">
-                <img src="{{ asset('images/phao2.webp') }}" alt="" class="absolute -top-8 -right-8 w-28 opacity-80 rotate-12 animate-swing">
-                <!-- Decorative flowers -->
-                <img src="{{ asset('images/hoa2.webp') }}" alt="" class="absolute -bottom-4 -right-4 w-20 opacity-75 rotate-6 animate-shake">
+        <div class="fixed inset-0 bg-slate-950/80 backdrop-blur-md flex items-center justify-center z-50 p-6" style="animation: fadeIn 0.3s ease-out;">
+            <div class="glass border border-white/10 rounded-3xl p-10 max-w-sm w-full shadow-[0_0_50px_rgba(56,189,248,0.2)] text-center relative overflow-hidden" style="animation: scaleUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);">
+                <!-- Animated background glow -->
+                <div class="absolute -top-20 -left-20 w-40 h-40 bg-primary/20 blur-[60px] rounded-full animate-pulse"></div>
+                <div class="absolute -bottom-20 -right-20 w-40 h-40 bg-indigo-500/20 blur-[60px] rounded-full animate-pulse delay-700"></div>
 
-                <div class="mb-4 relative z-10">
+                <div class="mb-8 relative z-10">
                     @if($prizeAmount > 0)
-                    <img src="{{ asset('images/lixi2.png') }}" alt="Phần thưởng" class="w-28 mx-auto mb-2" style="animation: bounceIn 0.5s ease-out;">
+                    <div class="relative inline-block">
+                        <img src="{{ asset('images/esport/mystery_box_open.png') }}" alt="Phần thưởng" class="w-32 mx-auto drop-shadow-[0_0_20px_rgba(56,189,248,0.5)]" style="animation: bounceIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);">
+                        <div class="absolute inset-0 bg-primary/20 blur-2xl rounded-full scale-0 animate-pulse-slow"></div>
+                    </div>
                     @else
-                    <div class="text-6xl">😊</div>
+                    <div class="text-7xl drop-shadow-[0_0_20px_rgba(236,72,153,0.3)]">💠</div>
                     @endif
                 </div>
-                <h3 class="text-2xl font-black text-primary mb-2 uppercase tracking-wide relative z-10">{{ $prizeLabel }}</h3>
+
+                <h3 class="text-2xl font-black text-white mb-3 uppercase tracking-tighter relative z-10">{{ $prizeLabel }}</h3>
+
                 @if($prizeAmount > 0)
-                <p class="text-gray-500 mb-1 text-sm relative z-10">Số dư mới</p>
-                <p class="text-4xl font-black text-primary mb-6 animate-pulse relative z-10">{{ number_format($this->walletBalance) }}đ</p>
+                <p class="text-slate-500 mb-2 text-[10px] font-black uppercase tracking-widest relative z-10">SỐ DƯ MỚI</p>
+                <p class="text-4xl font-black text-primary mb-8 drop-shadow-[0_0_10px_rgba(56,189,248,0.4)] relative z-10">{{ number_format($this->walletBalance) }}đ</p>
                 @else
-                <p class="text-gray-500 mb-6 relative z-10">Chúc bạn may mắn lần sau nhé!</p>
+                <p class="text-slate-400 mb-8 font-bold uppercase tracking-wide text-xs relative z-10 leading-relaxed">Chúc bạn may mắn lần sau nhé! Hãy thử lại ở hòm tiếp theo.</p>
                 @endif
+
                 <button
                     wire:click="resetResult"
-                    class="w-full btn-tet px-6 py-3 rounded-xl font-black uppercase tracking-wide relative z-10">
-                    Đóng
+                    class="w-full btn-esport px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-xs border-none shadow-primary/20 active:scale-95 transition-all relative z-10">
+                    TIẾP TỤC
                 </button>
             </div>
         </div>
         @endif
 
         <!-- Rules -->
-        <div class="bg-white rounded-2xl border border-gray-200 shadow-md mt-6 p-6 relative overflow-hidden">
-            <!-- Decorative flower -->
-            <img src="{{ asset('images/hoa5.png') }}" alt="" class="absolute -bottom-4 -right-4 w-20 opacity-75 rotate-6 pointer-events-none animate-shake">
+        <div class="glass rounded-3xl border border-white/10 shadow-2xl mt-12 p-8 relative overflow-hidden">
+            <!-- Tech background pattern -->
+            <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: url('{{ asset('images/esport/bg_pattern.png') }}'); background-size: cover;"></div>
 
-            <div class="flex items-center gap-2 mb-4">
-                <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm">ℹ</div>
-                <h3 class="text-lg font-black text-primary uppercase tracking-wide">Thể lệ Cây Hái Lộc</h3>
+            <div class="flex items-center gap-4 mb-8">
+                <div class="w-10 h-10 bg-primary/10 border border-primary/20 rounded-xl flex items-center justify-center text-primary">
+                    <span class="material-icons">info</span>
+                </div>
+                <h3 class="text-xl font-black text-white uppercase tracking-tighter">THỂ LỆ HÒM BÍ ẨN</h3>
             </div>
-            <ul class="space-y-3 relative z-10">
-                <li class="flex items-start gap-3 text-sm text-gray-600">
-                    <div class="w-5 h-5 bg-primary rounded-full flex items-center justify-center shrink-0 mt-0.5 text-white text-xs font-bold">✓</div>
-                    <span>Mỗi đơn hàng từ <strong class="text-primary">300,000đ</strong> trở lên sẽ nhận được <strong class="text-primary">1 lượt hái lộc</strong></span>
+
+            <ul class="space-y-4 relative z-10">
+                <li class="flex items-start gap-4 p-4 bg-white/5 rounded-2xl border border-white/5 group hover:bg-white/10 transition-colors">
+                    <div class="w-6 h-6 bg-primary/20 rounded-lg flex items-center justify-center shrink-0 text-primary text-[10px] font-black group-hover:bg-primary group-hover:text-white transition-all">01</div>
+                    <span class="text-[11px] font-bold text-slate-400 leading-relaxed uppercase tracking-wide">Mỗi đơn hàng từ <strong class="text-primary">300,000đ</strong> trở lên sẽ nhận được <strong class="text-primary italic">1 lượt mở hòm</strong></span>
                 </li>
-                <li class="flex items-start gap-3 text-sm text-gray-600">
-                    <div class="w-5 h-5 bg-primary rounded-full flex items-center justify-center shrink-0 mt-0.5 text-white text-xs font-bold">✓</div>
-                    <span>Ấn vào cây hoặc nút "Hái Lộc" để nhận bao lì xì may mắn</span>
+                <li class="flex items-start gap-4 p-4 bg-white/5 rounded-2xl border border-white/5 group hover:bg-white/10 transition-colors">
+                    <div class="w-6 h-6 bg-primary/20 rounded-lg flex items-center justify-center shrink-0 text-primary text-[10px] font-black group-hover:bg-primary group-hover:text-white transition-all">02</div>
+                    <span class="text-[11px] font-bold text-slate-400 leading-relaxed uppercase tracking-wide">Ấn vào hòm hoặc nút "Mở Hòm" để nhận phần quà ngẫu nhiên</span>
                 </li>
-                <li class="flex items-start gap-3 text-sm text-gray-600">
-                    <div class="w-5 h-5 bg-primary rounded-full flex items-center justify-center shrink-0 mt-0.5 text-white text-xs font-bold">✓</div>
-                    <span>Giải thưởng sẽ được cộng trực tiếp vào ví của bạn</span>
+                <li class="flex items-start gap-4 p-4 bg-white/5 rounded-2xl border border-white/5 group hover:bg-white/10 transition-colors">
+                    <div class="w-6 h-6 bg-primary/20 rounded-lg flex items-center justify-center shrink-0 text-primary text-[10px] font-black group-hover:bg-primary group-hover:text-white transition-all">03</div>
+                    <span class="text-[11px] font-bold text-slate-400 leading-relaxed uppercase tracking-wide">Phần thưởng sẽ được cộng trực tiếp vào ví hệ thống của bạn</span>
                 </li>
             </ul>
         </div>
@@ -162,109 +170,80 @@
             }
         }
 
-        @keyframes shakeTree {
+        @keyframes mysteryVibrate {
 
             0%,
             100% {
-                transform: rotate(0deg);
+                transform: translate(0, 0) rotate(0);
             }
 
             10% {
-                transform: rotate(-8deg);
+                transform: translate(-2px, -2px) rotate(-1deg);
             }
 
             20% {
-                transform: rotate(8deg);
+                transform: translate(2px, 2px) rotate(1deg);
             }
 
             30% {
-                transform: rotate(-6deg);
+                transform: translate(-3px, 1px) rotate(-2deg);
             }
 
             40% {
-                transform: rotate(6deg);
+                transform: translate(3px, -1px) rotate(2deg);
             }
 
             50% {
-                transform: rotate(-4deg);
+                transform: translate(-2px, 2px) rotate(-1deg);
             }
 
             60% {
-                transform: rotate(4deg);
+                transform: translate(2px, -2px) rotate(1deg);
             }
 
             70% {
-                transform: rotate(-2deg);
+                transform: translate(-1px, -1px) rotate(-1deg);
             }
 
             80% {
-                transform: rotate(2deg);
+                transform: translate(1px, 1px) rotate(1deg);
             }
 
             90% {
-                transform: rotate(-1deg);
+                transform: translate(0, 0) rotate(0);
             }
         }
 
-        @keyframes envelopeFly {
+        @keyframes energyPulse {
             0% {
-                transform: translateY(40px) scale(0.3) rotate(-10deg);
+                transform: scale(0.8);
                 opacity: 0;
-            }
-
-            30% {
-                transform: translateY(-20px) scale(1.1) rotate(5deg);
-                opacity: 1;
+                filter: brightness(1) blur(20px);
             }
 
             50% {
-                transform: translateY(-60px) scale(1.2) rotate(-3deg);
-                opacity: 1;
-            }
-
-            70% {
-                transform: translateY(-40px) scale(1.0) rotate(2deg);
-                opacity: 1;
+                transform: scale(1.5);
+                opacity: 0.8;
+                filter: brightness(2) blur(10px);
             }
 
             100% {
-                transform: translateY(-30px) scale(1.0) rotate(0deg);
+                transform: scale(2);
                 opacity: 0;
+                filter: brightness(3) blur(5px);
             }
         }
 
-        @keyframes fireworksBurst {
-            0% {
-                transform: scale(0.5);
-                opacity: 0;
-            }
-
-            30% {
-                transform: scale(1.2);
-                opacity: 0.9;
-            }
-
-            60% {
-                transform: scale(1.0);
-                opacity: 0.7;
-            }
-
-            100% {
-                transform: scale(1.3);
-                opacity: 0;
-            }
+        .box-vibrating {
+            animation: mysteryVibrate 0.8s ease-in-out;
         }
 
-        .tree-shaking {
-            animation: shakeTree 1.2s ease-in-out;
+        .energy-pulsing {
+            animation: energyPulse 1.5s ease-out forwards;
         }
 
-        .envelope-flying {
-            animation: envelopeFly 2s ease-out forwards;
-        }
-
-        .fireworks-burst {
-            animation: fireworksBurst 1.8s ease-out forwards;
+        .animate-pulse-slow {
+            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
     </style>
 </div>
@@ -272,47 +251,33 @@
 @script
 <script>
     (function() {
-        const tree = document.getElementById('lucky-tree');
-        const envelope = document.getElementById('envelope');
-        const fireworksLeft = document.getElementById('fireworks-left');
-        const fireworksRight = document.getElementById('fireworks-right');
+        const boxWrapper = document.getElementById('mystery-box-wrapper');
+        const energy = document.getElementById('energy-burst');
         let animating = false;
 
         function playAnimation() {
             if (animating) return;
             animating = true;
 
-            // Step 1: Shake the tree
-            tree.classList.add('tree-shaking');
+            // Step 1: Vibrate the box
+            boxWrapper.classList.add('box-vibrating');
 
-            // Step 2: After 0.4s, show envelope flying up
+            // Step 2: Show energy pulses
             setTimeout(() => {
-                envelope.style.opacity = '1';
-                envelope.classList.add('envelope-flying');
-            }, 400);
+                energy.style.opacity = '1';
+                energy.classList.add('energy-pulsing');
+            }, 200);
 
-            // Step 3: After 0.8s, show firecrackers
+            // Step 3: Clean up and show result
             setTimeout(() => {
-                fireworksLeft.style.opacity = '1';
-                fireworksLeft.classList.add('fireworks-burst');
-                fireworksRight.style.opacity = '1';
-                fireworksRight.classList.add('fireworks-burst');
-            }, 800);
-
-            // Step 4: Clean up animations, show result
-            setTimeout(() => {
-                tree.classList.remove('tree-shaking');
-                envelope.classList.remove('envelope-flying');
-                envelope.style.opacity = '0';
-                fireworksLeft.classList.remove('fireworks-burst');
-                fireworksLeft.style.opacity = '0';
-                fireworksRight.classList.remove('fireworks-burst');
-                fireworksRight.style.opacity = '0';
+                boxWrapper.classList.remove('box-vibrating');
+                energy.classList.remove('energy-pulsing');
+                energy.style.opacity = '0';
                 animating = false;
 
                 @this.set('showResult', true);
                 @this.set('spinning', false);
-            }, 2200);
+            }, 1800);
         }
 
         // Listen for Livewire event
@@ -320,9 +285,9 @@
             playAnimation();
         });
 
-        // Also allow clicking the tree directly (triggers the button)
-        if (tree) {
-            tree.addEventListener('click', () => {
+        // Also allow clicking the hòm directly
+        if (boxWrapper) {
+            boxWrapper.addEventListener('click', () => {
                 const btn = document.getElementById('shake-btn');
                 if (btn && !btn.disabled) {
                     btn.click();

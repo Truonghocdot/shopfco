@@ -12,56 +12,70 @@
     ]" />
 
     @if(session('success'))
-    <div class="mb-4 p-4 bg-green-50 border border-green-200 text-green-700 rounded-lg flex items-center gap-2">
-        <span class="material-icons">check_circle</span>
-        {{ session('success') }}
+    <div class="mb-6 px-6 text-[10px] md:text-xs">
+        <div class="p-4 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-xl flex items-center gap-3 font-black uppercase tracking-widest shadow-lg shadow-emerald-500/5">
+            <span class="material-icons text-sm">check_circle</span>
+            {{ session('success') }}
+        </div>
     </div>
     @endif
 
     @if($errors->any())
-    <div class="mb-4 p-4 border border-red-200 text-red-600 rounded-lg">
-        <ul class="list-disc list-inside">
-            @foreach($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+    <div class="mb-6 px-6 text-[10px] md:text-xs">
+        <div class="p-4 bg-pink-500/10 border border-pink-500/20 text-pink-500 rounded-xl font-black uppercase tracking-widest shadow-lg shadow-pink-500/5">
+            <ul class="space-y-1">
+                @foreach($errors->all() as $error)
+                <li class="flex items-center gap-2"><span class="w-1 h-1 bg-pink-500 rounded-full"></span> {{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
     </div>
     @endif
 
     <div class="flex flex-col lg:flex-row gap-8">
         <!-- Sidebar -->
-        <aside class="w-full lg:w-64 shrink-0">
+        <aside class="w-full lg:w-72 shrink-0">
             <div class="flex flex-col gap-6 sticky top-24">
-                <div class="bg-white rounded-xl border border-gray-200 shadow-md p-4">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12 border-2 border-primary" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCVGaTwIrah77vJVAoTY2oc_aYDyOz5LSOrCGtbT5xJGT8vhdJvPOeQhIfBXNGNP1OqlZ6rjdWRwY4Mvx_HLW1et0PwzS_48fJA9OLtGrnJjhVdHO7LwLY3lHSfwiMXSZiJFKYF7iMtWE5zyEJMiCP8WTJyqpKenn1bOSaBIENdAPC8fapysJ-DAqblpdj0C_bv17YfZMqWv_n4NyPWgJumLLYNtr7AUfCnVI5C_5JWL09YXcVEfripuVOhgYaLq2aWga_ajQXo9m-e");'></div>
+                <div class="glass rounded-2xl border border-white/10 shadow-2xl p-6 relative overflow-hidden">
+                    <!-- Background glow -->
+                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-primary/10 blur-[50px] rounded-full pointer-events-none"></div>
+
+                    <div class="flex items-center gap-4 mb-8 relative z-10">
+                        <div class="shrink-0 aspect-square rounded-2xl size-14 border-2 border-primary shadow-[0_0_15px_rgba(56,189,248,0.4)] overflow-hidden">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVGaTwIrah77vJVAoTY2oc_aYDyOz5LSOrCGtbT5xJGT8vhdJvPOeQhIfBXNGNP1OqlZ6rjdWRwY4Mvx_HLW1et0PwzS_48fJA9OLtGrnJjhVdHO7LwLY3lHSfwiMXSZiJFKYF7iMtWE5zyEJMiCP8WTJyqpKenn1bOSaBIENdAPC8fapysJ-DAqblpdj0C_bv17YfZMqWv_n4NyPWgJumLLYNtr7AUfCnVI5C_5JWL09YXcVEfripuVOhgYaLq2aWga_ajQXo9m-e" class="w-full h-full object-cover">
+                        </div>
                         <div class="flex flex-col">
-                            <h1 class="text-gray-800 text-base font-black">{{ Auth::user()->name }}</h1>
-                            <p class="text-primary text-xs font-bold uppercase tracking-wider">Thành viên</p>
+                            <h1 class="text-white text-lg font-black tracking-tighter truncate w-40">{{ Auth::user()->name }}</h1>
+                            <p class="text-primary text-[10px] font-black uppercase tracking-widest flex items-center gap-1.5 mt-1">
+                                <span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span>
+                                THÀNH VIÊN
+                            </p>
                         </div>
                     </div>
-                    <nav class="flex flex-col gap-2">
+
+                    <nav class="flex flex-col gap-3 relative z-10">
                         <button @click="activeTab = 'info'"
-                            :class="activeTab === 'info' ? 'text-primary border-primary/30' : 'text-gray-500 hover:bg-gray-50 border-transparent'"
-                            class="flex items-center gap-3 px-3 py-2.5 rounded-lg border transition-all text-left w-full">
-                            <span class="material-icons text-[20px]">person</span>
-                            <p class="text-sm font-bold">Thông tin tài khoản</p>
+                            :class="activeTab === 'info' ? 'bg-primary/10 text-primary border-primary/20 shadow-[0_0_15px_rgba(56,189,248,0.1)]' : 'text-slate-500 hover:text-slate-300 hover:bg-white/5 border-transparent'"
+                            class="flex items-center gap-4 px-4 py-3.5 rounded-2xl border transition-all text-left w-full group">
+                            <span class="material-icons text-[20px] transition-transform group-hover:scale-110">person</span>
+                            <p class="text-[11px] font-black uppercase tracking-widest">Thông tin tài khoản</p>
                         </button>
                         <button @click="activeTab = 'orders'"
-                            :class="activeTab === 'orders' ? 'text-primary border-primary/30' : 'text-gray-500 hover:bg-gray-50 border-transparent'"
-                            class="flex items-center gap-3 px-3 py-2.5 rounded-lg border transition-all text-left w-full">
-                            <span class="material-icons text-[20px]">shopping_bag</span>
-                            <p class="text-sm font-bold">Tài khoản đã mua</p>
+                            :class="activeTab === 'orders' ? 'bg-primary/10 text-primary border-primary/20 shadow-[0_0_15px_rgba(56,189,248,0.1)]' : 'text-slate-500 hover:text-slate-300 hover:bg-white/5 border-transparent'"
+                            class="flex items-center gap-4 px-4 py-3.5 rounded-2xl border transition-all text-left w-full group">
+                            <span class="material-icons text-[20px] transition-transform group-hover:scale-110">shopping_bag</span>
+                            <p class="text-[11px] font-black uppercase tracking-widest">Tài khoản đã mua</p>
                         </button>
                     </nav>
-                    <div class="mt-6 pt-6 border-t border-gray-100 flex flex-col gap-2">
-                        <a href="{{ route('deposit') }}" class="w-full flex cursor-pointer items-center justify-center rounded-lg h-11 px-4 btn-tet text-sm uppercase tracking-wide">
+
+                    <div class="mt-8 pt-8 border-t border-white/5 flex flex-col gap-3 relative z-10">
+                        <a href="{{ route('deposit') }}" class="w-full flex cursor-pointer items-center justify-center rounded-2xl py-4 btn-esport text-[11px] font-black uppercase tracking-widest shadow-primary/20 border-none active:scale-95 transition-all">
                             <span class="material-icons mr-2 text-[20px]">add_circle</span>
                             <span>Nạp tiền ngay</span>
                         </a>
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
-                            <button type="submit" class="w-full flex cursor-pointer items-center justify-center rounded-lg h-11 px-4 bg-gray-100 hover:bg-gray-200 text-gray-600 transition-all text-sm font-bold uppercase tracking-wide">
+                            <button type="submit" class="w-full flex cursor-pointer items-center justify-center rounded-2xl py-4 bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-all text-[11px] font-black uppercase tracking-widest active:scale-95">
                                 <span class="material-icons mr-2 text-[20px]">logout</span>
                                 <span>Đăng xuất</span>
                             </button>
@@ -74,17 +88,26 @@
         <!-- Main Content -->
         <div class="flex-1 min-w-0">
             <div x-show="activeTab === 'info'" class="space-y-6">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Wallet Info -->
-                    <div class="bg-gradient-to-br from-primary to-orange-500 rounded-xl p-6 text-white shadow-lg">
-                        <div class="flex items-start justify-between mb-4">
-                            <div class="size-10 rounded-lg bg-white/20 flex items-center justify-center">
-                                <span class="material-icons">account_balance_wallet</span>
+                    <div class="bg-linear-to-br from-primary via-indigo-600 to-indigo-800 rounded-3xl p-8 text-white shadow-2xl relative overflow-hidden group hover:scale-[1.02] transition-transform duration-500">
+                        <!-- Decorative glows -->
+                        <div class="absolute -top-20 -right-20 w-40 h-40 bg-white/20 blur-[60px] rounded-full group-hover:scale-150 transition-transform duration-700"></div>
+                        <div class="absolute -bottom-20 -left-20 w-40 h-40 bg-primary/20 blur-[60px] rounded-full group-hover:scale-150 transition-transform duration-700 delay-100"></div>
+
+                        <div class="flex items-start justify-between mb-8 relative z-10">
+                            <div class="size-14 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-inner">
+                                <span class="material-icons text-3xl">account_balance_wallet</span>
                             </div>
-                            <span class="text-xs font-black bg-white/20 px-2 py-1 rounded">VND</span>
+                            <span class="text-[10px] font-black bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 uppercase tracking-widest shadow-inner">VIETNAM DONG</span>
                         </div>
-                        <p class="text-white/80 text-sm font-bold mb-1">Số dư khả dụng</p>
-                        <h3 class="text-2xl font-black">{{ number_format(Auth::user()->wallet->balance ?? 0) }}đ</h3>
+                        <div class="relative z-10">
+                            <p class="text-white/60 text-[10px] font-black uppercase tracking-[0.2em] mb-2 pl-1">SỐ DƯ KHẢ DỤNG</p>
+                            <h3 class="text-4xl font-black tracking-tighter flex items-baseline gap-2">
+                                {{ number_format(Auth::user()->wallet->balance ?? 0) }}
+                                <span class="text-lg font-black text-white/40 uppercase">VND</span>
+                            </h3>
+                        </div>
                     </div>
                 </div>
 

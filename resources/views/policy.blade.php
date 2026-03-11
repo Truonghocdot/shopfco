@@ -95,13 +95,9 @@
 <div class="policy-page relative overflow-hidden min-h-screen pt-12 pb-20">
     <div class="container mx-auto px-4 relative z-10 max-w-6xl">
         <!-- Hero Section -->
-        <div class="text-center mb-16 relative">
-            <!-- Floating decorations around hero -->
-            <img src="{{ asset('images/hoa1.webp') }}" class="absolute -top-10 -left-10 w-32 opacity-30 animate-shake">
-            <img src="{{ asset('images/phao1.webp') }}" class="absolute -top-10 -right-10 w-24 opacity-40 animate-swing">
-
-            <div class="inline-block relative mb-4">
-                <div class="relative bg-linear-to-r from-primary to-orange-500 text-white px-10 py-4 font-black text-3xl md:text-5xl rounded-2xl shadow-2xl transform hover:scale-105 transition-transform">
+        <div class="text-center mb-16 relative scroll-reveal">
+            <div class="inline-block relative mb-6">
+                <div class="relative bg-linear-to-r from-primary to-indigo-600 text-white px-12 py-5 font-black text-3xl md:text-6xl rounded-3xl shadow-[0_0_30px_rgba(56,189,248,0.3)] transform hover:scale-105 transition-all">
                     CHÍNH SÁCH & QUY ĐỊNH
                 </div>
             </div>
@@ -113,28 +109,28 @@
         <!-- Main Content -->
         <div class="space-y-12">
             <!-- 1. Affiliate Commission Policy -->
-            <section class="policy-section">
+            <section class="policy-section scroll-reveal">
                 <h2 class="section-title text-white">
-                    <span class="material-icons text-white">card_giftcard</span>
+                    <span class="material-icons text-primary drop-shadow-[0_0_8px_rgba(56,189,248,0.5)]">card_giftcard</span>
                     1. Chính Sách Hoa Hồng Giới Thiệu
                 </h2>
 
-                <div class="content-box space-y-6">
+                <div class="content-box glass space-y-6 border-white/10">
                     <div>
-                        <h3 class="subsection-title">1.1 Giới thiệu chương trình</h3>
-                        <p class="text-gray-600 leading-relaxed">
-                            Chương trình hoa hồng giới thiệu tại <strong class="text-primary">VanhFCO</strong> được thiết kế để tri ân khách hàng thân thiết.
+                        <h3 class="subsection-title text-white">1.1 Giới thiệu chương trình</h3>
+                        <p class="text-slate-400 leading-relaxed">
+                            Chương trình hoa hồng giới thiệu tại <strong class="text-primary font-black uppercase">VanhFCO</strong> được thiết kế để tri ân khách hàng thân thiết.
                             Khi bạn giới thiệu bạn bè mua <strong class="text-primary">Acc chứa FC</strong>, <strong class="text-primary">Acc Mở thẻ</strong>,
                             <strong class="text-primary">Acc chứa BP trắng</strong> hoặc <strong class="text-primary">Acc đội hình</strong>,
-                            bạn sẽ nhận được <span class="highlight-text">5% hoa hồng</span> từ mỗi đơn hàng thành công.
+                            bạn sẽ nhận được <span class="text-primary font-black underline decoration-primary/30 underline-offset-4">5% hoa hồng</span> từ mỗi đơn hàng thành công.
                         </p>
                     </div>
 
                     <div>
-                        <h3 class="subsection-title">1.2 Cách thức hoạt động</h3>
-                        <ol class="list-decimal list-inside space-y-2 text-gray-600 leading-relaxed">
+                        <h3 class="subsection-title text-white">1.2 Cách thức hoạt động</h3>
+                        <ol class="list-decimal list-inside space-y-3 text-slate-400 leading-relaxed">
                             <li>Đăng ký tài khoản tại <strong class="text-primary">AccFCO</strong></li>
-                            <li>Truy cập <a href="{{ route('user.profile') }}" class="text-primary hover:underline">trang cá nhân</a> để lấy link giới thiệu riêng</li>
+                            <li>Truy cập <a href="{{ route('user.profile') }}" class="text-primary hover:text-white transition-colors underline decoration-primary/30 underline-offset-4">trang cá nhân</a> để lấy link giới thiệu riêng</li>
                             <li>Chia sẻ link với bạn bè, người thân</li>
                             <li>Khi họ đăng ký và mua <strong class="text-primary">Acc chứa FC</strong>, <strong class="text-primary">Acc Mở thẻ</strong> hoặc <strong class="text-primary">Acc đội hình</strong>, bạn nhận 5% hoa hồng</li>
                             <li>Hoa hồng tự động cộng vào ví, có thể sử dụng ngay để mua <strong class="text-primary">Acc chứa BP trắng</strong> hoặc các sản phẩm khác</li>
@@ -142,8 +138,8 @@
                     </div>
 
                     <div>
-                        <h3 class="subsection-title">1.3 Điều kiện tham gia</h3>
-                        <ul class="list-disc list-inside space-y-2 text-gray-600 leading-relaxed">
+                        <h3 class="subsection-title text-white">1.3 Điều kiện tham gia</h3>
+                        <ul class="list-disc list-inside space-y-3 text-slate-400 leading-relaxed">
                             <li>Tài khoản đã đăng ký tại <strong class="text-primary">VanhFCO</strong></li>
                             <li>Không được tự giới thiệu chính mình</li>
                             <li>Tuân thủ các quy định sử dụng dịch vụ</li>
@@ -151,12 +147,12 @@
                         </ul>
                     </div>
 
-                    <div class="bg-gray-50 border border-gray-200 rounded-xl p-6">
-                        <p class="text-primary font-bold mb-2 flex items-center gap-2">
+                    <div class="bg-primary/5 border border-primary/20 rounded-2xl p-6">
+                        <p class="text-primary font-black mb-3 flex items-center gap-2 uppercase text-[10px] tracking-widest">
                             <span class="material-icons text-sm">lightbulb</span>
                             Lưu ý quan trọng
                         </p>
-                        <p class="text-gray-600 text-sm leading-relaxed">
+                        <p class="text-slate-400 text-sm leading-relaxed">
                             Hoa hồng được tính trên tổng giá trị đơn hàng sau khi áp dụng giảm giá.
                             Bạn có thể theo dõi thu nhập từ giới thiệu và số lượng người đã giới thiệu trong trang cá nhân.
                         </p>
@@ -228,16 +224,16 @@
                     </div>
 
                     <div>
-                        <h3 class="subsection-title">3.3 Quy trình mua Acc đội hình</h3>
-                        <p class="text-gray-600 leading-relaxed">
+                        <h3 class="subsection-title text-white">3.3 Quy trình mua Acc đội hình</h3>
+                        <p class="text-slate-400 leading-relaxed">
                             <strong class="text-primary">Acc đội hình</strong> được phân loại theo chất lượng cầu thủ và tổng OVR.
                             Khách hàng có thể xem chi tiết đội hình trước khi mua tại <strong class="text-primary">VanhFCO</strong>.
                         </p>
                     </div>
 
-                    <div class="border border-gray-200 rounded-xl p-6">
-                        <p class="text-primary font-bold mb-2">✓ Cam kết chất lượng</p>
-                        <p class="text-gray-600 text-sm leading-relaxed">
+                    <div class="bg-primary/5 border border-primary/20 rounded-2xl p-6">
+                        <p class="text-primary font-black mb-2 uppercase text-[10px] tracking-widest">✓ Cam kết chất lượng</p>
+                        <p class="text-slate-400 text-sm leading-relaxed">
                             Tất cả <strong class="text-primary">Acc chứa FC</strong>, <strong class="text-primary">Acc Mở thẻ</strong>,
                             <strong class="text-primary">Acc chứa BP trắng</strong> và <strong class="text-primary">Acc đội hình</strong>
                             tại <strong class="text-primary">AccFCO</strong> đều được kiểm tra kỹ lưỡng trước khi bán.
@@ -335,10 +331,10 @@
                             <span class="material-icons text-3xl">vpn_key</span>
                         </div>
                         <div>
-                            <h3 class="text-xl font-black text-gray-800 mb-3 flex items-center gap-2">
+                            <h3 class="text-sm font-black text-white mb-3 flex items-center gap-2 uppercase tracking-widest leading-tight">
                                 BẢO MẬT OTP
                             </h3>
-                            <p class="text-gray-500 leading-relaxed text-sm">
+                            <p class="text-slate-500 leading-relaxed text-xs font-bold">
                                 Đối với <strong class="text-primary">Acc chứa FC</strong> có SĐT, quý khách liên hệ shop để lấy mã OTP.
                                 <strong class="text-primary">VanhFCO</strong> bảo lưu và bảo hành bảo mật tuyệt đối.
                             </p>
@@ -402,12 +398,12 @@
             </div>
 
             <!-- Community Section -->
-            <div class="bg-white rounded-2xl border border-gray-200 shadow-md p-8 relative overflow-hidden mt-16">
+            <div class="glass rounded-3xl border border-white/10 shadow-3xl p-8 relative overflow-hidden mt-16">
                 <div class="absolute top-0 right-0 p-4 opacity-10">
                     <span class="material-icons text-8xl text-primary">hub</span>
                 </div>
                 <div class="relative z-10">
-                    <h2 class="text-2xl font-black text-gray-800 mb-6 uppercase tracking-widest">
+                    <h2 class="text-2xl font-black text-white mb-6 uppercase tracking-widest">
                         Kết nối cộng đồng <span class="text-primary">VanhFCO</span>
                     </h2>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -434,10 +430,8 @@
             </div>
 
             <!-- Closing Note -->
-            <div class="text-center max-w-4xl mx-auto bg-white border border-gray-200 shadow-2xl p-12 rounded-3xl relative overflow-hidden mt-20 group/thanks">
-                <!-- Decorative flowers in corners -->
-                <img src="{{ asset('images/hoa3.webp') }}" class="absolute -top-10 -left-10 w-40 opacity-10 rotate-12 group-hover:opacity-20 transition-opacity">
-                <img src="{{ asset('images/hoa1.webp') }}" class="absolute -bottom-10 -right-10 w-40 opacity-10 -rotate-12 group-hover:opacity-20 transition-opacity">
+            <div class="text-center max-w-4xl mx-auto bg-slate-900/50 border border-white/10 backdrop-blur-3xl p-12 rounded-[2.5rem] relative overflow-hidden mt-20 group/thanks shadow-3xl">
+                <!-- Removed Tet flowers -->
 
                 <div class="absolute top-0 left-0 w-full h-1.5 bg-linear-to-r from-transparent via-primary to-transparent"></div>
 
@@ -452,9 +446,9 @@
                         </p>
                     </div>
 
-                    <div class="inline-flex items-center gap-6 text-sm font-black tracking-widest text-primary uppercase">
+                    <div class="inline-flex items-center gap-6 text-xs font-black tracking-[0.4em] text-primary uppercase">
                         <span class="w-16 h-0.5 bg-linear-to-r from-transparent to-primary/30"></span>
-                        VanhFCO - CHÚC MỪNG NĂM MỚI
+                        VanhFCO PROTOCOL
                         <span class="w-16 h-0.5 bg-linear-to-l from-transparent to-primary/30"></span>
                     </div>
                 </div>
@@ -465,79 +459,79 @@
 
 <style>
     .policy-section {
-        margin-bottom: 3rem;
+        margin-bottom: 4rem;
     }
 
     .section-title {
         font-size: 1.75rem;
-        font-weight: 900;
-        color: var(--color-primary, #D42020);
-        margin-bottom: 1.5rem;
+        font-weight: 950;
+        color: #fff;
+        margin-bottom: 2rem;
         text-transform: uppercase;
-        letter-spacing: 0.05em;
+        letter-spacing: -0.02em;
         display: flex;
         align-items: center;
-        gap: 0.75rem;
+        gap: 1rem;
     }
 
     .section-title .material-icons {
-        font-size: 2rem;
+        font-size: 2.25rem;
     }
 
     .subsection-title {
         font-size: 1.25rem;
-        font-weight: 700;
-        color: #1f2937;
-        margin-bottom: 0.75rem;
+        font-weight: 900;
+        color: #fff;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
     }
 
     .content-box {
-        background: #fff;
-        border: 1px solid #e5e7eb;
-        border-left: 4px solid var(--color-primary, #D42020);
-        padding: 2rem;
-        border-radius: 0.75rem;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-    }
-
-    .highlight-text {
-        color: var(--color-primary, #D42020);
-        font-weight: 700;
+        background: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-left: 4px solid #38bdf8;
+        padding: 2.5rem;
+        border-radius: 1.5rem;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
     }
 
     .policy-card {
-        background: #fff;
-        border: 1px solid #e5e7eb;
-        border-radius: 1rem;
+        background: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 2rem;
         padding: 40px 30px;
-        transition: all 0.3s ease;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
     }
 
     .policy-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 10px 25px rgba(212, 32, 32, 0.1);
-        border-color: var(--color-primary, #D42020);
+        transform: translateY(-8px);
+        box-shadow: 0 30px 60px rgba(56, 189, 248, 0.15);
+        border-color: rgba(56, 189, 248, 0.4);
     }
 
     .policy-icon-box {
-        width: 60px;
-        height: 60px;
-        min-width: 60px;
-        background: #f3f4f6;
-        border: 2px solid #e5e7eb;
-        border-radius: 1rem;
+        width: 64px;
+        height: 64px;
+        min-width: 64px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1.25rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: var(--color-primary, #D42020);
-        transition: 0.3s;
+        color: #38bdf8;
+        transition: 0.4s;
     }
 
     .policy-card:hover .policy-icon-box {
-        background: var(--color-primary, #D42020);
+        background: #38bdf8;
         color: #fff;
-        border-color: var(--color-primary, #D42020);
+        border-color: #38bdf8;
+        box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
     }
 
     /* Social Buttons */

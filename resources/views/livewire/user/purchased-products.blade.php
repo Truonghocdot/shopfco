@@ -124,7 +124,7 @@
 
                                 <button wire:click="verifyPassword"
                                     wire:loading.attr="disabled"
-                                    class="w-full py-2 btn-tet font-bold rounded-lg transition-all flex items-center justify-center gap-2">
+                                    class="w-full py-2 btn-esport font-bold rounded-lg transition-all flex items-center justify-center gap-2">
                                     <span wire:loading.remove>Xác nhận</span>
                                     <span wire:loading class="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
                                 </button>

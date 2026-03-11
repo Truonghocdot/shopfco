@@ -12,33 +12,26 @@
     ]" />
 
     <!-- Page Header -->
-    <div class="mb-10 text-center relative">
-        <!-- Floating decorations around header -->
-        <img src="{{ asset('images/hoa1.webp') }}" class="absolute -top-10 left-10 w-32 opacity-70 animate-shake hidden md:block">
-        <img src="{{ asset('images/phao1.webp') }}" class="absolute -top-10 right-10 w-24 opacity-80 animate-swing hidden md:block">
-
-        <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight text-primary mb-3 flex justify-center items-center gap-3 relative z-10">
-            <span class="material-icons text-4xl md:text-5xl">account_balance_wallet</span>
-            NẠP TIỀN TỰ ĐỘNG
+    <div class="mb-12 text-center relative scroll-reveal">
+        <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white mb-4 flex justify-center items-center gap-4 relative z-10">
+            <span class="material-icons text-5xl md:text-6xl text-primary drop-shadow-[0_0_15px_rgba(56,189,248,0.5)]">account_balance_wallet</span>
+            NẠP TIỀN <span class="text-primary">TỰ ĐỘNG</span>
         </h1>
-        <p class="text-gray-500 font-bold uppercase tracking-widest text-sm">Nạp nhanh - Duyệt tự động - An toàn tuyệt đối</p>
-        <div class="h-1.5 w-48 bg-linear-to-r from-transparent via-primary to-transparent mx-auto rounded-full mt-6"></div>
+        <p class="text-slate-500 font-black uppercase tracking-[0.3em] text-[10px] md:text-xs">Fast Deposit • Auto Approval • High Security</p>
+        <div class="h-1 w-64 bg-linear-to-r from-transparent via-primary/50 to-transparent mx-auto rounded-full mt-8"></div>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
         <div class="lg:col-span-5 space-y-6">
-            <div class="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-xl relative group">
-                <!-- Inner decoration -->
-                <img src="{{ asset('images/hoa3.webp') }}" class="absolute -bottom-6 -left-6 w-32 opacity-80 pointer-events-none z-0 animate-shake">
-
+            <div class="glass rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative group h-full">
                 <!-- Header -->
-                <div class="bg-linear-to-r from-primary to-orange-500 p-5 flex justify-between items-center relative z-10">
-                    <span class="font-black uppercase tracking-wider flex items-center gap-2 text-white">
+                <div class="bg-linear-to-r from-primary to-indigo-600 p-6 flex justify-between items-center relative z-10">
+                    <span class="font-black uppercase tracking-widest flex items-center gap-3 text-white text-sm">
                         <span class="material-icons">credit_card</span> THÔNG TIN CHUYỂN KHOẢN
                     </span>
-                    <div class="flex items-center gap-1">
-                        <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
-                        <span class="text-[10px] text-white/80 font-bold uppercase tracking-tighter">Hệ thống online</span>
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse shadow-[0_0_8px_#4ade80]"></div>
+                        <span class="text-[9px] text-white/90 font-black uppercase tracking-widest">Hệ thống online</span>
                     </div>
                 </div>
 
@@ -47,27 +40,27 @@
                     <div class="space-y-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <p class="text-gray-400 text-xs uppercase font-bold mb-2 tracking-widest">Ngân hàng</p>
-                                <div class="border border-gray-200 rounded-lg px-4 py-3">
-                                    <p class="text-xl font-black text-primary italic">{{ $banking }}</p>
+                                <p class="text-slate-500 text-[10px] uppercase font-black mb-2 tracking-[0.2em]">Ngân hàng</p>
+                                <div class="bg-white/5 border border-white/10 rounded-xl px-4 py-4">
+                                    <p class="text-xl font-black text-primary italic drop-shadow-[0_0_8px_rgba(56,189,248,0.3)]">{{ $banking }}</p>
                                 </div>
                             </div>
                             <div>
-                                <p class="text-gray-400 text-xs uppercase font-bold mb-2 tracking-widest">Chủ tài khoản</p>
-                                <div class="bg-gray-50 border border-gray-200 rounded-lg px-4 py-3">
-                                    <p class="text-lg font-bold text-gray-800 uppercase">{{ $bankName }}</p>
+                                <p class="text-slate-500 text-[10px] uppercase font-black mb-2 tracking-[0.2em]">Chủ tài khoản</p>
+                                <div class="bg-white/5 border border-white/10 rounded-xl px-4 py-4">
+                                    <p class="text-base font-black text-white uppercase tracking-tight">{{ $bankName }}</p>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Account Number -->
                         <div class="relative z-10">
-                            <p class="text-gray-400 text-xs uppercase font-bold mb-2 tracking-widest">Số tài khoản</p>
-                            <div class="flex items-center gap-2">
-                                <div class="bg-gray-50 border-2 border-primary/20 hover:border-primary/40 transition-colors px-5 py-4 rounded-xl flex-1 group/acc">
-                                    <span class="text-3xl font-mono font-black text-primary tracking-tighter">{{ $bankNumber }}</span>
+                            <p class="text-slate-500 text-[10px] uppercase font-black mb-2 tracking-[0.2em]">Số tài khoản</p>
+                            <div class="flex items-center gap-3">
+                                <div class="bg-white/5 border-2 border-primary/20 hover:border-primary/50 transition-all px-5 py-4 rounded-2xl flex-1 group/acc">
+                                    <span class="text-3xl font-mono font-black text-primary tracking-tighter drop-shadow-[0_0_10px_rgba(56,189,248,0.4)]">{{ $bankNumber }}</span>
                                 </div>
-                                <button class="btn-tet h-full px-5 py-4 rounded-xl transition-all hover-glow-gold active:scale-95 flex items-center justify-center shrink-0" onclick="navigator.clipboard.writeText('{{ $bankNumber }}')">
+                                <button class="btn-esport h-full px-6 py-4 rounded-2xl transition-all active:scale-95 flex items-center justify-center shrink-0 border-none" onclick="navigator.clipboard.writeText('{{ $bankNumber }}')">
                                     <span class="material-icons">content_copy</span>
                                 </button>
                             </div>
@@ -75,27 +68,25 @@
                     </div>
 
                     <!-- QR Code -->
-                    <div class="flex justify-center pt-8 mt-8 border-t border-gray-100 relative z-10">
-                        <div class="bg-white p-5 rounded-3xl border border-gray-200 shadow-2xl flex flex-col items-center relative active:scale-[1.05] transition-transform duration-300">
-                            <!-- Corner firework in QR -->
-                            <img src="{{ asset('images/phao2.webp') }}" class="absolute -top-4 -right-4 w-16 opacity-90 animate-swing">
-
-                            <div class="p-2 border-2 border-primary/10 rounded-2xl">
-                                <img alt="QR Code Bank Transfer" class="w-64 h-64 rounded-xl" src="https://api.vietqr.io/image/{{ $bankBin }}-{{ $bankNumber }}-compact2.png?amount=0&addInfo=vanhfco%20{{ Auth::id() }}&accountName={{ urlencode($bankName) }}">
+                    <div class="flex justify-center pt-8 mt-8 border-t border-white/5 relative z-10">
+                        <div class="bg-slate-900 p-6 rounded-[2.5rem] border border-white/10 shadow-2xl flex flex-col items-center relative active:scale-[1.05] transition-transform duration-300">
+                            <div class="p-3 bg-white rounded-3xl shadow-[0_0_30px_rgba(56,189,248,0.2)]">
+                                <img alt="QR Code Bank Transfer" class="w-56 h-56 rounded-2xl" src="https://api.vietqr.io/image/{{ $bankBin }}-{{ $bankNumber }}-compact2.png?amount=0&addInfo=vanhfco%20{{ Auth::id() }}&accountName={{ urlencode($bankName) }}">
                             </div>
-                            <div class="mt-5 text-center">
-                                <div class="inline-block bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full mb-2">VietQR 2.0</div>
-                                <p class="text-base text-gray-800 font-black uppercase tracking-wide">Quét mã để nạp nhanh</p>
-                                <p class="text-xs text-orange-500 font-bold mt-1 uppercase">Xử lý tự động trong tích tắc</p>
+                            <div class="mt-6 text-center">
+                                <div class="inline-block bg-primary/10 text-primary text-[9px] font-black uppercase tracking-[0.3em] px-4 py-1.5 rounded-full mb-3 border border-primary/20">VietQR 2.0</div>
+                                <p class="text-lg text-white font-black uppercase tracking-tight">Quét mã để nạp nhanh</p>
+                                <p class="text-[10px] text-primary font-black mt-1 uppercase tracking-widest opacity-80 animate-pulse">Xử lý tự động 24/7</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Warning -->
-                    <div class="mt-6 p-4 rounded-xl bg-orange-50 border border-orange-200">
-                        <p class="text-sm text-orange-600 leading-relaxed font-bold flex items-start gap-2">
-                            <span class="material-icons text-base shrink-0">error</span>
-                            <span>Vui lòng ghi <strong class="text-primary">đúng nội dung</strong> ở mục <strong class="text-primary">Nội dung chuyển tiền</strong> để cập nhật số dư ngay lập tức.</span>
+                    <div class="mt-8 p-5 rounded-2xl bg-primary/5 border border-primary/20 relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-primary shadow-[0_0_10px_rgba(56,189,248,0.5)]"></div>
+                        <p class="text-xs text-slate-300 leading-relaxed font-bold flex items-start gap-3">
+                            <span class="material-icons text-primary text-base shrink-0">info</span>
+                            <span>Vui lòng ghi <strong class="text-white">đúng nội dung</strong> ở mục <strong class="text-white">Nội dung chuyển tiền</strong> để hệ thống tự động cập nhật số dư.</span>
                         </p>
                     </div>
                 </div>
@@ -104,79 +95,73 @@
 
         <!-- Instructions -->
         <div class="lg:col-span-7">
-            <div class="bg-white rounded-2xl overflow-hidden h-full flex flex-col border border-gray-200 shadow-xl relative">
-                <!-- Decorative flower corner -->
-                <img src="{{ asset('images/hoa2.webp') }}" class="absolute -top-6 -right-6 w-40 opacity-70 pointer-events-none z-0 animate-shake">
-
+            <div class="glass rounded-3xl overflow-hidden h-full flex flex-col border border-white/10 shadow-2xl relative">
                 <!-- Header -->
-                <div class="bg-linear-to-r from-primary to-orange-500 p-5 relative z-10">
-                    <span class="font-black uppercase tracking-wider flex items-center gap-2 text-white">
+                <div class="bg-linear-to-r from-primary to-indigo-600 p-6 relative z-10">
+                    <span class="font-black uppercase tracking-widest flex items-center gap-3 text-white text-sm">
                         <span class="material-icons">help_outline</span> CÁC BƯỚC THỰC HIỆN
                     </span>
                 </div>
 
                 <!-- Content -->
-                <div class="p-8 flex-1 space-y-8">
+                <div class="p-8 flex-1 space-y-10">
                     <!-- Transfer Content Section -->
                     <div class="space-y-4">
-                        <h3 class="text-sm font-black uppercase text-gray-400 tracking-widest flex items-center gap-2">
+                        <h3 class="text-[10px] font-black uppercase text-slate-500 tracking-[0.2em] flex items-center gap-2">
                             <span class="material-icons text-primary text-sm">vpn_key</span>
                             Nội dung chuyển tiền bắt buộc
                         </h3>
-                        <div class="bg-primary/5 border-2 border-primary/30 rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden group/content">
-                            <!-- Background pattern -->
-                            <div class="absolute inset-0 bg-primary opacity-0 group-hover/content:opacity-[0.03] transition-opacity duration-500"></div>
-
-                            <div class="flex items-center gap-5 relative z-10">
-                                <div class="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center text-white shadow-lg">
+                        <div class="bg-indigo-600/10 border border-primary/30 rounded-3xl p-8 flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden group/content shadow-inner">
+                            <div class="flex items-center gap-6 relative z-10 text-center md:text-left">
+                                <div class="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center text-white shadow-[0_0_20px_rgba(56,189,248,0.4)]">
                                     <span class="material-icons text-4xl">vpn_key</span>
                                 </div>
                                 <div>
-                                    <p class="text-xs text-primary font-black uppercase tracking-widest mb-1">Nội dung chuyển tiền</p>
-                                    <p class="text-3xl font-black text-gray-800 italic tracking-wider">vanhfco {{ Auth::id() }}</p>
+                                    <p class="text-[9px] text-primary font-black uppercase tracking-[0.3em] mb-1">Cú pháp chính xác</p>
+                                    <p class="text-4xl font-black text-white italic tracking-tight drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">vanhfco {{ Auth::id() }}</p>
                                 </div>
                             </div>
-                            <button class="btn-tet px-8 py-5 rounded-2xl flex items-center gap-2 font-black text-base shadow-xl hover-glow-gold transition-all active:scale-95 relative z-10" onclick="navigator.clipboard.writeText('vanhfco {{ Auth::id() }}')">
+                            <button class="btn-esport px-10 py-5 rounded-2xl flex items-center gap-3 font-black text-base shadow-2xl transition-all active:scale-95 relative z-10 border-none" onclick="navigator.clipboard.writeText('vanhfco {{ Auth::id() }}')">
                                 <span class="material-icons">content_copy</span> SAO CHÉP
                             </button>
                         </div>
                     </div>
 
                     <!-- Steps -->
-                    <div class="space-y-6">
-                        <div class="flex gap-4">
-                            <div class="shrink-0 w-10 h-10 rounded-lg bg-primary text-white flex items-center justify-center font-black text-lg">1</div>
-                            <div class="flex-1">
-                                <p class="text-gray-600 leading-relaxed">Đăng nhập ứng dụng Mobile Banking, chọn chức năng <strong class="text-primary">Scan QR</strong>, quét mã QR bên cạnh (hoặc điền STK và tên Ngân Hàng theo cách thủ công thông thường).</p>
+                    <div class="space-y-8">
+                        <div class="flex gap-5 group">
+                            <div class="shrink-0 w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center font-black text-xl text-primary group-hover:bg-primary group-hover:text-white transition-all shadow-lg">1</div>
+                            <div class="flex-1 pt-1">
+                                <p class="text-slate-400 text-sm leading-relaxed"><strong class="text-white">Truy cập Ngân hàng</strong>: Đăng nhập Mobile Banking, chọn <strong class="text-primary font-black uppercase">Scan QR</strong> và quét mã bên trái để tự động điền thông tin.</p>
                             </div>
                         </div>
 
-                        <div class="flex gap-4">
-                            <div class="shrink-0 w-10 h-10 rounded-lg bg-primary text-white flex items-center justify-center font-black text-lg">2</div>
-                            <div class="flex-1">
-                                <p class="text-gray-600 leading-relaxed">Nhập số tiền muốn nạp và nội dung chuyển khoản <strong class="text-primary">đúng cú pháp</strong>. Kiểm tra các thông tin trước khi thực hiện chuyển tiền.</p>
+                        <div class="flex gap-5 group">
+                            <div class="shrink-0 w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center font-black text-xl text-primary group-hover:bg-primary group-hover:text-white transition-all shadow-lg">2</div>
+                            <div class="flex-1 pt-1">
+                                <p class="text-slate-400 text-sm leading-relaxed"><strong class="text-white">Kiểm tra thông tin</strong>: Nhập số tiền và kiểm tra kỹ nội dung chuyển khoản phải là <strong class="text-primary font-black underline decoration-2 underline-offset-4">vanhfco {{ Auth::id() }}</strong>.</p>
                             </div>
                         </div>
 
                         <!-- Important Notice -->
-                        <div class="bg-linear-to-br from-red-600 to-orange-600 rounded-2xl p-8 space-y-4 shadow-2xl relative overflow-hidden group/notice">
-                            <!-- Shine effect -->
-                            <div class="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover/notice:translate-x-[100%] transition-transform duration-1000"></div>
+                        <div class="bg-linear-to-br from-slate-900 to-indigo-950 rounded-3xl p-8 space-y-5 shadow-2xl relative overflow-hidden group/notice border border-primary/20">
+                            <!-- Background glow -->
+                            <div class="absolute -top-10 -right-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
 
-                            <p class="text-yellow-300 font-black text-center text-2xl italic uppercase tracking-widest relative z-10">LƯU Ý QUAN TRỌNG</p>
-                            <div class="bg-white/10 backdrop-blur-sm rounded-xl py-4 px-6 relative z-10 border border-white/20">
-                                <p class="text-white font-black text-center text-lg">STK: <span class="text-yellow-300">{{ $bankNumber }}</span> - <span class="text-yellow-300">MBBANK</span></p>
-                                <p class="text-white/90 text-center font-bold">{{ $bankName }}</p>
+                            <p class="text-primary font-black text-center text-lg uppercase tracking-[0.4em] relative z-10">Lưu ý quan trọng</p>
+                            <div class="bg-white/5 backdrop-blur-md rounded-2xl py-5 px-6 relative z-10 border border-white/5 text-center">
+                                <p class="text-white font-black text-xl mb-1">{{ $bankNumber }} <span class="text-slate-500 font-normal mx-2">|</span> MBBANK</p>
+                                <p class="text-slate-400 text-xs font-bold uppercase tracking-widest">{{ $bankName }}</p>
                             </div>
-                            <p class="text-white font-bold text-center text-sm uppercase tracking-widest leading-relaxed relative z-10">
-                                Nội dung phải đúng: <span class="bg-yellow-400 text-primary px-2 py-0.5 rounded font-black">vanhfco {{ Auth::id() }}</span>
+                            <p class="text-slate-300 font-bold text-center text-[10px] uppercase tracking-widest leading-relaxed relative z-10">
+                                Nội dung đúng: <span class="text-primary font-black animate-pulse drop-shadow-[0_0_8px_rgba(56,189,248,0.5)]">vanhfco {{ Auth::id() }}</span>
                             </p>
                         </div>
 
-                        <div class="flex gap-4">
-                            <div class="shrink-0 w-10 h-10 rounded-lg bg-primary text-white flex items-center justify-center font-black text-lg">3</div>
-                            <div class="flex-1">
-                                <p class="text-gray-600 leading-relaxed">Xác nhận thanh toán và hoàn tất giao dịch. <span class="bg-orange-100 border border-orange-300 text-orange-600 font-black px-2 py-1 rounded">Số dư sẽ được cập nhật tự động NGAY LẬP TỨC</span> tại website vanhfco.</p>
+                        <div class="flex gap-5 group">
+                            <div class="shrink-0 w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center font-black text-xl text-primary group-hover:bg-primary group-hover:text-white transition-all shadow-lg">3</div>
+                            <div class="flex-1 pt-1">
+                                <p class="text-slate-400 text-sm leading-relaxed"><strong class="text-white">Hoàn tất</strong>: Sau khi chuyển tiền thành công, số dư sẽ được <strong class="text-primary font-black uppercase decoration-dotted underline underline-offset-4">cập nhật tự động</strong> ngay lập tức trên website.</p>
                             </div>
                         </div>
                     </div>

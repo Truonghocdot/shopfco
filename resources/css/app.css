@@ -14,33 +14,33 @@
     --font-family-sans: "Inter", system-ui, -apple-system, sans-serif;
     --font-family-display: "Outfit", "Inter", sans-serif;
 
-    /* Tet Bright Color Palette */
-    --color-primary: #d42020;
-    --color-primary-dark: #b01818;
-    --color-primary-light: #ff4444;
-    --color-accent-orange: #f57c00;
-    --color-accent-gold: #f9a825;
-    --color-accent-yellow: #ffd54f;
+    /* Dark Esport Color Palette */
+    --color-primary: #38bdf8; /* Sky 400 */
+    --color-primary-dark: #0284c7; /* Sky 600 */
+    --color-primary-light: #7dd3fc; /* Sky 300 */
+    --color-accent-indigo: #818cf8; /* Indigo 400 */
+    --color-accent-pink: #f472b6; /* Pink 400 */
+    --color-accent-emerald: #34d399; /* Emerald 400 */
 
-    /* Clean Light Backgrounds */
-    --color-bg-warm: #ffffff;
-    --color-bg-cream: #ffffff;
-    --color-bg-card: #ffffff;
-    --color-bg-red-light: #f9fafb;
+    /* Dark Backgrounds */
+    --color-bg-dark: #020617; /* Slate 950 */
+    --color-bg-card: #0f172a; /* Slate 900 */
+    --color-bg-surface: #1e293b; /* Slate 800 */
 
     /* Text Colors */
-    --color-text-primary: #1a1a1a;
-    --color-text-secondary: #555555;
-    --color-text-muted: #888888;
+    --color-text-primary: #f8fafc; /* Slate 50 */
+    --color-text-secondary: #94a3b8; /* Slate 400 */
+    --color-text-muted: #64748b; /* Slate 500 */
 
     /* Border Colors */
-    --color-border: #e5e7eb;
-    --color-border-light: #f3f4f6;
+    --color-border: #1e293b; /* Slate 800 */
+    --color-border-light: #334155; /* Slate 700 */
+    --color-border-glow: rgba(56, 189, 248, 0.4);
 }
 
 /* Global Styles */
 body {
-    background: var(--color-bg-warm);
+    background: var(--color-bg-dark);
     color: var(--color-text-primary);
     font-family: var(--font-family-sans);
     line-height: 1.6;
@@ -58,46 +58,80 @@ h4,
     letter-spacing: -0.02em;
 }
 
-/* Card Styles - Clean & Bright */
-.card-tet {
-    background: white;
+/* Card Styles - Dark Esport */
+.card-esport {
+    background: var(--color-bg-card);
     border: 1px solid var(--color-border);
     border-radius: 1rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    transition:
-        box-shadow 0.2s,
-        transform 0.2s;
+    box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
 }
 
-.card-tet:hover {
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+.card-esport::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.05), transparent);
+    pointer-events: none;
+}
+
+.card-esport:hover {
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+    border-color: var(--color-primary);
     transform: translateY(-2px);
 }
 
-/* Tet Button */
-.btn-tet {
-    background: linear-gradient(135deg, #d42020, #f57c00);
+/* Esport Button */
+.btn-esport {
+    background: linear-gradient(
+        135deg,
+        var(--color-primary),
+        var(--color-accent-indigo)
+    );
     color: white;
     font-weight: 700;
     padding: 0.75rem 1.5rem;
-    border-radius: 0.75rem;
+    border-radius: 0.5rem;
     transition: all 0.2s;
     border: none;
-    box-shadow: 0 2px 8px rgba(212, 32, 32, 0.25);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-.btn-tet:hover {
-    box-shadow: 0 4px 16px rgba(212, 32, 32, 0.35);
-    transform: translateY(-1px);
+.btn-esport:hover {
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.5);
+    transform: scale(1.02);
+    filter: brightness(1.1);
 }
 
-/* Warm accent backgrounds */
-.bg-tet-warm {
-    background: linear-gradient(135deg, #ffffff, #ffffff);
+/* Esport accent backgrounds */
+.bg-esport-darker {
+    background: #020617;
 }
 
-.bg-tet-red-soft {
-    background: linear-gradient(135deg, #ffffff, #ffffff);
+.bg-esport-gradient {
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(56, 189, 248, 0.1),
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom left,
+            rgba(129, 140, 248, 0.1),
+            transparent 40%
+        );
 }
 
 /* Clean soft shadows */
@@ -109,23 +143,23 @@ h4,
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
-/* Custom Scrollbar - Warm */
+/* Custom Scrollbar - Dark Esport */
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #faf0e6;
+    background: var(--color-bg-dark);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #e0c4a8;
-    border-radius: 4px;
+    background: var(--color-border-light);
+    border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #d4a882;
+    background: var(--color-primary);
 }
 
 /* Simple gentle float animation for decorative elements */
@@ -182,25 +216,63 @@ h4,
     animation: marquee 12s linear infinite;
 }
 
-@keyframes glow-gold {
+@keyframes glow-primary {
     0%,
     100% {
         box-shadow:
-            0 0 5px rgba(255, 215, 0, 0.5),
-            inset 0 0 5px rgba(255, 215, 0, 0.2);
+            0 0 5px rgba(56, 189, 248, 0.2),
+            inset 0 0 2px rgba(56, 189, 248, 0.1);
     }
     50% {
         box-shadow:
-            0 0 15px rgba(255, 215, 0, 0.8),
-            inset 0 0 10px rgba(255, 215, 0, 0.4);
+            0 0 20px rgba(56, 189, 248, 0.6),
+            inset 0 0 10px rgba(56, 189, 248, 0.3);
     }
 }
 
-.hover-glow-gold:hover {
-    animation: glow-gold 1.5s ease-in-out infinite;
-    border-color: rgba(255, 215, 0, 0.7) !important;
+.hover-glow-primary:hover {
+    animation: glow-primary 1.5s ease-in-out infinite;
+    border-color: var(--color-primary) !important;
+}
+
+.nav-link {
+    color: var(--color-text-secondary);
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 .nav-link:hover {
-    color: #ffd700 !important;
+    color: var(--color-primary) !important;
+    text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Glassmorphism utility */
+.glass {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Neon Text */
+.text-neon {
+    color: var(--color-primary);
+    text-shadow:
+        0 0 10px rgba(56, 189, 248, 0.5),
+        0 0 20px rgba(56, 189, 248, 0.3);
 }

@@ -1,48 +1,47 @@
 @props(['topSpenders'])
 
-<div class="bg-white rounded-xl border border-gray-200 shadow-md p-4 md:p-6 relative overflow-hidden">
-    <!-- Decorative fireworks -->
-    <img src="{{ asset('images/meo.webp') }}" alt="" class="absolute -top-4 -right-4 w-20 md:w-32 opacity-90 pointer-events-none z-0">
-    <img src="{{ asset('images/phao3.webp') }}" alt="" class="absolute -bottom-6 -left-6 w-24 md:w-28 opacity-70 -rotate-12 pointer-events-none animate-swing">
-    <img src="{{ asset('images/phao2.webp') }}" alt="" class="absolute -bottom-4 -right-4 w-24 md:w-28 opacity-80 rotate-6 pointer-events-none animate-swing">
+<div class="glass rounded-xl border border-white/10 shadow-2xl p-4 md:p-6 relative overflow-hidden group">
+    <!-- Decorative background glow -->
+    <div class="absolute -top-10 -right-10 w-32 h-32 bg-primary/10 blur-3xl rounded-full pointer-events-none transition-all group-hover:bg-primary/20"></div>
+    <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-indigo-500/10 blur-3xl rounded-full pointer-events-none transition-all group-hover:bg-indigo-500/20"></div>
 
     <!-- Header -->
     <div class="flex items-center gap-2 md:gap-3 mb-4 md:mb-6 relative z-10">
-        <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center shadow-md">
-            <span class="material-icons text-white text-xl md:text-2xl">emoji_events</span>
+        <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-900 border border-primary/30 flex items-center justify-center shadow-[0_0_15px_rgba(56,189,248,0.2)]">
+            <span class="material-icons text-primary text-xl md:text-2xl">emoji_events</span>
         </div>
         <div>
-            <h3 class="text-base md:text-xl font-black text-primary uppercase tracking-wide">Bảng Xếp Hạng</h3>
-            <p class="text-[10px] md:text-sm text-gray-400">Top người chi tiêu nhiều nhất</p>
+            <h3 class="text-base md:text-xl font-black text-white uppercase tracking-wider">Bảng Xếp Hạng</h3>
+            <p class="text-[10px] md:text-sm text-slate-500 font-medium">Top người chi tiêu nhiều nhất</p>
         </div>
     </div>
 
     @if($topSpenders->isNotEmpty())
     <div class="space-y-2 md:space-y-3">
         @foreach($topSpenders as $index => $user)
-        <div class="relative z-10 flex items-center gap-3 md:gap-4 p-2 md:p-3 rounded-lg transition-all {{ $index < 3 ? 'bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-200' : 'bg-gray-50 border border-gray-100 hover:border-orange-200' }} hover:scale-[1.01]">
+        <div class="relative z-10 flex items-center gap-3 md:gap-4 p-2 md:p-3 rounded-lg transition-all {{ $index < 3 ? 'bg-primary/5 border border-primary/20 shadow-[0_0_10px_rgba(56,189,248,0.05)]' : 'bg-white/5 border border-white/5 hover:border-primary/30' }} hover:scale-[1.01] group/item">
             <!-- Rank -->
             <div class="shrink-0 w-8 md:w-10 text-center">
                 @if($index === 0)
-                <span class="text-2xl md:text-3xl">🥇</span>
+                <span class="text-2xl md:text-3xl drop-shadow-[0_0_8px_rgba(255,215,0,0.5)]">🥇</span>
                 @elseif($index === 1)
-                <span class="text-2xl md:text-3xl">🥈</span>
+                <span class="text-2xl md:text-3xl drop-shadow-[0_0_8px_rgba(192,192,192,0.5)]">🥈</span>
                 @elseif($index === 2)
-                <span class="text-2xl md:text-3xl">🥉</span>
+                <span class="text-2xl md:text-3xl drop-shadow-[0_0_8px_rgba(205,127,50,0.5)]">🥉</span>
                 @else
-                <span class="text-sm md:text-lg font-bold text-gray-400">#{{ $index + 1 }}</span>
+                <span class="text-sm md:text-lg font-black text-slate-600 group-hover/item:text-primary/50 transition-colors">#{{ $index + 1 }}</span>
                 @endif
             </div>
 
             <!-- User Info -->
             <div class="flex-1 min-w-0">
-                <p class="font-semibold text-sm md:text-base {{ $index < 3 ? 'text-orange-600' : 'text-gray-700' }} truncate">{{ $user->name }}</p>
-                <p class="text-[10px] md:text-xs text-gray-400">{{ $user->total_orders }} đơn hàng</p>
+                <p class="font-bold text-sm md:text-base {{ $index < 3 ? 'text-white' : 'text-slate-300' }} truncate group-hover/item:text-primary transition-colors">{{ $user->name }}</p>
+                <p class="text-[10px] md:text-xs text-slate-500 font-medium">{{ $user->total_orders }} đơn hàng</p>
             </div>
 
             <!-- Total Spent -->
             <div class="text-right">
-                <p class="font-black text-sm md:text-lg {{ $index < 3 ? 'text-orange-500' : 'text-primary' }}">
+                <p class="font-black text-sm md:text-lg {{ $index < 3 ? 'text-primary drop-shadow-[0_0_5px_rgba(56,189,248,0.4)]' : 'text-slate-400' }}">
                     {{ number_format($user->total_spent) }}đ
                 </p>
             </div>
@@ -50,9 +49,9 @@
         @endforeach
     </div>
 
-    <div class="mt-4 md:mt-6 pt-3 md:pt-4 border-t border-gray-100 text-center">
-        <p class="text-xs text-gray-400 italic flex items-center justify-center gap-1">
-            <span class="material-icons text-xs align-middle text-primary">info</span>
+    <div class="mt-4 md:mt-6 pt-3 md:pt-4 border-t border-white/5 text-center">
+        <p class="text-xs text-slate-600 font-medium flex items-center justify-center gap-1 italic">
+            <span class="material-icons text-xs align-middle text-primary/50">info</span>
             Cập nhật mỗi 5 phút
         </p>
     </div>
