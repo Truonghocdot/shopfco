@@ -170,7 +170,7 @@
                 <div class="content-box space-y-6">
                     <div>
                         <h3 class="subsection-title">2.1 Thu thập thông tin</h3>
-                        <p class="text-gray-600 leading-relaxed">
+                        <p class="text-white leading-relaxed">
                             <strong class="text-primary">VanhFCO</strong> cam kết bảo mật tuyệt đối thông tin cá nhân của khách hàng khi mua
                             <strong class="text-primary">Acc chứa FC</strong>, <strong class="text-primary">Acc Mở thẻ</strong> hoặc
                             <strong class="text-primary">Acc đội hình</strong>. Chúng tôi chỉ thu thập thông tin cần thiết cho giao dịch.
@@ -179,7 +179,7 @@
 
                     <div>
                         <h3 class="subsection-title">2.2 Sử dụng thông tin</h3>
-                        <ul class="list-disc list-inside space-y-2 text-gray-600 leading-relaxed">
+                        <ul class="list-disc list-inside space-y-2 text-white leading-relaxed">
                             <li>Xác thực giao dịch mua <strong class="text-primary">AccFCO</strong></li>
                             <li>Hỗ trợ khách hàng khi có vấn đề</li>
                             <li>Gửi thông báo về đơn hàng và chương trình khuyến mãi</li>
@@ -189,7 +189,7 @@
 
                     <div>
                         <h3 class="subsection-title">2.3 Cam kết bảo mật</h3>
-                        <p class="text-gray-600 leading-relaxed">
+                        <p class="text-white leading-relaxed">
                             Thông tin khách hàng tại <strong class="text-primary">AccFCO</strong> được mã hóa và lưu trữ an toàn.
                             Chúng tôi không chia sẻ thông tin với bên thứ ba khi chưa có sự đồng ý.
                         </p>
@@ -207,7 +207,7 @@
                 <div class="content-box space-y-6">
                     <div>
                         <h3 class="subsection-title">3.1 Quy trình mua Acc chứa FC</h3>
-                        <ol class="list-decimal list-inside space-y-2 text-gray-600 leading-relaxed">
+                        <ol class="list-decimal list-inside space-y-2 text-white leading-relaxed">
                             <li>Đăng ký/Đăng nhập tài khoản tại <strong class="text-primary">VanhFCO</strong></li>
                             <li>Nạp tiền vào ví qua chuyển khoản ngân hàng</li>
                             <li>Chọn <a href="{{ route('products.index') }}" class="text-primary hover:underline">Acc chứa FC</a> phù hợp với nhu cầu</li>
@@ -217,7 +217,7 @@
 
                     <div>
                         <h3 class="subsection-title">3.2 Quy trình mua Acc Mở thẻ</h3>
-                        <p class="text-gray-600 leading-relaxed">
+                        <p class="text-white leading-relaxed">
                             Tương tự như mua <strong class="text-primary">Acc chứa FC</strong>, khách hàng chọn
                             <strong class="text-primary">Acc Mở thẻ</strong> theo số lượng thẻ mong muốn, thanh toán và nhận tài khoản.
                         </p>
@@ -252,10 +252,10 @@
                 <div class="content-box space-y-6">
                     <div>
                         <h3 class="subsection-title">4.1 Điều kiện đổi trả</h3>
-                        <p class="text-gray-600 leading-relaxed mb-4">
+                        <p class="text-white leading-relaxed mb-4">
                             <strong class="text-primary">VanhFCO</strong> chấp nhận đổi trả trong các trường hợp sau:
                         </p>
-                        <ul class="list-disc list-inside space-y-2 text-gray-600 leading-relaxed">
+                        <ul class="list-disc list-inside space-y-2 text-white leading-relaxed">
                             <li><strong class="text-primary">Acc chứa FC</strong> không đúng số lượng FC đã mô tả</li>
                             <li><strong class="text-primary">Acc Mở thẻ</strong> không đúng số lượng thẻ</li>
                             <li><strong class="text-primary">Acc đội hình</strong> thiếu cầu thủ hoặc sai OVR</li>
@@ -265,7 +265,7 @@
 
                     <div>
                         <h3 class="subsection-title">4.2 Thời gian đổi trả</h3>
-                        <p class="text-gray-600 leading-relaxed">
+                        <p class="text-white leading-relaxed">
                             Khách hàng cần thông báo trong vòng <span class="highlight-text">24 giờ</span> kể từ khi nhận tài khoản.
                             <strong class="text-primary">AccFCO</strong> sẽ xử lý đổi trả trong vòng 24-48 giờ.
                         </p>
@@ -273,7 +273,7 @@
 
                     <div>
                         <h3 class="subsection-title">4.3 Quy trình đổi trả</h3>
-                        <ol class="list-decimal list-inside space-y-2 text-gray-600 leading-relaxed">
+                        <ol class="list-decimal list-inside space-y-2 text-white leading-relaxed">
                             <li>Liên hệ bộ phận hỗ trợ qua Zalo/Facebook</li>
                             <li>Cung cấp thông tin đơn hàng và vấn đề gặp phải</li>
                             <li>Chờ xác nhận từ <strong class="text-primary">VanhFCO</strong></li>
@@ -293,12 +293,12 @@
                 <div class="content-box space-y-6">
                     <div>
                         <h3 class="subsection-title">5.1 Phương thức thanh toán</h3>
-                        <p class="text-gray-600 leading-relaxed mb-4">
+                        <p class="text-white leading-relaxed mb-4">
                             Khi mua <strong class="text-primary">Acc chứa FC</strong>, <strong class="text-primary">Acc Mở thẻ</strong>
                             hoặc <strong class="text-primary">Acc đội hình</strong> tại <strong class="text-primary">VanhFCO</strong>,
                             khách hàng thanh toán qua:
                         </p>
-                        <ul class="list-disc list-inside space-y-2 text-gray-600 leading-relaxed">
+                        <ul class="list-disc list-inside space-y-2 text-white leading-relaxed">
                             <li>Chuyển khoản ngân hàng (tự động cộng tiền)</li>
                             <li>Ví điện tử (đang phát triển)</li>
                         </ul>
@@ -306,7 +306,7 @@
 
                     <div>
                         <h3 class="subsection-title">5.2 Bảo mật thanh toán</h3>
-                        <p class="text-gray-600 leading-relaxed">
+                        <p class="text-white leading-relaxed">
                             Mọi giao dịch tại <strong class="text-primary">AccFCO</strong> được mã hóa và bảo mật.
                             Thông tin thanh toán không được lưu trữ sau khi giao dịch hoàn tất.
                         </p>
@@ -314,7 +314,7 @@
 
                     <div>
                         <h3 class="subsection-title">5.3 Hoàn tiền</h3>
-                        <p class="text-gray-600 leading-relaxed">
+                        <p class="text-white leading-relaxed">
                             Trong trường hợp đổi trả, tiền sẽ được hoàn vào ví tại <strong class="text-primary">VanhFCO</strong>
                             để khách hàng có thể mua <strong class="text-primary">Acc chứa FC</strong> hoặc sản phẩm khác.
                         </p>
@@ -439,7 +439,7 @@
                     <span class="material-icons text-primary text-6xl mb-6 animate-bounce">favorite</span>
                     <h2 class="text-3xl font-black text-gray-800 mb-6 uppercase tracking-widest">LỜI CẢM ƠN CHÂN THÀNH</h2>
                     <div class="max-w-2xl mx-auto">
-                        <p class="text-gray-600 mb-8 italic text-lg leading-relaxed">
+                        <p class="text-white mb-8 italic text-lg leading-relaxed">
                             "Cảm ơn tất cả anh em đã tin tưởng <strong class="text-primary underline decoration-2 underline-offset-4">VanhFCO</strong> - <strong class="text-primary underline decoration-2 underline-offset-4">AccFCO</strong>
                             để mua <strong class="text-primary">Acc chứa FC</strong>, <strong class="text-primary">Acc Mở thẻ</strong>,
                             <strong class="text-primary">Acc đội hình</strong>. Chúng tôi cam kết mang đến dịch vụ tốt nhất cho cộng đồng FC Online."
