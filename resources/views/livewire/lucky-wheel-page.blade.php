@@ -641,13 +641,13 @@
     // GAME LOOP
     // ============================================================
     let gameStartTime = 0;
-    let goldenSpawned = false;
+    let finalPhaseStarted = false;
 
     function startGame(prize) {
         if (gameRunning) return;
         gameRunning = true;
         prizeAmount = prize;
-        goldenSpawned = false;
+        finalPhaseStarted = false;
         coconuts = [];
         particles = [];
         scorePopups = [];
@@ -663,29 +663,8 @@
         cancelAnimationFrame(idleRaf);
 
         // Spawn regular coconuts at intervals
-        for (let i = 0; i < 8; i++) {
-            spawnCoconut(false, 200 + i * 350);
-        }
-
-        // Spawn golden coconut at ~3.5s if prize > 0
-        if (prizeAmount > 0) {
-            setTimeout(() => {
-                // Spawn golden near the surfer so it "catches" it
-                const golden = {
-                    x: surfer.x + (Math.random() - 0.5) * 0.15,
-                    y: -0.05,
-                    speed: 0.006,
-                    golden: true,
-                    radius: 16,
-                    rotation: 0,
-                    rotSpeed: 0.03,
-                    caught: false,
-                    missed: false,
-                    catchAnim: 0,
-                };
-                coconuts.push(golden);
-                goldenSpawned = true;
-            }, 2500);
+        for (let i = 0; i < 6; i++) {
+            spawnCoconut(false, 200 + i * 400);
         }
 
         // Start game loop
@@ -717,7 +696,14 @@
                     c.catchAnim = 0.99;
                     const label = prizeAmount > 0 ? '+' + prizeAmount.toLocaleString() + 'đ' : 'Nice!';
                     addScorePopup(label, surfer.x * cssW, surfer.y - 40);
+                    
+                    // Trigger modal after catch
+                    setTimeout(endGame, 1200);
                 }
+            }
+            // If missed golden (shouldn't happen with current logic but for safety)
+            if (c.golden && c.missed) {
+                setTimeout(endGame, 1000);
             }
         });
 
@@ -736,26 +722,54 @@
 
         if (elapsed < GAME_DURATION) {
             animFrameId = requestAnimationFrame(gameLoop);
-        } else {
-            endGame();
+        } else if (!finalPhaseStarted) {
+            finalPhaseStarted = true;
+            // Spawn the "Result" coconut
+            const isWin = prizeAmount > 0;
+            const resultCoco = {
+                x: surfer.x + (Math.random() - 0.5) * 0.1, // Near surfer
+                y: -0.1,
+                speed: 0.007,
+                golden: isWin,
+                radius: isWin ? 18 : 12,
+                rotation: 0,
+                rotSpeed: 0.05,
+                caught: false,
+                missed: false,
+                catchAnim: 0,
+            };
+            coconuts.push(resultCoco);
+            
+            // If it's a lose, we still need to end game after it falls
+            if (!isWin) {
+                setTimeout(() => {
+                    if (!gameRunning) return;
+                    endGame();
+                }, 2000);
+            }
+            
+            // Continue loop to show falling result coconut
+            animFrameId = requestAnimationFrame(gameLoop);
+        } else if (gameRunning) {
+            // Keep loop until endGame is explicitly called by catch/timeout
+            animFrameId = requestAnimationFrame(gameLoop);
         }
     }
 
     function endGame() {
+        if (!gameRunning) return;
         gameRunning = false;
+        cancelAnimationFrame(animFrameId);
 
-        // Short delay then show result
-        setTimeout(() => {
-            @this.set('showResult', true);
-            @this.set('spinning', false);
+        @this.set('showResult', true);
+        @this.set('spinning', false);
 
-            // Restart idle
-            if (overlay) {
-                overlay.style.display = 'flex';
-                setTimeout(() => { overlay.style.opacity = '1'; }, 50);
-            }
-            idleRaf = requestAnimationFrame(idleLoop);
-        }, 800);
+        // Restart idle
+        if (overlay) {
+            overlay.style.display = 'flex';
+            setTimeout(() => { overlay.style.opacity = '1'; }, 50);
+        }
+        idleRaf = requestAnimationFrame(idleLoop);
     }
 
     // ============================================================
