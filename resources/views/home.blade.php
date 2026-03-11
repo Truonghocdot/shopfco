@@ -137,10 +137,10 @@
             <a href="{{ route('categories.show', $category->slug) }}" class="group card-esport p-3 md:p-4 flex flex-col items-center text-center transition-all hover:scale-[1.03] hover:border-primary/50">
                 <div class="w-full h-32 md:h-48 mb-3 md:mb-4 overflow-hidden rounded-lg relative">
                     <img alt="{{ $category->title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="{{ url('storage/'.$category->image) ?? 'https://via.placeholder.com/96' }}" loading="lazy">
-                    <div class="absolute inset-0 bg-linear-to-t from-amber-600/40 to-transparent"></div>
+                    <div class="absolute inset-0 bg-linear-to-t from-sky-900/40 to-transparent"></div>
                 </div>
                 <h3 class="font-black text-sm md:text-lg mb-1 text-white group-hover:text-primary transition-colors uppercase tracking-wide">{{ $category->title }}</h3>
-                <p class="text-white/90 text-[10px] md:text-sm line-clamp-1 md:line-clamp-none">{!! strip_tags($category->description) !!}</p>
+                <p class="text-white/80 text-[10px] md:text-sm line-clamp-1 md:line-clamp-none">{!! strip_tags($category->description) !!}</p>
             </a>
             @empty
             <div class="col-span-4 text-center text-neutral-600 p-12 glass rounded-xl border border-white/5">Chưa có danh mục nào</div>
@@ -213,7 +213,7 @@
             <div class="card-sticker text-2xl">🔥</div>
             <div class="relative overflow-hidden aspect-video">
                 <img alt="{{ $news->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ url('storage/'.$news->thumbnail) ?? 'https://via.placeholder.com/400x225' }}" loading="lazy">
-                <div class="absolute inset-0 bg-linear-to-t from-amber-950/40 to-transparent"></div>
+                <div class="absolute inset-0 bg-linear-to-t from-sky-950/40 to-transparent"></div>
             </div>
             <div class="p-4 relative z-20">
                 <h4 class="font-bold text-sm mb-2 line-clamp-2 h-10 text-white group-hover:text-primary transition-colors tracking-tight">{{ $news->title }}</h4>

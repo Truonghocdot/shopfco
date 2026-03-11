@@ -8,14 +8,14 @@
 
 :root {
     --swiper-theme-color: #ffffff !important;
-    --sky-blue: #FFF176;
-    --sky-blue-light: #FFFDE7;
+    --sky-blue: #00AEEF;
+    --sky-blue-light: #87CEEB;
     --golden-sun: #FFD700;
-    --golden-hover: #FFA000;
+    --golden-hover: #FFA500;
     --cloud-white: #FFFFFF;
-    --deep-navy: #3E2723;
-    --glass-bg: rgba(255, 255, 255, 0.25);
-    --glass-border: rgba(255, 215, 0, 0.3);
+    --deep-navy: #003366;
+    --glass-bg: rgba(255, 255, 255, 0.2);
+    --glass-border: rgba(255, 255, 255, 0.3);
 }
 
 @theme {
@@ -23,21 +23,21 @@
     --font-family-sans: "Inter", system-ui, -apple-system, sans-serif;
     --font-family-display: "Outfit", "Lexend", sans-serif;
 
-    /* Summer Breeze Palette - Light Yellow Edition */
+    /* Summer Breeze Palette */
     --color-primary: #FFD700; /* Golden Sun */
-    --color-primary-dark: #FFA000; /* Orange/Gold */
+    --color-primary-dark: #FFA500; /* Orange/Gold */
     --color-primary-light: #FFF9C4; /* Light Yellow */
-    --color-secondary: #FFF176; /* Sunshine Yellow */
+    --color-secondary: #00AEEF; /* Sky Blue */
     
     /* Summer Backgrounds */
-    --color-bg-dark: #FFFDE7; /* Very Light Yellow */
-    --color-bg-card: rgba(255, 255, 255, 0.2); 
-    --color-bg-surface: rgba(255, 255, 255, 0.3);
+    --color-bg-dark: #87CEEB; /* Sky Blue Light */
+    --color-bg-card: rgba(255, 255, 255, 0.15); /* Glass Background */
+    --color-bg-surface: rgba(255, 255, 255, 0.2);
 
     /* Text Colors for Light Background */
-    --color-text-primary: #3E2723; /* Deep Brown/Umber */
-    --color-text-secondary: #5D4037;
-    --color-text-muted: #8D6E63;
+    --color-text-primary: #003366; /* Deep Navy */
+    --color-text-secondary: #004d99;
+    --color-text-muted: #1e40af;
 
     /* Premium Border Colors */
     --color-border: rgba(255, 255, 255, 0.3);
@@ -47,7 +47,7 @@
 
 /* Global Styles */
 body {
-    background: linear-gradient(135deg, #FFFDE7 0%, #FFF59D 100%);
+    background: linear-gradient(135deg, var(--sky-blue-light) 0%, var(--sky-blue) 100%);
     background-attachment: fixed;
     color: var(--color-text-primary);
     font-family: var(--font-family-sans);
@@ -367,7 +367,7 @@ h4,
 /* Sea Footer */
 .sea-footer {
     position: relative;
-    background: linear-gradient(180deg, #FFF59D 0%, #FBC02D 100%);
+    background: linear-gradient(180deg, var(--sky-blue) 0%, #004d99 100%);
     padding-top: 150px;
     margin-top: 150px;
     overflow: hidden;
