@@ -38,8 +38,8 @@ class LuckyWheelPage extends Component
         $this->prizeLabel = $data['prize_label'];
         $this->spinning = true;
 
-        // Dispatch browser event for animation
-        $this->dispatch('shake-tree', [
+        // Dispatch browser event for game animation
+        $this->dispatch('start-surf-game', [
             'prizeAmount' => $this->prizeAmount
         ]);
     }
