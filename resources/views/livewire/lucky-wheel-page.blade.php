@@ -138,6 +138,7 @@
             </button>
         </div>
     </div>
+    @endif
     <!-- Rules -->
     <div class="glass rounded-[2.5rem] border border-white/10 shadow-2xl mt-12 p-10 relative overflow-hidden">
         <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: url('{{ asset('images/esport/bg_pattern.png') }}'); background-size: cover;"></div>
