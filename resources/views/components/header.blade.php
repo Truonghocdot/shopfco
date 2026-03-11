@@ -14,9 +14,7 @@
         <div class="flex items-center gap-8">
             <!-- Logo -->
             <a href="{{ route('home') }}" class="flex items-center gap-2 group relative">
-                <span class="text-3xl md:text-[36px] font-black italic tracking-tighter text-text-primary group-hover:text-primary transition-all duration-500 relative z-10 drop-shadow-[0_0_10px_rgba(34,197,94,0.3)]">
-                    VANH<span class="text-primary group-hover:text-white transition-colors">FCO</span>
-                </span>
+                <img src="{{ asset('images/logo.png') }}" alt="VanhFCO Logo" class="h-10 md:h-12 w-auto object-contain relative z-10 transition-transform duration-500 group-hover:scale-105 drop-shadow-[0_0_10px_rgba(255,215,0,0.3)]">
                 <div class="absolute -inset-2 bg-primary/10 blur-xl rounded-full scale-0 group-hover:scale-110 transition-transform duration-700 opacity-0 group-hover:opacity-100"></div>
             </a>
 

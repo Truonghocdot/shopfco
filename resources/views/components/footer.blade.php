@@ -6,9 +6,9 @@
             <!-- About -->
             <div>
                 <div class="flex items-center gap-2 mb-8">
-                    <span class="text-2xl md:text-4xl font-black italic tracking-tighter text-white drop-shadow-[0_0_15px_rgba(74,222,128,0.3)]">
-                        VANH<span class="text-primary">FCO</span>
-                    </span>
+                    <a href="{{ route('home') }}" class="group">
+                        <img src="{{ asset('images/logo.png') }}" alt="VanhFCO Logo" class="h-12 w-auto object-contain drop-shadow-[0_0_15px_rgba(255,215,0,0.2)] transition-opacity group-hover:opacity-80">
+                    </a>
                 </div>
                 <p class="text-text-secondary text-sm leading-relaxed max-w-sm">
                     Hệ thống mua bán nick FC Online uy tín, an toàn nhất Việt Nam. Giao dịch tự động 24/7, hỗ trợ nhiệt tình, bảo mật tuyệt đối.
