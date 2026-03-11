@@ -18,7 +18,7 @@
                 <span class="text-[10px] font-black text-primary uppercase tracking-[0.3em]">SUMMER EVENT {{ date('Y') }}</span>
             </div>
             <h1 class="text-4xl md:text-6xl font-black text-white italic tracking-tighter uppercase mb-2">
-                LƯỚT SÓNG <span class="text-primary drop-shadow-[0_0_15px_rgba(0,255,133,0.6)]">HỨNG DỪA</span>
+                HỨNG DỪA <span class="text-primary drop-shadow-[0_0_15px_rgba(0,255,133,0.6)]">ĐÓN QUÀ</span>
             </h1>
             <p class="text-neutral-500 font-bold uppercase tracking-widest text-xs">Surf the wave • Catch coconuts • Win prizes</p>
         </div>
@@ -46,7 +46,7 @@
                 <div id="game-idle-overlay" class="absolute inset-0 flex items-center justify-center bg-black/30 rounded-[1.8rem] transition-opacity duration-300">
                     <div class="text-center">
                         <span class="material-icons text-6xl text-primary animate-float mb-4 block">surfing</span>
-                        <p class="text-white font-black text-lg uppercase tracking-wider">Sẵn sàng lướt sóng!</p>
+                        <p class="text-white font-black text-lg uppercase tracking-wider">Sẵn sàng hứng dừa!</p>
                         <p class="text-neutral-500 text-xs mt-2">Nhấn nút bên dưới để bắt đầu</p>
                     </div>
                 </div>

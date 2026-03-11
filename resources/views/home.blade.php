@@ -51,13 +51,13 @@
         <div class="card-esport p-3 md:p-10 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8 border border-white/30 shadow-2xl transition-all group/tree relative overflow-hidden">
                 <div class="flex-1 text-center md:text-left relative z-10">
                     <h2 class="text-2xl md:text-4xl font-black mb-2 md:mb-4 flex items-center justify-center md:justify-start gap-2 md:gap-3 text-neon uppercase tracking-wider drop-shadow-lg">
-                        <span class="material-icons text-3xl md:text-4xl text-white">surfing</span> LƯỚT SÓNG <span class="text-white italic">ĐÓN QUÀ</span>
+                        <span class="material-icons text-3xl md:text-4xl text-white">surfing</span> HỨNG DỪA <span class="text-white italic">ĐÓN QUÀ</span>
                     </h2>
                     <p class="text-white/90 text-sm md:text-lg mb-4 md:mb-8 max-w-md mx-auto md:mx-0">
                         Trải nghiệm cảm giác rẽ sóng săn quà cực khủng! Nhận ngay Acc FCO siêu phẩm, BP trắng cực hời chỉ từ một lượt lướt!
                     </p>
                     <div class="inline-flex items-center gap-2 md:gap-3 btn-esport py-2 px-6 md:py-3 md:px-8 rounded-full group-hover/tree:scale-105 transition-transform">
-                        <span class="material-icons text-sm md:text-base">surfing</span> LƯỚT SÓNG NGAY <span class="material-icons text-sm md:text-base">arrow_forward</span>
+                        <span class="material-icons text-sm md:text-base">surfing</span> HỨNG DỪA NGAY <span class="material-icons text-sm md:text-base">arrow_forward</span>
                     </div>
                 </div>
 

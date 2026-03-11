@@ -16,7 +16,7 @@
                 <p class="text-[11px] md:text-sm text-text-muted font-medium">Top người chi tiêu nhiều nhất</p>
             </div>
         </div>
-        <img src="{{ asset('images/summer/rank.png') }}" alt="Rank" class="h-14 md:h-16 drop-shadow-lg animate-float">
+        <img src="{{ asset('images/summer/rank.png') }}" alt="Rank" class="h-14 md:h-18 drop-shadow-lg animate-float">
     </div>
 
     @if($topSpenders->isNotEmpty())
