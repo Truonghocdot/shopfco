@@ -137,7 +137,7 @@
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             @forelse($categories as $category)
             <a href="{{ route('categories.show', $category->slug) }}" class="group card-esport p-3 md:p-4 flex flex-col items-center text-center transition-all hover:scale-[1.03] hover:border-primary/50">
-                <div class="w-full h-32 md:h-48 mb-3 md:mb-4 overflow-hidden rounded-lg relative">
+                <div class="w-full h-40 md:h-48 mb-3 md:mb-4 overflow-hidden rounded-lg relative">
                     <img alt="{{ $category->title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="{{ url('storage/'.$category->image) ?? 'https://via.placeholder.com/96' }}" loading="lazy">
                     <div class="absolute inset-0 bg-linear-to-t from-sky-900/40 to-transparent"></div>
                     <!-- Starfish stickers on corners -->
@@ -145,7 +145,7 @@
                         $starfish = ['saobien1.png', 'saobien2.png', 'saobien3.png', 'saobien4.png'];
                         $randomStar = $starfish[$loop->index % 4];
                     @endphp
-                    <img src="{{ asset('images/summer/' . $randomStar) }}" alt="Starfish" class="absolute -bottom-2 -left-2 w-8 md:w-12 transform -rotate-12 group-hover:scale-110 transition-transform duration-300">
+                    <img src="{{ asset('images/summer/' . $randomStar) }}" alt="Starfish" class="absolute -bottom-2 -left-2 w-10 md:w-12 transform -rotate-12 group-hover:scale-110 transition-transform duration-300">
                 </div>
                 <h3 class="font-black text-sm md:text-lg mb-1 text-white group-hover:text-primary transition-colors uppercase tracking-wide flex items-center justify-center gap-2">
                     <img src="{{ asset('images/summer/saobien'.(($loop->index % 4) + 1).'.png') }}" alt="Icon" class="w-4 h-4">
@@ -197,8 +197,9 @@
                     @endif
                     <span class="text-xl font-black text-primary drop-shadow-[0_0_8px_rgba(34,197,94,0.3)]">{{ number_format($product->getFinalPrice()) }} <span class="text-sm">đ</span></span>
                 </div>
-                <a href="{{ route('products.show', $product->slug) }}" class="block w-full btn-esport justify-center py-2 rounded-lg text-center text-[10px] md:text-sm transition-all group-hover:gap-3">
-                    <span class="material-icons text-sm">shopping_cart</span> MUA NGAY
+                <a href="{{ route('products.show', $product->slug) }}" class="block w-full btn-esport justify-center items-center py-2.5 rounded-lg text-center text-[10px] md:text-sm transition-all group-hover:gap-3 relative overflow-hidden">
+                    <img src="{{ asset('images/summer/saobien'.(($loop->index % 4) + 1).'.png') }}" alt="Icon" class="w-4 h-4 md:w-5 md:h-5 mr-1 animate-float">
+                    MUA NGAY
                 </a>
             </div>
         </div>
@@ -212,9 +213,9 @@
     <!-- News Section -->
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
         <h2 class="text-xl md:text-3xl font-black text-white uppercase flex items-center gap-3 tracking-wider">
-            <img src="{{ asset('images/summer/saobien3.png') }}" alt="Starfish" class="w-10 h-10 animate-spin-slow">
+            <img src="{{ asset('images/summer/saobien3.png') }}" alt="Starfish" class="w-10 h-10 animate-float">
             TIN TỨC MỚI NHẤT
-            <img src="{{ asset('images/summer/saobien4.png') }}" alt="Starfish" class="w-10 h-10 animate-spin-slow" style="animation-direction: reverse;">
+            <img src="{{ asset('images/summer/saobien4.png') }}" alt="Starfish" class="w-10 h-10 animate-float" style="animation-delay: 1s;">
         </h2>
         <a href="{{ route('news.index') }}" class="text-white hover:text-primary font-bold text-sm flex items-center gap-1 transition-colors">
             Xem tất cả <span class="material-icons text-sm">arrow_forward</span>
@@ -228,7 +229,7 @@
             <div class="card-sticker">
                 <img src="{{ asset('images/summer/saobien'.((($loop->index + 2) % 4) + 1).'.png') }}" alt="Starfish" class="w-10 h-10">
             </div>
-            <div class="relative overflow-hidden aspect-video">
+            <div class="relative overflow-hidden aspect-video md:aspect-[16/9] min-h-[140px] md:min-h-0">
                 <img alt="{{ $news->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ url('storage/'.$news->thumbnail) ?? 'https://via.placeholder.com/400x225' }}" loading="lazy">
                 <div class="absolute inset-0 bg-linear-to-t from-sky-950/40 to-transparent"></div>
             </div>
