@@ -9,7 +9,7 @@
         <div class="absolute -top-20 -left-20 w-64 h-64 bg-primary/5 blur-[100px] rounded-full pointer-events-none"></div>
         <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-indigo-500/5 blur-[100px] rounded-full pointer-events-none"></div>
 
-        <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight text-white mb-3 flex justify-center items-center gap-4 relative z-10 drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+        <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight text-slate-500 mb-3 flex justify-center items-center gap-4 relative z-10 drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
             <span class="material-icons text-4xl md:text-5xl text-primary drop-shadow-[0_0_15px_rgba(56,189,248,0.6)]">payments</span>
             XÁC NHẬN THANH TOÁN
         </h1>
