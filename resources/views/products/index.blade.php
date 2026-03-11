@@ -17,10 +17,14 @@
         <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-secondary/10 blur-[100px] rounded-full pointer-events-none"></div>
 
         <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight text-text-primary mb-3 flex justify-center items-center gap-4 relative z-10">
-            <span class="material-icons text-4xl md:text-5xl text-primary drop-shadow-[0_0_15px_rgba(34,197,94,0.4)]">shopping_cart</span>
+            <img src="{{ asset('images/summer/saobien3.png') }}" alt="Starfish" class="w-10 h-10 md:w-14 md:h-14 animate-float">
             MUA ACC FC ONLINE
+            <img src="{{ asset('images/summer/saobien4.png') }}" alt="Starfish" class="w-10 h-10 md:w-14 md:h-14 animate-float" style="animation-delay: 1s;">
         </h1>
         <p class="text-text-muted font-black uppercase tracking-[0.3em] text-[10px] md:text-xs">Kho tài khoản khổng lồ • Uy tín • Giao dịch tự động</p>
+        
+        <!-- Flying birds decorative image -->
+        <img src="{{ asset('images/summer/chim.png') }}" alt="Birds" class="absolute -top-10 right-0 w-24 md:w-48 opacity-60 pointer-events-none drop-shadow-lg animate-float hidden md:block">
         <div class="h-1 w-32 bg-linear-to-r from-transparent via-primary to-transparent mx-auto rounded-full mt-8"></div>
     </div>
 
@@ -29,7 +33,7 @@
         <aside class="lg:col-span-1">
             <div class="bg-bg-card rounded-2xl border border-border shadow-3xl p-6 sticky top-24">
                 <h2 class="text-xl font-black mb-8 flex items-center gap-3 text-text-primary uppercase tracking-tighter">
-                    <span class="material-icons text-primary/80">filter_list</span>
+                    <img src="{{ asset('images/summer/saobien1.png') }}" alt="Icon" class="w-8 h-8">
                     BỘ LỌC
                 </h2>
 
@@ -97,6 +101,9 @@
                             -{{ number_format($product->getDiscountPercent()) }}%
                         </div>
                         @endif
+                        <div class="card-sticker">
+                            <img src="{{ asset('images/summer/saobien'.(($loop->index % 4) + 1).'.png') }}" alt="Starfish" class="w-12 h-12 md:w-10 md:h-10">
+                        </div>
                         <div class="absolute bottom-2 left-2 bg-neutral-950/80 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] text-neutral-300 font-bold border border-white/10">
                             ID: {{ $product->id }}
                         </div>
@@ -109,8 +116,9 @@
                             @endif
                             <span class="text-xl font-black text-primary drop-shadow-[0_0_8px_rgba(34,197,94,0.3)]">{{ number_format($product->getFinalPrice()) }} <span class="text-sm">đ</span></span>
                         </div>
-                        <a href="{{ route('products.show', $product->slug) }}" class="block w-full btn-esport py-2.5 rounded-xl text-center text-xs md:text-sm font-black uppercase tracking-widest transition-all">
-                            <span class="material-icons text-sm align-middle mr-1">shopping_cart</span> XEM CHI TIẾT
+                        <a href="{{ route('products.show', $product->slug) }}" class="block w-full btn-esport justify-center items-center py-2.5 rounded-xl text-center text-xs md:text-sm font-black uppercase tracking-widest transition-all relative overflow-hidden group-hover:gap-3">
+                            <img src="{{ asset('images/summer/saobien'.(($loop->index % 4) + 1).'.png') }}" alt="Icon" class="w-8 h-8 md:w-6 md:h-6 mr-1 animate-float">
+                            XEM CHI TIẾT
                         </a>
                     </div>
                 </div>

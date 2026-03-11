@@ -229,7 +229,7 @@
             <div class="card-sticker">
                 <img src="{{ asset('images/summer/saobien'.((($loop->index + 2) % 4) + 1).'.png') }}" alt="Starfish" class="w-12 h-12 md:w-10 md:h-10">
             </div>
-            <div class="relative overflow-hidden aspect-video md:aspect-[16/9] min-h-[140px] md:min-h-0">
+            <div class="relative overflow-hidden aspect-video md:aspect-video min-h-[140px] md:min-h-0">
                 <img alt="{{ $news->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ url('storage/'.$news->thumbnail) ?? 'https://via.placeholder.com/400x225' }}" loading="lazy">
                 <div class="absolute inset-0 bg-linear-to-t from-sky-950/40 to-transparent"></div>
             </div>

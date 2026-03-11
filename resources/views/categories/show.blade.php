@@ -12,9 +12,13 @@
         <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-indigo-500/10 blur-[100px] rounded-full pointer-events-none"></div>
 
         <h1 class="text-3xl font-black uppercase tracking-tight text-white mb-3 flex justify-center items-center gap-4 relative z-10">
-            <span class="material-icons text-4xl text-primary drop-shadow-[0_0_8px_rgba(74,222,128,0.5)]">category</span>
+            <img src="{{ asset('images/summer/saobien3.png') }}" alt="Starfish" class="w-10 h-10 md:w-14 md:h-14 animate-float">
             {{ $category->title }}
+            <img src="{{ asset('images/summer/saobien4.png') }}" alt="Starfish" class="w-10 h-10 md:w-14 md:h-14 animate-float" style="animation-delay: 1s;">
         </h1>
+        
+        <!-- Flying birds decorative image -->
+        <img src="{{ asset('images/summer/chim.png') }}" alt="Birds" class="absolute -top-10 right-0 w-24 md:w-48 opacity-60 pointer-events-none drop-shadow-lg animate-float hidden md:block">
         @if($category->description)
         <p class="text-neutral-400 max-w-2xl mx-auto font-bold">{{ $category->description }}</p>
         @endif
@@ -25,13 +29,16 @@
     <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8">
         @foreach($products as $product)
         <div class="card-esport group transition-all hover:scale-[1.02] relative">
-            <div class="relative overflow-hidden aspect-video">
+            <div class="relative overflow-hidden aspect-video min-h-[140px] md:min-h-0">
                 <img alt="{{ $product->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ url('storage/'.$product->images[0]) ?? 'https://via.placeholder.com/400x225' }}" loading="lazy">
                 @if($product->getDiscountPercent())
                 <div class="absolute top-2 right-2 bg-pink-500 text-white text-xs md:text-sm font-black px-2 py-1 rounded-full shadow-[0_0_10px_rgba(244,114,182,0.4)]">
                     -{{ number_format($product->getDiscountPercent()) }}%
                 </div>
                 @endif
+                <div class="card-sticker">
+                    <img src="{{ asset('images/summer/saobien'.(($loop->index % 4) + 1).'.png') }}" alt="Starfish" class="w-12 h-12 md:w-10 md:h-10">
+                </div>
                 <div class="absolute bottom-2 left-2 bg-neutral-950/80 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] text-neutral-300 font-bold border border-white/10">
                     ID: {{ $product->id }}
                 </div>
@@ -44,8 +51,9 @@
                     @endif
                     <span class="text-xl font-black text-primary drop-shadow-[0_0_8px_rgba(74,222,128,0.3)]">{{ number_format($product->getFinalPrice()) }} <span class="text-sm">đ</span></span>
                 </div>
-                <a href="{{ route('products.show', $product->slug) }}" class="block w-full btn-esport py-2.5 rounded-xl text-center text-xs md:text-sm font-black uppercase tracking-widest transition-all">
-                    <span class="material-icons text-sm align-middle mr-1">shopping_cart</span> XEM CHI TIẾT
+                <a href="{{ route('products.show', $product->slug) }}" class="block w-full btn-esport justify-center items-center py-2.5 rounded-xl text-center text-xs md:text-sm font-black uppercase tracking-widest transition-all relative overflow-hidden group-hover:gap-3">
+                    <img src="{{ asset('images/summer/saobien'.(($loop->index % 4) + 1).'.png') }}" alt="Icon" class="w-8 h-8 md:w-6 md:h-6 mr-1 animate-float">
+                    XEM CHI TIẾT
                 </a>
             </div>
         </div>

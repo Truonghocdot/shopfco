@@ -8,7 +8,7 @@
     <!-- Breadcrumb -->
     <nav class="flex mb-8 text-[10px] font-black text-text-muted overflow-x-auto whitespace-nowrap pb-2 uppercase tracking-[0.2em]">
         <a class="hover:text-primary flex items-center transition-colors" href="{{ route('home') }}">
-            <span class="material-icons text-sm mr-2 text-primary">home</span> Trang chủ
+            <img src="{{ asset('images/summer/saobien1.png') }}" alt="Starfish" class="w-4 h-4 mr-2"> Trang chủ
         </a>
         <span class="mx-3 text-white/10">/</span>
         <a class="hover:text-primary transition-colors font-black text-text-secondary" href="{{ route('products.index', ['category' => $product->category_id]) }}">{{ $product->category->title }}</a>
@@ -65,7 +65,13 @@
 
             <!-- Product Info Card -->
             <div class="bg-bg-card rounded-2xl p-8 shadow-2xl border border-border relative overflow-hidden">
-                <h1 class="text-xl md:text-3xl font-black mb-6 text-text-primary uppercase tracking-tight relative z-20 leading-tight">{{ $product->title }}</h1>
+                <h1 class="text-xl md:text-3xl font-black mb-6 text-text-primary uppercase tracking-tight relative z-20 leading-tight flex items-center gap-3">
+                    <img src="{{ asset('images/summer/saobien2.png') }}" alt="Icon" class="w-8 h-8 md:w-10 md:h-10 animate-float">
+                    {{ $product->title }}
+                </h1>
+                
+                <!-- Flying birds decorative image -->
+                <img src="{{ asset('images/summer/chim.png') }}" alt="Birds" class="absolute top-4 right-4 w-20 md:w-32 opacity-40 pointer-events-none drop-shadow-lg animate-float">
                 <div class="flex flex-wrap items-center justify-between gap-8 py-8 border-y border-border relative z-20">
                     <div class="space-y-2">
                         @if($product->sell_price && $product->sell_price > $product->getFinalPrice())
@@ -85,12 +91,14 @@
                         </span>
                         @endif
                         @auth
-                        <a href="{{ route('checkout', $product->slug) }}" class="w-full sm:w-auto btn-esport py-5 px-12 rounded-2xl flex items-center justify-center gap-4 uppercase tracking-widest text-base font-black border-none shadow-2xl shadow-primary/30 active:scale-95 transition-all">
-                            <span class="material-icons">shopping_cart</span> MUA NGAY
+                        <a href="{{ route('checkout', $product->slug) }}" class="w-full sm:w-auto btn-esport py-5 px-12 rounded-2xl flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 uppercase tracking-widest text-base font-black border-none shadow-2xl shadow-primary/30 active:scale-95 transition-all relative overflow-hidden group">
+                            <img src="{{ asset('images/summer/saobien3.png') }}" alt="Icon" class="w-10 h-10 md:w-7 md:h-7 animate-float">
+                            <span class="text-lg md:text-base">MUA NGAY</span>
                         </a>
                         @else
-                        <a href="{{ route('login') }}" class="w-full sm:w-auto btn-esport py-5 px-12 rounded-2xl flex items-center justify-center gap-4 uppercase tracking-widest text-base font-black border-none">
-                            <span class="material-icons">login</span> ĐĂNG NHẬP ĐỂ MUA
+                        <a href="{{ route('login') }}" class="w-full sm:w-auto btn-esport py-5 px-12 rounded-2xl flex items-center justify-center gap-4 uppercase tracking-widest text-base font-black border-none group">
+                            <img src="{{ asset('images/summer/saobien4.png') }}" alt="Icon" class="w-8 h-8 md:w-6 md:h-6 animate-pulse">
+                            ĐĂNG NHẬP ĐỂ MUA
                         </a>
                         @endauth
                     </div>
