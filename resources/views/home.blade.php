@@ -60,7 +60,7 @@
                 </div>
 
                 <div class="relative w-full max-w-[140px] md:max-w-[280px] flex items-center justify-center">
-                    <img src="{{ asset('images/esport/mystery_box.png') }}" alt="Mystery Box" class="w-full group-hover/tree:scale-110 transition-transform duration-500 drop-shadow-lg" style="filter: drop-shadow(0 0 20px rgba(74,222,128,0.3));">
+                    <img src="{{ asset('images/coconut.png') }}" alt="Mystery Box" class="w-full group-hover/tree:scale-110 transition-transform duration-500 drop-shadow-lg" style="filter: drop-shadow(0 0 20px rgba(74,222,128,0.3));">
                 </div>
             </div>
         </a>
