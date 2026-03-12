@@ -24,8 +24,8 @@ class HomeController extends Controller
             return Banner::orderBy('sort', 'asc')->get();
         });
 
-        // Get 4 featured parent categories
-        $categoriesResult = $this->categoryService->getFeaturedCategories(4);
+        // Get featured parent categories (no longer limited to 4)
+        $categoriesResult = $this->categoryService->getFeaturedCategories(20);
         $categories = $categoriesResult->isSuccess() ? $categoriesResult->getData() : collect();
 
         // Get 16 flash sale products (highest discount)
