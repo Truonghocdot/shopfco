@@ -356,7 +356,12 @@ $orgSchema = [
         var categoriesSwiper = new Swiper('.categories-swiper', {
             slidesPerView: 2,
             spaceBetween: 16,
-            loop: false,
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true
+            },
             navigation: {
                 nextEl: '.categories-next',
                 prevEl: '.categories-prev',
