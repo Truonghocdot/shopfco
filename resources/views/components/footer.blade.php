@@ -7,7 +7,7 @@
             <div>
                 <div class="flex items-center gap-2 mb-8">
                     <a href="{{ route('home') }}" class="group">
-                        <img src="{{ asset('images/logo.png') }}" alt="VanhFCO Logo" class="h-12 w-auto object-contain drop-shadow-[0_0_15px_rgba(255,215,0,0.2)] transition-opacity group-hover:opacity-80">
+                        <img src="{{ asset('images/logo.png') }}" alt="VanhFCO Logo" class="h-12 w-auto object-contain drop-shadow-[0_0_15px_rgba(255,215,0,0.2)] transition-opacity group-hover:opacity-80" loading="lazy" decoding="async">
                     </a>
                 </div>
                 <p class="text-text-secondary text-sm leading-relaxed max-w-sm">

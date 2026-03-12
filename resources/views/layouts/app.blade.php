@@ -137,7 +137,7 @@
                 <span class="material-icons text-xl md:text-2xl">phone</span>
             </a>
             <a href="https://zalo.me/g/wilgna867" class="w-10 h-10 md:w-12 md:h-12 bg-bg-card border border-primary/20 rounded-full flex items-center justify-center hover:scale-110 transition shadow-[0_0_15px_rgba(34,197,94,0.3)] p-1">
-                <img src="{{ asset('images/zalo.png') }}" alt="Zalo" class="w-full h-full rounded-full grayscale hover:grayscale-0 transition-all">
+                <img src="{{ asset('images/zalo.png') }}" alt="Zalo" class="w-full h-full rounded-full grayscale hover:grayscale-0 transition-all" loading="lazy" decoding="async">
             </a>
         </div>
 

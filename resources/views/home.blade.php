@@ -23,7 +23,7 @@
                     allowfullscreen>
                 </iframe>
                 <!-- Flying birds decorative image -->
-                <img src="{{ asset('images/summer/chim.png') }}" alt="Birds" class="absolute top-4 right-4 w-16 md:w-32 opacity-80 pointer-events-none drop-shadow-lg animate-float">
+                <img src="{{ asset('images/summer/chim.png') }}" alt="Birds" class="absolute top-4 right-4 w-16 md:w-32 opacity-80 pointer-events-none drop-shadow-lg animate-float" loading="lazy" decoding="async">
             </div>
 
             <!-- Contact Info Badge -->
@@ -62,7 +62,7 @@
                 </div>
 
                 <div class="relative w-full max-w-[180px] md:max-w-[280px] flex items-center justify-center">
-                    <img src="{{ asset('images/summer/coconut.png') }}" alt="Coconut" class="w-full group-hover/tree:scale-110 transition-transform duration-500 drop-shadow-lg" style="filter: drop-shadow(0 0 20px rgba(74,222,128,0.3));">
+                    <img src="{{ asset('images/summer/coconut.png') }}" alt="Coconut" class="w-full group-hover/tree:scale-110 transition-transform duration-500 drop-shadow-lg" style="filter: drop-shadow(0 0 20px rgba(74,222,128,0.3));" loading="lazy" decoding="async">
                 </div>
             </div>
         </a>
@@ -77,11 +77,13 @@
                     <div class="swiper-wrapper">
                         @forelse($banners as $banner)
                         <div class="swiper-slide">
-                            <img src="{{ url('storage/' . $banner->image) }}" alt="Banner" class="w-full h-full object-cover">
+                            <img data-src="{{ url('storage/' . $banner->image) }}" alt="Banner" class="swiper-lazy w-full h-full object-cover" decoding="async">
+                            <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
                         </div>
                         @empty
                         <div class="swiper-slide">
-                            <img src="{{ asset('banner.jpg') }}" alt="Banner" class="w-full h-full object-cover">
+                            <img data-src="{{ asset('banner.jpg') }}" alt="Banner" class="swiper-lazy w-full h-full object-cover" decoding="async">
+                            <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
                         </div>
                         @endforelse
                     </div>
@@ -138,17 +140,17 @@
             @forelse($categories as $category)
             <a href="{{ route('categories.show', $category->slug) }}" class="group card-esport p-3 md:p-4 flex flex-col items-center text-center transition-all hover:scale-[1.03] hover:border-primary/50">
                 <div class="w-full h-40 md:h-48 mb-3 md:mb-4 overflow-hidden rounded-lg relative">
-                    <img alt="{{ $category->title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="{{ url('storage/'.$category->image) ?? 'https://via.placeholder.com/96' }}" loading="lazy">
+                    <img alt="{{ $category->title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="{{ url('storage/'.$category->image) ?? 'https://via.placeholder.com/96' }}" loading="lazy" decoding="async">
                     <div class="absolute inset-0 bg-linear-to-t from-sky-900/40 to-transparent"></div>
                     <!-- Starfish stickers on corners -->
                     @php 
                         $starfish = ['saobien1.png', 'saobien2.png', 'saobien3.png', 'saobien4.png'];
                         $randomStar = $starfish[$loop->index % 4];
                     @endphp
-                    <img src="{{ asset('images/summer/' . $randomStar) }}" alt="Starfish" class="absolute -bottom-2 -left-2 w-12 md:w-12 transform -rotate-12 group-hover:scale-110 transition-transform duration-300">
+                    <img src="{{ asset('images/summer/' . $randomStar) }}" alt="Starfish" class="absolute -bottom-2 -left-2 w-12 md:w-12 transform -rotate-12 group-hover:scale-110 transition-transform duration-300" loading="lazy" decoding="async">
                 </div>
                 <h3 class="font-black text-sm md:text-lg mb-1 text-white group-hover:text-primary transition-colors uppercase tracking-wide flex items-center justify-center gap-2">
-                    <img src="{{ asset('images/summer/saobien'.(($loop->index % 4) + 1).'.png') }}" alt="Icon" class="w-6 h-6 md:w-4 md:h-4">
+                    <img src="{{ asset('images/summer/saobien'.(($loop->index % 4) + 1).'.png') }}" alt="Icon" class="w-6 h-6 md:w-4 md:h-4" loading="lazy" decoding="async">
                     {{ $category->title }}
                 </h3>
                 <p class="text-white/80 text-[10px] md:text-sm line-clamp-1 md:line-clamp-none">{!! strip_tags($category->description) !!}</p>
@@ -162,9 +164,9 @@
     <!-- Flash Sale Section -->
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6 relative">
         <h2 class="text-xl md:text-2xl font-black text-white uppercase flex items-center gap-2">
-            <img src="{{ asset('images/summer/saobien1.png') }}" alt="Starfish" class="w-10 h-10 md:w-8 md:h-8 animate-pulse">
+            <img src="{{ asset('images/summer/saobien1.png') }}" alt="Starfish" class="w-10 h-10 md:w-8 md:h-8 animate-pulse" loading="lazy" decoding="async">
             FLASH SALE SIÊU HOT
-            <img src="{{ asset('images/summer/saobien2.png') }}" alt="Starfish" class="w-10 h-10 md:w-8 md:h-8 animate-pulse">
+            <img src="{{ asset('images/summer/saobien2.png') }}" alt="Starfish" class="w-10 h-10 md:w-8 md:h-8 animate-pulse" loading="lazy" decoding="async">
         </h2>
         <a href="{{ route('products.index', ['sort' => 'discount']) }}" class="text-white hover:text-primary font-bold text-sm flex items-center gap-1 transition-colors">
             Xem tất cả <span class="material-icons text-sm">arrow_forward</span>
@@ -176,10 +178,10 @@
         @forelse($flashSaleProducts as $product)
         <div class="card-esport group transition-all relative">
             <div class="card-sticker">
-                <img src="{{ asset('images/summer/saobien'.(($loop->index % 4) + 1).'.png') }}" alt="Starfish" class="w-12 h-12 md:w-10 md:h-10">
+                <img src="{{ asset('images/summer/saobien'.(($loop->index % 4) + 1).'.png') }}" alt="Starfish" class="w-12 h-12 md:w-10 md:h-10" loading="lazy" decoding="async">
             </div>
             <div class="relative overflow-hidden aspect-video">
-                <img alt="{{ $product->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ url('storage/'.$product->images[0]) ?? 'https://via.placeholder.com/400x225' }}" loading="lazy">
+                <img alt="{{ $product->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ url('storage/'.$product->images[0]) ?? 'https://via.placeholder.com/400x225' }}" loading="lazy" decoding="async">
                 @if($product->getDiscountPercent())
                 <div class="absolute top-2 right-2 bg-pink-500 text-white text-xs md:text-sm font-black px-2 py-1 rounded-full shadow-[0_0_10px_rgba(244,114,182,0.5)]">
                     -{{ number_format($product->getDiscountPercent()) }}%
@@ -198,7 +200,7 @@
                     <span class="text-xl font-black text-primary drop-shadow-[0_0_8px_rgba(34,197,94,0.3)]">{{ number_format($product->getFinalPrice()) }} <span class="text-sm">đ</span></span>
                 </div>
                 <a href="{{ route('products.show', $product->slug) }}" class="block w-full btn-esport justify-center items-center py-2.5 rounded-lg text-center text-[10px] md:text-sm transition-all group-hover:gap-3 relative overflow-hidden">
-                    <img src="{{ asset('images/summer/saobien'.(($loop->index % 4) + 1).'.png') }}" alt="Icon" class="w-10 h-10 md:w-7 md:h-7 mr-1 animate-float">
+                    <img src="{{ asset('images/summer/saobien'.(($loop->index % 4) + 1).'.png') }}" alt="Icon" class="w-10 h-10 md:w-7 md:h-7 mr-1 animate-float" loading="lazy" decoding="async">
                     MUA NGAY
                 </a>
             </div>
@@ -213,9 +215,9 @@
     <!-- News Section -->
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
         <h2 class="text-xl md:text-3xl font-black text-white uppercase flex items-center gap-3 tracking-wider">
-            <img src="{{ asset('images/summer/saobien3.png') }}" alt="Starfish" class="w-12 h-12 md:w-10 md:h-10 animate-float">
+            <img src="{{ asset('images/summer/saobien3.png') }}" alt="Starfish" class="w-12 h-12 md:w-10 md:h-10 animate-float" loading="lazy" decoding="async">
             TIN TỨC MỚI NHẤT
-            <img src="{{ asset('images/summer/saobien4.png') }}" alt="Starfish" class="w-12 h-12 md:w-10 md:h-10 animate-float" style="animation-delay: 1s;">
+            <img src="{{ asset('images/summer/saobien4.png') }}" alt="Starfish" class="w-12 h-12 md:w-10 md:h-10 animate-float" style="animation-delay: 1s;" loading="lazy" decoding="async">
         </h2>
         <a href="{{ route('news.index') }}" class="text-white hover:text-primary font-bold text-sm flex items-center gap-1 transition-colors">
             Xem tất cả <span class="material-icons text-sm">arrow_forward</span>
@@ -227,10 +229,10 @@
         @forelse($latestNews as $news)
         <a href="{{ route('news.show', $news->slug) }}" class="group card-esport overflow-hidden transition-all relative">
             <div class="card-sticker">
-                <img src="{{ asset('images/summer/saobien'.((($loop->index + 2) % 4) + 1).'.png') }}" alt="Starfish" class="w-12 h-12 md:w-10 md:h-10">
+                <img src="{{ asset('images/summer/saobien'.((($loop->index + 2) % 4) + 1).'.png') }}" alt="Starfish" class="w-12 h-12 md:w-10 md:h-10" loading="lazy" decoding="async">
             </div>
             <div class="relative overflow-hidden aspect-video md:aspect-video min-h-[140px] md:min-h-0">
-                <img alt="{{ $news->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ url('storage/'.$news->thumbnail) ?? 'https://via.placeholder.com/400x225' }}" loading="lazy">
+                <img alt="{{ $news->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="{{ url('storage/'.$news->thumbnail) ?? 'https://via.placeholder.com/400x225' }}" loading="lazy" decoding="async">
                 <div class="absolute inset-0 bg-linear-to-t from-sky-950/40 to-transparent"></div>
             </div>
             <div class="p-4 relative z-20">
@@ -298,6 +300,8 @@ $orgSchema = [
     document.addEventListener('DOMContentLoaded', function() {
         var swiper = new Swiper('.home-banner-swiper', {
             loop: true,
+            preloadImages: false,
+            lazy: true,
             autoplay: {
                 delay: 5000,
                 disableOnInteraction: false
