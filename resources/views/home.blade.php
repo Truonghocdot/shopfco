@@ -354,7 +354,7 @@ $orgSchema = [
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var categoriesSwiper = new Swiper('.categories-swiper', {
-            slidesPerView: 2,
+            slidesPerView: 4,
             spaceBetween: 16,
             loop: true,
             autoplay: {

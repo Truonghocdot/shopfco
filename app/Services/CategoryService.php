@@ -60,7 +60,7 @@ class CategoryService
     public function getFeaturedCategories(int $limit = 4): ServiceResult
     {
         try {
-            $cacheKey = 'categories:featured';
+            $cacheKey = 'categories:featured:' . $limit;
 
             $categories = Cache::remember($cacheKey, 3600, function () use ($limit) {
                 return $this->category::whereNull('parent_id')
