@@ -160,7 +160,7 @@
 
         <!-- Desktop Swiper Carousel -->
         <div class="hidden lg:block relative">
-            <div class="swiper-container categories-swiper overflow-hidden">
+            <div class="swiper categories-swiper overflow-hidden">
                 <div class="swiper-wrapper">
                     @forelse($categories as $category)
                     <div class="swiper-slide h-auto">
