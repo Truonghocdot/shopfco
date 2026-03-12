@@ -1,9 +1,13 @@
+@extends('layouts.app')
+
+@section('title', 'Trang chủ - VanhFCO.com - mua bán tài khoản FCO4 - Uy tín chất lượng')
+@section('description', 'Mua bán tài khoản FC Online uy tín, giá rẻ, giao dịch tự động 24/7.')
+
 @push('styles')
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 <style>
     .categories-swiper {
-        padding: 20px 10px !important;
-        margin: -20px -10px !important;
+        padding: 20px 0 !important;
     }
     .categories-swiper .swiper-button-next,
     .categories-swiper .swiper-button-prev {
@@ -15,6 +19,8 @@
         border-radius: 50% !important;
         color: #fff !important;
         transition: all 0.3s ease !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
     }
     .categories-swiper .swiper-button-next:after,
     .categories-swiper .swiper-button-prev:after {
@@ -28,13 +34,120 @@
         box-shadow: 0 0 20px rgba(34, 197, 94, 0.4) !important;
         color: #000 !important;
     }
+    .categories-swiper .swiper-button-prev { left: -20px !important; }
+    .categories-swiper .swiper-button-next { right: -20px !important; }
 </style>
 @endpush
 
 @section('content')
 <div class="container mx-auto px-4 py-8">
-    <!-- ... (Video Meta section remains same) -->
-    <!-- ... (Hero and Mystery sections remain same) -->
+    <!-- Video Hero Section -->
+    <section class="mb-8 md:mb-12 relative">
+        <div class="glass rounded-2xl overflow-hidden shadow-2xl border border-white/10 p-2 relative z-10">
+            <div class="aspect-video w-full rounded-xl overflow-hidden relative">
+                <iframe
+                    class="w-full h-full"
+                    src="https://www.youtube.com/embed/gQkpw5JtnuQ?si=M54VBBoQfaZhYSf3"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
+                <!-- Flying birds decorative image -->
+                <img src="{{ asset('images/summer/chim.png') }}" alt="Birds" class="absolute top-4 right-4 w-16 md:w-32 opacity-80 pointer-events-none drop-shadow-lg animate-float" loading="lazy" decoding="async">
+            </div>
+
+            <!-- Contact Info Badge -->
+            <div class="flex flex-wrap justify-center items-center gap-4 md:gap-6 py-4 px-4 text-white/90">
+                <div class="flex items-center gap-2 text-base md:text-lg font-bold">
+                    <span class="material-icons text-primary text-2xl">call</span>
+                    <span class="text-white">0986526036</span>
+                </div>
+                <div class="w-px h-6 bg-white/20 hidden sm:block"></div>
+                <a href="https://www.facebook.com/le.vietanh.939173" target="_blank" class="flex items-center gap-2 text-base md:text-lg font-bold hover:text-white transition-all hover:scale-105">
+                    <span class="material-icons text-white text-2xl">facebook</span>
+                    <span class="text-white">LE VIET ANH</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Decorative background glow -->
+        <div class="absolute -top-20 -left-20 w-64 h-64 bg-primary/10 blur-[100px] rounded-full pointer-events-none"></div>
+        <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-indigo-500/10 blur-[100px] rounded-full pointer-events-none"></div>
+    </section>
+
+    <!-- Mystery Box Section -->
+    <section class="mb-8 md:mb-12">
+        <a href="{{ route('lucky-wheel.index') }}" class="block">
+        <div class="card-esport p-3 md:p-10 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8 border border-white/30 shadow-2xl transition-all group/tree relative overflow-hidden">
+                <div class="flex-1 text-center md:text-left relative z-10">
+                    <h2 class="text-2xl md:text-4xl font-black mb-2 md:mb-4 flex items-center justify-center md:justify-start gap-2 md:gap-3 text-neon uppercase tracking-wider drop-shadow-lg">
+                        <span class="material-icons text-3xl md:text-4xl text-white">surfing</span> HỨNG DỪA <span class="text-white italic">ĐÓN QUÀ</span>
+                    </h2>
+                    <p class="text-white/90 text-sm md:text-lg mb-4 md:mb-8 max-w-md mx-auto md:mx-0">
+                        Trải nghiệm cảm giác rẽ sóng săn quà cực khủng! Nhận ngay Acc FCO siêu phẩm, BP trắng cực hời chỉ từ một lượt lướt!
+                    </p>
+                    <div class="inline-flex items-center gap-2 md:gap-3 btn-esport py-2 px-6 md:py-3 md:px-8 rounded-full group-hover/tree:scale-105 transition-transform">
+                        <span class="material-icons text-sm md:text-base">surfing</span> HỨNG DỪA NGAY <span class="material-icons text-sm md:text-base">arrow_forward</span>
+                    </div>
+                </div>
+
+                <div class="relative w-full max-w-[180px] md:max-w-[280px] flex items-center justify-center">
+                    <img src="{{ asset('images/summer/coconut.png') }}" alt="Coconut" class="w-full group-hover/tree:scale-110 transition-transform duration-500 drop-shadow-lg" style="filter: drop-shadow(0 0 20px rgba(74,222,128,0.3));" loading="lazy" decoding="async">
+                </div>
+            </div>
+        </a>
+    </section>
+
+    <!-- Top Spenders Section -->
+    <section class="mb-8 md:mb-16">
+        <div class="max-w-4xl mx-auto">
+            @php
+            $shopOwner = $topSpenders->firstWhere('id', 3);
+            $filteredSpenders = $topSpenders->reject(fn($u) => $u->id == 3)->take(10)->values();
+            @endphp
+
+            @if($shopOwner)
+            <!-- Shop Owner Section -->
+            <div class="mb-8">
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="h-px flex-1 bg-white/10"></div>
+                    <span class="text-xs md:text-sm font-black text-primary uppercase tracking-[0.2em] bg-primary/10 px-4 py-1.5 rounded-full border border-primary/20 shadow-[0_0_15px_rgba(74,222,128,0.2)]">CHỦ SHOP UY TÍN</span>
+                    <div class="h-px flex-1 bg-white/10"></div>
+                </div>
+                <div class="card-esport p-5 md:p-6 flex items-center gap-4 md:gap-6 relative overflow-hidden group border-primary/30">
+                    <div class="shrink-0 w-14 md:w-16 h-14 md:h-16 rounded-full bg-linear-to-br from-primary to-emerald-600 flex items-center 
+                    justify-center shadow-[0_0_20px_rgba(74,222,128,0.5)] transform transition-transform group-hover:scale-110 group-hover:rotate-12">
+                        <span class="text-3xl md:text-4xl drop-shadow-lg">👑</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="font-black text-lg md:text-2xl text-text-primary truncate uppercase tracking-tight group-hover:text-primary transition-colors">{{ $shopOwner->name }}</p>
+                        <p class="text-xs md:text-sm text-text-muted font-bold flex items-center gap-1">
+                            <span class="material-icons text-xs text-primary">verified</span>
+                            {{ $shopOwner->total_orders }} đơn hàng thành công
+                        </p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-[10px] md:text-xs text-text-muted font-black uppercase tracking-widest mb-1">Tổng giao dịch</p>
+                        <p class="font-black text-2xl md:text-4xl text-primary drop-shadow-[0_0_12px_rgba(74,222,128,0.4)]">
+                            {{ number_format($shopOwner->total_spent) }}<span class="text-sm md:text-lg">đ</span>
+                        </p>
+                    </div>
+                    <!-- Decorative element -->
+                    <div class="absolute -top-4 -right-4 opacity-10 text-primary transform rotate-12">
+                        <span class="material-icons text-8xl">verified_user</span>
+                    </div>
+                </div>
+            </div>
+            @endif
+
+            <div class="relative">
+                <div class="absolute -inset-4 bg-primary/5 blur-3xl rounded-full pointer-events-none"></div>
+                <x-leaderboard :topSpenders="$filteredSpenders" />
+            </div>
+        </div>
+    </section>
 
     <!-- Categories Section -->
     <section class="mb-12 md:mb-16">
@@ -47,7 +160,7 @@
 
         <!-- Desktop Swiper Carousel -->
         <div class="hidden lg:block relative">
-            <div class="swiper-container categories-swiper">
+            <div class="swiper-container categories-swiper overflow-hidden">
                 <div class="swiper-wrapper">
                     @forelse($categories as $category)
                     <div class="swiper-slide h-auto">
@@ -69,7 +182,6 @@
                         </a>
                     </div>
                     @empty
-                    <div class="col-span-4 text-center text-neutral-600 p-12 glass rounded-xl border border-white/5">Chưa có danh mục nào</div>
                     @endforelse
                 </div>
             </div>
@@ -234,5 +346,32 @@ $orgSchema = [
 </script>
 <script type="application/ld+json">
     @json($orgSchema)
+</script>
+@endpush
+
+@push('scripts')
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var categoriesSwiper = new Swiper('.categories-swiper', {
+            slidesPerView: 2,
+            spaceBetween: 16,
+            loop: false,
+            navigation: {
+                nextEl: '.categories-next',
+                prevEl: '.categories-prev',
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 20
+                },
+                1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 24
+                }
+            }
+        });
+    });
 </script>
 @endpush
