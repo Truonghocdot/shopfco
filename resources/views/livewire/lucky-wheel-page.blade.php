@@ -182,32 +182,44 @@
     let animFrameId = null;
 
     // Resize canvas to actual pixel size
+    // IMPORTANT: uses setTransform (not scale) to avoid accumulating dpr scale on each resize call.
     function resize() {
         const parent = canvas.parentElement;
         if (!parent) return;
         const rect = parent.getBoundingClientRect();
+
+        // getBoundingClientRect returns 0 before layout — fall back to container or window width
+        let cssW = rect.width > 10 ? rect.width : (parent.offsetWidth > 10 ? parent.offsetWidth : Math.min(window.innerWidth - 32, 800));
+        cssW = Math.max(cssW - 8, 100); // subtract p-1 padding (4px each side), ensure min
+        const cssH = cssW * 10 / 16;
         const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-        // Use parent width to avoid canvas shrinking to 0 on desktop
-        // Subtract 8px for the p-1 padding (4px on each side)
-        let cssW = rect.width > 10 ? rect.width - 8 : Math.min(window.innerWidth - 32, 600);
-        let cssH = cssW * 10 / 16;
-
-        W = cssW * dpr;
-        H = cssH * dpr;
+        W = Math.round(cssW * dpr);
+        H = Math.round(cssH * dpr);
         canvas.width = W;
         canvas.height = H;
-        
         canvas.style.width = cssW + 'px';
         canvas.style.height = cssH + 'px';
 
-        ctx.scale(dpr, dpr);
-        // Store CSS dimensions for calculations
+        // Reset transform before applying dpr scale, prevents accumulating scale on each resize
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
         canvas._cssW = cssW;
         canvas._cssH = cssH;
     }
 
-    resize();
+    // Defer first resize until after DOM layout is complete
+    requestAnimationFrame(() => {
+        resize();
+        // Kick off idle loop after canvas is properly sized
+        idleRaf = requestAnimationFrame(idleLoop);
+    });
+
+    // Also watch for container size changes (responsive layout shifts)
+    if (typeof ResizeObserver !== 'undefined') {
+        const ro = new ResizeObserver(() => resize());
+        ro.observe(canvas.parentElement);
+    }
     window.addEventListener('resize', resize);
 
     // ============================================================
@@ -643,15 +655,19 @@
         drawWaves(t);
     }
 
-    let idleRaf;
+    let idleRaf = null;
     function idleLoop(t) {
+        // Guard: don't draw if canvas isn't sized yet
         const cssW = canvas._cssW, cssH = canvas._cssH;
+        if (!cssW || !cssH) {
+            idleRaf = requestAnimationFrame(idleLoop);
+            return;
+        }
         ctx.clearRect(0, 0, cssW, cssH);
         drawIdle(t);
         idleRaf = requestAnimationFrame(idleLoop);
     }
-    // Start idle animation
-    idleRaf = requestAnimationFrame(idleLoop);
+    // idle loop is started in the deferred requestAnimationFrame above (after resize)
 
     // ============================================================
     // GAME LOOP
