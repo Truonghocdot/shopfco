@@ -183,16 +183,28 @@
 
     // Resize canvas to actual pixel size
     function resize() {
-        const rect = canvas.getBoundingClientRect();
+        const parent = canvas.parentElement;
+        if (!parent) return;
+        const rect = parent.getBoundingClientRect();
         const dpr = Math.min(window.devicePixelRatio || 1, 2);
-        W = rect.width * dpr;
-        H = rect.height * dpr;
+
+        // Use parent width to avoid canvas shrinking to 0 on desktop
+        // Subtract 8px for the p-1 padding (4px on each side)
+        let cssW = rect.width > 10 ? rect.width - 8 : Math.min(window.innerWidth - 32, 600);
+        let cssH = cssW * 10 / 16;
+
+        W = cssW * dpr;
+        H = cssH * dpr;
         canvas.width = W;
         canvas.height = H;
+        
+        canvas.style.width = cssW + 'px';
+        canvas.style.height = cssH + 'px';
+
         ctx.scale(dpr, dpr);
         // Store CSS dimensions for calculations
-        canvas._cssW = rect.width;
-        canvas._cssH = rect.height;
+        canvas._cssW = cssW;
+        canvas._cssH = cssH;
     }
 
     resize();
@@ -548,6 +560,10 @@
             // Fell into water
             if (cy > waveY + 20) {
                 c.missed = true;
+                // If user misses the final golden coconut, still end the game to show the result
+                if (c.golden) {
+                    setTimeout(endGame, 1000);
+                }
             }
         });
 
@@ -700,10 +716,6 @@
                     // Trigger modal after catch
                     setTimeout(endGame, 1200);
                 }
-            }
-            // If missed golden (shouldn't happen with current logic but for safety)
-            if (c.golden && c.missed) {
-                setTimeout(endGame, 1000);
             }
         });
 
