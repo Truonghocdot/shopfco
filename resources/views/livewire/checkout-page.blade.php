@@ -89,7 +89,7 @@
                     <!-- Coupon Input -->
                     <div class="mb-8">
                         <label class="block text-[10px] font-black text-neutral-700 mb-3 uppercase tracking-widest">MÃ GIẢM GIÁ</label>
-                        <div class="flex gap-2">
+                        <div class="flex gap-2 md:flex-col">
                             <input
                                 type="text"
                                 wire:model.defer="couponCode"
