@@ -24,37 +24,60 @@ class AddBonusCredit extends Command
 
     public function handle(): int
     {
+        $topCount = (int) $this->ask('Nhập số lượng khách hàng VIP (Top chi tiêu) nhận ' . number_format(self::TOP_SPENDER_BONUS_AMOUNT) . 'đ', 5);
+        $normalCountInput = $this->ask('Nhập số lượng khách hàng nhận ' . number_format(self::BONUS_AMOUNT) . 'đ (Nhập "all" cho tất cả, hoặc số nguyên >= 0)', 'all');
+        $normalCount = strtolower($normalCountInput) === 'all' ? 'all' : (int) $normalCountInput;
+
         $this->info('🎁 Bắt đầu cộng tiền thưởng cho khách hàng...');
         $this->newLine();
 
-        // 1. Xác định top 5 chi tiêu cao nhất
-        $topSpenderIds = Order::where('status', Order::STATUS_COMPLETED)
-            ->select('user_id', DB::raw('SUM(final_amount) as total_spent'))
-            ->groupBy('user_id')
-            ->orderByDesc('total_spent')
-            ->limit(self::TOP_SPENDER_COUNT)
-            ->pluck('total_spent', 'user_id');
+        // 1. Xác định top chi tiêu
+        $topSpenderIds = collect();
+        if ($topCount > 0) {
+            $topSpenderIds = Order::where('status', Order::STATUS_COMPLETED)
+                ->select('user_id', DB::raw('SUM(final_amount) as total_spent'))
+                ->groupBy('user_id')
+                ->orderByDesc('total_spent')
+                ->limit($topCount)
+                ->pluck('total_spent', 'user_id');
 
-        if ($topSpenderIds->isNotEmpty()) {
-            $this->info('🏆 Top ' . self::TOP_SPENDER_COUNT . ' khách hàng chi tiêu cao nhất:');
-            $topTable = [];
-            foreach ($topSpenderIds as $userId => $totalSpent) {
-                $user = User::find($userId);
-                $topTable[] = [
-                    $userId,
-                    $user ? $user->name : 'N/A',
-                    number_format($totalSpent, 0, ',', '.') . 'đ',
-                    number_format(self::TOP_SPENDER_BONUS_AMOUNT, 0, ',', '.') . 'đ',
-                ];
+            if ($topSpenderIds->isNotEmpty()) {
+                $this->info('🏆 Top ' . $topCount . ' khách hàng chi tiêu cao nhất:');
+                $topTable = [];
+                foreach ($topSpenderIds as $userId => $totalSpent) {
+                    $user = User::find($userId);
+                    $topTable[] = [
+                        $userId,
+                        $user ? $user->name : 'N/A',
+                        number_format($totalSpent, 0, ',', '.') . 'đ',
+                        number_format(self::TOP_SPENDER_BONUS_AMOUNT, 0, ',', '.') . 'đ',
+                    ];
+                }
+                $this->table(['ID', 'Tên', 'Tổng chi tiêu', 'Thưởng'], $topTable);
+                $this->newLine();
             }
-            $this->table(['ID', 'Tên', 'Tổng chi tiêu', 'Thưởng'], $topTable);
-            $this->newLine();
         }
 
-        // 2. Lấy tất cả khách hàng active
-        $customers = User::where('role', UserRole::CLIENT->value)
-            ->where('status', 1)
-            ->get();
+        // 2. Lấy danh sách khách hàng
+        $topSpenderUsers = User::whereIn('id', $topSpenderIds->keys())->get();
+        
+        $normalCustomers = collect();
+        if ($normalCount === 'all' || $normalCount > 0) {
+            $query = User::where('role', UserRole::CLIENT->value)
+                ->where('status', 1);
+                
+            if ($topSpenderIds->isNotEmpty()) {
+                $query->whereNotIn('id', $topSpenderIds->keys());
+            }
+
+            if ($normalCount !== 'all') {
+                $query->inRandomOrder()->limit($normalCount);
+            }
+            
+            $normalCustomers = $query->get();
+        }
+
+        $customers = $topSpenderUsers->concat($normalCustomers);
 
         if ($customers->isEmpty()) {
             $this->warn('Không có khách hàng nào để cộng tiền.');
