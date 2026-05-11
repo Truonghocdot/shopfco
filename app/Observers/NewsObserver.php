@@ -57,7 +57,6 @@ class NewsObserver
             // Clear all news caches
             CacheService::clearNewsCaches($news->id);
 
-            Log::info("NewsObserver: Cleared caches for news ID {$news->id}");
         } catch (\Exception $e) {
             Log::error("NewsObserver: Error clearing caches - " . $e->getMessage());
         }
