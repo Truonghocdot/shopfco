@@ -78,7 +78,14 @@ class Login extends BaseLogin
         if ($result->isSuccess()) {
             return app(LoginResponse::class);
         }
-        throw $result->getException();
+
+        Notification::make()
+            ->title('Đăng nhập thất bại')
+            ->body($result->getMessage())
+            ->danger()
+            ->send();
+
+        return null;
     }
 
     public function getView(): string

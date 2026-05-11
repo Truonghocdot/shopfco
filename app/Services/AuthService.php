@@ -27,7 +27,7 @@ class AuthService
             Auth::login($user);
             return ServiceResult::success('Đăng nhập thành công');
         } catch (\Exception $e) {
-            return ServiceResult::error($e->getMessage());
+            return ServiceResult::error($e->getMessage(), null, $e);
         }
     }
 
