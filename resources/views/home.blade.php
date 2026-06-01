@@ -144,6 +144,15 @@
                     justify-center shadow-[0_0_20px_rgba(74,222,128,0.5)] transform transition-transform group-hover:scale-110 group-hover:rotate-12">
                                 <span class="text-3xl md:text-4xl drop-shadow-lg">👑</span>
                             </div>
+                            <div class="flex-1 min-w-0">
+                                <p
+                                    class="font-black text-lg md:text-2xl text-text-primary truncate uppercase tracking-tight group-hover:text-primary transition-colors">
+                                    {{ $shopOwner->name }}</p>
+                                <p class="text-xs md:text-sm text-text-muted font-bold flex items-center gap-1">
+                                    <span class="material-icons text-xs text-primary">verified</span>
+                                    {{ $shopOwner->total_orders }} đơn hàng thành công
+                                </p>
+                            </div>
                             <!-- Decorative element -->
                             <div class="absolute -top-4 -right-4 opacity-10 text-primary transform rotate-12">
                                 <span class="material-icons text-8xl">verified_user</span>
@@ -267,8 +276,8 @@
             @forelse($flashSaleProducts as $product)
                 <div class="card-esport group transition-all relative">
                     <div class="card-sticker">
-                        <img src="{{ asset('images/summer/saobien' . (($loop->index % 4) + 1) . '.png') }}" alt="Starfish"
-                            class="w-12 h-12 md:w-10 md:h-10" loading="lazy" decoding="async">
+                        <img src="{{ asset('images/summer/saobien' . (($loop->index % 4) + 1) . '.png') }}"
+                            alt="Starfish" class="w-12 h-12 md:w-10 md:h-10" loading="lazy" decoding="async">
                     </div>
                     <div class="relative overflow-hidden aspect-video">
                         <img alt="{{ $product->title }}"
